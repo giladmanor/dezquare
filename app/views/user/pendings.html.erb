@@ -1,0 +1,44 @@
+<article class="module width_full">
+	<header><h3>Unregistered Designers</h3></header>
+	<form class="quick_search" action="/user/list?view=shoppers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Name</th> 
+				<th>Email</th> 
+				<th></th> 
+				<th>Details</th>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@users.each{|u|
+				%>	
+				<tr>
+					<td><%= "#{u.name} #{u.l_name}"%></td>
+					<td><%= u.email%></td>
+					<td>&nbsp;</td>
+					<td><a href="/user/pending/<%=u.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
+					<td>
+						<a href="/user/delete/<%=u.id%>?view=shoppers"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+					</td>
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/user/create?view=pending" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+

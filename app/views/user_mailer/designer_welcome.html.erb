@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1>Hey  <%= @user.name %>,</h1>
+    <p>You’ve completed the registration and you’re now a true member of the dèzquare creative gang. </p>
+    <p>We’re working on matching you to your first customer so stay tuned!</p>
+    <p>
+      At anytime you can change the details and designs you uploaded at your personal account page – <%= url_for(:host => "dezquare.com",:controller => "site",:action => "index") %>.<br />
+      your username is: <%= @user.email %><br/>
+      your Password is: <%= @user.password%><br/>
+    </p>
+    <p>
+      To access the account at anytime you’ll need to use your access key.
+    </p>
+    <p>We love your questions, requests and feedback!<br />
+Don’t be shy with it and tell us everything at – <a href="mailto:feedback@dezquare.com">feedback@dezquare.com</a>
+</p>
+<p>Keep Rockin’!<br />
+The dèzquare gang.</p>
+  </body>
+</html>

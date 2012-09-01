@@ -1,0 +1,51 @@
+<article class="module width_full">
+	<header><h3>Designers (<%=@users.length%>)</h3></header>
+	<form class="quick_search" action="/user/list?view=designers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>First Name</th> 
+				<th>Last Name</th> 
+				<th>Email</th> 
+				<th>Age</th> 
+				<th>Location</th> 
+				<th># Portfolio Items</th> 
+				<th>Details</th>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			  <%
+			@users.each{|u|
+				%>	
+				<tr>
+					<td><%= "#{u.name}"%></td>
+					<td><%= "#{u.l_name}"%></td>
+					<td><%= u.email%></td>
+					<td><%= u.dob%></td>
+					<td><%= u.location%></td>
+					<td><%= u.images.length%></td>
+					
+					<td><a href="/user/designer/<%=u.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
+					<td>
+						<a href="/user/delete/<%=u.id%>?view=designers"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+					</td>
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/user/create?view=designer" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+

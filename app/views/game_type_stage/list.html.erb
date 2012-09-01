@@ -1,0 +1,82 @@
+<article class="module width_full">
+	<header><h3>Game Type Stages for <span style="font-style: italic;color: gray"><a href="/game_type/list/"><%=@parent.name%></a></span> (found <%=@entities.size%>)</h3></header>
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Stage</th> 
+				<th>Implementor</th> 
+				<th>Params</th>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@entities.each{|entity|
+				%>	
+				<tr> 
+					<td><%=entity.ord%></td>
+					<td><%=entity.imp%></td>
+					<td><%=entity.params%></td>
+					<td>
+						<a href="/<%=params[:controller]%>/set/edit?e_id=<%=entity.id%>"><input type="image"  src="/assets/admin/icn_edit.png" title="Edit"></a>
+						<a href="/<%=params[:controller]%>/delete/<%=entity.id%>"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+					</td>
+					
+				</tr> 
+				<%
+				}
+			%>
+			
+			
+			  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/<%=params[:controller]%>/set/edit?game_type_id=<%=params[:game_type_id]%>"> <img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	$(ele).hide();
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>
+<form id="new_entity" style="display: none" method="post" action="/<%=params[:controller]%>/set<%= raw(@current.nil? ? '' : "?parent_id=#{@current.id}")%>">
+	
+		<div class="module_content">
+				<fieldset>
+					<label>Create new:</label>
+					<input id="new_name" type="text" name="name">
+				</fieldset>
+				
+		</div>
+	<footer>
+		<div class="submit_link">
+			<input type="submit" value="Save" class="alt_btn">
+			<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+		</div>
+	</footer>
+</form>

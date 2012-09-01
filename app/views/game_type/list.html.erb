@@ -1,0 +1,87 @@
+<article class="module width_full">
+	<header><h3>Game Types (found <%=@entities.size%>)</h3></header>
+	
+	<form class="quick_search" action="/<%=params[:controller]%>/list">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Game Type</th> 
+				<th>Game Stages</th> 
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@entities.each{|entity|
+				%>	
+				<tr> 
+					<form id="edit_form_<%=entity.id%>" action="/category/set/<%=entity.id%>" method="post">
+						<td><input type="text" name="name" value="<%=entity.name%>" style="width: 100%"></td> 
+					</form>
+						<td><a href="/game_type_stage/list?game_type_id=<%=entity.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Sub Categories"></a></td>
+						<td>
+							<input type="image"  onclick="$('#edit_form_<%=entity.id%>').submit()" src="/assets/admin/icn_edit.png" title="Save">
+							<a href="/<%=params[:controller]%>/delete/<%=entity.id%>"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+						</td>
+					
+				</tr> 
+				<%
+				}
+			%>
+			
+			
+			  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="#" onclick="$('#new_entity').show('slow')"><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	$(ele).hide();
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>
+<form id="new_entity" style="display: none" method="post" action="/<%=params[:controller]%>/set<%= raw(@current.nil? ? '' : "?parent_id=#{@current.id}")%>">
+	
+		<div class="module_content">
+				<fieldset>
+					<label>Create new:</label>
+					<input id="new_name" type="text" name="name">
+				</fieldset>
+				
+		</div>
+	<footer>
+		<div class="submit_link">
+			<input type="submit" value="Save" class="alt_btn">
+			<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+		</div>
+	</footer>
+</form>

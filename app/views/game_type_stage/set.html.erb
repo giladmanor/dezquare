@@ -1,0 +1,57 @@
+<article class="module width_full">
+	<form id="new_entity" method="post" action="/<%=params[:controller]%>/set?game_type_id=<%=@parent.id%>">
+	<header><h3>Create a new <span style="font-style: italic;color: gray">
+		<%=params[:controller].split("_").join(" ")%></span> for <a href="/game_type/list/"><%=@parent.name%></a></h3></header>
+		<div class="module_content">
+				<fieldset>
+					<label>Stage Order</label>
+					<input name="ord" type="text" style="width:52%;">
+				</fieldset>
+				<fieldset>
+					<label>Implementor</label>
+					<select name="imp" style="width:52%;">
+						<option>RandomChooser</option>
+						<option>CategoryChooser</option>
+						<option>Rater</option>
+					</select>
+				</fieldset>
+				<fieldset>
+					<label>Params</label>
+					<textarea name="params" rows="5"></textarea>
+				</fieldset>
+				
+				<div class="clear"></div>
+		</div>
+	<footer>
+		<div class="submit_link">
+			<input type="submit" value="Save" class="alt_btn">
+			<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+		</div>
+	</footer>
+	</form>
+</article>
+
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>

@@ -1,0 +1,139 @@
+<article class="module width_full">
+	<header><h3 class="tabs_involved">Shopper <span style="font-style: italic"><%=@user.name%></span></h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Details</a></li>
+    		<li><a href="#tab2">Statistics</a></li>
+    		<li><a href="#tab3">Tags</a></li>
+    		<li><a href="#tab4">Projects</a></li>
+    		<li><a href="#tab5">Mail to</a></li>
+		</ul>
+	</header>
+	<div class="tab_container">
+		
+		<div id="tab1" class="tab_content">
+			<form id="new_entity" method="post" action="/<%=params[:controller]%>/set/<%=@user.id%>?view=shoppers">
+				<input name="shopper" type="hidden" value="true">
+				<div class="module_content">
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>First Name</label>
+							<input name="name" type="text" style="width:90%" value="<%=@user.name%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Last Name</label>
+							<input name="l_name" type="text" style="width:90%" value="<%=@user.l_name%>">
+						</fieldset><div class="clear"></div>
+						<fieldset>
+							<label>Email</label>
+							<input name="email" type="text" value="<%=@user.email%>">
+						</fieldset>
+						<div class="clear"></div>
+				</div>
+			<footer>
+			<div class="submit_link">
+				<input type="submit" value="Save" class="alt_btn">
+				<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+			</div>
+			</footer>
+		</form>
+			
+		</div>
+		<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+				<thead> 
+					<tr> 
+						<th></th> 
+						<th></th>
+						<th>&nbsp;</th> 
+						<th></th> 
+						
+					</tr> 
+				</thead> 
+				<tbody> 
+					<tr><td></td><td>Amount of time the game was played</td><td><%=@game_data[:games_playes]%></td></tr>
+					<tr><td></td><td>Amount of time the game was finished</td><td><%=@game_data[:games_finished]%></td></tr>
+					<tr><td></td><td>Precentage of games finished over played</td><td><%=@game_data[:perc_completed]%></td></tr>
+					<tr><td></td><td>Average time to finish a game</td><td><%=@game_data[:avg_complete_time]%></td></tr>
+					<tr><td></td><td>Average number of Portfolio items shown in a game</td><td><%=@game_data[:avg_images_displayed]%></td></tr>
+					<tr><td></td><td>Average <span style="font-weight: bold">'likes'</span> per game</td><td><%=@game_data[:count_likes]%></td></tr>
+					<tr><td></td><td>Average <span style="font-weight: bold">'pass'</span> per game</td><td><%=@game_data[:count_passes]%></td></tr>
+					<tr><td></td><td>Amount of games finished with over 20 portfolio items shown</td><td><%=@game_data[:long_games]%></td></tr>
+					  
+				</tbody> 
+			</table>
+		</div>
+		<div id="tab3" class="tab_content">
+			
+			<div class="message_list">
+				<div class="module_content">
+					<%
+					@tags.each{|t|
+						%><div class="message"><p><%=t[:name]%><strong><%=t[:gravity]%></strong></p></div><%
+						}
+					%>
+					
+				</div>
+			</div>
+		</div>
+		<div id="tab3" class="tab_content">
+			
+			<div class="message_list">
+				<div class="module_content">
+					<%
+					@tags.each{|t|
+						%><div class="message"><p><%=t[:name]%><strong><%=t[:gravity]%></strong></p></div><%
+						}
+					%>
+					
+				</div>
+			</div>
+		</div>
+		<div id="tab5" class="tab_content">
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#shopper_complete_game").click(function(){
+				    $("#shopper_complete_game").load("/user/send_mail/<%=@user.id%>?message=shopper_complete_game");
+				    $("#shopper_complete_game").html("Sending...");
+				  });
+				  
+				});
+			</script>
+			
+			
+			<div class="message_list" style="height: 600px">
+				<div class="module_content">
+					<h2>Send a mail message to <%=@user.full_name%>:</h2>
+					<ul>
+						<li>Your design will kick off soon <a href="#" id="shopper_complete_game" >Send</a></li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</article>
+
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>

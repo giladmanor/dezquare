@@ -1,0 +1,111 @@
+<article class="module width_full">
+	<header><h3>Categories (found <%=@categories.size%>)</h3></header>
+	<div class="breadcrumbs_container">
+		<article class="breadcrumbs">
+			<a href="/category/list">root</a>
+			<%
+			unless @current.nil?
+				bcs = []
+				cc = @current
+				bcs << {:name=>cc.name, :id=>cc.id}
+				while !cc.parent.nil? do
+					cc = cc.parent
+					bcs << {:name=>cc.name, :id=>cc.id}
+				end
+				bcs.reverse!
+				
+				bcs.each{|cat|
+					%>
+					<div class="breadcrumb_divider"></div> 
+					<a href="/category/list/<%=cat[:id]%>" class="current"><%=cat[:name]%></a>
+					<%
+					}
+			end
+			%>
+			
+		</article>
+	</div>
+	<form class="quick_search" action="/category/list">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Category</th> 
+				<th>Children</th> 
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@categories.each{|cat|
+				%>	
+				<tr> 
+					<form id="edit_form_<%=cat.id%>" action="/category/set/<%=cat.id%>" method="post">
+						<td><input type="text" name="name" value="<%=cat.name%>" style="width: 100%"></td> 
+					</form>
+						<td><a href="/category/list/<%=cat.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Sub Categories"></a></td>
+						<td>
+							<input type="image"  onclick="$('#edit_form_<%=cat.id%>').submit()" src="/assets/admin/icn_edit.png" title="Save">
+							<a href="/category/delete/<%=cat.id%>"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+						</td>
+					
+				</tr> 
+				<%
+				}
+			%>
+			
+			
+			  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="#" onclick="$('#new_category').show('slow')"><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	$(ele).hide();
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>
+<form id="new_category" style="display: none" method="post" action="/category/set<%= raw(@current.nil? ? '' : "?parent_id=#{@current.id}")%>">
+	
+		<div class="module_content">
+				<fieldset>
+					<label>Create a new Category:</label>
+					<input id="new_category_name" type="text" name="name">
+				</fieldset>
+				
+		</div>
+	<footer>
+		<div class="submit_link">
+			<input type="submit" value="Save" class="alt_btn">
+			<input type="submit" value="Reset" onclick="clear_form_elements('#new_category');return false;">
+		</div>
+	</footer>
+</form>

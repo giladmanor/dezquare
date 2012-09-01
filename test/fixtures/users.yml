@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  ext_id: MyString
+  ext_id_type: MyString
+  name: MyString
+  l_name: MyString
+  email: MyString
+  nick: MyString
+  password: MyString
+
+two:
+  ext_id: MyString
+  ext_id_type: MyString
+  name: MyString
+  l_name: MyString
+  email: MyString
+  nick: MyString
+  password: MyString

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game_type_id: 
+  ord: 1
+  ref: MyString
+
+two:
+  game_type_id: 
+  ord: 1
+  ref: MyString

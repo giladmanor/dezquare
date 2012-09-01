@@ -1,0 +1,94 @@
+<article class="module width_full">
+	<header><h3 class="tabs_involved">Unregistered Designer <span style="font-style: italic"><%=@user.name%></span></h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Details</a></li>
+    		<li><a href="#tab2">Mail to</a></li>
+		</ul>
+	</header>
+	<div class="tab_container">
+		<div id="tab1" class="tab_content">
+			<form id="new_entity" method="post" action="/<%=params[:controller]%>/set/<%=@user.id%>?view=pendings">
+				<input name="pender" type="hidden" value="true">
+				<div class="module_content">
+					<input name="has_portfolio" type="hidden" value="true">
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>First Name</label>
+							<input name="name" type="text" style="width:90%" value="<%=@user.name%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Last Name</label>
+							<input name="l_name" type="text" style="width:90%" value="<%=@user.l_name%>">
+						</fieldset><div class="clear"></div>
+						<fieldset>
+							<label>Email</label>
+							<input name="email" type="text" value="<%=@user.email%>">
+						</fieldset>
+						<fieldset>
+							<label><a target="_blank" href='<%=@user.portfolio_link%>'>Link to online portfolio</a></label>
+							<input name="portfolio_link" type="text" value="<%=@user.portfolio_link%>">
+							
+						</fieldset>
+						<fieldset>
+							<label>Aprove this Desinger</label>
+							<input name="generate_password" type="checkbox" value="" style="">
+							NOTE: Checking this will generate a password and send a mail to <%=@user.email%> with the account details
+						</fieldset>
+						<div class="clear"></div>
+				</div>
+				<footer>
+				<div class="submit_link">
+					<input type="submit" value="Save" class="alt_btn">
+					<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+				</div>
+				</footer>
+			</form>
+		</div>
+		<div id="tab2" class="tab_content">
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#pender_complete_request").click(function(){
+				    $("#pender_complete_request").load("/user/send_mail/<%=@user.id%>?message=pender_complete_request");
+				    $("#pender_complete_request").html("Sending...");
+				  });
+				  
+				});
+			</script>
+			
+			
+			<div class="message_list" style="height: 600px">
+				<div class="module_content">
+					<h2>Send a mail message to <%=@user.full_name%>:</h2>
+					<ul>
+						<li>So you want to be part of the gang <a href="#" id="pender_complete_request" >Send</a></li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>	
+</article>
+
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>

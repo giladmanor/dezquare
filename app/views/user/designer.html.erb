@@ -1,0 +1,182 @@
+<article class="module width_full">
+	<header><h3 class="tabs_involved">Designer <span style="font-style: italic"><%=@user.name%></span></h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Details</a></li>
+    		<li><a href="#tab2">Languages</a></li>
+    		<li><a href="#tab3">Portfolio</a></li>
+    		<li><a href="#tab4">Matches</a></li>
+    		<li><a href="#tab5">Mail to</a></li>
+		</ul>
+	</header>
+	<div class="tab_container">
+		
+		<div id="tab1" class="tab_content">
+			<form id="new_entity" method="post" action="/<%=params[:controller]%>/set/<%=@user.id%>?view=designers">
+				<input name="designer" type="hidden" value="true">
+				<div class="module_content">
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>First Name</label>
+							<input name="name" type="text" style="width:90%" value="<%=@user.name%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Last Name</label>
+							<input name="l_name" type="text" style="width:90%" value="<%=@user.l_name%>">
+						</fieldset><div class="clear"></div>
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>Email</label>
+							<input name="email" type="text" style="width:90%" value="<%=@user.email%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Access Key (Password)</label>
+							<input name="password" type="text" style="width:90%" value="<%=@user.password%>">
+						</fieldset><div class="clear"></div>
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>Age</label>
+							<input name="dob" type="text" style="width:90%" value="<%=@user.dob%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Location</label>
+							<input name="location" type="text" style="width:90%" value="<%=@user.location%>">
+						</fieldset><div class="clear"></div>
+						
+						<div class="clear"></div>
+				</div>
+			<footer>
+			<div class="submit_link">
+				<input type="submit" value="Save" class="alt_btn">
+				<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+			</div>
+			</footer>
+		</form>
+			
+		</div>
+		<div id="tab2" class="tab_content">
+			<form id="languages" method="post" action="/<%=params[:controller]%>/set_user_languages/<%=@user.id%>?view=designers">
+				<div class="message_list">
+					<div class="module_content">
+						
+						<%
+						Language.all.each{|l|
+							%>
+							<div class="message"><INPUT NAME="lang_ids[]" TYPE="CHECKBOX" VALUE="<%=l.id%>" <%= 'checked' if @user.languages.include?(l)%>><%=l.name%></div>
+							<%
+						}
+						%>
+						
+					</div>
+				</div>
+				<footer>
+					<div class="submit_link">
+						<input type="submit" value="Save" class="alt_btn">
+						<input type="submit" value="Reset" onclick="clear_form_elements('#languages');return false;">
+					</div>
+				</footer>
+			</form>
+		</div>
+		<div id="tab3" class="tab_content">
+			
+			<div class="message_list" style="height: 600px">
+				<div class="module_content">
+					<%
+					@user.images.each{|i|
+						%>
+						<div class="message">
+							<img width="128" style="float:left; margin-right: 3%;" height="128" src="/repository/<%=i.file_path%>">
+							<p style="float: left;"><strong><%=i.name%></strong> <span style="font-style: italic">Uploaded on <%=i.created_at.strftime("%B %d, %Y")%></span><br />
+								
+								 <%= i.categories.length>0 ? i.categories.map{|c| c.name}.join(", ") : 'Uncategorized'%>
+								<br /><br />
+								<img src="/assets/admin/icn_tags.png" />
+								<span style="border: dotted 1px silver">
+									<%= i.tags.length>0 ? i.tags.map{|c| c.name}.join(", ") : "Untagged"%>
+								</span>
+								 
+							</p>
+						</div><div class="clear"></div>
+						<%
+					}
+					%>
+					
+				</div>
+			</div>
+		</div>
+		<div id="tab4" class="tab_content">
+			
+			<div class="message_list" style="height: 600px">
+				<div class="module_content">
+					<%
+					@user.images.each{|i|
+						%>
+						<div class="message">
+							<img width="128" style="float:left; margin-right: 3%;" height="128" src="/repository/<%=i.file_path%>">
+							<p style="float: left;"><strong><%=i.name%></strong> <span style="font-style: italic">Uploaded on <%=i.created_at.strftime("%B %d, %Y")%></span><br />
+								
+								 <%= i.categories.length>0 ? i.categories.map{|c| c.name}.join(", ") : 'Uncategorized'%>
+								<br /><br />
+								<img src="/assets/admin/icn_tags.png" />
+								<span style="border: dotted 1px silver">
+									<%= i.tags.length>0 ? i.tags.map{|c| c.name}.join(", ") : "Untagged"%>
+								</span>
+								 
+							</p>
+						</div><div class="clear"></div>
+						<%
+					}
+					%>
+					
+				</div>
+			</div>
+		</div>
+		<div id="tab5" class="tab_content">
+			<script type="text/javascript">
+				$(document).ready(function(){
+				  $("#designer_welcome").click(function(){
+				    $("#designer_welcome").load("/user/send_mail/<%=@user.id%>?message=designer_welcome");
+				    $("#designer_welcome").html("Sending...");
+				  });
+				  $("#designer_new_match").click(function(){
+				    $("#designer_new_match").load("/user/send_mail/<%=@user.id%>?message=designer_new_match");
+				    $("#designer_new_match").html("Sending...");
+				  });
+				});
+			</script>
+			
+			
+			<div class="message_list" style="height: 600px">
+				<div class="module_content">
+					<h2>Send a mail message to <%=@user.full_name%>:</h2>
+					<ul>
+						<li>You’re now part of the dèzquare gang <a href="#" id="designer_welcome" >Send</a></li>
+						<li>New Matched Customer! <a href="#" id="designer_new_match" >Send</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</article>
+
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>
