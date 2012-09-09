@@ -1,0 +1,75 @@
+﻿		<div id="content">
+			<div class="wrap">
+				<!-- Slide 1 -->
+				<div class="slide" id="lslide1">
+					<div class="wrap">
+						<div class="content clearfix">
+							<div class="page-title">PROFILE</div>
+							<div class="page-subtitle">All about you</div>
+							
+							<div id="profile-basic">
+								<div class="info-list">
+									<div class="labels">
+										<span>YOUR NAME:</span>
+										<span>AGE:</span>
+										<span>LOCATION:</span>
+										<span>LANGUAGES:</span>
+									</div>
+									<div class="data">
+										<span><%=@user.full_name.upcase%></span>
+										<span><%=@user.dob.nil? ? 'N/A' : @user.dob.year %></span>
+										<span><%=@user.location.upcase%></span>
+										<span><%=@user.languages.map{|l| l.name}.join(', ')%></span>
+									</div>
+								</div>
+								<div class="edit-buttons">
+									<a href="info.html">EDIT INFO</a>
+									<a href="portfolio.html">EDIT PORTFOLIO</a>
+								</div>
+							</div>
+							<div id="profile-portfolio">
+								<div class="title">Your Portfolio</div>
+								<div class="flyer flyer1">
+									<div class="photo">
+										<img src="/img/temp/29.jpg" />
+									</div>
+									<div class="flyer-tag-list">
+										<div class="subtitle">You tagged this design as:</div>
+										<ul class="tags">
+											<li><a class="btn-delete"></a>Tag 1</li>
+											<li><a class="btn-delete"></a>Tag 2</li>
+											<li><a class="btn-delete"></a>Tag 3</li>
+										</ul>
+										<div class="view-more-holder">
+											<div class="view-more-wrap">
+												<a class="view-more" href="#">View more</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="flyer flyer2">
+									<div class="photo">
+										<img src="/img/temp/31.jpg" />
+									</div>
+									<div class="flyer-tag-list">
+										<div class="subtitle">You tagged this design as:</div>
+										<ul class="tags">
+											<li><a class="btn-delete"></a>Tag 1</li>
+											<li><a class="btn-delete"></a>Tag 2</li>
+											<li><a class="btn-delete"></a>Tag 3</li>
+										</ul>
+										<div class="view-more-holder">
+											<div class="view-more-wrap">
+												<a class="view-more" href="#">View more</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Slide 1 -->
+			</div>
+		</div>
+	

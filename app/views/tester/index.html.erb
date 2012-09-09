@@ -1,0 +1,447 @@
+
+		<div id="content">
+			<div class="wrap" id="slider">
+				<!-- Slide 1 -->
+				<div class="slide" id="rslide1">
+					<div class="wrap">
+						<div class="content clearfix">
+							<div class="page-title">EDIT YOUR ID</div>
+							<div class="page-subtitle">All about you</div>
+							<form action="profile.html" method="post">
+								<fieldset>
+									<div class="formfield clearfix">
+										<label>FIRST NAME:</label>
+										<div class="input">
+											<input type="text" class="text" name="first-name" />
+											<label>Enter your First Name</label>
+										</div>
+									</div>
+									<div class="formfield clearfix">
+										<label>LAST NAME:</label>
+										<div class="input">
+											<input type="text" class="text" name="last-name" />
+											<label>Enter your Last Name</label>
+										</div>
+									</div>
+									<div class="formfield clearfix" id="age-field">
+										<label>BIRTHDAY:</label>
+										<div class="selector" id="month-selector">
+											<div class="value"><%=Time.now.strftime("%b")%></div>
+											<input type="hidden" name="month" />
+											<div class="scroll">
+												<div class="list">
+													<ul>
+														<li class="first" title="1">January</li>
+														<li title="2">February</li>
+														<li title="3">March</li>
+														<li title="4">April</li>
+														<li title="5">May</li>
+														<li title="6">June</li>
+														<li title="7">July</li>
+														<li title="8">August</li>
+														<li title="9">September</li>
+														<li title="10">October</li>
+														<li title="11">November</li>
+														<li class="last" title="12">December</li>
+													</ul>
+												</div>
+											</div>											
+										</div>
+										<div class="selector" id="day-selector">
+											<div class="value"><%=Time.now.strftime("%d")%></div>
+											<input type="hidden" name="day" value="01" />
+											<div class="scroll">
+												<div class="list">
+													<ul>
+														<li class="first" title="1">01</li>
+														<li title="2">02</li>
+														<li title="3">03</li>
+														<li title="4">04</li>
+														<li title="5">05</li>
+														<li title="6">06</li>
+														<li title="7">07</li>
+														<li title="8">08</li>
+														<li title="9">09</li>
+														<li title="10">10</li>
+														<li title="11">11</li>
+														<li title="12">12</li>
+														<li title="13">13</li>
+														<li title="14">14</li>
+														<li title="15">15</li>
+														<li title="16">16</li>
+														<li title="17">17</li>
+														<li title="18">18</li>
+														<li title="19">19</li>
+														<li title="20">20</li>
+														<li title="21">21</li>
+														<li title="22">22</li>
+														<li title="23">23</li>
+														<li title="24">24</li>
+														<li title="25">25</li>
+														<li title="26">26</li>
+														<li title="27">27</li>
+														<li title="28">28</li>
+														<li title="29">29</li>
+														<li title="30">30</li>
+														<li class="last" title="31">31</li>
+													</ul>
+												</div>
+											</div>											
+										</div>
+										<div class="selector" id="year-selector">
+											<div class="value"><%=Time.now.strftime("%Y")%></div>
+											<input type="hidden" name="year" />
+											<div class="scroll">
+												<div class="list">
+													<ul>
+														<li class="first" title="2012">2012</li>
+														<li title="2011">2011</li>
+														<li title="2010">2010</li>
+														<li title="2009">2009</li>
+														<li title="2008">2008</li>
+														<li title="2007">2007</li>
+														<li title="2006">2006</li>
+														<li title="2005">2005</li>
+														<li title="2004">2004</li>
+														<li title="2003">2003</li>
+														<li title="2002">2002</li>
+														<li title="2001">2001</li>
+														<li title="2000">2000</li>
+														<li title="1999">1999</li>
+														<li title="1998">1998</li>
+														<li title="1997">1997</li>
+														<li title="1996">1996</li>
+														<li title="1995">1995</li>
+														<li title="1994">1994</li>
+														<li title="1993">1993</li>
+														<li title="1992">1992</li>
+														<li title="1991">1991</li>
+														<li title="1990">1990</li>
+														<li title="1989">1989</li>
+														<li title="1988">1988</li>
+														<li title="1987">1987</li>
+														<li title="1986">1986</li>
+														<li title="1985">1985</li>
+														<li title="1984">1984</li>
+														<li title="1983">1983</li>
+														<li title="1982">1982</li>
+														<li title="1981">1981</li>
+														<li title="1980">1980</li>
+														<li title="1979">1979</li>
+														<li title="1978">1978</li>
+														<li title="1977">1977</li>
+														<li title="1976">1976</li>
+														<li title="1975">1975</li>
+														<li title="1974">1974</li>
+														<li title="1973">1973</li>
+														<li title="1972">1972</li>
+														<li title="1971">1971</li>
+														<li title="1970">1970</li>
+														<li title="1969">1969</li>
+														<li title="1968">1968</li>
+														<li title="1967">1967</li>
+														<li title="1966">1966</li>
+														<li title="1965">1965</li>
+														<li title="1964">1964</li>
+														<li title="1963">1963</li>
+														<li title="1962">1962</li>
+														<li title="1961">1961</li>
+														<li class="last" title="1960">1960</li>
+													</ul>
+												</div>
+											</div>											
+										</div>
+									</div>
+									<div class="formfield clearfix" style="z-index: 10;">
+										<label>LOCATION:</label>
+										<div class="selector" id="location-selector">
+											<div class="value">Select Location</div>
+											<input type="hidden" name="location" />
+											<div class="scroll">
+												<div class="list">
+													<ul>
+														<li class="first" title="United States">United States</li>
+														<li title="United Kingdom">United Kingdom</li>
+														<li title="Afghanistan">Afghanistan</li>
+														<li title="Albania">Albania</li>
+														<li title="Algeria">Algeria</li>
+														<li title="American Samoa">American Samoa</li>
+														<li title="Andorra">Andorra</li>
+														<li title="Angola">Angola</li>
+														<li title="Anguilla">Anguilla</li>
+														<li title="Antarctica">Antarctica</li>
+														<li title="Antigua and Barbuda">Antigua and Barbuda</li>
+														<li title="Argentina">Argentina</li>
+														<li title="Armenia">Armenia</li>
+														<li title="Aruba">Aruba</li>
+														<li title="Australia">Australia</li>
+														<li title="Austria">Austria</li>
+														<li title="Azerbaijan">Azerbaijan</li>
+														<li title="Bahamas">Bahamas</li>
+														<li title="Bahrain">Bahrain</li>
+														<li title="Bangladesh">Bangladesh</li>
+														<li title="Barbados">Barbados</li>
+														<li title="Belarus">Belarus</li>
+														<li title="Belgium">Belgium</li>
+														<li title="Belize">Belize</li>
+														<li title="Benin">Benin</li>
+														<li title="Bermuda">Bermuda</li>
+														<li title="Bhutan">Bhutan</li>
+														<li title="Bolivia">Bolivia</li>
+														<li title="Bosnia and Herzegovina">Bosnia and Herze...</li>
+														<li title="Botswana">Botswana</li>
+														<li title="Bouvet Island">Bouvet Island</li>
+														<li title="Brazil">Brazil</li>
+														<li title="British Indian Ocean Territory">British Indian...</li>
+														<li title="Brunei Darussalam">Brunei Darussalam</li>
+														<li title="Bulgaria">Bulgaria</li>
+														<li title="Burkina Faso">Burkina Faso</li>
+														<li title="Burundi">Burundi</li>
+														<li title="Cambodia">Cambodia</li>
+														<li title="Cameroon">Cameroon</li>
+														<li title="Canada">Canada</li>
+														<li title="Cape Verde">Cape Verde</li>
+														<li title="Cayman Islands">Cayman Islands</li>
+														<li title="Central African Republic">Central African...</li>
+														<li title="Chad">Chad</li>
+														<li title="Chile">Chile</li>
+														<li title="China">China</li>
+														<li title="Christmas Island">Christmas Island</li>
+														<li title="Cocos (Keeling) Islands">Cocos (Keeling)...</li>
+														<li title="Colombia">Colombia</li>
+														<li title="Comoros">Comoros</li>
+														<li title="Congo">Congo</li>
+														<li title="Congo, The Democratic Republic of The">Congo, The...</li>
+														<li title="Cook Islands">Cook Islands</li>
+														<li title="Costa Rica">Costa Rica</li>
+														<li title="Cote D'ivoire">Cote D'ivoire</li>
+														<li title="Croatia">Croatia</li>
+														<li title="Cuba">Cuba</li>
+														<li title="Cyprus">Cyprus</li>
+														<li title="Czech Republic">Czech Republic</li>
+														<li title="Denmark">Denmark</li>
+														<li title="Djibouti">Djibouti</li>
+														<li title="Dominica">Dominica</li>
+														<li title="Dominican Republic">Dominican Republic</li>
+														<li title="Ecuador">Ecuador</li>
+														<li title="Egypt">Egypt</li>
+														<li title="El Salvador">El Salvador</li>
+														<li title="Equatorial Guinea">Equatorial Guinea</li>
+														<li title="Eritrea">Eritrea</li>
+														<li title="Estonia">Estonia</li>
+														<li title="Ethiopia">Ethiopia</li>
+														<li title="Falkland Islands (Malvinas)">Falkland Islands...</li>
+														<li title="Faroe Islands">Faroe Islands</li>
+														<li title="Fiji">Fiji</li>
+														<li title="Finland">Finland</li>
+														<li title="France">France</li>
+														<li title="French Guiana">French Guiana</li>
+														<li title="French Polynesia">French Polynesia</li>
+														<li title="French Southern Territories">French Southern...</li>
+														<li title="Gabon">Gabon</li>
+														<li title="Gambia">Gambia</li>
+														<li title="Georgia">Georgia</li>
+														<li title="Germany">Germany</li>
+														<li title="Ghana">Ghana</li>
+														<li title="Gibraltar">Gibraltar</li>
+														<li title="Greece">Greece</li>
+														<li title="Greenland">Greenland</li>
+														<li title="Grenada">Grenada</li>
+														<li title="Guadeloupe">Guadeloupe</li>
+														<li title="Guam">Guam</li>
+														<li title="Guatemala">Guatemala</li>
+														<li title="Guinea">Guinea</li>
+														<li title="Guinea-bissau">Guinea-bissau</li>
+														<li title="Guyana">Guyana</li>
+														<li title="Haiti">Haiti</li>
+														<li title="Heard Island and Mcdonald Islands">Heard Island...</li>
+														<li title="Holy See (Vatican City State)">Holy See...</li>
+														<li title="Honduras">Honduras</li>
+														<li title="Hong Kong">Hong Kong</li>
+														<li title="Hungary">Hungary</li>
+														<li title="Iceland">Iceland</li>
+														<li title="India">India</li>
+														<li title="Indonesia">Indonesia</li>
+														<li title="Iran, Islamic Republic of">Iran, Islamic...</li>
+														<li title="Iraq">Iraq</li>
+														<li title="Ireland">Ireland</li>
+														<li title="Israel">Israel</li>
+														<li title="Italy">Italy</li>
+														<li title="Jamaica">Jamaica</li>
+														<li title="Japan">Japan</li>
+														<li title="Jordan">Jordan</li>
+														<li title="Kazakhstan">Kazakhstan</li>
+														<li title="Kenya">Kenya</li>
+														<li title="Kiribati">Kiribati</li>
+														<li title="Korea, Democratic People's Republic of">Korea, Democratic...</li>
+														<li title="Korea, Republic of">Korea, Republic of</li>
+														<li title="Kuwait">Kuwait</li>
+														<li title="Kyrgyzstan">Kyrgyzstan</li>
+														<li title="Lao People's Democratic Republic">Lao People's...</li>
+														<li title="Latvia">Latvia</li>
+														<li title="Lebanon">Lebanon</li>
+														<li title="Lesotho">Lesotho</li>
+														<li title="Liberia">Liberia</li>
+														<li title="Libyan Arab Jamahiriya">Libyan Arab...</li>
+														<li title="Liechtenstein">Liechtenstein</li>
+														<li title="Lithuania">Lithuania</li>
+														<li title="Luxembourg">Luxembourg</li>
+														<li title="Macao">Macao</li>
+														<li title="Macedonia, The Former Yugoslav Republic of">Macedonia, The...</li>
+														<li title="Madagascar">Madagascar</li>
+														<li title="Malawi">Malawi</li>
+														<li title="Malaysia">Malaysia</li>
+														<li title="Maldives">Maldives</li>
+														<li title="Mali">Mali</li>
+														<li title="Malta">Malta</li>
+														<li title="Marshall Islands">Marshall Islands</li>
+														<li title="Martinique">Martinique</li>
+														<li title="Mauritania">Mauritania</li>
+														<li title="Mauritius">Mauritius</li>
+														<li title="Mayotte">Mayotte</li>
+														<li title="Mexico">Mexico</li>
+														<li title="Micronesia, Federated States of">Micronesia, Federated...</li>
+														<li title="Moldova, Republic of">Moldova, Republic of</li>
+														<li title="Monaco">Monaco</li>
+														<li title="Mongolia">Mongolia</li>
+														<li title="Montserrat">Montserrat</li>
+														<li title="Morocco">Morocco</li>
+														<li title="Mozambique">Mozambique</li>
+														<li title="Myanmar">Myanmar</li>
+														<li title="Namibia">Namibia</li>
+														<li title="Nauru">Nauru</li>
+														<li title="Nepal">Nepal</li>
+														<li title="Netherlands">Netherlands</li>
+														<li title="Netherlands Antilles">Netherlands Antilles</li>
+														<li title="New Caledonia">New Caledonia</li>
+														<li title="New Zealand">New Zealand</li>
+														<li title="Nicaragua">Nicaragua</li>
+														<li title="Niger">Niger</li>
+														<li title="Nigeria">Nigeria</li>
+														<li title="Niue">Niue</li>
+														<li title="Norfolk Island">Norfolk Island</li>
+														<li title="Northern Mariana Islands">Northern Mariana...</li>
+														<li title="Norway">Norway</li>
+														<li title="Oman">Oman</li>
+														<li title="Pakistan">Pakistan</li>
+														<li title="Palau">Palau</li>
+														<li title="Palestinian Territory, Occupied">Palestinian Territory...</li>
+														<li title="Panama">Panama</li>
+														<li title="Papua New Guinea">Papua New Guinea</li>
+														<li title="Paraguay">Paraguay</li>
+														<li title="Peru">Peru</li>
+														<li title="Philippines">Philippines</li>
+														<li title="Pitcairn">Pitcairn</li>
+														<li title="Poland">Poland</li>
+														<li title="Portugal">Portugal</li>
+														<li title="Puerto Rico">Puerto Rico</li>
+														<li title="Qatar">Qatar</li>
+														<li title="Reunion">Reunion</li>
+														<li title="Romania">Romania</li>
+														<li title="Russian Federation">Russian Federation</li>
+														<li title="Rwanda">Rwanda</li>
+														<li title="Saint Helena">Saint Helena</li>
+														<li title="Saint Kitts and Nevis">Saint Kitts...</li>
+														<li title="Saint Lucia">Saint Lucia</li>
+														<li title="Saint Pierre and Miquelon">Saint Pierre...</li>
+														<li title="Saint Vincent and The Grenadines">Saint Vincent...</li>
+														<li title="Samoa">Samoa</li>
+														<li title="San Marino">San Marino</li>
+														<li title="Sao Tome and Principe">Sao Tome and Principe</li>
+														<li title="Saudi Arabia">Saudi Arabia</li>
+														<li title="Senegal">Senegal</li>
+														<li title="Serbia and Montenegro">Serbia and Montenegro</li>
+														<li title="Seychelles">Seychelles</li>
+														<li title="Sierra Leone">Sierra Leone</li>
+														<li title="Singapore">Singapore</li>
+														<li title="Slovakia">Slovakia</li>
+														<li title="Slovenia">Slovenia</li>
+														<li title="Solomon Islands">Solomon Islands</li>
+														<li title="Somalia">Somalia</li>
+														<li title="South Africa">South Africa</li>
+														<li title="South Georgia and The South Sandwich Islands">South Georgia..</li>
+														<li title="Spain">Spain</li>
+														<li title="Sri Lanka">Sri Lanka</li>
+														<li title="Sudan">Sudan</li>
+														<li title="Suriname">Suriname</li>
+														<li title="Svalbard and Jan Mayen">Svalbard and...</li>
+														<li title="Swaziland">Swaziland</li>
+														<li title="Sweden">Sweden</li>
+														<li title="Switzerland">Switzerland</li>
+														<li title="Syrian Arab Republic">Syrian Arab Republic</li>
+														<li title="Taiwan, Province of China">Taiwan, Province...</li>
+														<li title="Tajikistan">Tajikistan</li>
+														<li title="Tanzania, United Republic of">Tanzania, United...</li>
+														<li title="Thailand">Thailand</li>
+														<li title="Timor-leste">Timor-leste</li>
+														<li title="Togo">Togo</li>
+														<li title="Tokelau">Tokelau</li>
+														<li title="Tonga">Tonga</li>
+														<li title="Trinidad and Tobago">Trinidad and Tobago</li>
+														<li title="Tunisia">Tunisia</li>
+														<li title="Turkey">Turkey</li>
+														<li title="Turkmenistan">Turkmenistan</li>
+														<li title="Turks and Caicos Islands">Turks and Caicos...</li>
+														<li title="Tuvalu">Tuvalu</li>
+														<li title="Uganda">Uganda</li>
+														<li title="Ukraine">Ukraine</li>
+														<li title="United Arab Emirates">United Arab Emirates</li>
+														<li title="United Kingdom">United Kingdom</li>
+														<li title="United States">United States</li>
+														<li title="United States Minor Outlying Islands">United States Minor...</li>
+														<li title="Uruguay">Uruguay</li>
+														<li title="Uzbekistan">Uzbekistan</li>
+														<li title="Vanuatu">Vanuatu</li>
+														<li title="Venezuela">Venezuela</li>
+														<li title="Viet Nam">Viet Nam</li>
+														<li title="Virgin Islands, British">Virgin Islands, British</li>
+														<li title="Virgin Islands, U.S.">Virgin Islands, U.S.</li>
+														<li title="Wallis and Futuna">Wallis and Futuna</li>
+														<li title="Western Sahara">Western Sahara</li>
+														<li title="Yemen">Yemen</li>
+														<li title="Zambia">Zambia</li>
+														<li class="last" title="Zimbabwe">Zimbabwe</li>
+													</ul>
+												</div>
+											</div>											
+										</div>
+									</div>
+									<div class="formfield clearfix" style="margin-bottom: 0px; padding-bottom: 15px; z-index: 7;">
+										<label>LANGUAGES:</label>
+										<div class="selector" id="language-selector">
+											<div class="value">Select Language</div>
+											<div class="scroll">
+												<div class="list">
+													<ul>
+														<%
+														Language.all.each{|l|
+															%>
+															<li >
+																<span class="checkbox"></span>
+																<input type="checkbox" name="language" value="<%=l.name%>" />
+																<span class="text"><%=l.name%></span>
+															</li>
+															<%
+														}
+														%>
+														
+														
+													</ul>
+												</div>											
+											</div>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+							<div class="buttons-bar single-button">
+								<div class="button-2">
+									<a href="#" id="go-to-rslide2">GO</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- End Slide 1 -->
+			</div>
+		</div>
+		

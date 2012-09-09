@@ -71,7 +71,12 @@ class UserController < AdminController
     attr = params.delete_if{|k,v| !user.respond_to?(k.to_sym)}
     user.update_attributes(attr.except(:id))
     
-    user.create_password(5) unless generate_password.nil?
+    unless generate_password.nil?
+      user.create_password(5) 
+      user.pender=false
+      user.designer=true  
+    end
+    
     
     msg_t, msg = say("","")
     if user.save
