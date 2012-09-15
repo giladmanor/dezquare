@@ -64,10 +64,13 @@ ActiveRecord::Schema.define(:version => 20120831113615) do
 
   create_table "image_categories", :force => true do |t|
     t.integer  "image_id"
+    t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "category_id"
   end
+
+  add_index "image_categories", ["category_id"], :name => "index_image_categories_on_category_id"
+  add_index "image_categories", ["image_id"], :name => "index_image_categories_on_image_id"
 
   create_table "image_comments", :force => true do |t|
     t.integer  "image_id"
@@ -95,9 +98,8 @@ ActiveRecord::Schema.define(:version => 20120831113615) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "file_path"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "category_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
@@ -142,5 +144,9 @@ ActiveRecord::Schema.define(:version => 20120831113615) do
     t.boolean  "designer",       :default => false
     t.boolean  "pender",         :default => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email"
+  add_index "users", ["ext_id"], :name => "index_users_on_ext_id"
+  add_index "users", ["nick"], :name => "index_users_on_nick"
 
 end
