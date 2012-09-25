@@ -1,0 +1,55 @@
+<article class="module width_full">
+	<header><h3><%=@entity.name.tableize.pluralize.humanize%> (found <%=@entities.size%>)</h3></header>
+	
+	<form class="quick_search" action="/<%=params[:controller]%>/list">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<%
+				(@entity.column_names-["created_at","updated_at"]).each{|k|
+					%><th><%=k.humanize%></th><%
+				} 
+				%>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@entities.each{|entity|
+				%>	
+				<tr> 
+					<form id="edit_form_<%=entity.id%>" action="/<%=params[:controller]%>/set/<%=entity.id%>?entity=<%=params[:entity]%>" method="post">
+						<td><%=entity.id%></td>
+						<%
+						(@entity.column_names-["id","created_at","updated_at"]).each{|k|
+							%><td><input type="text" name="<%=k%>" value="<%=entity[k]%>" style="width: 100%"></td><%
+						} 
+						%>
+						  
+					</form>
+					<td>
+						<input type="image"  onclick="$('#edit_form_<%=entity.id%>').submit()" src="/assets/admin/icn_edit.png" title="Save">
+						<a href="/<%=params[:controller]%>/delete/<%=entity.id%>"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+					</td>
+					
+				</tr> 
+				<%
+				}
+			%>
+			
+			
+			  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/lsd/show?entity=<%=@entity%>"><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>

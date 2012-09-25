@@ -1,0 +1,25 @@
+<article class="module width_full">
+	<header><h3>New <%=@entity.name%></h3>
+	</header>
+			<form id="new_entity" method="post" action="/<%=params[:controller]%>/set?entity=<%=@entity%>">
+				<div class="module_content">
+					<%
+					(@entity.column_names-["id","created_at","updated_at"]).each{|k|
+						%>
+						<fieldset >
+							<label><%=k.humanize%></label>
+							<input name="<%=k%>" type="text" value="">
+						</fieldset><%
+					} 
+					%>
+				</div>
+			<footer>
+			<div class="submit_link">
+				<input type="submit" value="Save" class="alt_btn">
+				<a href="/lsd/list?entity=<%=@entity%>"><input type="submit" value="Cancel" onclick="return false;"></a>
+			</div>
+			</footer>
+		</form>
+			
+			
+</article>

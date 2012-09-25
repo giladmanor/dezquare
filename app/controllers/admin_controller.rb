@@ -64,6 +64,7 @@ class AdminController < ApplicationController
         {:name=>'Categories',:class=>"icn_categories",:action=>'/category/list'},
         {:name=>'Tags',:class=>"icn_tags",:action=>'/tag/list'},
         {:name=>'Languages',:class=>"icn_audio",:action=>'/languages/list'},
+        {:name=>'LSD: Languages',:class=>"icn_audio",:action=>'/lsd/list?entity=language'},
         {:name=>'Game Types',:class=>"icn_video",:action=>'/game_type/list'}]},
       {:name=>'Game Reports',:children=> 
           game_types.map{|gt| {:name=>"#{gt.name}",:class=>"icn_categories",:action=>"/game_report/list?game_type_id=#{gt.id}"}}
