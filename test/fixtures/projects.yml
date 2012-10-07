@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  shopper_id: 1
+  designer_id: 1
+  category: 
+  tags: 
+  cost: 9.99
+  status: MyString
+
+two:
+  title: MyString
+  shopper_id: 1
+  designer_id: 1
+  category: 
+  tags: 
+  cost: 9.99
+  status: MyString

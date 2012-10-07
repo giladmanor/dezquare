@@ -1,23 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+﻿<!DOCTYPE html>
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
-    <title>dèzquare</title>
-	<!--
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	-->
-	<meta name="viewport" content="width=960" />
-    <meta name="title" content="" />
-    <meta name="description" content="" />
-	<meta name="keywords" content="" />
-    
-	<link rel="stylesheet" type="text/css" media="screen" href="/css/fonts/fonts.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
-	
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/js/main.js"></script>
-</head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script></head>
 <body>
+	<div id="page">
+		<div id="header">
+			<div class="page-content clearfix">
+				<h1 id="logo">
+					<a href="index.html">
+						<img src="/img/logo.png" alt="Dezquare" />
+					</a>
+				</h1>
+				<a id="login" class="header-button" href="#">Login / Signup</a>
+			</div>
+		</div>
+		<div id="footer">
+		<div class="page-content">
+			<div id="copyright">&copy;dèzquare 2012</div>
+			<div id="footer-links">
+				<a href="/site/about">About</a>
+				<span>|</span>
+				<a href="/site/privacy">Privacy Policy</a>
+				<span>|</span>
+				<a href="/site/terms">Terms of Use</a>
+			</div>
+		</div>
+	</div>
 <%= yield %>
+<div id="window-overlay"></div>
+	<div id="login-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="/site/login" method="post">
+				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot">
+					<a href="#" id="forgot-password">I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="register.html">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="forgot-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Get a new Password</div>
+			<form action="" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<label class="form-error">Invalid email address</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+				</div>		
+			</form>
+		</div>
+	</div>
+	
 </body>
 </html>

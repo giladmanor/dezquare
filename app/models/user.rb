@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   #validates_uniqueness_of :email
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
-  def create_password(limit=5)
+  def create_password(limit=6)
     o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
     self.password=(0..50).map{ o[rand(o.length)]}.take(limit).join;
   end

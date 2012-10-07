@@ -1,0 +1,89 @@
+﻿
+	
+	<div id="register-designer-popup" class="popup" <%= @state.nil? ? "" : "style='display:none'"%>>
+		<div class="popup-content">
+			<div class="title">Request an invite to dezquare!</div>
+			<form action="/pender/register_designer_success" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="name" />
+					<label class="abs">First Name</label>
+					<span class="vchecked"></span>
+					<label class="form-error">Invalid First Name</label>
+				</div>
+				<div class="formfield">
+					<input type="text" class="text" name="l_name" />
+					<label class="abs">Last Name</label>
+					<span class="vchecked"></span>
+					<label class="form-error">Invalid Last Name</label>
+				</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<span class="vchecked"></span>
+					<label class="form-error">Invalid Email Address</label>
+				</div>
+				<div class="formfield">
+					<input type="text" class="text" name="link" />
+					<label class="abs">Link to Portfolio</label>
+					<span class="vchecked"></span>
+					<label class="form-error">Invalid Link</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Send" />
+				</div>		
+			</form>
+			<div class="foot">
+				Already a member? <a href="#" id="bottom-login">Login!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="login-popup" class="popup" <%= @state=="login" ? "style='display:block'" : ""%>>
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="/designer/login" method="post">
+				<div id="login-alert" class="form-error"  <%= !@error.nil? ? "style='display:block'" : ""%>>Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot" >
+					<a href="#" id="forgot-password" <%= !@error.nil? ? "style='display:block'" : ""%>>I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="/designer/register">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="forgot-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Get a new Password</div>
+			<form action="/designer/reset_password" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<label class="form-error">Invalid email address</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+				</div>		
+			</form>
+		</div>
+	</div>

@@ -1,16 +1,9 @@
 class DesignerController < SiteController
   
-  before_filter :load_user, :except=>[:loggedin]
+  before_filter :load_user, :except=>[:login, :register, :reset_password]
   
-  def loggedin
-    @user = User.find_by_email(params[:email])
-    logger.debug "#{@user.inspect}"
-    if !@user.nil? && @user.password==params[:password]
-      session[:user_id]=@user.id
-      return
-    end
-    loc = request.referer.split('?')[0].split('/').reverse
-    redirect_to :controller=>loc[1], :action=>loc[0], :error=>"Wrong email or password"
+  def dashboard
+    render "dashboard_empty"
   end
   
   def profile
@@ -36,5 +29,14 @@ class DesignerController < SiteController
   def load_user
     @user=User.find(session[:user_id])
   end
+  
+  def reset_password
+    #todo: check if the user is a designer and send reset password mail
+    
+    redirect_to :controller=>:site, :action=> :index, :info=>"Please check your mail"
+    
+  end
+  
+  
   
 end

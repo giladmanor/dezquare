@@ -1,61 +1,113 @@
 
-	<div id="page">
-		<div id="header-shadow">
-			<div id="header">
-				<div class="wrap clearfix">
-					<h1 id="logo">
-						<a href="index.html">dèzquare</a>
-					</h1>
-					<a id="ask" href="/pender/designer">designer?</a>
-				</div>
-			</div>
-		</div>
 		<div id="content">
-			<div class="wrap" id="slider">
-				<!-- Slide 1 -->
-				<div class="slide" id="slide1">
-					<div class="wrap clearfix">
-						<div class="col1">
-							<h2>GET YOUR FLYER DESIGNED TODAY.</h2>
-							<div class="button-1">
-								<a id="btn-start" href="game.html" class="button">Start</a>
-							</div>
-						</div>
-						<div class="col2">
-							<div class="frame">
-								<img src="/img/temp/michal-rahat.jpg" alt="Michal Rahat" />
-								<div class="dzq"></div>
-							</div>
-						</div>
+			<div class="page-content">
+				<div id="homepage-banner">
+					<a href="game1.html" id="start">
+						<span id="overlay"></span>
+						<span id="button">
+							<span class="left">Got taste?</span>
+							<span class="right">
+								Find<br/>out<br/>Now
+								<img src="img/arrow-white.png" />
+							</span>
+						</span>
+					</a>
+					<div id="game-description">
+						<div class="row1">We map your taste and match you to a designer you'll love.</div>
+						<div class="row2">Play</div>
+						<div class="row3">Our game</div>
+						<div class="row2">Match</div>
+						<div class="row3">A designer to your taste</div>
+						<div class="row2 orange">Rock!</div>
+						<div class="row3 space">Your design</div>
+						<div class="row4">It's as simple as playing a "Hot or Not" game.</div>
 					</div>
 				</div>
-				<!-- End Slide 1 -->
-			</div>
-		</div>
-		<div id="footer-shadow">
-			<div id="footer">
-				<div class="wrap">
-					<div id="stages">
-						<div class="stage" id="stage1">
-							<span class="icon"></span>
-							<span class="big">Play</span>
-							<span class="normal">our game</span>
-						</div>
-						<div class="stage" id="stage2">
-							<span class="icon"></span>
-							<span class="big">Match</span>
-							<span class="normal">a designer to your taste</span>
-						</div>
-						<div class="stage" id="stage3">
-							<span class="icon"></span>
-							<span class="big">Rock</span>
-							<span class="normal">Your design and promote your event.</span>
-						</div>
-					</div>
-					<div id="copyright">
-						&copy;dèzquare 2012 <a href="terms.html">Terms &amp; Privacy Policy </a>
-					</div>	
+				<div id="designer-samples">
+					<div class="title">Check out some of our designers work:</div>
+					
+					<a href="#" class="sample">
+						<img src="img/temp/sample1.jpg" alt="Sample 1" />
+						<span class="info">
+							<span class="row">a <span>T-Shirt</span></span>
+							<span class="row">by <span>Push Spice</span></span>
+						</span>
+					</a>
+					<a href="#" class="sample">
+						<img src="img/temp/sample2.jpg" alt="Sample 2" />
+						<span class="info">
+							<span class="row">a <span>Facebook<br/>Cover Image</span></span>
+							<span class="row">by <span>Sporty Spice</span></span>
+						</span>
+					</a>
+					<a href="#" class="sample">
+						<img src="img/temp/sample3.jpg" alt="Sample 3" />
+						<span class="info">
+							<span class="row">a <span>Flyer</span></span>
+							<span class="row">by <span>Baby Spice</span></span>
+						</span>
+					</a>
+					<a href="#" class="sample last">
+						<img src="img/temp/sample4.jpg" alt="Sample 4" />
+						<span class="info">
+							<span class="row">a <span>Business Card</span></span>
+							<span class="row">by <span>Dee Dee Ramone</span></span>
+						</span>
+					</a>
 				</div>
 			</div>
+		</div>		
+	</div>
+	
+	
+	
+	<div id="window-overlay"></div>
+	<div id="login-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="index.html" method="post">
+				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot">
+					<a href="#" id="forgot-password">I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="register.html">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="forgot-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Get a new Password</div>
+			<form action="" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<label class="form-error">Invalid email address</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+				</div>		
+			</form>
 		</div>
 	</div>
