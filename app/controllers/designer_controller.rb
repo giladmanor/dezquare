@@ -3,7 +3,12 @@ class DesignerController < SiteController
   before_filter :load_user, :except=>[:login, :register, :reset_password]
   
   def dashboard
-    render "dashboard_empty"
+    logger.debug @user.inspect
+    if @user.projects_in.empty?
+      render "dashboard_empty"
+      return
+    end
+    
   end
   
   def profile

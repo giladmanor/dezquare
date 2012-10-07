@@ -9,7 +9,14 @@ class SiteController < ApplicationController
     logger.debug "#{@user.inspect}"
     if !@user.nil? && @user.password==params[:password]
       session[:user_id]=@user.id
-      redirect_to :action=>:dashboard
+      logger.debug "##############################################################################################################"
+      if @user.shopper
+        
+        redirect_to :action=>:dashboard
+      else
+        redirect_to :controller=>:designer,:action=>:dashboard  
+      end
+      
       return
     end
     #loc = request.referer.split('?')[0].split('/').reverse

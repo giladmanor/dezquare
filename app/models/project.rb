@@ -1,4 +1,11 @@
 class Project < ActiveRecord::Base
   belongs_to :category
-  belongs_to :tags
+  has_many :project_tags
+  has_many :tags, :through=>:project_tags
+  
+  belongs_to :shopper, :class_name => "User"
+  belongs_to :designer, :class_name => "User"
+  
+  
+  
 end

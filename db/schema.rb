@@ -11,14 +11,26 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120831113615) do
+ActiveRecord::Schema.define(:version => 20121007162511) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "icon"
   end
+
+  create_table "designer_categories", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.decimal  "min_price",   :precision => 10, :scale => 0
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "designer_categories", ["category_id"], :name => "index_designer_categories_on_category_id"
+  add_index "designer_categories", ["user_id"], :name => "index_designer_categories_on_user_id"
 
   create_table "game_image_rates", :force => true do |t|
     t.integer  "game_id"
@@ -110,6 +122,40 @@ ActiveRecord::Schema.define(:version => 20120831113615) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "project_comments", :force => true do |t|
+    t.integer  "project_id"
+    t.integer  "user_id"
+    t.text     "text"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "project_comments", ["project_id"], :name => "index_project_comments_on_project_id"
+  add_index "project_comments", ["user_id"], :name => "index_project_comments_on_user_id"
+
+  create_table "project_tags", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "project_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "project_tags", ["project_id"], :name => "index_project_tags_on_project_id"
+  add_index "project_tags", ["tag_id"], :name => "index_project_tags_on_tag_id"
+
+  create_table "projects", :force => true do |t|
+    t.string   "title"
+    t.integer  "shopper_id"
+    t.integer  "designer_id"
+    t.integer  "category_id"
+    t.decimal  "cost",        :precision => 10, :scale => 0
+    t.string   "status"
+    t.datetime "created_at",                                 :null => false
+    t.datetime "updated_at",                                 :null => false
+  end
+
+  add_index "projects", ["category_id"], :name => "index_projects_on_category_id"
 
   create_table "tags", :force => true do |t|
     t.string   "name"

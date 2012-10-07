@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
   has_many :games
   has_many :game_image_rates, :through=>:games
   
+  has_many :projects_in, :class_name=>"Project" ,:foreign_key => "designer_id"
+  has_many :projects_out, :class_name=>"Project" ,:foreign_key => "shopper_id"
+  
   #validates_uniqueness_of :email
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
