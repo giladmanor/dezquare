@@ -15,12 +15,33 @@
 						<img src="/img/logo.png" alt="Dezquare" />
 					</a>
 				</h1>
-				<a id="login" class="header-button" href="#">Login / Signup</a>
+				
+				<%
+				if @user.nil?
+				%>
+				<a id="login" class="header-button" href="/site/register">Login / Signup</a>
+				<%
+				else
+				%>
+				<div id="profile-menu">
+					<a href="/designer/profile" class="base">Profile</a>
+					<div class="expanded">
+						<a href="/designer/settings">Settings</a>
+						<a href="/site/logout" class="last">Logout</a>
+					</div>
+				</div>
+				<%
+				end
+				%>
 			</div>
 		</div>
 	</div>
 	
-	<div id="footer">
+	
+	x
+		<%= yield %>
+		x
+		<div id="footer">
 		<div class="page-content">
 			<div id="copyright">&copy;dèzquare 2012</div>
 			<div id="footer-links">
@@ -32,7 +53,5 @@
 			</div>
 		</div>
 	</div>
-	
-		<%= yield %>
 </body>
 </html>

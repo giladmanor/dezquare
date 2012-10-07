@@ -1,15 +1,42 @@
-
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script></head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div class="page-content clearfix">
+				<h1 id="logo">
+					<a href="dashboard.html">
+						<img src="img/logo.png" alt="Dezquare" />
+					</a>
+				</h1>
+				
+				<div id="profile-menu">
+					<a href="profile.html" class="base">Profile</a>
+					<div class="expanded">
+						<a href="settings.html">Settings</a>
+						<a href="index.html" class="last">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
 		<div id="content">
 			<div class="page-content">
 				<div id="cover">
 					<div id="cover-image">
-						<img src="/img/temp/cover-image.jpg" alt="My Cover Image" />
-						<input type="file" id="upload-cover-image" />
+						<span class="edit-field"></span>
+						<img src="img/temp/cover-image.jpg" alt="My Cover Image" />
 					</div>
 					<div id="profile-bar" class="clearfix">
 						<div id="profile-photo">
-							<img src="/img/temp/profile-photo.jpg" alt="My Profile Photo" />
-							<input type="file" id="upload-profile-image" />
+							<img src="img/temp/profile-photo.jpg" alt="My Profile Photo" />
+							<span class="edit-field"></span>
 						</div>
 						<h2 id="profile-name">Axl Rose</h2>
 						<div id="profile-status">
@@ -25,78 +52,25 @@
 				<div id="sidebar">
 					<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
 					<div class="title">
-						<a href="latest-designs.html">Latest Designs</a>
-					</div>
-					<div class="latest-designs">
-						<div class="design">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
-								<div class="completed hidden">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
-						<div class="design">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
-								<div class="completed hidden">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
-						<div class="design last">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<div class="completed">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
+						<a href="dashboard.html">Back to Dashboard</a>
 					</div>
 				</div>
 				<div id="main">
 					<div class="white-band-title">
-						<h3>You've Got Matched!</h3>
+						<h3>Latest Designs</h3>
 					</div>
 					<div id="match-projects" class="white-box">
 						<div class="project">
 							<div class="basic">
 								<div class="icon">
-									<img src="/img/icons/background-image.png" />
+									<img src="img/icons/background-image.png" />
 								</div>
 								<div class="name-and-client">
 									<div class="name">Design Project Title</div>
 									<div class="client">Client's Full Name</div>
 								</div>
-								<div class="action">
-									<a href="#" class="black-button esmall-font accept-design">Accept</a>
-									<a href="#" class="decline">Decline</a>
+								<div class="action wider">
+									<a href="#" class="black-button esmall-font mark-complete">Mark Complete</a>
 								</div>
 							</div>
 							<div class="detailed">
@@ -114,13 +88,13 @@
 									<div class="title">Designs Liked by Full Name</div>
 									<div class="designs">
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 									</div>
 									<div class="taste-indicators">
@@ -140,7 +114,7 @@
 									<div class="payment">Payment: $100</div>
 								</div>
 								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
+									<div class="date">Started: 21:07, 27 MAY 2012</div>
 								</div>
 							</div>
 						</div>
@@ -148,11 +122,14 @@
 						<div class="project">
 							<div class="basic">
 								<div class="icon">
-									<img src="/img/icons/background-image.png" />
+									<img src="img/icons/background-image.png" />
 								</div>
 								<div class="name-and-client">
 									<div class="name">Design Project Title</div>
 									<div class="client">Client's Full Name</div>
+								</div>
+								<div class="action wider">
+									<a href="#" class="black-button esmall-font mark-complete">Mark Complete</a>
 								</div>
 							</div>
 							<div class="detailed">
@@ -173,13 +150,13 @@
 									<div class="title">Designs Liked by Full Name</div>
 									<div class="designs">
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 									</div>
 								</div>
@@ -192,23 +169,21 @@
 									</a>
 								</div>
 								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
+									<div class="date">Mapped: 21:07, 27 MAY 2012</div>
 								</div>
 							</div>
 						</div>
 						
-						<div class="project">
+						<div class="project last">
 							<div class="basic">
 								<div class="icon">
-									<img src="/img/icons/background-image.png" />
+									<img src="img/icons/background-image.png" />
 								</div>
 								<div class="name-and-client">
 									<div class="name">Design Project Title</div>
 									<div class="client">Client's Full Name</div>
 								</div>
-								<div class="rejected">
-									Too bad, [Designer name] already accepted the project
-								</div>
+								<div class="completed">Completed</div>
 							</div>
 							<div class="detailed">
 								<div class="col1">
@@ -216,7 +191,7 @@
 									<div class="about-project">
 										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
 									</div>
-									<a class="contact disabled">
+									<a href="mailto:client@dot.com" class="contact">
 										<span class="icon"></span>
 										<span class="text">Contact client</span>
 									</a>
@@ -225,13 +200,13 @@
 									<div class="title">Designs Liked by Full Name</div>
 									<div class="designs">
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
+											<img src="img/temp/project-photo.jpg" />
 										</div>
 									</div>
 									<div class="taste-indicators">
@@ -248,11 +223,8 @@
 								</div>
 							</div>
 							<div class="last-row">
-								<div class="col1">
-									<div class="payment">Payment: $100</div>
-								</div>
 								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
+									<div class="date">Started: 21:07, 27 MAY 2012</div>
 								</div>
 							</div>
 						</div>
@@ -263,6 +235,19 @@
 					</div>
 				</div>
 			</div>			
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="page-content">
+			<div id="copyright">&copy;dèzquare 2012</div>
+			<div id="footer-links">
+				<a href="about.html">About</a>
+				<span>|</span>
+				<a href="privacy.html">Privacy Policy</a>
+				<span>|</span>
+				<a href="terms.html">Terms of Use</a>
+			</div>
 		</div>
 	</div>
 	
@@ -282,6 +267,19 @@
 				<span class="text">Don't ask me again</span>
 			</div>
 			<a href="#" class="black-button small-font">Mark Complete</a>
+		</div>		
+	</div>
+	
+	<div id="mark-complete-success-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Have you completed the design?</div>
+			<div class="subtitle">
+				Nice job completing this project!<br/>
+				Get more projects<br/>
+				by uploading your awesome design!
+			</div>
+			<a href="#" class="black-button small-font">Upload design</a>
 		</div>		
 	</div>
 	
@@ -380,16 +378,5 @@
 		</div>		
 	</div>
 	
-	<div id="reject-project-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Are you sure?</div>
-			<div class="desc">
-				Declining an invitation is an irreversable action.<br/>
-				This project might be easier than you think!<br/>
-				<span>Give your client a chance</span>
-			</div>
-			<a href="mailto:test@mail.com" class="black-button small-font">Contact Client</a>
-			<a href="#" class="decline-anyway">decline anyway</a>
-		</div>		
-	</div>
+</body>
+</html>
