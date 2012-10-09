@@ -6,20 +6,27 @@
 				<div class="center-wrap">
 					<h2>Edit Portfolio</h2>
 					<div class="center-wrap-box edit-photo-form">
-						<form action="" class="clearfix">
-							
-							<div class="photo">
-								<div class="image">
-									<img src="img/temp/edit-photo.jpg" />
-								</div>
-								<input type="file" id="upload-file" name="photo" />
+						<div class="photo">
+							<div class="image" style="width: 235px;">
+								<img src="/repository/<%= @image.file_path.nil? ? "1.png" : @image.file_path%>" style="max-width: 217px;max-height: 400px" />
 							</div>
-							
+							<form action="/designer/upload_image"  enctype="multipart/form-data" method="post">
+							  <div class="fileinputs">
+					            <div class="image" style="position: absolute;z-index: 0;background: rgba(31, 107, 7, 0.66);width: 217px;height: 34px;color: white;text-align: center;font-size: 24px;">
+					            	Upload Image
+					            </div>
+					            
+					            <input type="file" name="upload" id="upload" 
+					               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;cursor:hand ;width: 217px;height: 34px;" />
+					          </div>
+				        	</form>
+						</div>
+						<form id="info_form" action="/designer/set_image_info/<%=@image.id%>" class="clearfix">
 							<div class="image-details">
 								<div class="form-row edit-image-title clearfix">
 									<label class="font">Title:</label>
 									<div class="formfield">
-										<input type="text" class="text" name="title" />
+										<input type="text" class="text" name="name" value="<%=@image.name%>"/>
 										<label class="abs">Add title to your design</label>
 										<label class="form-error">Invalid title</label>
 									</div>
@@ -27,23 +34,17 @@
 								<div class="form-row edit-image-type">
 									<label class="font">Add a product type:</label>
 									<div class="combobox day">
-										<input type="hidden" name="product-type" value="" />
-										<div class="value">Background Image</div>
+										<input type="hidden" name="category" value="<%=@image.category.nil? ? '' : @image.category.name%>" />
+										<div class="value"><%=@image.category.nil? ? 'Select' : @image.category.name%></div>
 										<div class="list">
-											<div class="option">Background Image</div>
-											<div class="option">Business Card</div>
-											<div class="option">Facebook Cover Image</div>
-											<div class="option">Infographic</div>
-											<div class="option">Laptop Sticker</div>
-											<div class="option">Logo</div>
-											<div class="option">Mobile Sticker</div>
-											<div class="option">Paper Design</div>
-											<div class="option">Personal Card</div>
-											<div class="option">Photo Image Fix</div>
-											<div class="option">Presentation design</div>
-											<div class="option">T-Shirt</div>
-											<div class="option">Tattoo</div>
-											<div class="option">Visual status</div>
+											
+											<%
+											@categories.each{|c|
+												%>
+													<div class="option" ><%=c.name%></div>
+												<%
+											}
+											%>
 										</div>
 									</div>
 								</div>
@@ -52,173 +53,56 @@
 								</div>
 								<div class="form-row">
 									<div class="tags clearfix">
+										<%
+										l = (@tags.length/3).ceil
+										
+										tags1=@tags[0..l]
+										tags2=@tags[(l+1)..(2*l +1)]
+										tags3=@tags[(2*l +2)..(@tags.length)]
+										
+										%>
+										
 										<div class="col">										
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Realistic (Image)" />
-												</span>
-												<span class="text">Realistic (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Abstract (Image)" />
-												</span>
-												<span class="text">Abstract (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Vectoric (Image)" />
-												</span>
-												<span class="text">Vectoric (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Cartoon (Image)" />
-												</span>
-												<span class="text">Cartoon (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="3D (Image)" />
-												</span>
-												<span class="text">3D (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Geometric Shapes (Image)" />
-												</span>
-												<span class="text">Geometric Shapes (Image)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="B&amp;W (Colors)" />
-												</span>
-												<span class="text">B&amp;W (Colors)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Greyscale (Colors)" />
-												</span>
-												<span class="text">Greyscale (Colors)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Colorful (Colors)" />
-												</span>
-												<span class="text">Colorful (Colors)</span>
-											</div>
+											<%
+											tags1.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<span class="text"><%=t.name%></span>
+												</div>
+												<%
+												}
+											%>
 										</div>
 										<div class="col">
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Monochrom (Colors)" />
-												</span>
-												<span class="text">Monochrom (Colors)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Colored Background" />
-												</span>
-												<span class="text">Colored Background</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Black Background" />
-												</span>
-												<span class="text">Black Background</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="White Background" />
-												</span>
-												<span class="text">White Background</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Gradient Background" />
-												</span>
-												<span class="text">Gradient Background</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Large Fonts (Text)" />
-												</span>
-												<span class="text">Large Fonts (Text)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Medium Fonts (Text)" />
-												</span>
-												<span class="text">Medium Fonts (Text)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Small Fonts (Text)" />
-												</span>
-												<span class="text">Small Fonts (Text)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Only Text (Text)" />
-												</span>
-												<span class="text">Only Text (Text)</span>
-											</div>
+											<%
+											tags2.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<span class="text"><%=t.name%></span>
+												</div>
+												<%
+												}
+											%>
 										</div>
 										<div class="col">
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Graffiti (Text)" />
-												</span>
-												<span class="text">Graffiti (Text)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Urban (Style)" />
-												</span>
-												<span class="text">Urban (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Funk (Style)" />
-												</span>
-												<span class="text">Funk (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Romantic (Style)" />
-												</span>
-												<span class="text">Romantic (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Minimalistic (Style)" />
-												</span>
-												<span class="text">Minimalistic (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Noisy (Style)" />
-												</span>
-												<span class="text">Noisy (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Children (Style)" />
-												</span>
-												<span class="text">Children (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Serious (Style)" />
-												</span>
-												<span class="text">Serious (Style)</span>
-											</div>
-											<div class="tag">
-												<span class="checkbox">
-													<input type="checkbox" name="tags" value="Fresh (Style)" />
-												</span>
-												<span class="text">Fresh (Style)</span>
-											</div>
+											<%
+											tags3.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<span class="text"><%=t.name%></span>
+												</div>
+												<%
+												}
+											%>
 										</div>
 									</div>
 									<div class="other-tags">
@@ -231,16 +115,17 @@
 									</div>									
 								</div>
 								<div class="form-row product-type-area">
-									<label class="font">Add a product type:</label>
+									<label class="font">Add a product Description:</label>
 									<div class="formfield">
 										<label class="abs">You can write here about your creative process, customer needs or any other<br/>interesting information regarding this design</label>
-										<textarea name="product-type"></textarea>
+										<textarea name="description"><%=@image.description%></textarea>
 										<label class="form-error">Password does not match</label>
 									</div>
 								</div>
-								<input type="submit" class="button-orange" value="Save &amp; Upload another design" id="submit-photo" />
+								<input type="hidden" name="save_and" id="save_and" value="add">
+								<input type="submit" class="button-orange" value="Save &amp; Upload another design" style="width: 428px;" />
 								<div class="just-upload-holder">
-									<a href="profile.html" class="just-upload">Just upload this design</a>
+									<a href="#" class="" onclick="$('#save_and').val('return');$('#info_form').submit();return false">Just upload this design</a>
 								</div>
 							</div>
 						</form>

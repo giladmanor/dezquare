@@ -1,31 +1,11 @@
 
 		<div id="content">
 			<div class="page-content">
-				<div id="cover">
-					<div id="cover-image">
-						<img src="/img/temp/cover-image.jpg" alt="My Cover Image" />
-						<input type="file" id="upload-cover-image" />
-					</div>
-					<div id="profile-bar" class="clearfix">
-						<div id="profile-photo">
-							<img src="/img/temp/profile-photo.jpg" alt="My Profile Photo" />
-							<input type="file" id="upload-profile-image" />
-						</div>
-						<h2 id="profile-name">Axl Rose</h2>
-						<div id="profile-status">
-							<div class="current">
-								<span class="available">Available</span>
-							</div>
-							<div class="edit">
-								<span class="available">Available</span> / <span class="unavailable">Unavailable</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%=render "cover"%>
 				<div id="sidebar">
 					<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
 					<div class="title">
-						<a href="latest-designs.html">Latest Designs</a>
+						<a href="/designer/latest_designs">Latest Designs</a>
 					</div>
 					<div class="latest-designs">
 						<div class="design">

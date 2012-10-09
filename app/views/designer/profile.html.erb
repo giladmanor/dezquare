@@ -1,59 +1,37 @@
 		<div id="content">
 			<div class="page-content">
-				<div id="cover">
-					<div id="cover">
-						<div id="cover-image">
-							<img src="img/temp/cover-image.jpg" alt="My Cover Image" />
-							<input type="file" id="upload-cover-image" />
-						</div>
-						<div id="profile-bar" class="clearfix">
-							<div id="profile-photo">
-								<img src="img/temp/profile-photo.jpg" alt="My Profile Photo" />
-								<input type="file" id="upload-profile-image" />
-							</div>
-							<h2 id="profile-name">Axl Rose</h2>
-							<div id="profile-status">
-								<div class="current">
-									<span class="available">Available</span>
-								</div>
-								<div class="edit">
-									<span class="available">Available</span> / <span class="unavailable">Unavailable</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%=render "cover"%>
 				<div id="sidebar">
 					<div class="title">
 						Summary:
 						<a href="settings.html" class="edit">
-							<img src="img/pen.png" alt="Edit" />
+							<img src="/img/pen.png" alt="Edit" />
 						</a>
 					</div>
 					<div class="sidebar-white-box">
 						<div id="sidebar-summary">
 							<div class="row">
 								<div class="col1">Age:</div>
-								<div class="col2">23</div>
+								<div class="col2"><%=@user.dob.nil? ? '' : (Time.now.year-@user.dob.year)%></div>
 							</div>
 							<div class="row">
 								<div class="col1">From:</div>
-								<div class="col2">Tel-Aviv<span>,</span> Israel</div>
+								<div class="col2"><%=@user.location%></div>
 							</div>
 							<div class="row">
 								<div class="col1">Languages:</div>
-								<div class="col2">English <span>&amp;</span> Hebrew</div>
+								<div class="col2"><%=raw(@user.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
 							</div>
 						</div>
 					</div>
 					<div class="title">
-						About Axl:
+						About <%=@user.name%>:
 						<a href="settings.html" class="edit">
-							<img src="img/pen.png" alt="Edit" />
+							<img src="/img/pen.png" alt="Edit" />
 						</a>
 					</div>
 					<div class="sidebar-white-box">
-						Lorem Ipsum er rett og slett dummytekst fra og for trykkeindustrien. Lorem Ipsum har vrt bransjens standard for dummytekst helt siden 1500-tallet, da en ukjent boktrykker stokket en mengde bokstaver for lage et prveeksemplar av en bok. Lorem Ipsum har tlt tidens tann usedvanlig godt, og har i tillegg til best gjennom fem rhundrer ogs tlt spranget over til elektronisk typografi uten vesentlige endringer.
+						<%=@user.about%>
 					</div>
 					
 					<div class="sidebar-white-box">
@@ -73,7 +51,7 @@
 						<h3>
 							Full Portfolio
 							<a href="settings.html" class="edit">
-								<img src="img/pen.png" alt="Edit" />
+								<img src="/img/pen.png" alt="Edit" />
 							</a>
 						</h3>
 						<!--
@@ -87,52 +65,24 @@
 						-->
 					</div>
 					<div id="designer-samples" class="full-portfolio">
-						<a href="edit-photo.html" class="sample upload-image">
-							<img src="img/bkg-upload-photo.png" alt="Upload Image" />
+						<a href="/designer/edit_photo" class="sample upload-image">
+							<img src="/img/bkg-upload-photo.png" alt="Upload Image" />
 							<span>Upload new designs</span>
 						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample2.jpg" alt="Sample 2" />
-						</a>
-						<a href="enlarged-view.html" class="sample last">
-							<img src="img/temp/sample3.jpg" alt="Sample 3" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample3.jpg" alt="Sample 4" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample1.jpg" alt="Sample 2" />
-						</a>
-						<a href="enlarged-view.html" class="sample last">
-							<img src="img/temp/sample2.jpg" alt="Sample 3" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample4.jpg" alt="Sample 1" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample2.jpg" alt="Sample 2" />
-						</a>
-						<a href="enlarged-view.html" class="sample last">
-							<img src="img/temp/sample3.jpg" alt="Sample 3" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample1.jpg" alt="Sample 4" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample3.jpg" alt="Sample 2" />
-						</a>
-						<a href="enlarged-view.html" class="sample last">
-							<img src="img/temp/sample2.jpg" alt="Sample 3" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample4.jpg" alt="Sample 1" />
-						</a>
-						<a href="enlarged-view.html" class="sample">
-							<img src="img/temp/sample2.jpg" alt="Sample 2" />
-						</a>
-						<a href="enlarged-view.html" class="sample last">
-							<img src="img/temp/sample3.jpg" alt="Sample 3" />
-						</a>
+						<%
+						@user.images.each{|img|
+							%>
+							<a href="/designer/enlarged_view/<%=img.id%>" class="sample">
+								<img src="/repository/<%=img.file_path%>" alt="<%=img.name%>" />
+							</a>
+							<%
+							}
+						
+						
+						%>
+						
+						
+						
 					</div>
 					<!--
 					<div class="see-all-holder">

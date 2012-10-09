@@ -1,7 +1,7 @@
-﻿@import url('/css/fonts/fonts.css');
+﻿@import url('fonts/fonts.css');
 html { height: 100%; }
 body {
-	background: url(/img/pattern.jpg) left top repeat;
+	background: url(../img/pattern.jpg) left top repeat;
 	color: #272425;
 	font-family: 'PTSansRegular';
 	font-size: 12px;
@@ -68,12 +68,12 @@ div#header div#profile-menu {
 div#header div#profile-menu a.base {
 	color: #fff22d;
 	display: block;
-	background: url(/img/bkg-profile-menu.png) center center no-repeat;
+	background: url(../img/bkg-profile-menu.png) center center no-repeat;
 	text-align: center;
 }
 div#header div#profile-menu.shopper { width: 90px; }
 div#header div#profile-menu.shopper a.base {
-	background: url(/img/bkg-profile-menu-2.png) left center no-repeat;
+	background: url(../img/bkg-profile-menu-2.png) left center no-repeat;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -175,7 +175,7 @@ div#homepage-banner {
 	overflow: hidden;
 }
 div#homepage-banner a#start {
-	background: url(/img/bkg-homepage-banner.jpg) left top no-repeat;
+	background: url(../img/bkg-homepage-banner.jpg) left top no-repeat;
 	color: #272425;
 	float: left;
 	font-family: 'QuickSandBold';
@@ -186,7 +186,7 @@ div#homepage-banner a#start {
 }
 div#homepage-banner a#start span { cursor: pointer; }
 div#homepage-banner span#overlay {
-	background: url(/img/bkg-overlay.png) left top repeat;
+	background: url(../img/bkg-overlay.png) left top repeat;
 	display: none;
 	height: 100%;
 	left: 0px;
@@ -197,7 +197,7 @@ div#homepage-banner span#overlay {
 }
 div#homepage-banner a#start:hover span#overlay { display: block; }
 div#homepage-banner span#button {
-	background: url(/img/bkg-banner-button.png) left top no-repeat;
+	background: url(../img/bkg-banner-button.png) left top no-repeat;
 	height: 176px;
 	left: 83px;
 	position: absolute;
@@ -267,7 +267,7 @@ div#designer-samples div.title {
 	padding: 0px 10px;
 }
 div#designer-samples a.sample {
-	background: url(/img/image-frame.png) left top no-repeat;
+	background: url(../img/image-frame.png) left top no-repeat;
 	float: left;
 	height: 250px;
 	padding: 0px 0px 0px 1px;
@@ -284,7 +284,7 @@ div#designer-samples span.info {
 	position: absolute;
 }
 div#designer-samples span.info span.row {
-	background: url(/img/bkg-overlay-2.png) left top repeat;
+	background: url(../img/bkg-overlay-2.png) left top repeat;
 	color: #fff;
 	clear: both;
 	float: left;
@@ -298,7 +298,7 @@ div#designer-samples span.info span.row span { color: #fffc00; }
 /* End Homepage */
 
 div#window-overlay {
-	background: url(/img/bkg-overlay-3.png) left top repeat;
+	background: url(../img/bkg-overlay-3.png) left top repeat;
 	display: none;
 	position: fixed;
 	left: 0px;
@@ -310,7 +310,7 @@ div#window-overlay {
 
 /* Popups */
 div.popup {
-	background: url(/img/bkg-popup.png) center bottom no-repeat;
+	background: url(../img/bkg-popup.png) center bottom no-repeat;
 	display: none;
 	left: 50%;
 	margin-left: -242px;
@@ -321,7 +321,7 @@ div.popup {
 	z-index: 30;
 }
 span.close {
-	background: url(/img/bkg-close.png) left top no-repeat;
+	background: url(../img/bkg-close.png) left top no-repeat;
 	cursor: pointer;
 	height: 11px;
 	position: absolute;
@@ -413,6 +413,12 @@ div#login-popup div#login-alert {
 	position: absolute;
 	top: -18px;
 	left: 100px;
+}
+div#login-game-alert {
+	display: none;
+	top: -20px;
+	left: 0px;
+	position: absolute;
 }
 div#login-popup div.forgot { 
 	text-align: right; 
@@ -556,6 +562,29 @@ div#cancel-design-explain-popup textarea {
 div#cancel-design-explain-popup a.black-button {
 	margin: 0px 0px 0px auto;
 	width: 140px;
+}
+
+div#complete-design-popup { text-align: center; }
+div#complete-design-popup div.title { margin-bottom: 10px; }
+div#complete-design-popup div.subtitle {
+	font-family: 'QuickSandRegular';
+	color: #e86f45;
+	font-size: 20px;
+	line-height: 24px;
+	margin-bottom: 20px;
+}
+div#complete-design-popup a.black-button {
+	margin: 0px auto 10px;
+	width: 130px;
+}
+div#complete-design-popup div.or {
+	font-family: 'QuickSandRegular';
+	font-size: 18px;
+}
+div#complete-design-popup a#just-mark {
+	color: #272425;
+	font-family: 'QuickSandRegular';
+	font-size: 18px;
 }
 
 div#send-designer-popup div.title {
@@ -755,7 +784,7 @@ label.form-error {
 	left: 0px;
 }
 span.checkbox {
-	background: url(/img/bkg-checkbox.png) left top no-repeat;
+	background: url(../img/bkg-checkbox.png) left top no-repeat;
 	cursor: pointer;
 	display: block;
 	height: 16px;
@@ -784,7 +813,7 @@ input.button-orange:active {
 	box-shadow: 0px 1px 3px #999;
 }
 span.vchecked {
-	background: url(/img/bkg-checked.png) left top no-repeat;
+	background: url(../img/bkg-checked.png) left top no-repeat;
 	display: none;
 	height: 12px;
 	position: absolute;
@@ -803,7 +832,7 @@ div.combobox {
 }
 div.combobox.active { z-index: 5; }
 div.combobox div.value {
-	background: url(/img/bkg-arrow.png) right center no-repeat;	
+	background: url(../img/bkg-arrow.png) right center no-repeat;	
 	height: 24px;
 	padding-left: 10px;
 	line-height: 24px;
@@ -838,10 +867,15 @@ a.black-button {
 	text-align: center;
 	text-decoration: none;
 }
+a.black-button img { vertical-align: -1px; }
+a.black-button img.hover { display: none; }
 a.black-button:hover {
 	color: #ff7040;
 	box-shadow: 0px 1px 3px #999;
 }
+a.black-button:hover img.normal { display: none; }
+a.black-button:hover img.hover { display: inline; }
+
 a.black-button:active {
 	background: #fff;
 	color: #272425;
@@ -852,6 +886,8 @@ a.black-button.disabled {
 	cursor: inherit;
 }
 a.black-button.disabled:hover { color: #fff; }
+a.black-button.disabled:hover img.normal { display: inline; }
+a.black-button.disabled:hover img.hover { display: none; }
 a.black-button.disabled:active {
 	background: #272425;
 	color: #fff;
@@ -917,7 +953,7 @@ div#cover {
 	position: relative; 
 }
 div#cover div#cover-image {
-	background: url(/img/bkg-cover-image.png) left top no-repeat;
+	background: url(../img/bkg-cover-image.png) left top no-repeat;
 	height: 241px;
 	padding: 3px;
 	position: relative;
@@ -929,9 +965,13 @@ div#cover div#cover-image span.edit-field {
 	left: 3px;
 	top: 3px;
 }
-div#cover div#cover-image img { display: block; }
+div#cover div#cover-image img { 
+	display: block; 
+	height: 100%;
+	width: 100%;
+}
 div#cover div#profile-bar {
-	background: url(/img/bkg-profile-bar.png) left top repeat-x;
+	background: url(../img/bkg-profile-bar.png) left top repeat-x;
 	font-family: 'QuickSandRegular';
 	height: 46px;
 	left: 2px;
@@ -942,7 +982,7 @@ div#cover div#profile-bar {
 	z-index: 3;
 }
 div#cover div#profile-photo {
-	background: url(/img/bkg-profile-photo.png) left top no-repeat;
+	background: url(../img/bkg-profile-photo.png) left top no-repeat;
 	bottom: -3px;
 	height: 117px;
 	left: 3px;
@@ -950,7 +990,11 @@ div#cover div#profile-photo {
 	position: absolute;
 	width: 117px;
 }
-div#cover div#profile-photo img { display: block; }
+div#cover div#profile-photo img { 
+	display: block; 
+	height: 100%;
+	width: 100%;
+}
 div#cover div#profile-photo span.edit-field {
 	position: absolute;
 	left: 10px;
@@ -973,7 +1017,7 @@ div#cover div#profile-status div.current-static {
 	padding-left: 5px;
 }
 div#cover div#profile-status div.edit {
-	background: url(/img/bkg-profile-status.png) left top no-repeat;
+	background: url(../img/bkg-profile-status.png) left top no-repeat;
 	display: none;
 	float: left;
 	padding-left: 5px;
@@ -987,9 +1031,35 @@ div#cover div#profile-status span.unavailable {
 	color: #ff2d2d; 
 	cursor: pointer;
 }
+div#cover a.back-to-results {
+	background: #000;
+	font-family: 'PTSansRegular';
+	left: 10px;
+	overflow: hidden;
+	position: absolute;
+	padding: 12px 10px 8px;
+	top: 10px;
+	width: 210px;
+	z-index: 10;
+}
+div#cover a.back-to-results span.arrow {
+	
+	float: left;
+	font-size: 60px;
+	margin-top: 8px;
+	line-height: 40px;
+}
+div#cover a.back-to-results span.rest {
+	display: block;
+	margin-left: 35px;
+	color: #fff;
+	line-height: 24px;
+	text-align: right;
+	font-size: 24px;
+}
 
 span.edit-field {
-	background: url(/img/icons.png) left top no-repeat;
+	background: url(../img/icons.png) left top no-repeat;
 	cursor: pointer;
 	display: none;
 	height: 35px;
@@ -1093,6 +1163,7 @@ div#match-projects div.basic div.name {
 	font-size: 22px;
 	line-height: 22px;
 }
+div#match-projects div.basic div.single{ line-height: 36px; }
 div#match-projects div.basic div.action { 
 	margin: 0px 0px 0px auto; 
 	width: 80px;
@@ -1112,7 +1183,8 @@ div#match-projects div.basic div.completed {
 	font-size: 14px;
 	float: right;
 }
-div#match-projects div.basic div.action a { font-size: 13px; }
+div#match-projects div.basic div.action a,
+div#match-projects div.basic div.action span { font-size: 13px; }
 div#match-projects div.basic div.action a.black-button {
 	height: 24px;
 	line-height: 24px;
@@ -1131,7 +1203,9 @@ div#match-projects div.basic div.second-box a {
 	text-align: center;
 	text-decoration: none;
 }
-div#match-projects div.basic div.action a.completed {
+div#match-projects div.basic div.action a.completed,
+div#match-projects div.basic div.action span.completed,
+div#match-projects div.basic div.action span.cancelled {
 	color: #60e148;
 	display: block;
 	font-family: 'QuickSandBold';
@@ -1140,6 +1214,7 @@ div#match-projects div.basic div.action a.completed {
 	text-align: center;
 	text-decoration: none;
 }
+div#match-projects div.basic div.action span.cancelled { color: #FF2D2D; }
 div#match-projects div.basic div.action a.decline {
 	color: #ff2d2d;
 	display: block;
@@ -1158,7 +1233,8 @@ div#match-projects div.basic div.action a.pending {
 	text-align: center;
 	text-decoration: none;
 }
-div#match-projects div.basic div.action a.replay {
+div#match-projects div.basic div.action a.replay,
+div#match-projects div.basic div.action span.replay {
 	color: #e86f45;
 	display: block;
 	font-family: 'QuickSandBold';
@@ -1213,7 +1289,7 @@ div#match-projects a.contact {
 	text-decoration: none;
 }
 div#match-projects a.contact span.icon {
-	background: url(/img/icons.png) -68px top no-repeat;
+	background: url(../img/icons.png) -68px top no-repeat;
 	float: left;
 	height: 15px;
 	margin-right: 5px;
@@ -1246,7 +1322,7 @@ div#match-projects a.load-more {
 	margin-top: 30px;
 }
 div#match-projects a.load-more span {
-	background: url(/img/bkg-load-more.png) center center no-repeat;
+	background: url(../img/bkg-load-more.png) center center no-repeat;
 	display:block;
 }
 div.top-matches div.match {
@@ -1255,11 +1331,12 @@ div.top-matches div.match {
 }
 div.top-matches div.match.selected { border: 1px solid #dedede; }
 div.top-matches div.match.disabled div.big,
+div.top-matches div.match.disabled div.big a,
 div.top-matches div.match.disabled div.small,
 div.top-matches div.match.disabled div.small span { color: #bbbaba; }
 div.top-matches div.match.disabled div.profile-image { opacity: 0.3; }
 div.top-matches div.profile-image {
-	background: url(/img/bkg-match-frame.png) left top no-repeat;
+	background: url(../img/bkg-match-frame.png) left top no-repeat;
 	float: left;
 	height: 63px;
 	margin-right: 5px;
@@ -1357,7 +1434,7 @@ div#portfolio-big {
 }
 a#portfolio-prev {
 	display: none;
-	background: url(/img/icons.png) -91px top no-repeat;
+	background: url(../img/icons.png) -91px top no-repeat;
 	height: 26px;
 	left: 7px;
 	position: absolute;
@@ -1367,7 +1444,7 @@ a#portfolio-prev {
 }
 a#portfolio-next {
 	display: none;
-	background: url(/img/icons.png) -105px top no-repeat;
+	background: url(../img/icons.png) -105px top no-repeat;
 	height: 26px;
 	right: 7px;
 	position: absolute;
@@ -1415,14 +1492,14 @@ ul#portfolio-gallery div.image { margin-bottom: 10px; }
 ul#portfolio-gallery div.image img { display: block; }
 ul#portfolio-gallery div.meta { overflow: hidden; }
 ul#portfolio-gallery a.download {
-	background: url(/img/icons.png) -124px top no-repeat;
+	background: url(../img/icons.png) -124px top no-repeat;
 	float: left;
 	height: 30px;
 	margin-right: 9px;
 	width: 17px;
 }
 ul#portfolio-gallery a.share {
-	background: url(/img/icons.png) -150px top no-repeat;
+	background: url(../img/icons.png) -150px top no-repeat;
 	float: left;
 	height: 30px;
 	width: 18px;
@@ -1492,7 +1569,7 @@ div.center-wrap div.tall {
 	padding: 35px 10px;
 }
 
-form.settings-form label,
+form.settings-form  label.abs,
 form.settings-form div.combobox,
 form.settings-form div.agree {
 	color: #b2b2b2;
@@ -1558,7 +1635,7 @@ form.settings-form h5 {
 	margin: 0px 0px 10px;
 }
 form.settings-form h5.has-circle {
-	background: url(/img/bkg-circle.png) left center no-repeat;
+	background: url(../img/bkg-circle.png) left center no-repeat;
 	padding-left: 20px;
 }
 form.settings-form div.agree { margin-bottom: 5px; }
@@ -1600,23 +1677,23 @@ div#pricing-levels-sliders div.price-slider-holder {
 	width: 326px;
 }
 div#pricing-levels-sliders .ui-slider { 
-	background-image: url(/img/bkg-ui-slider-2.png); 
+	background-image: url(../img/bkg-ui-slider-2.png); 
 	height: 9px;
 	margin: 0px 0px 0px auto;
 	width: 326px;
 }
 div#pricing-levels-sliders .ui-slider .ui-slider-range { 
-	background-image: url(/img/bkg-ui-slider-range-2.png); 
+	background-image: url(../img/bkg-ui-slider-range-2.png); 
 	height: 6px;
 }
 div#pricing-levels-sliders .ui-slider .ui-slider-handle {
-	background-image: url(/img/bkg-ui-slider-handle-2.png); 
+	background-image: url(../img/bkg-ui-slider-handle-2.png); 
 	top: -2px;
 	height: 16px;
 	width: 14px;
 }
 div#pricing-levels-sliders span.price-slider-tooltip {
-	background: url(/img/bkg-price-2.png) left top no-repeat;
+	background: url(../img/bkg-price-2.png) left top no-repeat;
 	height: 27px;
 	top: -35px;
 	left: -22px;
@@ -1725,7 +1802,7 @@ div.shopper-settings form fieldset { border: 0px none; }
 
 /* Game */ 
 div#game-bar {
-	background: url(/img/bkg-game-bar.png) left top no-repeat;
+	background: url(../img/bkg-game-bar.png) left top no-repeat;
 	line-height: 36px;
 	height: 36px;
 	overflow: hidden;
@@ -1807,8 +1884,10 @@ div.game-step ul.icons li {
 div.game-step ul.icons a,
 div.game-step ul.icons img { display: block; }
 div.game-step ul.icons img.hover { display: none; }
-div.game-step ul.icons a:hover img.normal { display: none; }
-div.game-step ul.icons a:hover img.hover { display: block; }
+div.game-step ul.icons a:hover img.normal,
+div.game-step ul.icons a.active img.normal { display: none; }
+div.game-step ul.icons a:hover img.hover,
+div.game-step ul.icons a.active img.hover { display: block; }
 div.game-step ul.icons span.text {
 	color: #272425;
 	display: block;
@@ -1833,6 +1912,7 @@ div.game-step div.buttons a.black-button {
 	margin-left: 20px;
 	width: 150px;
 }
+
 div.game-step div.buttons a.cancel {
 	color: #e86f45;
 	font-family: 'QuickSandRegular';
@@ -1842,13 +1922,13 @@ div.game-step div.buttons a.cancel {
 }
 
 .ui-slider {
-	background: url(/img/bkg-ui-slider.png) left top no-repeat;
+	background: url(../img/bkg-ui-slider.png) left top no-repeat;
 	height: 11px;
 	position: relative;
 	width: 467px;
 }
 .ui-slider .ui-slider-handle {
-	background: url(/img/bkg-ui-slider-handle.png) left top no-repeat;
+	background: url(../img/bkg-ui-slider-handle.png) left top no-repeat;
 	position: absolute;
 	height: 16px;
 	top: -4px;
@@ -1859,7 +1939,7 @@ div.game-step div.buttons a.cancel {
 	z-index: 2;
 }
 .ui-slider .ui-slider-range {
-	background: url(/img/bkg-ui-slider-range.png) left top no-repeat;
+	background: url(../img/bkg-ui-slider-range.png) left top no-repeat;
 	position: absolute;
 	height: 9px;
 	cursor: pointer;
@@ -1872,7 +1952,7 @@ div.price-slider-holder {
 	width: 467px;
 }
 span.price-slider-tooltip {
-	background: url(/img/bkg-price.png) left top no-repeat;
+	background: url(../img/bkg-price.png) left top no-repeat;
 	display: block;
 	height: 34px;
 	padding-top: 10px;
@@ -1880,6 +1960,18 @@ span.price-slider-tooltip {
 	top: -50px;
 	left: -30px;
 	width: 77px;
+}
+span.price-slider-info {
+	font-family: 'QuickSandBold';
+	color: #272425;
+	font-size: 14px;
+	display: block;
+	position: absolute;
+	top: 20px;
+	left: -43px;
+	text-align: center;
+	line-height: 16px;
+	width: 100px;
 }
 span.price-slider-tooltip input {
 	background: none;
@@ -1942,6 +2034,11 @@ div#game-step-3 div.buttons2 a.black-button,
 div#game-step-3 div.buttons2 a.red-button {
 	float: left;
 	width: 150px;
+}
+div#game-step-3 div.buttons2 a.big-centered {
+	float: none;
+	width: 230px;
+	margin: 0px auto;
 }
 div#game-step-3 div.buttons2 a.next { float: right; }
 
@@ -2049,7 +2146,7 @@ form#game5-form div.file-type div.col2 input.text {
 }
 
 fieldset#game-register div.form-row { 
-	overflow: hidden; 
+	height: 32px;
 	margin-bottom: 20px;
 }
 fieldset#game-register div.no-label { padding-left: 180px; }
@@ -2061,10 +2158,11 @@ fieldset#game-register label.big-label {
 	width: 180px;
 }
 fieldset#game-register div.form-row div.formfield { 
-	float: left;
-	margin-bottom: 0px;
+	margin: 0px 0px 0px auto;
+	width: 317px;
 }
 fieldset#game-register div.form-row input.text { width: 295px; }
+fieldset#game-register div.form-row input.text,
 fieldset#game-register div.form-row label.abs { color: #ff7040; }
 fieldset#game-register div.form-row div.agree { margin-bottom: 20px; }
 fieldset#game-register div.already {
@@ -2174,7 +2272,7 @@ div#upload-profile-image.uploadify {
 }
 .uploadify div#upload-cover-image-button,
 .uploadify div#upload-profile-image-button { 
-	background: url("/img/icons.png") no-repeat scroll left top transparent;
+	background: url("../img/icons.png") no-repeat scroll left top transparent;
 	color: #ff7040; 
     cursor: pointer;
     display: none;

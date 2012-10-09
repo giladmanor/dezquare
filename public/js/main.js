@@ -12,8 +12,10 @@ $(document).ready(function(){
 		
 		var overlay, popups, loginPopup, forgotPasswordPopup, profileBar, profileStatus, profileStatusCurrent, profileStatusEdit;
 		var cancelDesignPopup, cancelDesignExplainPopup, sendDesignerPopup, photoGallery, portfolioGallery;
-		var game3, submitGame3, nothingSelectedPopup, submitSelectedPopup, markCompletePopup, newClientPopup, rejectProjectPopup;
+		var game1, game3, submitGame3, nothingSelectedPopup, submitSelectedPopup, markCompletePopup, newClientPopup, rejectProjectPopup, completeDesignPopup;
+		var gameCategories, gameIcons;
 		var changeFlyerFlag = false;
+		var currentPopupActionButton = null;
 		
 		function IsValidEmail(email) 
 		{
@@ -31,19 +33,27 @@ $(document).ready(function(){
 				var priceSliderTooltipInput = $("<input/>", { "name": slider.attr("id"), "type": "text", "readonly": "readonly" });
 				priceSliderTooltip.append(priceSliderTooltipInput);
 				
+				var defultValue = typeof slider.attr("data-value") != "undefined" ? parseInt(slider.attr("data-value")) : 105;
+				var defaultMin = typeof slider.attr("data-min") != "undefined" ? parseInt(slider.attr("data-min")) : 0;
+				var defaultMax = typeof slider.attr("data-max") != "undefined" ? parseInt(slider.attr("data-max")) : 140;
+				
 				slider.slider({
 					range: "min",
-					value: 105,
-					min: 0,
-					max: 140,
+					value: defultValue,
+					min: defaultMin,
+					max: defaultMax,
 					slide: function( event, ui ) {
 						priceSliderTooltipInput.val( "$" + ui.value );
 					},
 					create: function(event, ui) {
 						slider.find(".ui-slider-handle").append(priceSliderTooltip);
+						if (slider.attr("id") == "game-price")
+						{
+							slider.find(".ui-slider-handle").append($("<span/>", { "class": "price-slider-info", "text": "X designers will work for this price" }));
+						}
 					}
 				});
-				priceSliderTooltipInput.val( "$" + priceSlider.slider( "value" ) );
+				priceSliderTooltipInput.val( "$" + slider.slider( "value" ) );
 			});
 		};
 		
@@ -54,6 +64,8 @@ $(document).ready(function(){
 				{
 					var clone = field.clone();
 					field.after(clone);
+					clone.find("input").val("");
+					clone.find(".value").text("Add language");
 					BindLanguageEvents(clone);
 					BindComboboxEvents(clone.find(".combobox"));
 					field.find(".button").hide();
@@ -61,12 +73,16 @@ $(document).ready(function(){
 					field.parent().find(".list").hide();
 				}					
 			});
-			field.find(".remove").click(function(){
+			field.find(".remove").click(function(e){
+				e.preventDefault();
 				field.remove();
 			});
-			field.find(".add").click(function(){
+			field.find(".add").click(function(e){
+				e.preventDefault();
 				var clone = field.clone();
 				field.parent().append(clone);
+				clone.find("input").val("");
+				clone.find(".value").text("Add language");
 				BindLanguageEvents(clone);
 				BindComboboxEvents(clone.find(".combobox"));
 				field.find(".button").hide();
@@ -133,6 +149,9 @@ $(document).ready(function(){
 			sendDesignerPopup = $("#send-designer-popup");
 			
 			photoGallery = $("#image-select");
+			game1 = $("#game-step-1");
+			gameCategories = game1.find("#game-categories");
+			gameIcons = game1.find("#game-icons");
 			game3 = $("#game-step-3");
 			submitGame3 = game3.find("#submit");
 			nothingSelectedPopup = $("#nothing-selected-popup");
@@ -141,6 +160,14 @@ $(document).ready(function(){
 			portfolioGallery = $("#portfolio-gallery");
 			newClientPopup = $("#new-client-popup")
 			rejectProjectPopup = $("#reject-project-popup");
+			completeDesignPopup = $("#complete-design-popup");
+			
+			$(".combobox.language").each(function(){
+				if ($(this).find(".value").text() == "Add language")
+				{
+					$(this).find("input").val("");
+				}
+			});
 		};
 		
 		var BindEvents = function()
@@ -246,6 +273,7 @@ $(document).ready(function(){
 				profileStatusCurrent.empty().append(selfClone);
 				profileStatusEdit.hide();
 				profileStatusCurrent.show();
+				profileStatusEdit.siblings("input[name=user-status]").val(selfClone.text());
 			});
 			
 			$("#match-projects").each(function(){
@@ -285,6 +313,13 @@ $(document).ready(function(){
 				e.preventDefault();
 				overlay.show();
 				cancelDesignPopup.show();
+				currentPopupActionButton = $(this);
+			});
+			$("a.customer-mark-complete").click(function(e){
+				e.preventDefault();
+				overlay.show();
+				completeDesignPopup.show();
+				currentPopupActionButton = $(this);
 			});
 			cancelDesignPopup.find("a.back").click(function(e){
 				e.preventDefault();
@@ -295,6 +330,24 @@ $(document).ready(function(){
 				e.preventDefault();
 				cancelDesignPopup.hide();
 				cancelDesignExplainPopup.show();
+			});
+			cancelDesignExplainPopup.find("a.black-button").click(function(e){
+				e.preventDefault();
+				overlay.hide();
+				cancelDesignExplainPopup.hide();
+				
+				var basic = currentPopupActionButton.parents(".basic");
+				basic.find(".action").remove();
+				basic.append($("<div/>", { "class": "action wider" }).append($("<span/>", { "text": "Cancelled", "class": "cancelled" })));
+			});
+			completeDesignPopup.find("a#just-mark").click(function(e){
+				e.preventDefault();
+				overlay.hide();
+				completeDesignPopup.hide();
+				
+				var basic = currentPopupActionButton.parents(".basic");
+				basic.find(".action").remove();
+				basic.append($("<div/>", { "class": "action wider" }).append($("<span/>", { "text": "Completed", "class": "completed" })));
 			});
 			
 			$("a.send-tod").click(function(e){
@@ -309,8 +362,18 @@ $(document).ready(function(){
 				overlay.hide();
 			});
 			
-			$("#game-step-1 ul.icons a").click(function(e){
+			gameCategories.children("a").hover(function(){
+				var idx = $(this).index() + 1;
+				gameIcons.find("a.c" + idx).css("opacity", "0.2");
+			}, function(){ 
+				var idx = $(this).index() + 1;
+				gameIcons.find("a").css("opacity", "1");
+			});
+			
+			gameIcons.find("a").click(function(e){
 				e.preventDefault();
+				gameIcons.find("a").removeClass("active");
+				$(this).addClass("active");
 				$("#game-step-2").show();
 				window.scrollTo(0, $(document).height());
 			});
@@ -327,7 +390,7 @@ $(document).ready(function(){
 				e.preventDefault();
 				var src = photoGallery.find("li:visible img").attr("src");
 				$("#selected-image").val(src);
-				submitGame3.removeClass("disabled");
+				$(this).parents("form").submit();
 			});
 			submitGame3.click(function(e){
 				e.preventDefault();
@@ -344,23 +407,139 @@ $(document).ready(function(){
 				{
 					overlay.show();
 					nothingSelectedPopup.show();;
+					return false;
 				}
-				else
+				
+				$(this).parents("form").submit();
+			});
+			
+			game3.find("#submit-step-5").click(function(e){
+				e.preventDefault();
+				
+				var form = $(this).parents("form");
+				form.find("label.form-error").hide();
+				var errors = false;
+				
+				var titleField = form.find("input[name=title]");
+				var descriptionField = form.find("textarea[name=description]");
+				
+				if ($.trim(titleField.val()) == "")
 				{
+					titleField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				
+				if ($.trim(descriptionField.val()) == "")
+				{
+					descriptionField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				
+				if (!errors)
+				{
+					form.submit();
+				}
+			});
+			
+			game3.find("#submit-step-6").click(function(e){
+				e.preventDefault();
+				
+				var form = $(this).parents("form");
+				form.find("label.form-error").hide();
+				var errors = false;
+				
+				var firstNameField = form.find("input[name=first-name]");
+				var lastNameField = form.find("input[name=last-name]");
+				var emailField = form.find("input[name=email]");
+				var passwordField = form.find("input[name=password]");
+				var repeatPasswordField = form.find("input[name=repeat-password]");
+				
+				if ($.trim(firstNameField.val()) == "")
+				{
+					firstNameField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				if ($.trim(lastNameField.val()) == "")
+				{
+					lastNameField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				if (!IsValidEmail(emailField.val()))
+				{
+					emailField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				if ($.trim(passwordField.val()).length < 6)
+				{
+					passwordField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				else if (passwordField.val() != repeatPasswordField.val())
+				{
+					repeatPasswordField.siblings("label.form-error").show();;
+					errors = true;
+				}
+				
+				if (!errors)
+				{
+					form.submit();
+				}
+			});
+			
+			$("#submit-short-game-2").click(function(e){
+				e.preventDefault();
+				
+				var form = $(this).parents("form");
+				form.find("label.form-error").hide();
+				var errors = false;
+				
+				
+				var passwordField = form.find("input[name=password]");
+				var rePasswordField = form.find("input[name=re-password]");
+				
+				if (passwordField.val().length < 6)
+				{
+					passwordField.siblings(".form-error").show();
+					errors = true;
+				}
+				else if (passwordField.val() != rePasswordField.val())
+				{
+					rePasswordField.siblings(".form-error").show();
+					errors = true;
+				}
+				
+				if (!errors)
+				{
+					form.submit();
+				}
+			});
+			
+			$("#found-matches span.checkbox").click(function(){
+				if (!$(this).hasClass("checked"))
+				{
+					var button = $(this);
+					button.addClass("checked").find("input").attr("checked", true);
 					overlay.show();
 					submitSelectedPopup.show();
+					
+					submitSelectedPopup.find("a.orange-button").unbind().click(function(e){
+						e.preventDefault();
+						button.removeClass("checked").find("input").attr("checked", false);
+						submitSelectedPopup.hide();
+						overlay.hide();
+					});
+					
+					submitSelectedPopup.find("a.replay").unbind().click(function(e){
+						e.preventDefault();
+						submitSelectedPopup.hide();
+						overlay.hide();
+					});
 				}
 			});
 			
 			nothingSelectedPopup.find("a.orange-button").click(function(e){
 				e.preventDefault();
 				nothingSelectedPopup.hide();
-				overlay.hide();
-			});
-			
-			submitSelectedPopup.find("a.replay").click(function(e){
-				e.preventDefault();
-				submitSelectedPopup.hide();
 				overlay.hide();
 			});
 			
@@ -501,7 +680,7 @@ $(document).ready(function(){
 			
 			$("#settings-languages div.formfield").each(function(){
 				var field = $(this);
-				BindLanguageEvents(field)
+				BindLanguageEvents(field);
 			});
 			
 			$("#got-new-client").click(function(e){

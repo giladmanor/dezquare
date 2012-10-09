@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121007162511) do
+ActiveRecord::Schema.define(:version => 20121008092108) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -110,8 +110,9 @@ ActiveRecord::Schema.define(:version => 20121007162511) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "file_path"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.text     "description"
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
@@ -189,6 +190,13 @@ ActiveRecord::Schema.define(:version => 20121007162511) do
     t.boolean  "shopper",        :default => false
     t.boolean  "designer",       :default => false
     t.boolean  "pender",         :default => false
+    t.boolean  "available",      :default => false
+    t.text     "about"
+    t.boolean  "public_profile", :default => false
+    t.boolean  "dez_profile",    :default => false
+    t.boolean  "suspend",        :default => false
+    t.string   "avatar"
+    t.string   "cover"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"

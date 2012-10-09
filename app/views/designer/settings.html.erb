@@ -1,85 +1,39 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>Dezquare</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script></head>
-<body>
-	<div id="page">
-		<div id="header">
-			<div class="page-content clearfix">
-				<h1 id="logo">
-					<a href="dashboard.html">
-						<img src="img/logo.png" alt="Dezquare" />
-					</a>
-				</h1>
-				
-				<div id="profile-menu">
-					<a href="profile.html" class="base">Profile</a>
-					<div class="expanded">
-						<a href="settings.html">Settings</a>
-						<a href="index.html" class="last">Logout</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		
+	<script type="text/javascript" src="/js/jquery-ui-1.8.24.custom.min.js"></script>
 		<div id="content">
 			<div class="page-content">
 
 				<div class="center-wrap">
 					<h2>Settings</h2>
 					<div class="center-wrap-box">
-						<form action="#" class="settings-form">
+						<form action="/designer/set_details" class="settings-form" method="post">
 							<h3>Profile Settings:</h3>
 							<fieldset>
 								<div class="col1">
 									<h4>Summary:</h4>
 									<div class="formfield clearfix birthday">
 										<label>Birthday:</label>
+										<%
+										day = @user.dob.nil? ? "day" : @user.dob.day
+										month =  @user.dob.nil? ? "Month" : @user.dob.strftime("%B")
+										year = @user.dob.nil? ? "Year" : @user.dob.year
+										%>
+										
 										<div class="combobox day">
-											<input type="hidden" name="day" value="" />
-											<div class="value">Day</div>
+											<input type="hidden" name="day" value="<%=day%>" />
+											<div class="value"><%=day%></div>
 											<div class="list">
-												<div class="option">1</div>
-												<div class="option">2</div>
-												<div class="option">3</div>
-												<div class="option">4</div>
-												<div class="option">5</div>
-												<div class="option">6</div>
-												<div class="option">7</div>
-												<div class="option">8</div>
-												<div class="option">9</div>
-												<div class="option">10</div>
-												<div class="option">11</div>
-												<div class="option">12</div>
-												<div class="option">13</div>
-												<div class="option">14</div>
-												<div class="option">15</div>
-												<div class="option">16</div>
-												<div class="option">17</div>
-												<div class="option">18</div>
-												<div class="option">19</div>
-												<div class="option">20</div>
-												<div class="option">21</div>
-												<div class="option">22</div>
-												<div class="option">23</div>
-												<div class="option">24</div>
-												<div class="option">25</div>
-												<div class="option">26</div>
-												<div class="option">27</div>
-												<div class="option">28</div>
-												<div class="option">29</div>
-												<div class="option">30</div>
-												<div class="option">31</div>
+												<%
+												31.times{|i|
+													%><div class="option"><%=i+1%></div><%
+													}
+												%>
+												
+												
 											</div>
 										</div>
 										<div class="combobox month">
-											<input type="hidden" name="month" value="" />
-											<div class="value">Month</div>
+											<input type="hidden" name="month" value="<%=month%>" />
+											<div class="value"><%=month%></div>
 											<div class="list">
 												<div class="option">January</div>
 												<div class="option">February</div>
@@ -96,8 +50,8 @@
 											</div>
 										</div>
 										<div class="combobox year">
-											<input type="hidden" name="year" value="" />
-											<div class="value">Year</div>
+											<input type="hidden" name="year" value="<%=year%>" />
+											<div class="value"><%=year%></div>
 											<div class="list">
 													<div class="option">2012</div>
 													<div class="option">2011</div>
@@ -164,95 +118,68 @@
 										</div>
 									</div>
 									<div class="formfield">
-										<input type="text" class="text" name="location" />
-										<label class="abs">Location</label>
+										<input type="text" class="text" name="location" value="<%=@user.location%>"/>
+										<label class="abs"><%=@user.location.nil? ? "Location" : @user.location%></label>
 									</div>
 									
 									<div class="languages" id="settings-languages">
+										
+										<%
+										#user languages
+										
+										@user.languages.each{|ul|
+											
+											%>	
+											<div class="formfield clearfix">
+												<div class="combobox language">
+													<input type="hidden" name="language[]" value="<%=ul.name%>" />
+													<div class="value"><%=ul.name%></div>
+													<div class="list">
+														<%
+														Language.all.each{|l|
+															%><div class="option"><%=l.name%></div><%
+														}
+														%>
+													</div>
+												</div>
+												<a href="#" class="button remove" style="display: block">
+													<img src="/img/bkg-close.png" alt="Remove" />
+												</a>
+												
+											</div>	
+											
+											<%
+										}
+										%>
+										
 										<div class="formfield clearfix">
 											<div class="combobox language">
 												<input type="hidden" name="language[]" value="" />
 												<div class="value">Add language</div>
 												<div class="list">
-													<div class="option">Afrikaans</div>
-													<div class="option">Albanian</div>
-													<div class="option">Arabic</div>
-													<div class="option">Armenian</div>
-													<div class="option">Azerbaijani</div>
-													<div class="option">Basque</div>
-													<div class="option">Belarusian</div>
-													<div class="option">Bengali</div>
-													<div class="option">Bulgarian</div>
-													<div class="option">Catalan</div>
-													<div class="option">Chinese</div>
-													<div class="option">Croatian</div>
-													<div class="option">Czech</div>
-													<div class="option">Danish</div>
-													<div class="option">Dutch</div>
-													<div class="option">English</div>
-													<div class="option">Estonian</div>
-													<div class="option">Filipino</div>
-													<div class="option">Finnish</div>
-													<div class="option">French</div>
-													<div class="option">Galician</div>
-													<div class="option">Georgian</div>
-													<div class="option">German</div>
-													<div class="option">Greek</div>
-													<div class="option">Gujarati</div>
-													<div class="option">Haitian Creole</div>
-													<div class="option">Hebrew</div>
-													<div class="option">Hindi</div>
-													<div class="option">Hungarian</div>
-													<div class="option">Icelandic</div>
-													<div class="option">Indonesian</div>
-													<div class="option">Irish</div>
-													<div class="option">Italian</div>
-													<div class="option">Japanese</div>
-													<div class="option">Kannada</div>
-													<div class="option">Korean</div>
-													<div class="option">Latin</div>
-													<div class="option">Latvian</div>
-													<div class="option">Lithuanian</div>
-													<div class="option">Macedonian</div>
-													<div class="option">Malay</div>
-													<div class="option">Maltese</div>
-													<div class="option">Norwegian</div>
-													<div class="option">Persian</div>
-													<div class="option">Polish</div>
-													<div class="option">Portuguese</div>
-													<div class="option">Romanian</div>
-													<div class="option">Russian</div>
-													<div class="option">Serbian</div>
-													<div class="option">Slovak</div>
-													<div class="option">Slovenian</div>
-													<div class="option">Spanish</div>
-													<div class="option">Swahili</div>
-													<div class="option">Swedish</div>
-													<div class="option">Tamil</div>
-													<div class="option">Telugu</div>
-													<div class="option">Thai</div>
-													<div class="option">Turkish</div>
-													<div class="option">Ukrainian</div>
-													<div class="option">Urdu</div>
-													<div class="option">Vietnamese</div>
-													<div class="option">Welsh</div>
-													<div class="option">Yiddish</div>
+													<%
+													Language.all.each{|l|
+														%><div class="option"><%=l.name%></div><%
+													}
+													%>
 												</div>
 											</div>
 											<a href="#" class="button remove">
-												<img src="img/bkg-close.png" alt="Remove" />
+												<img src="/img/bkg-close.png" alt="Remove" />
 											</a>
 											<a href="#" class="button add">
-												<img src="img/icon-plus.png" alt="Add" />
+												<img src="/img/icon-plus.png" alt="Add" />
 											</a>
 										</div>
+										
+										
 									</div>
 									
 								</div>
 								<div class="col2">
 									<h4>About You:</h4>
 									<div class="formfield">
-										<textarea name="about-us"></textarea>
+										<textarea name="about"><%=@user.about%></textarea>
 										<label class="abs wt">What would you like us to know about you?</label>
 									</div>
 								</div>
@@ -264,105 +191,32 @@
 									<h4>Products:</h4>
 									<a href="#" class="show">
 										Show 
-										<img src="img/arrow-left-black.png" />
+										<img src="/img/arrow-left-black.png" />
 									</a>
 									<a href="#" class="hide">
 										Hide
-										<img src="img/arrow-down.png" />
+										<img src="/img/arrow-down.png" />
 									</a>
 								</div>
 								<div id="pricing-levels-sliders">
-									<div class="entity">
-										<div class="entity-name">Facebook Cover Image</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-1"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Background Image</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-2"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Logo</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-3"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Papers Design</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-4"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Photo Image Fix</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-5"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Visual Status</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-6"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Personal Card</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-7"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Business Card</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-8"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Presentation Design</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-9"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">CV Infographic</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-10"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Tattoo</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-11"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">T-shirt</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-12"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Flyer</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-13"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Mobile Sticker</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-14"></div>
-										</div>
-									</div>
-									<div class="entity">
-										<div class="entity-name">Laptop Sticker</div>
-										<div class="price-slider-holder">
-											<div class="price-slider" id="price-15"></div>
-										</div>
-									</div>
+									<%
+									@categories.each{|c|
+										uc=@user.designer_categories.select{|dc| dc.category_id==c.id}.first
+										avg= c.designer_categories.sum("min_price") / (c.designer_categories.length+1)
+										user_value= uc.nil? ? (avg+3) : uc.min_price
+										%>
+											<div class="entity">
+										        <div class="entity-name"><%=c.name%></div>
+										        <div class="price-slider-holder">
+										        	<div class="price-slider" id="price_<%=c.id%>" data-min="<%=(avg+3)/3%>" data-max="<%=(avg + 100)*3%>" data-value="<%=user_value%>"></div>
+										        </div>
+									        </div>
+										<%
+									}
+									%>
 								</div>
+									
+									
 							</fieldset>
 							
 							<h3>Account Settings:</h3>
@@ -370,27 +224,27 @@
 								<div class="col1">
 									<h4>Account Details:</h4>
 									<div class="formfield">
-										<input type="text" class="text" name="first-name" />
+										<input type="text" class="text" name="name" value="<%=@user.name%>"/>
 										<label class="abs">First name</label>
 									</div>
 									<div class="formfield">
-										<input type="text" class="text" name="last-name" />
+										<input type="text" class="text" name="l_name"  value="<%=@user.l_name%>"/>
 										<label class="abs">Last name</label>
 									</div>
 									<div class="formfield">
-										<input type="text" class="text" name="email" />
+										<input type="text" class="text" name="email"  value="<%=@user.email%>"/>
 										<label class="abs">E-mail</label>
 									</div>
 									<h5>Privacy:</h5>
 									<div class="agree clearfix">
-										<span class="checkbox">
-											<input type="hidden" name="public-1" />
+										<span class="checkbox <%=@user.public_profile ? "checked" : ""%>">
+											<input type="checkbox" name="public_profile" <%=@user.public_profile ? "checked" : ""%>/>
 										</span>
 										<span class="text">Make my profile available to everyone.</span>
 									</div>
 									<div class="agree clearfix">
-										<span class="checkbox">
-											<input type="hidden" name="public-2" />
+										<span class="checkbox <%=@user.dez_profile ? "checked" : ""%>">
+											<input type="checkbox" name="dez_profile"  <%=@user.dez_profile ? "checked" : ""%>/>
 										</span>
 										<span class="text">Make my profile available only to dezquare users.</span>
 									</div>
@@ -398,27 +252,27 @@
 								<div class="col2">
 									<h4>Change my password:</h4>
 									<div class="formfield">
-										<input type="password" class="text" name="old-password" />
+										<input type="password" class="text" name="old_password" />
 										<label class="abs">Enter old password</label>
 									</div>
 									<div class="formfield">
-										<input type="password" class="text" name="new-password" />
+										<input type="password" class="text" name="new_password" />
 										<label class="abs">Choose a new password</label>
 									</div>
 									<div class="formfield">
-										<input type="password" class="text" name="repeat-new-password" />
+										<input type="password" class="text" name="repeat_password" />
 										<label class="abs">Re-enter new password</label>
 									</div>
 									<h5 class="has-circle">More Settings:</h5>
 									<div class="agree clearfix">
-										<span class="checkbox">
-											<input type="hidden" name="suspend" />
+										<span class="checkbox <%=@user.suspend ? "checked" : ""%>">
+											<input type="checkbox" name="suspend" <%=@user.suspend ? "checked" : ""%>/>
 										</span>
 										<span class="text">Suspend my account</span>
 									</div>
 									<div class="agree clearfix">
 										<span class="checkbox">
-											<input type="hidden" name="delete" />
+											<input type="checkbox" name="delete" />
 										</span>
 										<span class="text">Completly delete my account</span>
 									</div>
@@ -426,7 +280,7 @@
 							</fieldset>
 							<div class="submit clearfix">
 								<input type="submit" class="button-orange" value="Submit" />
-								<a href="#" class="cancel">Cancel</a>
+								<a href="/designer/profile" class="cancel">Cancel</a>
 							</div>
 						</form>
 					</div>
@@ -434,20 +288,4 @@
 				
 			</div>			
 		</div>
-	</div>
 	
-	<div id="footer">
-		<div class="page-content">
-			<div id="copyright">&copy;dèzquare 2012</div>
-			<div id="footer-links">
-				<a href="about.html">About</a>
-				<span>|</span>
-				<a href="privacy.html">Privacy Policy</a>
-				<span>|</span>
-				<a href="terms.html">Terms of Use</a>
-			</div>
-		</div>
-	</div>
-	
-</body>
-</html>
