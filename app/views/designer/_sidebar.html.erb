@@ -1,0 +1,50 @@
+<div id="sidebar">
+	<div class="title">
+		Summary:
+		<%if @editable%>
+		<a href="/designer/settings" class="edit">
+			<img src="/img/pen.png" alt="Edit" />
+		</a>
+		<%end%>
+	</div>
+	<div class="sidebar-white-box">
+		<div id="sidebar-summary">
+			<div class="row">
+				<div class="col1">Age:</div>
+				<div class="col2"><%=@author.dob.nil? ? '' : (Time.now.year-@author.dob.year)%></div>
+			</div>
+			<div class="row">
+				<div class="col1">From:</div>
+				<div class="col2"><%=@author.location%></div>
+			</div>
+			<div class="row">
+				<div class="col1">Languages:</div>
+				<div class="col2"><%=raw(@author.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
+			</div>
+		</div>
+	</div>
+	<div class="title">
+		About <%=@author.name%>:
+		<%if @editable%>
+		<a href="/designer/settings" class="edit">
+			<img src="/img/pen.png" alt="Edit" />
+		</a>
+		<%end%>
+	</div>
+	<div class="sidebar-white-box">
+		<%=@author.about%>
+	</div>
+	
+	<div class="sidebar-white-box">
+		<div>
+			<a href="http://www.facebook.com/sharer/sharer.php?u=http://dezquare.andreiserban.com/profile.html" target="_blank">Share this profile on Facebook &raquo;</a>
+		</div>
+		<div>
+			<a href="https://twitter.com/intent/tweet?url=http://dezquare.andreiserban.com/profile.html&text=Hey! Check this:" target="_blank">Share this profile on Twitter &raquo;</a>
+		</div>
+		<div>
+			<a href="#">Report profile &raquo;</a>
+		</div>
+	</div>
+</div>
+				

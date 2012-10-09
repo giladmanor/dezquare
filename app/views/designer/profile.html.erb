@@ -1,58 +1,16 @@
 		<div id="content">
 			<div class="page-content">
 				<%=render "cover"%>
-				<div id="sidebar">
-					<div class="title">
-						Summary:
-						<a href="settings.html" class="edit">
-							<img src="/img/pen.png" alt="Edit" />
-						</a>
-					</div>
-					<div class="sidebar-white-box">
-						<div id="sidebar-summary">
-							<div class="row">
-								<div class="col1">Age:</div>
-								<div class="col2"><%=@user.dob.nil? ? '' : (Time.now.year-@user.dob.year)%></div>
-							</div>
-							<div class="row">
-								<div class="col1">From:</div>
-								<div class="col2"><%=@user.location%></div>
-							</div>
-							<div class="row">
-								<div class="col1">Languages:</div>
-								<div class="col2"><%=raw(@user.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
-							</div>
-						</div>
-					</div>
-					<div class="title">
-						About <%=@user.name%>:
-						<a href="settings.html" class="edit">
-							<img src="/img/pen.png" alt="Edit" />
-						</a>
-					</div>
-					<div class="sidebar-white-box">
-						<%=@user.about%>
-					</div>
-					
-					<div class="sidebar-white-box">
-						<div>
-							<a href="http://www.facebook.com/sharer/sharer.php?u=http://dezquare.andreiserban.com/profile.html" target="_blank">Share this profile on Facebook &raquo;</a>
-						</div>
-						<div>
-							<a href="https://twitter.com/intent/tweet?url=http://dezquare.andreiserban.com/profile.html&text=Hey! Check this:" target="_blank">Share this profile on Twitter &raquo;</a>
-						</div>
-						<div>
-							<a href="#">Report profile &raquo;</a>
-						</div>
-					</div>
-				</div>
+				<%=render "sidebar"%>
 				<div id="main">
 					<div class="white-band-title two-cols">
 						<h3>
 							Full Portfolio
-							<a href="settings.html" class="edit">
+							<%if @editable%>
+							<a href="/designer/settings" class="edit">
 								<img src="/img/pen.png" alt="Edit" />
 							</a>
+							<%end%>
 						</h3>
 						<!--
 						<div class="col2 filter">
@@ -65,23 +23,26 @@
 						-->
 					</div>
 					<div id="designer-samples" class="full-portfolio">
+						
+						<%
+						if @editable
+						%>
 						<a href="/designer/edit_photo" class="sample upload-image">
 							<img src="/img/bkg-upload-photo.png" alt="Upload Image" />
 							<span>Upload new designs</span>
 						</a>
+						
 						<%
-						@user.images.each{|img|
+						end
+						
+						@author.images.each{|img|
 							%>
 							<a href="/designer/enlarged_view/<%=img.id%>" class="sample">
 								<img src="/repository/<%=img.file_path%>" alt="<%=img.name%>" />
 							</a>
 							<%
 							}
-						
-						
 						%>
-						
-						
 						
 					</div>
 					<!--

@@ -1,0 +1,74 @@
+		<div id="content">
+			<div class="page-content">
+				<%=render "cover"%>
+				<%=render "sidebar"%>
+				<div id="main">
+					<div class="white-band-title align-left">
+						<h3>
+							Designs
+						</h3>
+					</div>
+					<div id="portfolio-big" class="white-box">
+						<a href="#" id="portfolio-prev"></a>
+						<a href="#" id="portfolio-next"></a>
+						<ul id="portfolio-gallery">
+						<%
+						@author.images.each{|image|
+							active = image.id==@image.id ? 'class="active"' : ''
+							%>
+							
+							<li <%=raw(active)%>>
+								<div class="col1">
+									<div class="image">
+										<img src="/repository/<%=image.file_path%>" alt="Portfolio Image" style="max-height: 472px;"/>
+									</div>
+									<div class="meta">
+										<span class="published-on">
+											Published on
+											<span class="date"><%=image.updated_at.strftime(" %m/%d/%Y")%></span>
+										</span>
+									</div>
+								</div>
+								<div class="col2">
+									<div class="row1">
+										<span class="orange">Designer:</span> <%=image.user.full_name%><br/>
+										<span class="orange">Type:</span> <%=image.category.name%>
+									</div>
+									<h4>About <%=image.name%>
+										<%if @editable%>
+										<a href="/designer/edit_photo/<%=image.id%>" class="edit">
+											<img src="/img/pen.png" alt="Edit" />
+										</a>
+										<%end%>
+									</h4>
+									<p>
+										<%=image.description%>
+									</p>
+									<h4 class="orange">Taste Indicators</h4>
+									<p>
+										<%
+										image.tags.each{|it|
+											%>	
+											<%=it.name%><br/>
+											<%
+										}
+										%>
+										
+									</p>
+								</div>
+							</li>
+							
+							<%
+						}
+						%>	
+							
+							
+							
+							
+						</ul>
+						
+					</div>
+				</div>
+			</div>			
+		</div>
+	

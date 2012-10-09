@@ -31,8 +31,8 @@ class User < ActiveRecord::Base
     }
   end
   
-  def set_image(upload,dir)
-    image = Image.new
+  def set_image(upload,dir, id=nil)
+    image = id.nil? ? Image.new : self.images.find(id)
     image.save
     image.file_path =  "#{image.id}.#{upload.original_filename[-3,3]}"
     # create the file path

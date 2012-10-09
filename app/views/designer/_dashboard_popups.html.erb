@@ -1,0 +1,75 @@
+<div id="new-client-popup" class="popup">
+		<div class="popup-content">
+			<div class="title">Got new clients? </div>
+			<div class="subtitle">Find out what they like!</div>
+			<div class="desc">
+				Send your customer an invitation to play our "Taste game"<br/>
+				and get your customer's taste mapped instintly.
+			</div>
+			<form action="/designer/invite_for_game" method="post">
+				<div class="form-row pr-title">
+					<label>Title:</label>
+					<div class="formfield">
+						<input type="text" name="title" class="text" />
+						<label class="form-error">Invalid title</label>
+					</div>
+				</div>
+				<div class="form-row pr-type">
+					<label>Add a Product Type:</label>
+					<div class="formfield">
+						<div class="combobox ">
+							<input type="hidden" name="product-type" value="" />
+							<div class="value">Select</div>
+							<div class="list">
+								<%
+								@categories.each{|c|
+									%>
+										<div class="option" ><%=c.name%></div>
+									<%
+								}
+								%>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="separator">Client's contact details:</div>
+				<div class="form-row pr-basic">
+					<label>First Name:</label>
+					<div class="formfield">
+						<input type="text" name="name" class="text" />
+						<label class="form-error">Invalid first name</label>
+					</div>
+				</div>
+				<div class="form-row pr-basic">
+					<label>Last Name:</label>
+					<div class="formfield">
+						<input type="text" name="l_name" class="text" />
+						<label class="form-error">Invalid last name</label>
+					</div>
+				</div>
+				<div class="form-row pr-basic">
+					<label>Email:</label>
+					<div class="formfield">
+						<input type="text" name="email" class="text" />
+						<label class="form-error">Invalid email</label>
+					</div>
+				</div>
+				<div class="buttons clearfix">
+					<input type="submit" class="button-orange" value="Submit" />
+					<a href="#" class="cancel">Cancel</a>
+				</div>
+			</form>
+		</div>		
+	</div>
+	
+	<div id="new-client-success-popup" class="popup" <%= params[:show_invite_success]=="true" ? raw('style="display: block"') : ''%>>
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Invitation sent!</div>
+			<div class="desc">
+				An invitation to take the "taste maping" game was sent to your client.<br/>
+				Sit back and relax while we map your clients taste
+			</div>
+		</div>		
+	</div>

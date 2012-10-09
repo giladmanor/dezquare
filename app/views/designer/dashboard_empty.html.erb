@@ -1,72 +1,38 @@
 ﻿	
 		<div id="content">
 			<div class="page-content">
-				<div id="cover">
-					<div id="cover-image">
-						<img src="/img/temp/cover-image.jpg" alt="My Cover Image" />
-						<input type="file" id="upload-cover-image" />
-					</div>
-					<div id="profile-bar" class="clearfix">
-						<div id="profile-photo">
-							<img src="/img/temp/profile-photo.jpg" alt="My Profile Photo" />
-							<input type="file" id="upload-profile-image" />
-						</div>
-						<h2 id="profile-name">Axl Rose</h2>
-						<div id="profile-status">
-							<div class="current">
-								<span class="available">Available</span>
-							</div>
-							<div class="edit">
-								<span class="available">Available</span> / <span class="unavailable">Unavailable</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%=render "cover"%>
 				<div id="sidebar">
 					<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
 					<div class="title">Getting started</div>
 					<div class="sidebar-white-box">
 						<ol id="profile-completion">
-							<!-- COMPLETED MODEL -->
-							<!--
-							<li class="completed">
-								<span>1.</span> 
-								Upload profile photo 
-								<img src="img/bkg-checked.png" />
-							</li>
-							<li class="completed">
-								<span>2.</span> 
-								Upload cover photo
-								<img src="img/bkg-checked.png" />
-							</li>
-							<li class="completed">
-								<span>3.</span> 
-								Start your protfolio
-								<img src="img/bkg-checked.png" />
-							</li>
-							<li class="completed">
-								<span>4.</span> 
-								Get a taste
-								<img src="img/bkg-checked.png" />
-							</li>
-							<li class="completed">
-								<span>5.</span> 
-								Get your first match
-								<img src="img/bkg-checked.png" />
-							</li>
-							-->
-							<!-- END COMPLETED MODEL -->
 							<li>
 								<span>1.</span> 
-								<a href="#" id="sidebar-upload-profile-photo">Upload profile photo</a>
+								<a href="#" style="height: 20px; width: 160px;<%=@user.avatar.nil? ? '' : "color:#60e148"%>">Upload profile photo</a>
+								<%
+								if !@user.avatar.nil?
+								%>
+								<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+								<%end%>
 							</li>
 							<li>
 								<span>2.</span> 
-								<a href="#" id="sidebar-upload-cover-photo">Upload cover photo</a>
+								<a href="#" style="height: 20px; width: 160px;<%=@user.cover.nil? ? '' : "color:#60e148"%>">Upload cover photo</a>
+								<%
+								if !@user.cover.nil?
+								%>
+								<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+								<%end%>
 							</li>
 							<li>
 								<span>3.</span> 
-								<a href="edit-photo.html">Start your protfolio</a>
+								<a href="/designer/edit_photo" style="height: 20px; width: 160px;<%=@user.images.length==0 ? '' : "color:#60e148"%>">Start your protfolio</a>
+								<%
+								if @user.images.length>0
+								%>
+								<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+								<%end%>
 							</li>
 							<li>
 								<span>4.</span> 
@@ -87,7 +53,7 @@
 						<div class="col1">
 							<p>Matches are exclusive invitations  to design projects for customers that we matched for you, based on their taste.</p>
 							<p>Get your first match by boosting your portfolio with your designs.</p>
-							<a href="edit-photo.html" class="black-button small-font">Boost My Portfolio!</a>
+							<a href="/designer/edit_photo" class="black-button small-font">Boost My Portfolio!</a>
 						</div>
 						<div class="col2">
 							<img src="/img/temp/bkg-match.jpg" />
@@ -101,87 +67,8 @@
 
 	
 	<div id="window-overlay"></div>
-	<div id="new-client-popup" class="popup">
-		<div class="popup-content">
-			<div class="title">Got new clients? </div>
-			<div class="subtitle">Find out what they like!</div>
-			<div class="desc">
-				Send your customer an invitation to play our "Taste game"<br/>
-				and get your customer's taste mapped instintly.
-			</div>
-			<form action="#">
-				<div class="form-row pr-title">
-					<label>Title:</label>
-					<div class="formfield">
-						<input type="text" name="title" class="text" />
-						<label class="form-error">Invalid title</label>
-					</div>
-				</div>
-				<div class="form-row pr-type">
-					<label>Add a Product Type:</label>
-					<div class="formfield">
-						<div class="combobox ">
-							<input type="hidden" name="product-type" value="" />
-							<div class="value">Background Image</div>
-							<div class="list">
-								<div class="option">Background Image</div>
-								<div class="option">Business Card</div>
-								<div class="option">Facebook Cover Image</div>
-								<div class="option">Infographic</div>
-								<div class="option">Laptop Sticker</div>
-								<div class="option">Logo</div>
-								<div class="option">Mobile Sticker</div>
-								<div class="option">Paper Design</div>
-								<div class="option">Personal Card</div>
-								<div class="option">Photo Image Fix</div>
-								<div class="option">Presentation design</div>
-								<div class="option">T-Shirt</div>
-								<div class="option">Tattoo</div>
-								<div class="option">Visual status</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="separator">Client's contact details:</div>
-				<div class="form-row pr-basic">
-					<label>First Name:</label>
-					<div class="formfield">
-						<input type="text" name="first-name" class="text" />
-						<label class="form-error">Invalid first name</label>
-					</div>
-				</div>
-				<div class="form-row pr-basic">
-					<label>Last Name:</label>
-					<div class="formfield">
-						<input type="text" name="last-name" class="text" />
-						<label class="form-error">Invalid last name</label>
-					</div>
-				</div>
-				<div class="form-row pr-basic">
-					<label>Email:</label>
-					<div class="formfield">
-						<input type="text" name="email" class="text" />
-						<label class="form-error">Invalid email</label>
-					</div>
-				</div>
-				<div class="buttons clearfix">
-					<input type="submit" class="button-orange" value="Submit" id="nc-submit" />
-					<a href="#" class="cancel">Cancel</a>
-				</div>
-			</form>
-		</div>		
-	</div>
 	
-	<div id="new-client-success-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Invitation sent!</div>
-			<div class="desc">
-				An invitation to take the "taste maping" game was sent to your client.<br/>
-				Sit back and relax while we map your clients taste
-			</div>
-		</div>		
-	</div>
+	<%=render "dashboard_popups"%>
 	
 	<div id="accept-project-popup" class="popup">
 		<span class="close"></span>

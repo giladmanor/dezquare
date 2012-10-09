@@ -5,11 +5,17 @@
 			<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
 			  <div class="fileinputs">
 	            <div style="position: absolute;z-index: 0;">
-	            	<img src="/user_covers/<%= @user.cover.nil? ? "" : @user.cover%>" alt="My Cover Image" />
+	            	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" alt="My Cover Image" />
 	            </div>
+	            <% 
+	            if @editable
+	            %>
 	            <span class="edit-field"></span>
 	            <input type="file" name="upload" id="upload" 
 	               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: 0px -20px;cursor:hand " />
+	            <%
+	            end
+	            %>
 	          </div>
         	</form>
 
@@ -21,28 +27,44 @@
 				<form action="/designer/upload_avatar"  enctype="multipart/form-data" method="post">
 				  <div class="fileinputs">
 		            <div style="position: absolute;z-index: 0;overflow:hidden">
-		            	<img src="/user_avatars/<%= @user.avatar.nil? ? "" : @user.avatar%>" alt="My Profile Photo" style="max-width: 116px"/>
+		            	<img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" style="max-width: 116px"/>
 		            </div>
+		            <% 
+		            if @editable
+		            %>
+		            
 		            <span class="edit-field"></span>
 		            <input type="file" name="upload" id="upload" 
 		               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: 0px -20px;cursor:hand " />
+		          	<%
+		            end
+		            %>
 		          </div>
 		          
 	        	</form>
 	        	
 			</div>
-			<h2 id="profile-name"><%=@user.full_name%></h2>
+			<h2 id="profile-name"><%=@author.full_name%></h2>
 			
 			<div id="profile-status">
 		    	<div class="current" id="availability_selector">
-		        	<span  class="<%=@user.available ? "available" : "unavailable"%>"><%=@user.available ? "Available" : "Unavailable"%></span>
+		        	<span  class="<%=@author.available ? "available" : "unavailable"%>"><%=@author.available ? "Available" : "Unavailable"%></span>
 		    	</div>
+	    	    <% 
+	            if @editable
+	            %>
+		        
 			    <div class="edit" onclick="$('input[name=stat]').val($('#availability_selector').text());$('#availability').submit()">
 			    	<span class="available">Available</span> / <span class="unavailable">Unavailable</span>
 			    </div>
 		    	<form id="availability" action="/designer/set_availability">
 		    		<input type="hidden" name="stat" value="Available" />
 		    	</form>
+	          	<%
+	            end
+	            %>
+		    
+		    
 		    </div>
 			
 			

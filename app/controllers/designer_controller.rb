@@ -8,16 +8,38 @@ class DesignerController < SiteController
   
   def dashboard
     logger.debug @user.inspect
-    if @user.projects_in.empty? && false
+    @categories = Category.all.select{|c| c.parent_id!=nil}
+    @author=@user
+    @editable=true
+    if @user.projects_in.empty? 
       render "dashboard_empty"
       return
     end
     
   end
   
-  def profile
-    
+  def invite_for_game
+    #TODO
+    redirect_to :action=>:dashboard, :show_invite_success=>true
   end
+  ###############################################################################
+  
+  def profile
+    @author = params[:id].present? ? User.find(params[:id]) : @user 
+    
+    @editable= (@author==@user)
+  end
+  
+  def enlarged_view
+    @image = Image.find(params[:id])
+    @author = @image.user
+    
+    @editable= (@author==@user)
+  end
+  
+  
+  
+  #########################################################################################################
   
   def set_details
     
@@ -58,7 +80,7 @@ class DesignerController < SiteController
   end
   
   def reset_password
-    #todo: check if the user is a designer and send reset password mail
+    #TODO check if the user is a designer and send reset password mail
     
     redirect_to :controller=>:site, :action=> :index, :info=>"Please check your mail"
     
@@ -88,10 +110,10 @@ class DesignerController < SiteController
     @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
   end
   
-  
   def upload_image
     begin
-      image = @user.set_image(params[:upload],DIR_PATH_REPOSITORY)
+      id = (params[:id].nil? || params[:id]=="") ? nil : params[:id] 
+      image = @user.set_image(params[:upload],DIR_PATH_REPOSITORY,id)
       flash[:notice] = "File has been uploaded successfully"
       #redirect_to :action => "profile"
       logger.debug "file upload success"
@@ -120,9 +142,13 @@ class DesignerController < SiteController
     else
       redirect_to  :action => "profile"
     end
-    
   end
   
+  def delete_image
+    image = @user.images.find(params[:id])
+    image.destroy unless image.nil?
+    redirect_to :action=>"profile"
+  end
   
   ###########################################################################################################
   

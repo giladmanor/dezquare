@@ -1,0 +1,397 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery.uploadify-3.1.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script></head>
+<body>
+	<div id="page">
+		<div id="header">
+			<div class="page-content clearfix">
+				<h1 id="logo">
+					<a href="shopper-dashboard.html">
+						<img src="img/logo.png" alt="Dezquare" />
+					</a>
+				</h1>
+				
+				<div id="profile-menu" class="shopper">
+					<a href="shopper-settings.html" class="base">Settings</a>
+					<div class="expanded">
+						<a href="index.html" class="last">Logout</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="content">
+			<div class="page-content">
+				<div id="cover">
+					<div id="cover-image">
+						<img src="img/temp/cover-image.jpg" alt="My Cover Image" />
+						<input type="file" id="upload-cover-image" />
+					</div>
+					<div id="profile-bar" class="clearfix">
+						<div id="profile-photo">
+							<img src="img/temp/profile-photo-2.jpg" alt="My Profile Photo" />
+							<input type="file" id="upload-profile-image" />
+						</div>
+						<h2 id="profile-name">David Bowie</h2>
+					</div>
+				</div>
+				<div id="sidebar">
+					<a href="game1.html" class="orange-button">Get a new design?</a>
+					<div class="title">
+						<a href="shopper-latest-designs.html">Latest Designs</a>
+					</div>
+					<div class="latest-designs">
+						<div class="design">
+							<div class="col1">
+								<div class="name">
+									<a href="shopper-latest-designs.html">Google logo</a>
+								</div>
+								<div class="by">for <span>David Bowie</span></div>
+								<div class="started">Started: 20 MAY</div>
+								<div class="status">Status: Open</div>
+							</div>
+							<div class="col2">
+								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
+								<div class="completed hidden">
+									<img src="img/bkg-checked-2.png" /><br/>
+									Completed
+								</div>
+							</div>
+						</div>
+						<div class="design">
+							<div class="col1">
+								<div class="name">
+									<a href="shopper-latest-designs.html">Google logo</a>
+								</div>
+								<div class="by">for <span>David Bowie</span></div>
+								<div class="started">Started: 20 MAY</div>
+								<div class="status">Status: Open</div>
+							</div>
+							<div class="col2">
+								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
+								<div class="completed hidden">
+									<img src="img/bkg-checked-2.png" /><br/>
+									Completed
+								</div>
+							</div>
+						</div>
+						<div class="design last">
+							<div class="col1">
+								<div class="name">
+									<a href="shopper-latest-designs.html">Google logo</a>
+								</div>
+								<div class="by">for <span>David Bowie</span></div>
+								<div class="started">Started: 20 MAY</div>
+								<div class="status">Status: Open</div>
+							</div>
+							<div class="col2">
+								<div class="completed">
+									<img src="img/bkg-checked-2.png" /><br/>
+									Completed
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="main">
+					<div class="white-band-title">
+						<h3>You've Got Matched!</h3>
+					</div>
+					<div id="match-projects" class="white-box">
+					
+						<div class="project">
+							<div class="basic">
+								<div class="icon">
+									<img src="img/icons/business-cards.png" />
+								</div>
+								<div class="name-and-client">
+									<div class="name single">Design Project Title</div>
+								</div>
+								<div class="action wider">
+									<a href="#" class="black-button esmall-font cancel-design">Cancel Design</a>
+									<a href="#" class="pending">Pending Kickoff</a>
+								</div>
+							</div>
+							<div class="detailed">
+								<div class="col1">
+									<div class="title">About the desired Flyer</div>
+									<div class="about-project">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
+									</div>
+								</div>
+								<div class="col2">
+									<div class="title">Top Matches</div>
+									<div class="top-matches">
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="last-row">
+								<div class="col1">
+									<div class="payment">Cost: $100</div>
+								</div>
+								<div class="col2">
+									<div class="date">21:07, 27 MAY 2012</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="project">
+							<div class="basic">
+								<div class="icon">
+									<img src="img/icons/business-cards.png" />
+								</div>
+								<div class="name-and-client">
+									<div class="name single">Design Project Title</div>
+								</div>
+								<div class="action wider">
+									<a href="#" class="black-button esmall-font cancel-design">Cancel Design</a>
+									<a href="#" class="pending">Pending Kickoff</a>
+								</div>
+							</div>
+							<div class="detailed">
+								<div class="col1">
+									<div class="title">About the desired Flyer</div>
+									<div class="about-project">
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
+									</div>
+								</div>
+								<div class="col2">
+									<div class="title">Top Matches</div>
+									<div class="top-matches">
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+										<div class="match">
+											<div class="profile-image">
+												<img src="img/temp/profile-match.jpg" alt="Profile Image" />
+											</div>
+											<div class="details">
+												<div class="big">
+													<a href="profile-public.html">Axl Rose, Israel</a>
+												</div>
+												<div class="small">Languages: <span>Hebrew</span></div>
+												<div class="small">Passion: <span>Branding, Illustration, Print</span></div>
+											</div>
+											<div class="status">Pending</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="last-row">
+								<div class="col1">
+									<div class="payment">Cost: $100</div>
+								</div>
+								<div class="col2">
+									<div class="date">21:07, 27 MAY 2012</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="project last">
+							<div class="basic">
+								<div class="icon">
+									<img src="img/icons/business-cards.png" />
+								</div>
+								<div class="name-and-client">
+									<div class="name single">Design Project Title</div>
+								</div>
+								<div class="action widest">
+									<a href="#" class="black-button esmall-font send-tod">Send to Designer</a>
+									<a href="game2.html" class="replay">Replay</a>
+								</div>
+							</div>
+							<div class="detailed">
+								<div class="col1">
+									<div class="taste-indicators">
+										<div class="title">Your Taste Indicators</div>
+										<ul>
+											<li>* Colorful (Color Palette)</li>
+											<li>* Urban (Style)</li>
+											<li>* Realistic (Image)</li>
+											<li>* Minimalistic</li>
+											<li>* Geometric Shapes</li>
+										</ul>
+									</div>
+								</div>
+								<div class="col2">
+									<div class="title">Designs You Liked</div>
+									<div class="designs">
+										<div class="design">
+											<img src="img/temp/project-photo.jpg" />
+										</div>
+										<div class="design">
+											<img src="img/temp/project-photo.jpg" />
+										</div>
+										<div class="design last">
+											<img src="img/temp/project-photo.jpg" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="last-row">
+								<div class="col2">
+									<div class="date">21:07, 27 MAY 2012</div>
+								</div>
+							</div>
+						</div>
+						
+						<a href="#" id="dashboard-load-more" class="black-button small-font load-more">
+							<span>Show me more</span>
+						</a>
+					</div>
+				</div>
+			</div>			
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="page-content">
+			<div id="copyright">&copy;dèzquare 2012</div>
+			<div id="footer-links">
+				<a href="about.html">About</a>
+				<span>|</span>
+				<a href="privacy.html">Privacy Policy</a>
+				<span>|</span>
+				<a href="terms.html">Terms of Use</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="window-overlay"></div>
+	<div id="cancel-design-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want<br/>to cancel the design?</div>
+			<div class="subtitle">This action can’t be undone</div>
+			<div class="buttons">
+				<a href="#" class="back">Back</a>
+				<a href="#" class="black-button small-font">Cancel Design</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="cancel-design-explain-popup" class="popup">
+		<div class="popup-content">
+			<div class="title">Oh, That’s no fun!</div>
+			<form action="#">
+				<div class="formfield">
+					<textarea name="reason"></textarea>
+					<label class="abs">Please share with us the reason for canceling the design</label>
+				</div>
+				<a href="#" class="black-button small-font">Done</a>
+			</form>
+		</div>		
+	</div>
+	
+	<div id="send-designer-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Your taste analysis was sent!</div>
+			<div class="subtitle">Thanks for helping [designer name]<br/>to get to know your taste</div>
+			<a href="#" class="orange-button small-font">Close</a>
+		</div>		
+	</div>
+	
+	<div id="window-overlay"></div>
+	<div id="mark-complete-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Have you completed the design?</div>
+			<div class="subtitle">
+				Before you mark the job as - "complete", <br/>
+				make sure that your client think so too.
+			</div>
+			<div class="dont-ask clearfix">
+				<span class="checkbox">
+					<input type="checkbox" name="dont-ask" />
+				</span>
+				<span class="text">Don't ask me again</span>
+			</div>
+			<a href="#" class="black-button small-font">Mark Complete</a>
+		</div>		
+	</div>
+	
+	<div id="complete-design-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Awesome!</div>
+			<div class="subtitle">
+				Give us your feedback <br/>
+				on this experience 
+			</div>
+			<a href="mailto:mail@test.com" class="black-button small-font">Add feedback</a>
+			<div class="or">- or -</div>
+			<a href="#" id="just-mark">Just mark complete</a>
+		</div>		
+	</div>
+	
+</body>
+</html>

@@ -4,18 +4,22 @@
 			<div class="page-content">
 
 				<div class="center-wrap">
-					<h2>Edit Portfolio</h2>
+					<h2>Edit Portfolio 
+						<% unless @image.id.nil?%>
+						<a style="float: right;font-size: 14px;" href="/designer/delete_image/<%=@image.id%>">delete</a>
+						<%end%> 
+					</h2>
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo">
 							<div class="image" style="width: 235px;">
-								<img src="/repository/<%= @image.file_path.nil? ? "1.png" : @image.file_path%>" style="max-width: 217px;max-height: 400px" />
+								<img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>" style="max-width: 217px;max-height: 400px" />
 							</div>
 							<form action="/designer/upload_image"  enctype="multipart/form-data" method="post">
 							  <div class="fileinputs">
 					            <div class="image" style="position: absolute;z-index: 0;background: rgba(31, 107, 7, 0.66);width: 217px;height: 34px;color: white;text-align: center;font-size: 24px;">
 					            	Upload Image
 					            </div>
-					            
+					            <input type="hidden" name="id" value="<%=@image.id%>">
 					            <input type="file" name="upload" id="upload" 
 					               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;cursor:hand ;width: 217px;height: 34px;" />
 					          </div>
@@ -119,7 +123,7 @@
 									<div class="formfield">
 										<label class="abs">You can write here about your creative process, customer needs or any other<br/>interesting information regarding this design</label>
 										<textarea name="description"><%=@image.description%></textarea>
-										<label class="form-error">Password does not match</label>
+										
 									</div>
 								</div>
 								<input type="hidden" name="save_and" id="save_and" value="add">
