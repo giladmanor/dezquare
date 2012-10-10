@@ -19,7 +19,7 @@
 			@entities.each{|entity|
 				%>	
 				<tr> 
-					<form id="edit_form_<%=entity.id%>" action="/category/set/<%=entity.id%>" method="post">
+					<form id="edit_form_<%=entity.id%>" action="/<%=params[:controller]%>/set/<%=entity.id%>" method="post">
 						<td><input type="text" name="name" value="<%=entity.name%>" style="width: 100%"></td> 
 					</form>
 						<td><a href="/game_type_stage/list?game_type_id=<%=entity.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Sub Categories"></a></td>

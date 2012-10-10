@@ -8,7 +8,7 @@ class DesignerController < SiteController
   
   def dashboard
     logger.debug @user.inspect
-    @categories = Category.all.select{|c| c.parent_id!=nil}
+    @categories = Category.all
     @author=@user
     @editable=true
     if @user.projects_in.empty? 
@@ -53,7 +53,7 @@ class DesignerController < SiteController
     @user.languages=params[:language]
     
     @user.designer_categories.clear
-    Category.all.select{|c| c.parent_id!=nil}.each{ |c|
+    Category.all.each{ |c|
       ucp = DesignerCategory.new
       ucp.min_price=params["price_#{c.id}"].gsub("$","").to_f
       ucp.category_id=c.id
@@ -72,7 +72,7 @@ class DesignerController < SiteController
     @user.dob=Date.strptime("{ #{y}, #{m}, #{d} }", "{ %Y, %B, %d }")
     
     @user.save
-    redirect_to  :action => "settings"
+    redirect_to  :action => "profile"
   end
   
   def load_user
@@ -89,7 +89,7 @@ class DesignerController < SiteController
   
   
   def settings
-    @categories = Category.all.select{|c| c.parent_id!=nil}
+    @categories = Category.all
   end
   
   def set_availability
@@ -105,7 +105,7 @@ class DesignerController < SiteController
   ###########################################################################################################
   
   def edit_photo
-    @categories = Category.all.select{|c| c.parent_id!=nil}
+    @categories = Category.all
     @tags = Tag.all
     @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
   end

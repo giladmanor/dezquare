@@ -40,7 +40,7 @@
 							</li>
 							<li>
 								<span>5.</span> 
-								<a href="#">Get your first match</a>
+								Get your first match
 							</li>
 						</ol>
 					</div>
@@ -66,7 +66,7 @@
 	
 
 	
-	<div id="window-overlay"></div>
+	<div id="window-overlay" <%= params[:show_invite_success]=="true" ? raw('style="display: block"') : ''%>></div>
 	
 	<%=render "dashboard_popups"%>
 	

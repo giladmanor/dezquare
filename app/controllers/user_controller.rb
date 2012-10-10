@@ -72,7 +72,7 @@ class UserController < AdminController
     user.update_attributes(attr.except(:id))
     
     unless generate_password.nil?
-      user.create_password(5) 
+      user.create_password(6) 
       user.pender=false
       user.designer=true  
     end

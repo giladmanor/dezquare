@@ -7,7 +7,12 @@ class GameTypeStageController < AdminController
   
   def stage
     @entity = params[:id].nil? ? {} : GameTypeStage.find(params[:id])
-    @parent = GameType.find(params[:game_type_id]) unless params[:game_type_id].nil?
+    unless params[:game_type_id].nil?
+      @parent = GameType.find(params[:game_type_id])
+    else
+      @parent = @entity.game_type
+    end
+     
   end
   
   
@@ -29,8 +34,10 @@ class GameTypeStageController < AdminController
   end
   
   def delete
-    GameTypeStage.find(params[:id]).destroy
-    redirect_to :action=>:list,  :server_sais=>"Deleted", :server_sais_type=>"info"
+    gts = GameTypeStage.find(params[:id]) 
+    game_type_id=gts.game_type.id
+    gts.destroy
+    redirect_to :action=>:list,  :server_sais=>"Deleted", :server_sais_type=>"info",:game_type_id=>game_type_id
   end
   
   

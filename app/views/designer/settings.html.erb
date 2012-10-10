@@ -119,7 +119,7 @@
 									</div>
 									<div class="formfield">
 										<input type="text" class="text" name="location" value="<%=@user.location%>"/>
-										<label class="abs"><%=@user.location.nil? ? "Location" : @user.location%></label>
+										<label class="abs"><%=(@user.location.nil? || @user.location=="") ? "Location" : @user.location%></label>
 									</div>
 									
 									<div class="languages" id="settings-languages">
@@ -235,7 +235,7 @@
 										<input type="text" class="text" name="email"  value="<%=@user.email%>"/>
 										<label class="abs">E-mail</label>
 									</div>
-									<h5>Privacy:</h5>
+									<!-- <h5>Privacy:</h5>
 									<div class="agree clearfix">
 										<span class="checkbox <%=@user.public_profile ? "checked" : ""%>">
 											<input type="checkbox" name="public_profile" <%=@user.public_profile ? "checked" : ""%>/>
@@ -247,7 +247,7 @@
 											<input type="checkbox" name="dez_profile"  <%=@user.dez_profile ? "checked" : ""%>/>
 										</span>
 										<span class="text">Make my profile available only to dezquare users.</span>
-									</div>
+									</div> -->
 								</div>
 								<div class="col2">
 									<h4>Change my password:</h4>
@@ -263,7 +263,7 @@
 										<input type="password" class="text" name="repeat_password" />
 										<label class="abs">Re-enter new password</label>
 									</div>
-									<h5 class="has-circle">More Settings:</h5>
+									<!-- <h5 class="has-circle">More Settings:</h5>
 									<div class="agree clearfix">
 										<span class="checkbox <%=@user.suspend ? "checked" : ""%>">
 											<input type="checkbox" name="suspend" <%=@user.suspend ? "checked" : ""%>/>
@@ -275,7 +275,7 @@
 											<input type="checkbox" name="delete" />
 										</span>
 										<span class="text">Completly delete my account</span>
-									</div>
+									</div> -->
 								</div>
 							</fieldset>
 							<div class="submit clearfix">

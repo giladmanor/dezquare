@@ -17,6 +17,9 @@ class CategoryController < AdminController
   def set
     cat = params[:id].nil? ? Category.new : Category.find(params[:id]) 
     cat.name = params[:name]
+    cat.icon = params[:icon]
+    cat.code = params[:code]
+    
     cat.parent_id = params[:parent_id] unless params[:parent_id].nil?
     msg_t = "info"
     msg=""

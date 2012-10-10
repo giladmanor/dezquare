@@ -5,19 +5,22 @@
 		<div class="module_content">
 				<fieldset>
 					<label>Stage Order</label>
-					<input name="ord" type="text" style="width:52%;">
+					<input name="ord" type="text" style="width:52%;" value="<%=@entity.ord%>">
 				</fieldset>
 				<fieldset>
 					<label>Implementor</label>
 					<select name="imp" style="width:52%;">
-						<option>RandomChooser</option>
 						<option>CategoryChooser</option>
-						<option>Rater</option>
+						<option>ImageRater</option>
+						<option>DesignerSelector</option>
+						<option>DetailsEditor</option>
+						<option>Registrator</option>
+						<option>Rocker</option>
 					</select>
 				</fieldset>
 				<fieldset>
 					<label>Params</label>
-					<textarea name="params" rows="5"></textarea>
+					<textarea name="params" rows="5"><%=@entity.params%></textarea>
 				</fieldset>
 				
 				<div class="clear"></div>

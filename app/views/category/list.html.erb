@@ -34,6 +34,8 @@
 		<thead> 
 			<tr> 
 				<th>Category</th> 
+				<th>Icon</th>
+				<th>Code</th>
 				<th>Children</th> 
 				<th>Actions</th>
 			</tr> 
@@ -45,6 +47,8 @@
 				<tr> 
 					<form id="edit_form_<%=cat.id%>" action="/category/set/<%=cat.id%>" method="post">
 						<td><input type="text" name="name" value="<%=cat.name%>" style="width: 100%"></td> 
+						<td><input type="text" name="icon" value="<%=cat.icon%>" style="width: 100%"></td>
+						<td><input type="text" name="code" value="<%=cat.code%>" style="width: 100%"></td>
 					</form>
 						<td><a href="/category/list/<%=cat.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Sub Categories"></a></td>
 						<td>
@@ -97,9 +101,14 @@
 	
 		<div class="module_content">
 				<fieldset>
-					<label>Create a new Category:</label>
+					<label>Name</label>
 					<input id="new_category_name" type="text" name="name">
+					<label>Icon</label>
+					<input id="new_category_name" type="text" name="icon">
+					<label>Code</label>
+					<input id="new_category_name" type="text" name="code">
 				</fieldset>
+				
 				
 		</div>
 	<footer>
