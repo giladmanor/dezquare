@@ -270,12 +270,16 @@ div#designer-samples a.sample {
 	background: url(../img/image-frame.png) left top no-repeat;
 	float: left;
 	height: 250px;
-	padding: 0px 0px 0px 1px;
+	padding: 0px 1px 0px 1px;
+	line-height: 250px;
 	margin-right: 22px;
 	position: relative;
-	width: 230px;
+	width: 229px;
 }
-div#designer-samples a.sample img { display: block; }
+div#designer-samples a.sample img { 
+	max-height: 100%;
+	max-width: 100%;
+}
 div#designer-samples a.last { margin-right: 0px; }
 div#designer-samples span.info {
 	bottom: 2px;
@@ -744,7 +748,7 @@ div.formfield {
 }
 input.text {
 	background: #fff;
-	color: #b2b2b2;
+	color: #666;
 	border: 1px solid #ececec;
 	font-family: 'PTSansRegular';
 	font-size: 12px;
@@ -755,7 +759,7 @@ input.text {
 }
 textarea {
 	background: #fff;
-	color: #b2b2b2;
+	color: #666;
 	border: 1px solid #ececec;
 	font-family: 'PTSansRegular';
 	font-size: 12px;
@@ -767,7 +771,7 @@ textarea {
 	resize: none;
 }
 label.abs {
-	color: #b2b2b2;
+	color: #666;
 	font-family: 'PTSansRegular';
 	position: absolute;
 	left: 12px;
@@ -1488,8 +1492,16 @@ ul#portfolio-gallery div.col2 div.row1 {
 ul#portfolio-gallery div.col2 p { margin: 0px 0px 20px; }
 ul#portfolio-gallery .orange { color: #e86f45; }
 
-ul#portfolio-gallery div.image { margin-bottom: 10px; }
-ul#portfolio-gallery div.image img { display: block; }
+ul#portfolio-gallery div.image { 
+	margin-bottom: 10px; 
+	line-height: 450px;
+	height: 450px;
+	text-align: center;
+}
+ul#portfolio-gallery div.image img { 
+	max-height: 100%;
+	max-width: 100%;
+}
 ul#portfolio-gallery div.meta { overflow: hidden; }
 ul#portfolio-gallery a.download {
 	background: url(../img/icons.png) -124px top no-repeat;
@@ -1572,7 +1584,7 @@ div.center-wrap div.tall {
 form.settings-form  label.abs,
 form.settings-form div.combobox,
 form.settings-form div.agree {
-	color: #b2b2b2;
+	color: #666;
 }
 form.settings-form h3 {
 	font-size: 24px;
@@ -1668,7 +1680,7 @@ div#pricing-levels-sliders { display: none; }
 div#pricing-levels-sliders { padding-top: 20px; }
 div#pricing-levels-sliders div.entity { margin-bottom: 20px; }
 div#pricing-levels-sliders div.entity-name {
-	color: #B2B2B2;
+	color: #666;
 	padding-top: 20px;
 	float: left;
 }
@@ -1710,7 +1722,7 @@ div.edit-photo-form div.photo img { display: block; }
 div.edit-photo-form div.photo div.image { margin-bottom: 10px; }
 div.edit-photo-form div.photo { float: left; }
 div.edit-photo-form div.image-details { margin-left: 235px; }
-div.image-details { color: #b2b2b2; }
+div.image-details { color: #666; }
 div.image-details div.form-row { 
 	margin-bottom: 15px; 
 	position: relative;
@@ -1980,6 +1992,8 @@ span.price-slider-tooltip input {
 	font-size: 13px;
 	font-weight: bold;
 	font-family: Arial;
+	padding: 0px;
+	margin: 0px;
 	text-align: center;
 	width: 100%;
 }
