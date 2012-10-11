@@ -101,7 +101,7 @@ div#header div#profile-menu div.expanded a.last { border: 0px none; }
 
 div#content { 
 	overflow: hidden;
-	padding-bottom: 50px; 
+	padding-bottom: 42px; 
 }
 div#sidebar {
 	float: left;
@@ -268,17 +268,22 @@ div#designer-samples div.title {
 }
 div#designer-samples a.sample {
 	background: url(../img/image-frame.png) left top no-repeat;
+	border: 1px solid #ddd;
 	float: left;
 	height: 250px;
-	padding: 0px 1px 0px 1px;
+	padding: 0px;
+	box-shadow: 0px 0px 2px #999;
 	line-height: 250px;
-	margin-right: 22px;
+	margin-right: 20px;
+	overflow: hidden;
 	position: relative;
-	width: 229px;
+	width: 230px;
 }
 div#designer-samples a.sample img { 
-	max-height: 100%;
-	max-width: 100%;
+	min-height: 100%;
+	min-width: 100%;
+	max-width: 150%;
+	max-height: 150%;
 }
 div#designer-samples a.last { margin-right: 0px; }
 div#designer-samples span.info {
@@ -1551,7 +1556,8 @@ div#designer-samples a.upload-image span {
 	position: absolute;
 	left: 0px;
 	text-align: center;
-	top: 30px;
+	line-height: normal;
+	top: 170px;
 	width: 100%;
 }
 
