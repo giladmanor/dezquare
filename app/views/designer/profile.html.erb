@@ -34,10 +34,11 @@
 						
 						<%
 						end
-						
+						i= (@user.id==@author.id) ? 1 : 0
 						@author.images.each{|img|
+							i+=1
 							%>
-							<a href="/designer/enlarged_view/<%=img.id%>" class="sample">
+							<a href="/designer/enlarged_view/<%=img.id%>" class="sample <%= (i%3==0) ? 'last' : ''%>">
 								<img src="/repository/<%=img.file_path%>" alt="<%=img.name%>" />
 							</a>
 							<%

@@ -8,20 +8,25 @@
 		<%end%>
 	</div>
 	<div class="sidebar-white-box">
-		<div id="sidebar-summary">
-			<div class="row">
-				<div class="col1">Age:</div>
-				<div class="col2"><%=@author.dob.nil? ? '' : (Time.now.year-@author.dob.year)%></div>
+		<%if @editable && (@author.dob.nil?)%>
+			<a href="/designer/settings">Give us the basics</a>
+		<%else%>
+			<div id="sidebar-summary">
+				<div class="row">
+					<div class="col1">Age:</div>
+					<div class="col2"><%=@author.dob.nil? ? 'Unspecified' : (Time.now.year-@author.dob.year)%></div>
+				</div>
+				<div class="row">
+					<div class="col1">From:</div>
+					<div class="col2"><%=(@author.location.nil? || @author.location=="") ? 'Unspecified' : @author.location%></div>
+				</div>
+				<div class="row">
+					<div class="col1">Languages:</div>
+					<div class="col2"><%=raw(@author.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
+				</div>
 			</div>
-			<div class="row">
-				<div class="col1">From:</div>
-				<div class="col2"><%=@author.location%></div>
-			</div>
-			<div class="row">
-				<div class="col1">Languages:</div>
-				<div class="col2"><%=raw(@author.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
-			</div>
-		</div>
+		<%end%>
+		
 	</div>
 	<div class="title">
 		About <%=@author.name%>:
@@ -32,7 +37,11 @@
 		<%end%>
 	</div>
 	<div class="sidebar-white-box">
-		<%=@author.about%>
+		<%if @editable && (@author.about.nil? || @author.about=="")%>
+			<a href="/designer/settings">Add a short Bio</a>
+		<%else%>
+			<%=@author.about%>
+		<%end%>
 	</div>
 	
 	<div class="sidebar-white-box">
