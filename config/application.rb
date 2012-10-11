@@ -69,6 +69,8 @@ module Dezquare
     
     config.action_mailer.perform_deliveries = true
     config.action_mailer.raise_delivery_errors = true
-      
+    
+    #this line includes all subdirectories of the model folder
+    config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]  
   end
 end
