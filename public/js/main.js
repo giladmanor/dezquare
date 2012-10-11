@@ -70,7 +70,7 @@ $(document).ready(function(){
 					BindComboboxEvents(clone.find(".combobox"));
 					field.find(".button").hide();
 					field.find(".remove").show();
-					field.parent().find(".list").hide();
+					field.parent().find(".list-scroll").hide();
 				}					
 			});
 			field.find(".remove").click(function(e){
@@ -113,10 +113,10 @@ $(document).ready(function(){
 		
 		function BindComboboxEvents(combobox)
 		{
-			var list = combobox.children("div.list");
+			var list = combobox.find(".list-scroll");
 			var value = combobox.children("div.value");
 			var input = combobox.children("input");
-			list.children("div.option").click(function(){
+			list.find("div.option").click(function(){
 				var val = $(this).text();
 				input.val(val);
 				value.text(val);
@@ -161,13 +161,6 @@ $(document).ready(function(){
 			newClientPopup = $("#new-client-popup")
 			rejectProjectPopup = $("#reject-project-popup");
 			completeDesignPopup = $("#complete-design-popup");
-			
-			$(".combobox.language").each(function(){
-				if ($(this).find(".value").text() == "Add language")
-				{
-					$(this).find("input").val("");
-				}
-			});
 		};
 		
 		var BindEvents = function()
@@ -303,10 +296,6 @@ $(document).ready(function(){
 				e.preventDefault();
 				rejectProjectPopup.hide();
 				overlay.hide();
-			});
-			
-			$("div.combobox").each(function(){
-				BindComboboxEvents($(this));
 			});
 			
 			$("a.cancel-design").click(function(e){
@@ -771,6 +760,35 @@ $(document).ready(function(){
 					height: 20,
 					buttonText: "Upload profile photo"
 				});
+			});
+			
+			$("#ccs").each(function(){
+				$(this).find(".list-scroll").show();
+				$(this).find(".list").jScrollPane();
+				console.log(this);
+			});
+			
+			$(".combobox").each(function(){
+				var combo = $(this)
+				if (combo.hasClass("language"))
+				{
+					if (combo.find(".value").text() == "Add language")
+					{
+						combo.find("input").val("");
+					}
+				}
+				
+				var list = combo.find(".list");
+				var listScroll = $("<div/>", { "class": "list-scroll" });
+				var listInside = $("<div/>", { "class": "list-inside" });
+				var options = list.children(".option");
+				listInside.append(options);
+				list.append(listInside).before(listScroll);
+				listScroll.append(list).show();	
+				list.jScrollPane();
+				listScroll.hide();
+				
+				BindComboboxEvents(combo);
 			});
 		};
 		/* End Base Functions */
