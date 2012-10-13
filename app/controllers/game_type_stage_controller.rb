@@ -6,7 +6,7 @@ class GameTypeStageController < AdminController
   end
   
   def stage
-    @entity = params[:id].nil? ? {} : GameTypeStage.find(params[:id])
+    @entity = params[:id].nil? ? GameTypeStage.new : GameTypeStage.find(params[:id])
     unless params[:game_type_id].nil?
       @parent = GameType.find(params[:game_type_id])
     else

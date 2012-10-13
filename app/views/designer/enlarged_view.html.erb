@@ -33,13 +33,14 @@
 									<div class="row1">
 										<span class="orange">Designer:</span> <%=image.user.full_name%><br/>
 										<span class="orange">Type:</span> <%=image.category.nil? ? '' : image.category.name%>
-									</div>
-									<h4>About <%=image.name%>
 										<%if @editable%>
-										<a href="/designer/edit_photo/<%=image.id%>" class="edit">
+										<a href="/designer/edit_photo/<%=image.id%>" style="float: right;margin-top: -15px;" class="edit">
 											<img src="/img/pen.png" alt="Edit" />
 										</a>
 										<%end%>
+									</div>
+									<h4>About <%=image.name%>
+										
 									</h4>
 									<p>
 										<%=image.description%>

@@ -3,6 +3,7 @@
 	<header><h3>Create a new <span style="font-style: italic;color: gray">
 		<%=params[:controller].split("_").join(" ")%></span> for <a href="/game_type/list/"><%=@parent.name%></a></h3></header>
 		<div class="module_content">
+				<input type="hidden" name="id" value="<%=@entity.id%>" />
 				<fieldset>
 					<label>Stage Order</label>
 					<input name="ord" type="text" style="width:52%;" value="<%=@entity.ord%>">
@@ -10,17 +11,17 @@
 				<fieldset>
 					<label>Implementor</label>
 					<select name="imp" style="width:52%;">
-						<option>CategoryChooser</option>
-						<option>ImageRater</option>
-						<option>DesignerSelector</option>
-						<option>DetailsEditor</option>
-						<option>Registrator</option>
-						<option>Rocker</option>
+						<option <%=@entity.imp=="category_selector" ? "selected" : ""%>>category_selector</option>
+						<option <%=@entity.imp=="image_rater" ? "selected" : ""%>>image_rater</option>
+						<option <%=@entity.imp=="designer_selector" ? "selected" : ""%>>designer_selector</option>
+						<option <%=@entity.imp=="details_editor" ? "selected" : ""%>>details_editor</option>
+						<option <%=@entity.imp=="registrator" ? "selected" : ""%>>registrator</option>
+						<option <%=@entity.imp=="rocker" ? "selected" : ""%>>rocker</option>
 					</select>
 				</fieldset>
 				<fieldset>
 					<label>Params</label>
-					<textarea name="params" rows="5"><%=@entity.params%></textarea>
+					<textarea name="arguments" rows="5"><%=@entity.arguments%></textarea>
 				</fieldset>
 				
 				<div class="clear"></div>

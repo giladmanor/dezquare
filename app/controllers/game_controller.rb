@@ -3,15 +3,35 @@ class GameController < SiteController
   
   def index
     @game = Game.new
-    @game.game_type=GameType.find_by_name(params[:id] || "test")
+    @game.type=GameType.find_by_name(params[:id] || "test")
     @game.user=@user
+    @game.category=Category.find(params[:category_id]) unless params[:category_id].nil?  
     @game.save
     
-    render @game.stage_view
+    session[:game_id]=@game.id
+    logger.debug @game.view
+    render @game.view
   end
   
   
-  def stage
+  def next
+    begin
+      @game=Game.find(session[:game_id])
+    rescue
+      redirect_to :action=>:index
+      return
+    end
+    
+    @game.set(params) unless @game.is_complete 
+    
+    view = @game.view    
+      
+    
+    unless @game.is_complete
+      render view
+    else
+      redirect_to :controller=>:site,:action=>:index
+    end
     
   end
   

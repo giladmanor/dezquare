@@ -12,9 +12,9 @@
 						Category.all.select.each{|c|
 							%>
 							<li>
-								<a href="#" class="<%=c.code%>" onclick="$('input[name=categoty_id]').val(<%=c.id%>)">
+								<a href="#" class="<%=c.code%>" onclick="$('input[name=category_id]').val(<%=c.id%>)">
 									<img src="/img/icons/<%=c.icon%>.png" alt="<%=c.name%>" class="normal" />
-									<img src="img/icons/<%=c.icon%>-hover.png" alt="<%=c.name%>" class="hover" />
+									<img src="/img/icons/<%=c.icon%>-hover.png" alt="<%=c.name%>" class="hover" />
 									<span class="text"><%=raw(c.name)%></span>
 								</a>
 							</li>
@@ -27,10 +27,10 @@
 					
 					<div class="wide-page-wrap" id="game-step-2">
 						<h3 class="border">Select the price that fits you</h3>
-						<form action="/game/stage/<%=@game.id%>">
-							<input type="hidden" name="categoty_id"  />
+						<form action="/game/next" method="post">
+							<input type="hidden" name="category_id"  />
 							<div class="price-slider-holder">
-								<div class="price-slider" id="game-price"></div>
+								<div class="price-slider" id="max_price"></div>
 							</div>
 							<div class="buttons clearfix">
 								<a href="#" class="black-button big-font" id="submit">

@@ -75,9 +75,7 @@ class DesignerController < SiteController
     redirect_to  :action => "profile"
   end
   
-  def load_user
-    @user=User.find(session[:user_id])
-  end
+  
   
   def reset_password
     #TODO check if the user is a designer and send reset password mail

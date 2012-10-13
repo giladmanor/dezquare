@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009202052) do
+ActiveRecord::Schema.define(:version => 20121012090026) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(:version => 20121009202052) do
     t.string   "imp"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.text     "params"
+    t.text     "arguments"
   end
 
   add_index "game_type_stages", ["game_type_id"], :name => "index_game_type_stages_on_game_type_id"
@@ -66,9 +66,12 @@ ActiveRecord::Schema.define(:version => 20121009202052) do
     t.integer  "game_type_id"
     t.integer  "game_type_stage_id"
     t.integer  "user_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.boolean  "is_complete"
+    t.integer  "category_id"
+    t.integer  "project_id"
+    t.decimal  "max_price",          :precision => 10, :scale => 0
   end
 
   add_index "games", ["game_type_id"], :name => "index_games_on_game_type_id"

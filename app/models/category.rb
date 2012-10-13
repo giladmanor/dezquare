@@ -5,4 +5,16 @@ class Category < ActiveRecord::Base
   
   has_many :designer_categories
   
+  has_many :image_categories
+  has_many :images, :through=>:image_categories
+  
+  
+  def image_grab(pool_size)
+    grabbed=self.images
+    if grabbed.length<pool_size
+      grabbed += parent.image_grab(pool_size-grabbed.length) unless parent.nil?
+    end
+    grabbed
+  end
+  
 end

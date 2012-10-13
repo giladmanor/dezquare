@@ -74,7 +74,11 @@
 													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
 														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
 													</span>
-													<span class="text"><%=t.name%></span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
 												</div>
 												<%
 												}
@@ -88,7 +92,11 @@
 													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
 														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
 													</span>
-													<span class="text"><%=t.name%></span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
 												</div>
 												<%
 												}
@@ -102,7 +110,11 @@
 													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
 														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
 													</span>
-													<span class="text"><%=t.name%></span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
 												</div>
 												<%
 												}
