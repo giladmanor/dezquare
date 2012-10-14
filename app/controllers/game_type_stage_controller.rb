@@ -18,7 +18,7 @@ class GameTypeStageController < AdminController
   
   def set
     @parent = GameType.find(params[:game_type_id]) unless params[:game_type_id].nil?
-    @entity = params[:id].nil? ? GameTypeStage.new : GameTypeStage.find(params[:id])
+    @entity = (params[:id].nil? || params[:id]=="") ? GameTypeStage.new : GameTypeStage.find(params[:id])
     return if params[:do]=='new' || params[:do]=="edit"
     
     attr = params.delete_if{|k,v| !@entity.respond_to?(k.to_sym)}

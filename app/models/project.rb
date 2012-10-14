@@ -8,4 +8,16 @@ class Project < ActiveRecord::Base
   
   
   
+  
+  
+  def start
+    
+  end
+  
+  def grab
+    
+  end
+  
+  
+  
 end

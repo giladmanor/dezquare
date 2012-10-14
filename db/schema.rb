@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012090026) do
+ActiveRecord::Schema.define(:version => 20121014003723) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(:version => 20121012090026) do
   add_index "designer_categories", ["category_id"], :name => "index_designer_categories_on_category_id"
   add_index "designer_categories", ["user_id"], :name => "index_designer_categories_on_user_id"
 
+  create_table "game_designers", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "game_designers", ["game_id"], :name => "index_game_designers_on_game_id"
+  add_index "game_designers", ["user_id"], :name => "index_game_designers_on_user_id"
+
   create_table "game_image_rates", :force => true do |t|
     t.integer  "game_id"
     t.integer  "image_id"
@@ -48,9 +58,10 @@ ActiveRecord::Schema.define(:version => 20121012090026) do
     t.integer  "game_type_id"
     t.integer  "ord"
     t.string   "imp"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.text     "arguments"
+    t.string   "progress_label"
   end
 
   add_index "game_type_stages", ["game_type_id"], :name => "index_game_type_stages_on_game_type_id"
@@ -158,6 +169,8 @@ ActiveRecord::Schema.define(:version => 20121012090026) do
     t.string   "status"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
+    t.text     "info"
+    t.string   "file_types"
   end
 
   add_index "projects", ["category_id"], :name => "index_projects_on_category_id"

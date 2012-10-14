@@ -1,0 +1,85 @@
+﻿				<div class="wide-page-holder game-step" id="game-step-3">
+					<div class="wide-page-wrap">
+						<h2>Add details</h2>
+						<h4>Tell us about your design</h4>
+						<form action="/game/next" method="post" id="game5-form">
+							<fieldset>
+								<div class="formfield">
+									<input type="text" class="text" name="title" />
+									<label class="abs">Give your design a title</label>
+									<label class="form-error">Please insert a title</label>
+								</div>
+								
+								<div class="formfield">
+									<textarea name="info"></textarea>
+									<label class="abs">
+										What should we know about your design? <br/>
+										What it it's purpose? <br/>
+										What should it include?<br/>
+									</label>
+									<label class="form-error">Please insert some info</label>
+								</div>
+								
+								<div class="file-type">
+									<div class="label">What type of files would you need?</div>
+									<div class="formats">
+										<div class="col1">
+											<div class="format">
+												<span class="checkbox checked">
+													<input type="checkbox" name="filetype[]" value="jpg" checked="checked" />
+												</span>
+												<span class="text">.JPG</span>
+											</div>
+											<div class="format">
+												<span class="checkbox">
+													<input type="checkbox" name="filetype[]" value="png" />
+												</span>
+												<span class="text">.PNG</span>
+											</div>
+											<div class="format">
+												<span class="checkbox checked">
+													<input type="checkbox" name="filetype[]" value="psd" checked />
+												</span>
+												<span class="text">.PSD</span>
+											</div>
+										</div>
+										<div class="col2">
+											<div class="format">
+												<span class="checkbox">
+													<input type="checkbox" name="filetype[]" value="gif"  />
+												</span>
+												<span class="text">.GIF</span>
+											</div>
+											<div class="format">
+												<span class="checkbox">
+													<input type="checkbox" name="filetype[]" value="fla" />
+												</span>
+												<span class="text">.FLA</span>
+											</div>
+											<div class="format">
+												<span class="checkbox">
+													<input type="checkbox" name="filetype[]" value="other" />
+												</span>
+												<span class="text">Other</span>
+												<input type="text" class="text" name="other" />
+											</div>
+										</div>
+									</div>
+								</div>
+							</fieldset>
+							
+							<div class="buttons2 clearfix">
+								<a href="game3.html" class="black-button big-font">
+									<img src="/img/arrow-left.png" />
+									Back
+								</a>
+								
+								<a href="#" class="black-button big-font next" id="submit-step-5">
+									Next
+									<img src="/img/arrow-right.png" />
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			

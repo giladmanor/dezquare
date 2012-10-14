@@ -7,4 +7,10 @@ class GameType < ActiveRecord::Base
     return self.game_type_stages[i+1].nil? , self.game_type_stages[i+1]
   end
   
+  def labels
+    self.game_type_stages.map{|s| s.progress_label}.uniq
+  end
+  
+  
+  
 end

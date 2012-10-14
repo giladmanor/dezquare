@@ -68,8 +68,13 @@ class DesignerController < SiteController
     y=params[:year]
     d=params[:day] || 1
     
-    logger.debug Date.strptime("{ #{y}, #{m}, #{d} }", "{ %Y, %B, %d }")
-    @user.dob=Date.strptime("{ #{y}, #{m}, #{d} }", "{ %Y, %B, %d }")
+    begin
+      logger.debug Date.strptime("{ #{y}, #{m}, #{d} }", "{ %Y, %B, %d }")
+      @user.dob=Date.strptime("{ #{y}, #{m}, #{d} }", "{ %Y, %B, %d }")
+    rescue
+      logger.debug "invalid date format"
+    end
+    
     
     @user.save
     redirect_to  :action => "profile"

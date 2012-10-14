@@ -11,6 +11,9 @@ class Game < ActiveRecord::Base
   belongs_to :category
   belongs_to :project
   
+  has_many :game_designers
+  has_many :designers, :through=>:game_designers, :class_name=>"User", :foreign_key=>"user_id", :source=>:user
+  
   
   def set(params)
     self.stage.set(self,params)

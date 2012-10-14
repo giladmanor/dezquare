@@ -1,0 +1,147 @@
+
+				<div class="wide-page-holder game-step" id="game-step-3">
+					<div class="wide-page-wrap">
+						<h2>Let’s get to know your taste!</h2>
+						<h3 class="congrats-title">
+							<span>Congrats!</span>
+							We found your matches!
+						</h3>
+						<form action="/game/next" method="post">
+							<div id="found-matches">
+								<%
+								
+								image_rates=@game.game_image_rates
+								
+								designers = image_rates.map{|r| r.image.user}.uniq
+								
+								selected_tags = @game.images.map{|si| si.tags}.flatten.uniq
+								
+								others = User.all.select{|u| u.designer}.map{|dez|
+									dez_tags = dez.images.map{|dezi| dezi.tags}.flatten.uniq
+									rate = (dez_tags+selected_tags).length - (dez_tags+selected_tags).uniq.length 
+									{:d=>dez, :r=>rate}
+								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
+								
+								designers = (designers+others).uniq.take(3)
+								
+								designers.each{|d|
+									%>
+									<div class="found-match">
+										<div class="col1">
+											<span class="checkbox checked">
+												<input type="checkbox" name="designers[]" value="<%=d.id%>" checked="checked" />
+											</span>
+										</div>
+										<div class="col2">
+											<div class="top-matches">
+												<div class="match">
+													<div class="profile-image">
+														<img src="/user_avatars/<%= d.avatar.nil? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" 
+															style="max-width: 56px;max-height: 56px"/>
+													</div>
+													<div class="details">
+														<div class="big">
+															<a href="profile-public-square.html"><%=d.full_name%><%=(d.location.nil? || d.location=="") ? '' : ", #{d.location}"%></a>
+														</div>
+														<div class="small">Languages: <span><%=raw(d.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></span></div>
+														
+													</div>												
+												</div>											
+											</div>
+											<div class="description">
+												<%=d.about%> 
+											</div>
+										</div>
+										<div class="col3">
+											<div class="title"><%=d.full_name%>’s Taste:</div>
+											<div class="images">
+												<%
+												images =d.images.take(3) 
+												images.each{|di|
+													%>
+													<img src="/repository/<%=di.file_path%>" style="max-width: 58px;max-height: 58px"/>
+													<%
+												}
+												%>
+												
+											</div>
+											<ul>
+												<%
+												tags = images.map{|i| i.tags}.flatten.uniq
+												
+												tags.take(3).each{|t|
+													%>
+													<li><%=t.name%></li>
+													<%
+												}
+												%>
+											</ul>
+										</div>
+									</div>	
+									<%
+								}
+								%>
+								
+								
+								
+							</div>
+							<div class="buttons2 clearfix">
+								<a href="game2.html" class="black-button big-font">
+									<img src="/img/arrow-left.png" class="normal" />
+									<img src="/img/arrow-left-orange.png" class="hover" />
+									Back
+								</a>
+								<a href="#" class="black-button big-font next" id="submit-game4">
+									Next
+									<img src="/img/arrow-right.png" class="normal" />
+									<img src="/img/arrow-right-orange.png" class="hover" />
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+			
+
+
+<div id="nothing-selected-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Please select a match</div>			
+			<div class="message">
+				To Kickoff the design you must select at least one designer match or<br/>
+				replay the game to get different matches.
+			</div>
+			<div class="never-show">
+				<span class="checkbox checked">
+					<input type="submit" name="never-show" />
+				</span>
+				<span class="text">Never show me that again</span>
+			</div>
+			<div class="buttons clearfix">
+				<a href="game2.html" class="replay">Replay</a>
+				<a href="#" class="orange-button big-font">OK</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="submit-selected-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want to<br/>remove this match?</div>			
+			<div class="message">
+				The designers we matched for you will need to accept your invitation.<br/>
+				we highly recommand to send the invitation to all of your matches.<br/>
+				You’ll be surprised with how quickly they get your taste.<br/>
+			</div>
+			<div class="never-show">
+				<span class="checkbox checked">
+					<input type="submit" name="never-show" />
+				</span>
+				<span class="text">Never show me that again</span>
+			</div>
+			<div class="buttons clearfix">
+				<a href="#" class="replay">Cancel</a>
+				<a href="game4.html" class="orange-button big-font">Yes</a>
+			</div>
+		</div>
+	</div>
