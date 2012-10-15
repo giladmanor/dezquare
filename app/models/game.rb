@@ -14,6 +14,8 @@ class Game < ActiveRecord::Base
   has_many :game_designers
   has_many :designers, :through=>:game_designers, :class_name=>"User", :foreign_key=>"user_id", :source=>:user
   
+  has_many :game_matches
+  
   
   def set(params)
     self.stage.set(self,params)
@@ -25,7 +27,7 @@ class Game < ActiveRecord::Base
     if self.stage.nil?
       self.stage = self.type.game_type_stages.first 
     else
-      if self.stage.complete?(self)
+      while !self.stage.nil? && self.stage.complete?(self)
         self.is_complete, self.stage = self.type.stage_after(stage)
       end
     end

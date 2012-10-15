@@ -1,0 +1,20 @@
+
+<%
+if @user.nil?
+	%>
+	<a id="login" class="header-button" href="#">Login / Signup</a>
+	<%
+else
+	%>
+	<div id="profile-menu" class="shopper">
+		<a href="/site/settings" class="base">Settings</a>
+		<div class="expanded">
+			<a href="/site/dashboard" class="last">Dashboard</a>
+			<a href="/site/logout" class="last">Logout</a>
+		</div>
+	</div>
+	<%
+end
+
+%>
+				

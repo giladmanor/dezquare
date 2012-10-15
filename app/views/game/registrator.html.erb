@@ -1,56 +1,13 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>Dezquare</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script></head>
-<body>
-	<div id="page">
-		<div id="header">
-			<div class="page-content clearfix">
-				<h1 id="logo">
-					<a href="index.html">
-						<img src="img/logo.png" alt="Dezquare" />
-					</a>
-				</h1>
-				
-				<a id="login" class="header-button" href="#">Login / Signup</a>
-			</div>
-		</div>
-		
-		<div id="content">		
-			<div class="page-content">
-				<div id="game-bar" class="active-4">
-					<div class="step step1">
-						<span class="number">1</span>
-						<span class="name">Start a design</span>
-					</div>
-					<div class="step step2">
-						<span class="number">2</span>
-						<span class="name">Start a design</span>
-					</div>
-					<div class="step step3">
-						<span class="number">3</span>
-						<span class="name">Start a design</span>
-					</div>
-					<div class="step step4 active">
-						<span class="number">4</span>
-						<span class="name">Start a design</span>
-					</div>
-				</div>
 				<div class="wide-page-holder game-step" id="game-step-3">
 					<div class="wide-page-wrap">
 						<h2>You Rock!</h2>
 						<h4>Simply add your name. Email and Password<br/>to kickoff the design</h4>
-						<form action="game6.html" id="game5-form">
+						<form action="/game/next" method="post" id="game5-form">
 							<fieldset id="game-register">
 								<div class="form-row">
 									<label class="big-label">First Name:</label>
 									<div class="formfield">
-										<input type="text" class="text" name="first-name" />
+										<input type="text" class="text" name="name" />
 										<label class="abs">Enter your First name here</label>
 										<label class="form-error">Invalid First Name</label>
 									</div>
@@ -58,7 +15,7 @@
 								<div class="form-row">
 									<label class="big-label">Last Name:</label>
 									<div class="formfield">
-										<input type="text" class="text" name="last-name" />
+										<input type="text" class="text" name="name" />
 										<label class="abs">Enter your Last name here</label>
 										<label class="form-error">Invalid Last Name</label>
 									</div>
@@ -82,7 +39,7 @@
 								<div class="form-row">
 									<label class="big-label">Re-Password:</label>
 									<div class="formfield">
-										<input type="password" class="text" name="repeat-password" />
+										<input type="password" class="text" name="re_password" />
 										<label class="abs">Re-Enter Password</label>
 										<label class="form-error">Password does not match</label>
 									</div>
@@ -102,7 +59,7 @@
 							
 							<div class="buttons2 clearfix">
 								<a href="game4.html" class="black-button big-font">
-									<img src="img/arrow-left.png" />
+									<img src="/img/arrow-left.png" />
 									Back
 								</a>
 								<a href="#" class="next red-button" id="submit-step-6">
@@ -112,31 +69,16 @@
 						</form>
 					</div>
 				</div>
-			</div>			
-		</div>
-	</div>
-	
-	<div id="footer">
-		<div class="page-content">
-			<div id="copyright">&copy;dèzquare 2012</div>
-			<div id="footer-links">
-				<a href="about.html">About</a>
-				<span>|</span>
-				<a href="privacy.html">Privacy Policy</a>
-				<span>|</span>
-				<a href="terms.html">Terms of Use</a>
-			</div>
-		</div>
-	</div>
-	
+			
 	<div id="window-overlay"></div>
 	<div id="login-popup" class="popup">
 		<span class="close"></span>
 		<div class="popup-content">
 			<div class="title">Login to dezquare!</div>
-			<form action="index.html" method="post">
+			<form action="/site/login" method="post">
 				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
 				<div class="formfield">
+					<input type="hidden" class="text" name="callback" value="1" />
 					<input type="text" class="text" name="email" />
 					<label class="abs">E-mail address</label>
 				</div>
@@ -180,5 +122,3 @@
 		</div>
 	</div>
 	
-</body>
-</html>

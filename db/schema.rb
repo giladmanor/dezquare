@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121014003723) do
+ActiveRecord::Schema.define(:version => 20121015013249) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -53,6 +53,17 @@ ActiveRecord::Schema.define(:version => 20121014003723) do
 
   add_index "game_image_rates", ["game_id"], :name => "index_game_image_rates_on_game_id"
   add_index "game_image_rates", ["image_id"], :name => "index_game_image_rates_on_image_id"
+
+  create_table "game_matches", :force => true do |t|
+    t.integer  "game_id"
+    t.integer  "user_id"
+    t.integer  "rate"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "game_matches", ["game_id"], :name => "index_game_matches_on_game_id"
+  add_index "game_matches", ["user_id"], :name => "index_game_matches_on_user_id"
 
   create_table "game_type_stages", :force => true do |t|
     t.integer  "game_type_id"

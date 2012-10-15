@@ -1,9 +1,10 @@
 class GameController < SiteController
-  
+  before_filter :load_user
   
   def index
     @game = Game.new
     @game.type= GameType.all.first
+    
     if params[:id].present?
       @game.type= GameType.find_by_name(params[:id])
     end
@@ -26,15 +27,15 @@ class GameController < SiteController
       return
     end
     
-    @game.set(params) unless @game.is_complete 
+    @game.user = @user unless @user.nil?
     
+    @game.set(params) unless @game.is_complete 
     view = @game.view    
-      
     
     unless @game.is_complete
       render view
     else
-      redirect_to :controller=>:site,:action=>:index
+      redirect_to :controller=>:site,:action=>:dashboard
     end
     
   end

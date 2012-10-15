@@ -437,11 +437,11 @@ $(document).ready(function(){
 				form.find("label.form-error").hide();
 				var errors = false;
 				
-				var firstNameField = form.find("input[name=first-name]");
-				var lastNameField = form.find("input[name=last-name]");
+				var firstNameField = form.find("input[name=name]");
+				var lastNameField = form.find("input[name=name]");
 				var emailField = form.find("input[name=email]");
 				var passwordField = form.find("input[name=password]");
-				var repeatPasswordField = form.find("input[name=repeat-password]");
+				var repeatPasswordField = form.find("input[name=re_password]");
 				
 				if ($.trim(firstNameField.val()) == "")
 				{

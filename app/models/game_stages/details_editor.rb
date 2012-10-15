@@ -7,17 +7,16 @@ class DetailsEditor < StageImplementor
     end
     p = game.project
     p.title=params[:title]
-    p.info=params[:info]
-    p.file_types=params[:file_types]
+    p.info=params[:description]
+    p.file_types=params[:filetype].join(", ")
     
     p.category=game.category
-    p.
-    
     game.project.save
   end
   
   def self.complete?(game,arguments)
-    false
+    p = game.project
+    !p.nil? && !p.title.nil? && !p.info.nil? && !p.file_types.nil? 
   end
   
   def self.default_arguments

@@ -24,7 +24,13 @@
 								
 								designers = (designers+others).uniq.take(3)
 								
+								
+								
+								
 								designers.each{|d|
+									m=GameMatch.new
+									m.user=d
+									@game.game_matches<<m 
 									%>
 									<div class="found-match">
 										<div class="col1">
@@ -86,6 +92,8 @@
 								
 							</div>
 							<div class="buttons2 clearfix">
+								
+								
 								<a href="game2.html" class="black-button big-font">
 									<img src="/img/arrow-left.png" class="normal" />
 									<img src="/img/arrow-left-orange.png" class="hover" />
@@ -118,7 +126,7 @@
 				<span class="text">Never show me that again</span>
 			</div>
 			<div class="buttons clearfix">
-				<a href="game2.html" class="replay">Replay</a>
+				<a href="/game/index" class="replay">Replay</a>
 				<a href="#" class="orange-button big-font">OK</a>
 			</div>
 		</div>

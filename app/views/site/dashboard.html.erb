@@ -1,0 +1,139 @@
+		<div id="content">
+			<div class="page-content">
+				
+				<%=render "/designer/cover"%>
+				<div id="sidebar">
+					<a href="/game/index" class="orange-button">Get a new design?</a>
+					<div class="title">
+						<a href="shopper-latest-designs.html">Latest Designs</a>
+					</div>
+					<div class="latest-designs">
+						<%
+						#active projects project.status!=:started
+						
+						@user.projects_out.reject{|p| p.status=="started"}.each{|project|
+							%>	
+							<div class="design">
+								<div class="col1">
+									<div class="name">
+										<a href="shopper-latest-designs.html"><%=project.title%></a>
+									</div>
+									<div class="by">for <span><%=project.designer.full_name%></span></div>
+									<div class="started">Started: 20 MAY</div>
+									<div class="status">Status: <%=project.display_status%></div>
+								</div>
+								<div class="col2">
+									<%
+									unless project.status==:completed
+										%>
+										<a href="/site/complete_project/<%=project.id%>" class="sidebar-mark-complete">Mark<br/>Complete!</a>
+										<%	
+									else
+										%>
+										<div class="completed">
+											<img src="img/bkg-checked-2.png" /><br/>
+											Completed
+										</div>
+										<%
+									end
+									%>
+									
+								</div>
+							</div>	
+							
+							
+							<%
+						}
+						
+						if @user.projects_out.reject{|p| p.status!=:started}.length==0
+							%>
+							<span>No designed in progress</span>
+							<%
+						end
+						
+						%>
+					</div>
+				</div>
+				<div id="main">
+					<div class="white-band-title">
+						<h3>You've Got Matched!</h3>
+					</div>
+					
+					<div id="match-projects" class="white-box">
+						<%
+						#initiated projects project.status==:started
+						
+						@user.projects_out.select{|p| p.status=="started"}.each{|project|
+							%>
+							
+							<div class="project">
+								<div class="basic">
+									<div class="icon">
+										<img src="/img/icons/business-cards.png" />
+									</div>
+									<div class="name-and-client">
+										<div class="name single"><%=project.title%></div>
+									</div>
+									<div class="action wider">
+										<a href="#" class="black-button esmall-font cancel-design">Cancel Design</a>
+										<a href="#" class="pending">Pending Kickoff</a>
+									</div>
+								</div>
+								<div class="detailed">
+									<div class="col1">
+										<div class="title">About the desired <%=project.category.name%></div>
+										<div class="about-project">
+											<%=project.info%>
+										</div>
+									</div>
+									<div class="col2">
+										<div class="title">Top Matches</div>
+										<div class="top-matches">
+											<%
+											unless project.game.nil?
+												matches=project.game.game_matches.each{|match|
+													dez = match.user
+													%>
+													<div class="match">
+														<div class="profile-image">
+															<img src="/user_avatars/<%= dez.avatar.nil? ? "designer_profile_default.jpg" : dez.avatar%>" alt="My Profile Photo" style="max-width: 56px"/>
+														</div>
+														<div class="details">
+															<div class="big">
+																<a href="profile-public.html"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
+															</div>
+															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
+															
+														</div>
+														<div class="status">Pending</div>
+													</div>		
+													<%
+													}
+											else
+												%>
+												No game 
+												<%	
+											end
+											%>
+										</div>
+									</div>
+								</div>
+								<div class="last-row">
+									<div class="col1">
+										<div class="payment">Cost: <%=project.game.nil? ? 'Unspecified' : "$#{project.game.max_price}"%></div>
+									</div>
+									<div class="col2">
+										<div class="date"><%=project.created_at.strftime("%I:%M%p, %e %b %Y")%></div>
+									</div>
+								</div>
+							</div>		
+							<%
+						}
+						%>					
+						
+						
+					</div>
+				</div>
+			</div>			
+		</div>
+	

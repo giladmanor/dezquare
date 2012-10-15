@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  game: 
+  user: 
+  rate: 1
+
+two:
+  game: 
+  user: 
+  rate: 1

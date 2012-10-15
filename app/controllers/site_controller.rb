@@ -1,7 +1,7 @@
 class SiteController < ApplicationController
   
-  before_filter :load_user, :except=>[:login, :index]
-  before_filter :shopper_zone, :only => [:shopper_dashboard, :shopper_settings]
+  before_filter :load_user, :except=>[:login]
+  before_filter :shopper_zone, :only => [:dashboard, :settings]
   
   def index
     
@@ -13,20 +13,20 @@ class SiteController < ApplicationController
     if !@user.nil? && @user.password==params[:password]
       session[:user_id]=@user.id
       logger.debug "##############################################################################################################"
-      if @user.shopper
-        
-        redirect_to :action=>:dashboard
-      else
-        redirect_to :controller=>:designer,:action=>:dashboard  
-      end
       
-      return
+      if params[:callback].nil?
+        if @user.shopper 
+          redirect_to :action=>:dashboard
+        else
+          redirect_to :controller=>:designer,:action=>:dashboard  
+        end
+        return  
+      end
     end
+    
     loc = request.referer.split('?')[0].split('/').reverse
-    if loc[1]=="" 
-      loc[1]="site"
-      loc[0]="index"
-    end
+    loc = ["index","site"] if loc[1]==""
+    
     redirect_to :controller=>loc[1], :action=>loc[0],:state=>"login", :error=>"Wrong email or password"
   end
   
@@ -35,16 +35,18 @@ class SiteController < ApplicationController
     redirect_to :action=>index
   end
   
-  def shopper_dashboard
-    
+  def dashboard
+    @author = @user
+    @editable=true
   end
   
-  def shopper_settings
-    
+  def settings
+    @author = @user
+    @editable=true
   end
   
   def shopper_zone
-    redirect_to :action=>:index if @user.nil?
+    redirect_to :action=>:index if @user.nil? || !@user.shopper
   end
   
   
