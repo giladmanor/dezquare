@@ -46,6 +46,9 @@
 			</div>
 			<h2 id="profile-name"><%=@author.full_name%></h2>
 			
+			<%
+			if @author.designer
+			%>
 			<div id="profile-status">
 		    	<div class="current" id="availability_selector">
 		        	<span  class="<%=@author.available ? "available" : "unavailable"%>"><%=@author.available ? "Available" : "Unavailable"%></span>
@@ -66,7 +69,9 @@
 		    
 		    
 		    </div>
-			
+			<%
+            end
+            %>
 			
 		</div>
 	</div>

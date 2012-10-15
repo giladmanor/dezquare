@@ -3,55 +3,43 @@
 
 				<div class="center-wrap">
 					<div class="center-wrap-box">
-						<form action="#" class="settings-form">
+						<form action="/site/set_details" class="settings-form" method="post">
 							<fieldset>
 								<div class="col1">
 									<h4>Account Details:</h4>
 									<div class="formfield">
-										<input type="text" class="text" name="first-name" />
-										<label class="abs">First name</label>
+										<input type="text" class="text" name="name" value="<%=@user.name%>"/>
+										<label class="abs"><%=@user.name%></label>
 										<label class="form-error">Invalid First name</label>
 									</div>
 									<div class="formfield">
-										<input type="text" class="text" name="last-name" />
-										<label class="abs">Last name</label>
+										<input type="text" class="text" name="l_name" value="<%=@user.l_name%>"/>
+										<label class="abs"><%=@user.l_name%></label>
 										<label class="form-error">Invalid Last name</label>
 									</div>
 									<div class="formfield">
-										<input type="text" class="text" name="email" />
-										<label class="abs">E-mail</label>
+										<input type="text" class="text" name="email" value="<%=@user.email%>"/>
+										<label class="abs"><%=@user.email%></label>
 										<label class="form-error">Invalid Email</label>
 									</div>
-									<h5 class="has-circle">More Settings:</h5>
-									<div class="agree clearfix">
-										<span class="checkbox">
-											<input type="hidden" name="suspend" />
-										</span>
-										<span class="text">Suspend my account</span>
-									</div>
-									<div class="agree clearfix">
-										<span class="checkbox">
-											<input type="hidden" name="delete" />
-										</span>
-										<span class="text">Completly delete my account</span>
-									</div>
+									
 								</div>
 								<div class="col2">
 									<h4>Change my password:</h4>
 									<div class="formfield">
-										<input type="password" class="text" name="old-password" />
+										<input type="password" class="text" name="old_password" />
 										<label class="abs">Enter old password</label>
 										<label class="form-error">Wrong password</label>
 									</div>
 									<div class="formfield">
-										<input type="password" class="text" name="new-password" />
+										<input type="password" class="text" name="new_password" />
 										<label class="abs">Choose a new password</label>
 										<label class="form-error">Invalid password</label>
 									</div>
 									<div class="formfield">
-										<input type="password" class="text" name="repeat-new-password" />
+										<input type="password" class="text" name="repeat_new_password" />
 										<label class="abs">Re-enter new password</label>
-										<label class="form-error">Password don't match</label>
+										<label class="form-error" <%=params[:error]=="PASSWORD" ? "style='display:block'" : ""%>>Password don't match</label>
 									</div>
 								</div>
 							</fieldset>
@@ -65,4 +53,4 @@
 				
 			</div>			
 		</div>
-	
+	<p style="height: 400px;">&nbsp;</p>

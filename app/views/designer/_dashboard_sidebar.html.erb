@@ -1,0 +1,91 @@
+<div id="sidebar">
+	<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
+	<%
+	projects = @user.projects_in
+	
+	if projects.empty?
+		%>
+		
+		<div class="title">Getting started</div>
+		<div class="sidebar-white-box">
+			<ol id="profile-completion">
+				<li>
+					<span>1.</span> 
+					<a href="#" style="height: 20px; width: 160px;<%=@user.avatar.nil? ? '' : "color:#60e148"%>">Upload profile photo</a>
+					<%
+					if !@user.avatar.nil?
+					%>
+					<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+					<%end%>
+				</li>
+				<li>
+					<span>2.</span> 
+					<a href="#" style="height: 20px; width: 160px;<%=@user.cover.nil? ? '' : "color:#60e148"%>">Upload cover photo</a>
+					<%
+					if !@user.cover.nil?
+					%>
+					<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+					<%end%>
+				</li>
+				<li>
+					<span>3.</span> 
+					<a href="/designer/edit_photo" style="height: 20px; width: 160px;<%=@user.images.length==0 ? '' : "color:#60e148"%>">Start your protfolio</a>
+					<%
+					if @user.images.length>0
+					%>
+					<img src="/img/bkg-checked-2.png" style="float: right;width: 16px;">
+					<%end%>
+				</li>
+				<li>
+					<span>4.</span> 
+					<a href="#" id="get-a-taste">Get a taste</a>
+				</li>
+				<li>
+					<span>5.</span> 
+					Get your first match
+				</li>
+			</ol>
+		</div>
+		<%
+	else
+		%>
+		<div class="title">
+			<a href="/designer/latest_designs">Latest Designs</a>
+		</div>
+		<div class="latest-designs">
+		<%
+		projects.each{|project|
+			%>
+			<div class="design">
+				<div class="col1">
+					<div class="name">
+						<a href="latest-designs.html"><%=project.title%></a>
+					</div>
+					<div class="by">for <span><%=project.shopper.full_name%></span></div>
+					<div class="started"><%=project.created_at.strftime("Started: %e %b %Y")%> </div>
+					<div class="status">Status: <%=project.display_status%></div>
+				</div>
+				<div class="col2">
+					<%
+					unless project.status==:completed
+						%>
+						<a href="/designer/complete_project/<%=project.id%>" class="sidebar-mark-complete">Mark<br/>Complete!</a>
+						<%	
+					else
+						%>
+						<div class="completed">
+							<img src="img/bkg-checked-2.png" /><br/>
+							Completed
+						</div>
+						<%
+					end
+					%>
+				</div>
+			</div>
+			<%
+		}
+		
+	end
+	%>
+	
+</div>

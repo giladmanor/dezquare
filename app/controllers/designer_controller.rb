@@ -1,9 +1,8 @@
 class DesignerController < SiteController
   
   before_filter :load_user, :except=>[:login, :register, :reset_password]
+  skip_before_filter :shopper_zone, :only => [:dashboard, :settings]
   
-  DIR_PATH_AVATARS = "#{Rails.root}/public/user_avatars/"
-  DIR_PATH_COVERS = "#{Rails.root}/public/user_covers/"
   DIR_PATH_REPOSITORY = "#{Rails.root}/public/repository/"
   
   def dashboard
@@ -11,10 +10,6 @@ class DesignerController < SiteController
     @categories = Category.all
     @author=@user
     @editable=true
-    if @user.projects_in.empty? 
-      render "dashboard_empty"
-      return
-    end
     
   end
   
@@ -155,33 +150,7 @@ class DesignerController < SiteController
   
   ###########################################################################################################
   
-  def upload_avatar
-    begin
-      @user.set_avatar(params[:upload],DIR_PATH_AVATARS)
-      flash[:notice] = "File has been uploaded successfully"
-      #redirect_to :action => "profile"
-      logger.debug "file upload success"
-    rescue Exception => e
-      flash[:error] = "Error with upload! Please retry."
-      logger.debug "file upload failed"
-      logger.debug "Error: #{e.inspect}"
-    end
-    redirect_to  :action => "profile"
-  end
   
-  def upload_cover
-    begin
-      @user.set_cover(params[:upload],DIR_PATH_COVERS)
-      flash[:notice] = "File has been uploaded successfully"
-      #redirect_to :action => "profile"
-      logger.debug "file upload success"
-    rescue Exception => e
-      flash[:error] = "Error with upload! Please retry."
-      logger.debug "file upload failed"
-      logger.debug "Error: #{e.inspect}"
-    end
-    redirect_to  :action => "profile"
-  end
   
   
   

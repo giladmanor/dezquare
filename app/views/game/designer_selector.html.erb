@@ -10,7 +10,7 @@
 							<div id="found-matches">
 								<%
 								
-								image_rates=@game.game_image_rates
+								image_rates=@game.game_image_rates.select{|i| i.value==1}
 								
 								designers = image_rates.map{|r| r.image.user}.uniq
 								
@@ -25,12 +25,7 @@
 								designers = (designers+others).uniq.take(3)
 								
 								
-								
-								
 								designers.each{|d|
-									m=GameMatch.new
-									m.user=d
-									@game.game_matches<<m 
 									%>
 									<div class="found-match">
 										<div class="col1">

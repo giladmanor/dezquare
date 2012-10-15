@@ -1,7 +1,7 @@
 		<div id="content">
 			<div class="page-content">
 				
-				<%=render "/designer/cover"%>
+				<%=render "cover"%>
 				<div id="sidebar">
 					<a href="/game/index" class="orange-button">Get a new design?</a>
 					<div class="title">
@@ -63,7 +63,7 @@
 						<%
 						#initiated projects project.status==:started
 						
-						@user.projects_out.select{|p| p.status=="started"}.each{|project|
+						@user.projects_out.select{|p| p.status=="started"}.reverse.each{|project|
 							%>
 							
 							<div class="project">
@@ -91,8 +91,8 @@
 										<div class="top-matches">
 											<%
 											unless project.game.nil?
-												matches=project.game.game_matches.each{|match|
-													dez = match.user
+												project.game.designers.each{|dez|
+													
 													%>
 													<div class="match">
 														<div class="profile-image">
@@ -100,7 +100,7 @@
 														</div>
 														<div class="details">
 															<div class="big">
-																<a href="profile-public.html"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
+																<a href="/designer/profile/<%=dez.id%>"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
 															</div>
 															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
 															

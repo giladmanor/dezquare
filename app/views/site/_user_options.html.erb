@@ -5,15 +5,31 @@ if @user.nil?
 	<a id="login" class="header-button" href="#">Login / Signup</a>
 	<%
 else
-	%>
-	<div id="profile-menu" class="shopper">
-		<a href="/site/settings" class="base">Settings</a>
-		<div class="expanded">
-			<a href="/site/dashboard" class="last">Dashboard</a>
-			<a href="/site/logout" class="last">Logout</a>
+	if @user.shopper
+		%>
+		<div id="profile-menu" class="shopper">
+			<a href="/site/settings" class="base">Settings</a>
+			<div class="expanded">
+				<a href="/site/dashboard" class="last">Dashboard</a>
+				<a href="/site/logout" class="last">Logout</a>
+			</div>
 		</div>
-	</div>
-	<%
+		<%
+	elsif @user.designer
+		%>
+		<div id="profile-menu">
+			<a href="/designer/profile" class="base">Profile</a>
+			<div class="expanded">
+				<a href="/designer/settings">Settings</a>
+				<a href="/site/logout" class="last">Logout</a>
+			</div>
+		</div>
+		<%
+	else
+		%>
+		<%=@user.id%>
+		<%
+	end
 end
 
 %>

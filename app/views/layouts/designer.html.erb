@@ -20,24 +20,7 @@
 						<img src="/img/logo.png" alt="Dezquare" />
 					</a>
 				</h1>
-				
-				<%
-				if @user.nil?
-				%>
-				<a id="login" class="header-button" href="/site/register">Login / Signup</a>
-				<%
-				else
-				%>
-				<div id="profile-menu">
-					<a href="/designer/profile" class="base">Profile</a>
-					<div class="expanded">
-						<a href="/designer/settings">Settings</a>
-						<a href="/site/logout" class="last">Logout</a>
-					</div>
-				</div>
-				<%
-				end
-				%>
+				<%=render "user_options"%>
 			</div>
 		</div>
 		<%= yield %>

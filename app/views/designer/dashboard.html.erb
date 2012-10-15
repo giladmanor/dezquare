@@ -2,251 +2,119 @@
 		<div id="content">
 			<div class="page-content">
 				<%=render "cover"%>
-				<div id="sidebar">
-					<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
-					<div class="title">
-						<a href="/designer/latest_designs">Latest Designs</a>
-					</div>
-					<div class="latest-designs">
-						<div class="design">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
-								<div class="completed hidden">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
-						<div class="design">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<a href="#" class="sidebar-mark-complete">Mark<br/>Complete!</a>
-								<div class="completed hidden">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
-						<div class="design last">
-							<div class="col1">
-								<div class="name">
-									<a href="latest-designs.html">Google logo</a>
-								</div>
-								<div class="by">for <span>David Bowie</span></div>
-								<div class="started">Started: 20 MAY</div>
-								<div class="status">Status: Open</div>
-							</div>
-							<div class="col2">
-								<div class="completed">
-									<img src="/img/bkg-checked-2.png" /><br/>
-									Completed
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%=render "dashboard_sidebar"%>
 				<div id="main">
-					<div class="white-band-title">
-						<h3>You've Got Matched!</h3>
-					</div>
-					<div id="match-projects" class="white-box">
-						<div class="project">
-							<div class="basic">
-								<div class="icon">
-									<img src="/img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-								<div class="action">
-									<a href="#" class="black-button esmall-font accept-design">Accept</a>
-									<a href="#" class="decline">Decline</a>
-								</div>
+					<%	
+					matches = @user.matches
+					
+					if matches.empty?
+						%>
+						<div class="white-band-title">
+							<h3>Matches</h3>
+						</div>
+						<div id="matches-intro" class="white-box">
+							<div class="col1">
+								<p>Matches are exclusive invitations  to design projects for customers that we matched for you, based on their taste.</p>
+								<p>Get your first match by boosting your portfolio with your designs.</p>
+								<a href="/designer/edit_photo" class="black-button small-font">Boost My Portfolio!</a>
 							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="title">About the desired Flyer</div>
-									<div class="about-project">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
-									</div>
-									<a href="mailto:client@dot.com" class="contact">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-									</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="last-row">
-								<div class="col1">
-									<div class="payment">Payment: $100</div>
-								</div>
-								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
-								</div>
+							<div class="col2">
+								<img src="/img/temp/bkg-match.jpg" />
 							</div>
 						</div>
-						
-						<div class="project">
-							<div class="basic">
-								<div class="icon">
-									<img src="/img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="already-requested">You've requested the taste for this customer</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
-									</div>
-								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="last-row">
-								<div class="col1">
-									<a href="mailto:client@dot.com" class="contact">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
-								</div>
-							</div>
+						<%
+					else
+						%>
+						<div class="white-band-title">
+							<h3>You've Got Matched!</h3>
 						</div>
-						
-						<div class="project">
-							<div class="basic">
-								<div class="icon">
-									<img src="/img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-								<div class="rejected">
-									Too bad, [Designer name] already accepted the project
-								</div>
-							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="title">About the desired Flyer</div>
-									<div class="about-project">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
-									</div>
-									<a class="contact disabled">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+						<div id="match-projects" class="white-box">	
+							<%
+							matches.each{|game|
+								
+								%>
+									<div class="project">
+										<div class="basic">
+											<div class="icon">
+												<img src="/img/icons/background-image.png" />
+											</div>
+											<div class="name-and-client">
+												<div class="name"><%=game.project.title%></div>
+												<div class="client"><%=game.user.full_name%></div>
+											</div>
+											<div class="action">
+												<a href="#" class="black-button esmall-font accept-design">Accept</a>
+												<a href="#" class="decline">Decline</a>
+											</div>
 										</div>
-										<div class="design">
-											<img src="/img/temp/project-photo.jpg" />
+										<div class="detailed">
+											<div class="col1">
+												<div class="title">About the desired <%=game.category.name%></div>
+												<div class="about-project">
+													<%=game.project.info%>
+												</div>
+												<a href="mailto:<%=game.user.email%>" class="contact">
+													<span class="icon"></span>
+													<span class="text">Contact client</span>
+												</a>
+											</div>
+											<div class="col2">
+												<div class="title">Designs Liked by <%=game.user.full_name%></div>
+												<div class="designs">
+													<%
+													images=game.game_image_rates.select{|r| r.value==1}.map{|r| r.image}
+													
+													images.take(3).each{|image|
+														%>
+														<div class="design">
+															<img src="/repository/<%=image.file_path%>" style="max-width: 119px;max-height: 128px;"/>
+														</div>
+														<%
+													}
+													%>
+													
+												</div>
+												<div class="taste-indicators">
+													<div class="title"><%=game.user.full_name%> Taste Indicators</div>
+													<ul>
+														<%
+														tags = images.map{|si| si.tags}.flatten.uniq
+														
+														tags.each{|tag|
+															%>
+															<li><%=tag.name%></li>	
+															<%	
+														}
+														
+														%>
+													</ul>
+												</div>
+											</div>
 										</div>
-										<div class="design last">
-											<img src="/img/temp/project-photo.jpg" />
+										<div class="last-row">
+											<div class="col1">
+												<div class="payment">Payment: $<%=game.max_price%></div>
+											</div>
+											<div class="col2">
+												<div class="date"><%=game.created_at.strftime("%I:%M%p, %e %b %Y")%></div>
+											</div>
 										</div>
 									</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
-									</div>
-									
-								</div>
-							</div>
-							<div class="last-row">
-								<div class="col1">
-									<div class="payment">Payment: $100</div>
-								</div>
-								<div class="col2">
-									<div class="date">21:07, 27 MAY 2012</div>
-								</div>
-							</div>
+								<%
+							}
+							%>
 						</div>
-						
-						<a href="#" id="dashboard-load-more" class="black-button small-font load-more">
-							<span>Show me more</span>
-						</a>
-					</div>
+						<%
+					end
+					
+					%>
+					
 				</div>
 			</div>			
 		</div>
 	</div>
 	
-	<div id="window-overlay"></div>
+	<div id="window-overlay" <%= params[:show_invite_success]=="true" ? raw('style="display: block"') : ''%>></div>
 	<div id="mark-complete-popup" class="popup">
 		<span class="close"></span>
 		<div class="popup-content">

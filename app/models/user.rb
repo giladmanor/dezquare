@@ -12,6 +12,9 @@ class User < ActiveRecord::Base
   has_many :designer_categories,:dependent => :destroy
   has_many :categories, :through=>:designer_categories
   
+  has_many :game_designers
+  has_many :matches, :through=>:game_designers, :class_name=>"Game", :foreign_key=>"game_id", :source=>:game
+  
   #validates_uniqueness_of :email
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
   
