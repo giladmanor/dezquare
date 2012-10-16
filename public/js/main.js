@@ -130,6 +130,56 @@ $(document).ready(function(){
 				list.hide();
 				combobox.removeClass("active");
 			});
+		};
+		
+		function SetWelcomeSlidesHeight()
+		{
+			$("#welcome-slider").each(function(){
+				var slider = $(this);
+				var height = $(window).height() - 60;
+				height = height < 700 ? 700: height;
+				slider.children(".welcome-slide").height(height);
+				
+				var slide1 = slider.children("#welcome-slide1");
+				var slide2 = slider.children("#welcome-slide2");
+				var slide3 = slider.children("#welcome-slide3");
+				var slide4 = slider.children("#welcome-slide4");
+				var slide5 = slider.children("#welcome-slide5");
+				var slide6 = slider.children("#welcome-slide6");
+				
+				var slideDuration = 800;
+				
+				slide1.find("a.black-button").click(function(e){
+					e.preventDefault();
+					var pos = slide2.position();
+
+					$('html,body').animate({ scrollTop: pos.top - 60 }, slideDuration);
+				});
+				slide2.find("a.button").click(function(e){
+					e.preventDefault();
+					var pos = slide3.position();
+
+					$('html,body').animate({ scrollTop: pos.top - 60 }, slideDuration);
+				});
+				slide3.find("a.button").click(function(e){
+					e.preventDefault();
+					var pos = slide4.position();
+
+					$('html,body').animate({ scrollTop: pos.top - 59 }, slideDuration);
+				});
+				slide4.find("a.button").click(function(e){
+					e.preventDefault();
+					var pos = slide5.position();
+
+					$('html,body').animate({ scrollTop: pos.top - 59 }, slideDuration);
+				});
+				slide5.find("a.button").click(function(e){
+					e.preventDefault();
+					var pos = slide6.position();
+
+					$('html,body').animate({ scrollTop: pos.top - 59 }, slideDuration);
+				});
+			});
 		}
 		
 		/* Base Functions */
@@ -438,7 +488,7 @@ $(document).ready(function(){
 				var errors = false;
 				
 				var firstNameField = form.find("input[name=name]");
-				var lastNameField = form.find("input[name=name]");
+				var lastNameField = form.find("input[name=l_name]");
 				var emailField = form.find("input[name=email]");
 				var passwordField = form.find("input[name=password]");
 				var repeatPasswordField = form.find("input[name=re_password]");
@@ -799,6 +849,7 @@ $(document).ready(function(){
 			InitializeObjects();
 			BindEvents();
 			BuildSliders();
+			SetWelcomeSlidesHeight();
 		})();
 	}
 })(window);

@@ -960,6 +960,12 @@ a.huge-font {
 	padding-top: 13px;
 	padding-bottom: 13px;
 }
+a.cosmic-font {
+	font-size: 42px;
+	line-height: 42px;
+	padding-top: 16px;
+	padding-bottom: 16px;
+}
 /* End Buttons */
 
 /* Dashboard */
@@ -2310,6 +2316,237 @@ div#upload-profile-image.uploadify {
 
 #upload-cover-image-queue,
 #upload-profile-image-queue { display: none; }
+
+div#header.fixed {
+	left: 0px;
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	z-index: 5;
+}
+div#content.fixed { padding-bottom: 0px; }
+div#welcome-slider {
+	padding-top: 60px;
+	text-align: center;
+}
+div#welcome-slider div.welcome-slide { 
+	position: relative; 
+	height: 768px;
+	z-index: 3;
+}
+div#welcome-slider div.welcome-slide-content {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+}
+div#welcome-slide1 h2.text {
+	background: url(../img/welcome/bkg-slide1.jpg) center top no-repeat;
+	font-size: 94px;
+	line-height: 94px;
+	margin-bottom: 30px;
+	padding-top: 500px;
+}
+div#welcome-slide1 a.black-button {
+	margin: 0px auto;
+	width: 300px;
+}
+div#welcome-slider div#welcome-slide1-content { 
+	margin-top: -350px;
+	top: 50%; 
+}
+
+div#welcome-slide2 {
+	background: #231f20;
+	color: #f1f1f1;
+}
+div#welcome-slide2 a.button {
+	background: url(../img/welcome/bkg-slide2-button.jpg) left top no-repeat;
+	font-family: 'QuickSandRegular';
+	bottom: 0px;
+	display: block;
+	font-size: 60px;
+	line-height: 170px;
+	left: 50%;
+	height: 147px;
+	margin-left: -141px;
+	position: absolute;
+	width: 282px;
+}
+div#welcome-slide2 h3 {
+	font-size: 50px;
+	font-family: 'PTSansRegular';
+	margin-bottom: 190px;
+}
+div#welcome-slide2 p {
+	font-size: 90px;
+	line-height: 90px;
+	margin: 0px;
+}
+div#welcome-slider div#welcome-slide2-content { 
+	margin-top: -296px;
+	top: 50%; 
+}
+
+div#welcome-slide3 h3 {
+	font-size: 50px;
+	font-family: 'PTSansRegular';
+	margin-bottom: 140px;
+}
+div#welcome-slide3 div.icons {
+	width: 900px;
+	overflow: hidden;
+	margin: 0px auto;
+}
+div#welcome-slide3 div.icons div.icon {
+	float: left;
+	width: 300px;
+}
+div#welcome-slide3 div.icons div.image {
+	border: 1px solid #d6d6d6;
+	height: 209px;
+	margin: 0px auto 30px;
+	width: 223px;
+}
+div#welcome-slide3 div.icons img { display: block; }
+div#welcome-slide3 div.icons div.text {
+	font-size: 18px;
+	font-family: 'QuickSandRegular';
+	line-height: 22px;
+}
+div#welcome-slide3 a.button {
+	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	bottom: -1px;
+	color: #272425;
+	display: block;
+	font-family: 'QuickSandRegular';
+	font-size: 60px;
+	line-height: 170px;
+	left: 50%;
+	height: 140px;
+	margin-left: -141px;
+	position: absolute;
+	width: 282px;
+}
+div#welcome-slider div#welcome-slide3-content { 
+	border-bottom: 1px solid #aeadad;
+	height: 100%;
+}
+div#welcome-slider div#welcome-slide3-content-inside {
+	position: absolute;
+	left: 0px;
+	margin-top: -310px;
+	top: 50%;
+	width: 100%;
+}
+div#welcome-slide4 h3 {
+	border-bottom: 1px solid #AEADAD;
+	font-size: 50px;
+	line-height: 70px;
+	padding-top: 40px;
+	font-family: 'PTSansRegular';
+	margin-bottom: 40px;
+}
+div#welcome-slide4 ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px auto;
+	font-size: 40px;
+	text-align: left;
+	line-height: 40px;
+	width: 860px;
+}
+div#welcome-slide4 ul li {
+	overflow: hidden;
+	position: relative;
+	padding-left: 90px;
+	margin-bottom: 15px;
+}
+div#welcome-slide4 div.image {
+	position: absolute;
+	left: 0px;
+	top: 50%;
+	text-align: center;
+	margin-top: -34px;
+	width: 70px;
+}
+div#welcome-slide4 ul div.small {
+	color: #e86f45;
+	font-size: 24px;
+	line-height: 30px;
+}
+div#welcome-slide4 a.button {
+	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	bottom: -1px;
+	color: #272425;
+	display: block;
+	font-family: 'QuickSandRegular';
+	font-size: 60px;
+	line-height: 170px;
+	left: 50%;
+	height: 140px;
+	margin-left: -141px;
+	position: absolute;
+	width: 282px;
+}
+div#welcome-slider div#welcome-slide4-content { 
+	border-bottom: 1px solid #aeadad;
+	height: 100%;
+}
+
+div#welcome-slide5 h3 {
+	border-bottom: 1px solid #AEADAD;
+	font-size: 50px;
+	line-height: 70px;
+	padding-top: 40px;
+	font-family: 'PTSansRegular';
+	margin-bottom: 40px;
+}
+div#welcome-slide5 a.button {
+	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	bottom: -1px;
+	display: block;
+	font-family: 'QuickSandRegular';
+	font-size: 60px;
+	line-height: 170px;
+	left: 50%;
+	height: 140px;
+	margin-left: -141px;
+	position: absolute;
+	width: 282px;
+}
+div#welcome-slide5 div.video {
+	border: 1px solid #999;
+	margin: 0px auto;
+	width: 720px;
+}
+div#welcome-slider div#welcome-slide5-content { 
+	border-bottom: 1px solid #aeadad;
+	height: 100%;
+}
+
+div#welcome-slide6 h3 {
+	font-size: 50px;
+	line-height: 50px;
+	font-family: 'PTSansRegular';
+}
+div#welcome-slide6 p {
+	color: #fe7040;
+	font-size: 36px;
+	line-height: 44px;
+	font-family: 'PTSansRegular';
+	margin-bottom: 120px;
+}
+div#welcome-slide6 a.black-button {
+	width: 300px;
+	margin: 0px auto;
+}
+div#welcome-slider div#welcome-slide6-content { 
+	margin-top: -180px;
+	top: 50%; 
+}
+
+
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
