@@ -27,7 +27,7 @@
 				<form action="/designer/upload_avatar"  enctype="multipart/form-data" method="post">
 				  <div class="fileinputs">
 		            <div style="position: absolute;z-index: 0;overflow:hidden">
-		            	<img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" style="max-width: 116px"/>
+		            	<img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" />
 		            </div>
 		            <% 
 		            if @editable
