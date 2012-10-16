@@ -840,6 +840,47 @@ $(document).ready(function(){
 				
 				BindComboboxEvents(combo);
 			});
+			
+			$("div#cover div#cover-image img").load(function(){
+				var image = $(this);
+				var parent = image.parents("div#cover div#cover-image").eq(0);
+				if (image.height() > parent.height())
+				{
+					image.width(parent.width());
+					image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
+				}
+			});
+			
+			$("div#profile-photo img").load(function(){
+				var image = $(this);
+				var parent = image.parents("div#profile-photo").eq(0);
+				image.removeAttr("style");
+				if (image.height() > parent.height() && image.width() > parent.width())
+				{
+					image.parent().width(parent.width()).height(parent.height()).css("overflow", "hidden");
+					image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
+					image.css("margin-left", ((image.width() - parent.width()) / 2 * (-1)) + "px");
+				}
+			});
+			
+			$("#designer-samples a.sample img").each(function(){
+				$(this).load(function(){
+					var image = $(this);
+					var parent = image.parents("a.sample").eq(0);					
+					if (image.height() > parent.height() && image.width() > parent.width())
+					{
+						image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
+						image.css("margin-left", ((image.width() - parent.width()) / 2 * (-1)) + "px");
+					}
+				});
+			});
+			
+			$(".top-matches img").load(function(){
+				$(this).removeAttr("style").width(56).height(56);
+			});
+			$(".found-match img").load(function() {
+				$(this).removeAttr("style").width(58).height(58);
+			});
 		};
 		/* End Base Functions */
 		
