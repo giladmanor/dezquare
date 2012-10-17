@@ -10,7 +10,7 @@ class DesignerController < SiteController
     @categories = Category.all
     @author=@user
     @editable=true
-    
+    render "dashboard"
   end
   
   def invite_for_game

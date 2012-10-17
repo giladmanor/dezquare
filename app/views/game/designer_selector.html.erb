@@ -22,7 +22,7 @@
 									{:d=>dez, :r=>rate}
 								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
 								
-								designers = (designers+others).uniq.take(3)
+								designers = (designers+others).uniq.compact.take(3)
 								
 								
 								designers.each{|d|
@@ -42,9 +42,16 @@
 													</div>
 													<div class="details">
 														<div class="big">
-															<a href="profile-public-square.html"><%=d.full_name%><%=(d.location.nil? || d.location=="") ? '' : ", #{d.location}"%></a>
+															<a href="/designer/profile/<%=d.id%>"><%=d.full_name%></a>
 														</div>
-														<div class="small">Languages: <span><%=raw(d.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></span></div>
+														<%=(d.location.nil? || d.location=="") ? '' : raw("<div class='small'>Location: <span>#{d.location}</span></div>")%>
+														<%
+														unless d.languages.empty?
+															%><div class="small">Languages: <span><%=raw(d.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></span></div><%
+														end
+														
+														%>
+														
 														
 													</div>												
 												</div>											
@@ -89,10 +96,10 @@
 							<div class="buttons2 clearfix">
 								
 								
-								<a href="game2.html" class="black-button big-font">
+								<a href="/game/index" class="black-button big-font">
 									<img src="/img/arrow-left.png" class="normal" />
 									<img src="/img/arrow-left-orange.png" class="hover" />
-									Back
+									Replay
 								</a>
 								<a href="#" class="black-button big-font next" id="submit-game4">
 									Next
@@ -114,12 +121,7 @@
 				To Kickoff the design you must select at least one designer match or<br/>
 				replay the game to get different matches.
 			</div>
-			<div class="never-show">
-				<span class="checkbox checked">
-					<input type="submit" name="never-show" />
-				</span>
-				<span class="text">Never show me that again</span>
-			</div>
+			
 			<div class="buttons clearfix">
 				<a href="/game/index" class="replay">Replay</a>
 				<a href="#" class="orange-button big-font">OK</a>
@@ -137,10 +139,10 @@
 				You’ll be surprised with how quickly they get your taste.<br/>
 			</div>
 			<div class="never-show">
-				<span class="checkbox checked">
+				<!-- <span class="checkbox checked">
 					<input type="submit" name="never-show" />
 				</span>
-				<span class="text">Never show me that again</span>
+				<span class="text">Never show me that again</span> -->
 			</div>
 			<div class="buttons clearfix">
 				<a href="#" class="replay">Cancel</a>

@@ -8,7 +8,7 @@ class DetailsEditor < StageImplementor
     p = game.project
     p.title=params[:title]
     p.info=params[:description]
-    p.file_types=params[:filetype].join(", ")
+    p.file_types=params[:filetype].join(", ") unless params[:filetype].nil? 
     
     p.category=game.category
     game.project.save

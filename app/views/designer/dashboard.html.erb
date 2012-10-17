@@ -1,4 +1,3 @@
-
 		<div id="content">
 			<div class="page-content">
 				<%=render "cover"%>
@@ -30,8 +29,7 @@
 						</div>
 						<div id="match-projects" class="white-box">	
 							<%
-							matches.each{|game|
-								
+							matches.reject{|g| g.project.nil? || g.user.nil?}.each{|game|
 								%>
 									<div class="project">
 										<div class="basic">

@@ -1,5 +1,5 @@
 <div id="sidebar">
-	<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
+	<!-- <a href="#" class="orange-button" id="got-new-client">Got a new client?</a> -->
 	<%
 	projects = @user.projects_in
 	
@@ -11,7 +11,20 @@
 			<ol id="profile-completion">
 				<li>
 					<span>1.</span> 
-					<a href="#" style="height: 20px; width: 160px;<%=@user.avatar.nil? ? '' : "color:#60e148"%>">Upload profile photo</a>
+					<form action="/designer/upload_avatar"  enctype="multipart/form-data" method="post">
+					    <% 
+			            if @editable
+			            %>
+			            
+			            <a href="#" style="float:left;position: absolute;z-index: 0;height: 20px; width: 160px;<%=@user.avatar.nil? ? '' : "color:#60e148"%>">Upload profile photo</a>
+			            <input type="file" name="upload" id="upload" 
+			               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: -21px -20px;cursor:hand " />
+			          	<%
+			            end
+			            %>
+			          
+		        	</form>
+					
 					<%
 					if !@user.avatar.nil?
 					%>
@@ -20,7 +33,20 @@
 				</li>
 				<li>
 					<span>2.</span> 
-					<a href="#" style="height: 20px; width: 160px;<%=@user.cover.nil? ? '' : "color:#60e148"%>">Upload cover photo</a>
+					<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
+					  <div class="fileinputs">
+			            <% 
+			            if @editable
+			            %>
+			            <a href="#" style="float:left;position: absolute;z-index: 0;height: 20px; width: 160px;<%=@user.cover.nil? ? '' : "color:#60e148"%>">Upload cover photo</a>
+			            <input type="file" name="upload" id="upload" 
+			               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: -21px -20px;cursor:hand " />
+			            <%
+			            end
+			            %>
+			          </div>
+		        	</form>
+					
 					<%
 					if !@user.cover.nil?
 					%>

@@ -10,6 +10,7 @@ class Registrator < StageImplementor
     user.l_name=params[:l_name]
     user.email=params[:email]
     user.password=params[:password]
+    user.shopper=true
     if user.save
       game.user = user
       
