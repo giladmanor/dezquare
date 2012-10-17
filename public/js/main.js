@@ -474,6 +474,9 @@ $(document).ready(function(){
 					errors = true;
 				}
 				
+				//Andrew, can you please add a validation section for file type selectors, field name is: filetype[]
+				
+				
 				if (!errors)
 				{
 					form.submit();
@@ -688,11 +691,16 @@ $(document).ready(function(){
 				});
 			});
 			
-			$("#submit-photo").click(function(e){
-				var form = $(this).parents("form");
+			$("#info_form").find("div.tag span.text").css("cursor", "pointer").click(function(){
+				console.log($(this).siblings("span.checkbox"));
+				var checkbox = $(this).siblings("span.checkbox");
+				checkbox.click();
+			});
+			$("#info_form").submit(function(e){
+				var form = $(this);
 				var errors = false;
-				var title = form.find("input[name=title]");
-				var description = form.find("textarea[name=product-type]");
+				var title = form.find("input[name=name]");
+				var description = form.find("textarea[name=description]");
 				
 				form.find(".form-error").hide();
 				
@@ -702,15 +710,11 @@ $(document).ready(function(){
 					errors = true;
 				}
 				
-				if (form.find("span.checkbox.checked").length == 0)
+				var checkboxes = form.find("span.checkbox.checked");
+				
+				if (checkboxes.length < 4 || checkboxes.length > 8)
 				{
 					form.find(".other-tags .form-error").show();
-					errors = true;
-				}
-				
-				if ($.trim(description.val()) == "")
-				{
-					description.siblings(".form-error").show();
 					errors = true;
 				}
 				
@@ -840,7 +844,7 @@ $(document).ready(function(){
 				
 				BindComboboxEvents(combo);
 			});
-			
+			/*
 			$("div#cover div#cover-image img").load(function(){
 				var image = $(this);
 				var parent = image.parents("div#cover div#cover-image").eq(0);
@@ -881,6 +885,7 @@ $(document).ready(function(){
 			$(".found-match img").load(function() {
 				$(this).removeAttr("style").width(58).height(58);
 			});
+			*/
 		};
 		/* End Base Functions */
 		
