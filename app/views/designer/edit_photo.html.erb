@@ -56,6 +56,14 @@
 									<label class="font">Add Design Indicators:</label>
 								</div>
 								<div class="form-row">
+									<div class="other-tags">
+										<!-- <label class="other">Other</label>
+										<span class="checkbox">
+											<input type="checkbox" name="tags-other" value="yes" />
+										</span> 
+										<input type="text" class="text" name="tags-other-value" />-->
+										<label class="form-error" style="position: initial;">Please select at least four tags (and not more then eight)</label>
+									</div>
 									<div class="tags clearfix">
 										<%
 										l = (@tags.length/3).ceil
@@ -121,14 +129,7 @@
 											%>
 										</div>
 									</div>
-									<div class="other-tags">
-										<label class="other">Other</label>
-										<span class="checkbox">
-											<input type="checkbox" name="tags-other" value="yes" />
-										</span>
-										<input type="text" class="text" name="tags-other-value" />
-										<label class="form-error">Please select at least one tag</label>
-									</div>									
+																		
 								</div>
 								<div class="form-row product-type-area">
 									<label class="font">Add a product Description:</label>
