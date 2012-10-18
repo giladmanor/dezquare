@@ -66,6 +66,7 @@ $(document).ready(function(){
 					field.after(clone);
 					clone.find("input").val("");
 					clone.find(".value").text("Add language");
+					clone.find(".list").jScrollPane();
 					BindLanguageEvents(clone);
 					BindComboboxEvents(clone.find(".combobox"));
 					field.find(".button").hide();
@@ -80,9 +81,13 @@ $(document).ready(function(){
 			field.find(".add").click(function(e){
 				e.preventDefault();
 				var clone = field.clone();
-				field.parent().append(clone);
+				field.after(clone);
 				clone.find("input").val("");
 				clone.find(".value").text("Add language");
+				var cloneListScroll = clone.find(".list-scroll");
+				cloneListScroll.show();
+				cloneListScroll.find(".list").jScrollPane();
+				cloneListScroll.hide();
 				BindLanguageEvents(clone);
 				BindComboboxEvents(clone.find(".combobox"));
 				field.find(".button").hide();
@@ -692,7 +697,6 @@ $(document).ready(function(){
 			});
 			
 			$("#info_form").find("div.tag span.text").css("cursor", "pointer").click(function(){
-				console.log($(this).siblings("span.checkbox"));
 				var checkbox = $(this).siblings("span.checkbox");
 				checkbox.click();
 			});
@@ -819,7 +823,6 @@ $(document).ready(function(){
 			$("#ccs").each(function(){
 				$(this).find(".list-scroll").show();
 				$(this).find(".list").jScrollPane();
-				console.log(this);
 			});
 			
 			$(".combobox").each(function(){
