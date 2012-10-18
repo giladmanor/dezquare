@@ -21,6 +21,9 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email,:subject => "So you want to be part of the gang")
   end
   
-  
+  def designer_send_password(user)
+    @user = user
+    mail(:to => @user.email,:subject => "Dezquare account access")
+  end
   
 end
