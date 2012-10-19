@@ -24,20 +24,20 @@ $(document).ready(function(){
 			return regex.test(email);
 		}
 		
-		function BuildSliders()
+		var BuildSliders = window.BuildSliders = function()
 		{
 			var priceSlider = $( ".price-slider" );
 			priceSlider.each(function(){
 				var slider = $(this);
 				var priceSliderTooltip = $("<span/>", { "class": "price-slider-tooltip" });
-				var priceSliderTooltipInput = $("<input/>", { "name": slider.attr("id"), "type": "text", "readonly": "readonly" });
+				var priceSliderTooltipInput = $("<input/>", { "name": slider.attr("id"), "type": "text" }).css("outline", "none");
 				priceSliderTooltip.append(priceSliderTooltipInput);
 				
 				var defultValue = typeof slider.attr("data-value") != "undefined" ? parseInt(slider.attr("data-value")) : 105;
 				var defaultMin = typeof slider.attr("data-min") != "undefined" ? parseInt(slider.attr("data-min")) : 0;
 				var defaultMax = typeof slider.attr("data-max") != "undefined" ? parseInt(slider.attr("data-max")) : 140;
 				
-				slider.slider({
+				slider.slider("destroy").slider({
 					range: "min",
 					value: defultValue,
 					min: defaultMin,
@@ -54,6 +54,27 @@ $(document).ready(function(){
 					}
 				});
 				priceSliderTooltipInput.val( "$" + slider.slider( "value" ) );
+				priceSliderTooltipInput.blur(function() {
+					var val = $(this).val().replace("$", "");
+					slider.slider("value", val);
+					$(this).val("$" + val);
+				});
+				priceSliderTooltipInput.keypress(function(evt) {
+					var theEvent = evt || window.event;
+					var key = theEvent.keyCode || theEvent.which;
+					key = String.fromCharCode( key );
+					var regex = /[0-9]|\./;
+					
+					if( !(regex.test(key) || evt.keyCode == 8 || evt.keyCode == 46) ) 
+					{
+						theEvent.returnValue = false;
+						if (theEvent.preventDefault) theEvent.preventDefault();
+					}
+				});
+				priceSliderTooltipInput.keyup(function() {
+					var val = $(this).val().replace("$", "");
+					slider.slider("value", val);
+				});
 			});
 		};
 		
@@ -308,21 +329,28 @@ $(document).ready(function(){
 					return false;
 				}
 			});
-			
-			profileStatus.hover(function(){
-				profileStatusCurrent.hide();
-				profileStatusEdit.show();
-			}, function() {
-				profileStatusEdit.hide();
-				profileStatusCurrent.show();
-			});
-			profileStatusEdit.children("span").click(function(){
-				var selfClone = $(this).clone();
-				profileStatusCurrent.empty().append(selfClone);
-				profileStatusEdit.hide();
-				profileStatusCurrent.show();
-				profileStatusEdit.siblings("input[name=user-status]").val(selfClone.text());
-			});
+
+			if (profileStatus.children(".edit").length > 0)
+			{
+				profileStatus.hover(function(){
+					profileStatusCurrent.hide();
+					profileStatusEdit.show();
+				}, function() {
+					profileStatusEdit.hide();
+					profileStatusCurrent.show();
+				});
+				profileStatusEdit.children("span").click(function(){
+					var selfClone = $(this).clone();
+					profileStatusCurrent.empty().append(selfClone);
+					profileStatusEdit.hide();
+					profileStatusCurrent.show();
+					profileStatusEdit.siblings("input[name=user-status]").val(selfClone.text());
+				});
+			}
+			else 
+			{
+				profileStatus.find("span").css("cursor", "inherit");
+			}
 			
 			$("#match-projects").each(function(){
 				var self = $(this);
@@ -406,12 +434,34 @@ $(document).ready(function(){
 				overlay.hide();
 			});
 			
-			gameCategories.children("a").hover(function(){
-				var idx = $(this).index() + 1;
-				gameIcons.find("a.c" + idx).css("opacity", "0.2");
-			}, function(){ 
-				var idx = $(this).index() + 1;
+			gameCategories.children("a").click(function(e){
+				e.preventDefault();
+				
+				if ($(this).hasClass("active"))
+				{
+					$(this).removeClass("active");
+				}
+				else
+				{
+					$(this).addClass("active");
+				}
+				
+				var selectors = "";
+				var categories = gameCategories.children("a").each(function(){
+					if ($(this).hasClass("active"))
+					{
+						var idx = $(this).index() + 1;
+						
+						selectors = selectors + "," + "a.c" + idx;
+					}
+				});
+				
 				gameIcons.find("a").css("opacity", "1");
+				if (selectors.length > 0)
+				{
+					selectors = selectors.substring(1);
+					gameIcons.find(selectors).css("opacity", "0.2");
+				}
 			});
 			
 			gameIcons.find("a").click(function(e){

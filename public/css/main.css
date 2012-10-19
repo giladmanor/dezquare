@@ -280,12 +280,10 @@ div#designer-samples a.sample {
 	width: 230px;
 }
 div#designer-samples a.sample img { 
-	/*
 	min-height: 100%;
 	min-width: 100%;
 	max-width: 150%;
 	max-height: 150%;
-	*/
 }
 div#designer-samples a.last { margin-right: 0px; }
 div#designer-samples span.info {
@@ -989,8 +987,17 @@ div#cover div#cover-image span.edit-field {
 	left: 3px;
 	top: 3px;
 }
+div#cover div#cover-image div.fileinputs > div {
+	left: 3px;
+	width: 985px;
+	top: 3px;
+	height: 241px;
+	overflow: hidden;
+}
 div#cover div#cover-image img { 
 	display: block; 
+	height: 100%;
+	width: 100%;
 }
 div#cover div#profile-bar {
 	background: url(../img/bkg-profile-bar.png) left top repeat-x;
@@ -1014,6 +1021,8 @@ div#cover div#profile-photo {
 }
 div#cover div#profile-photo img { 
 	display: block; 
+	height: 100%;
+	width: 100%;
 }
 div#cover div#profile-photo span.edit-field {
 	position: absolute;
@@ -1511,7 +1520,7 @@ ul#portfolio-gallery .orange { color: #e86f45; }
 ul#portfolio-gallery div.image { 
 	margin-bottom: 10px; 
 	overflow: hidden;
-	height: 480px;
+	height: 450px;
 	text-align: center;
 }
 ul#portfolio-gallery div.image img { 
@@ -1901,7 +1910,8 @@ div.game-step div.categories a {
 	width: 246px;
 }
 div.game-step div.categories a.last { border-right: 0px none; }
-div.game-step div.categories a:hover { background: #ededed; }
+div.game-step div.categories a:hover,
+div.game-step div.categories a.active { background: #ededed; }
 div.game-step ul.icons {
 	padding: 40px 20px 0px 100px;
 	list-style-type: none;
