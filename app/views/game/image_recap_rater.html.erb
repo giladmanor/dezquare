@@ -1,6 +1,6 @@
 ﻿				<div class="wide-page-holder game-step" id="game-step-3">
 					<div class="wide-page-wrap">
-						<h2>1 - Let’s get to know your taste!</h2>
+						<h2>2 - Let’s get to know your taste!</h2>
 						<h4>Select the designs you like</h4>
 						<form action="/game/next">
 							<div id="image-select" style="text-align: center;width: auto;">
@@ -9,17 +9,15 @@
 								
 								logger.debug "#### #{@game.stage.args}"
 								
-								pool_size=@game.stage.args[:image_pool_size] || 100
 								category = @game.category
+								designers = @game.images.map{|i| i.user}
+								images = designers.map{|d| d.images.reject{|i| @game.images.include?(i)}.first}.flatten
 								
-								images = category.image_grab(pool_size,@game.max_price*1000).reject{|i| @game.images.include?(i)}
 								logger.debug "--------------------------------------------------------------"
 								logger.debug " found #{images.length} images for category #{category.name}"
 								
 								rand_index = ((Time.now.to_f*1000)%images.length).ceil-1
-								
 								logger.debug " Random Index #{rand_index}"
-								
 								
 								image=images[rand_index]
 								logger.debug " image choosen  #{image.inspect}"
@@ -28,7 +26,7 @@
 								logger.debug "--------------------------------------------------------------"
 								
 								%>
-								<%=image.id%>
+								
 								<div style="height: 413px">
 									<img src="/repository/<%= image.file_path%>" style="max-width: 672px;max-height: 416px;" />
 								</div>
