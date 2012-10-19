@@ -84,7 +84,7 @@
 							<img width="128" style="float:left; margin-right: 3%;" height="128" src="/repository/<%=i.file_path%>">
 							<p style="float: left;"><strong><%=i.name%></strong> <span style="font-style: italic">Uploaded on <%=i.created_at.strftime("%B %d, %Y")%></span><br />
 								
-								 <%= i.image_category.nil? ? 'Uncategorized' : i.image_category.name %>
+								 <%= i.image_category.nil? ? 'Uncategorized' : i.category.name %>
 								<br /><br />
 								<img src="/assets/admin/icn_tags.png" />
 								<span style="border: dotted 1px silver">
@@ -111,7 +111,7 @@
 							<img width="128" style="float:left; margin-right: 3%;" height="128" src="/repository/<%=i.file_path%>">
 							<p style="float: left;"><strong><%=i.name%></strong> <span style="font-style: italic">Uploaded on <%=i.created_at.strftime("%B %d, %Y")%></span><br />
 								
-								 <%= i.image_category.nil? ? 'Uncategorized' : i.image_category.name %>
+								 <%= i.image_category.nil? ? 'Uncategorized' : i.category.name %>
 								<br /><br />
 								<img src="/assets/admin/icn_tags.png" />
 								<span style="border: dotted 1px silver">

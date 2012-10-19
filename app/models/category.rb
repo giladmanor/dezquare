@@ -9,12 +9,21 @@ class Category < ActiveRecord::Base
   has_many :images, :through=>:image_categories
   
   
-  def image_grab(pool_size)
-    grabbed=self.images
-    if grabbed.length<pool_size
-      grabbed += parent.image_grab(pool_size-grabbed.length) unless parent.nil?
+  def image_grab(pool_size, price = 0)
+    grabbed=self.images.reject{|i| i.user.nil? || !i.user.available}
+    logger.debug "======== #{grabbed.length} for #{self.name} out of #{self.images.length}"
+    if grabbed.length<pool_size && !self.parent.nil?
+      grabbed += self.parent.image_grab(pool_size-grabbed.length) unless parent.nil?
+      logger.debug "========parent :::::::::: #{self.parent.name}======== #{grabbed.length}"
     end
     grabbed
   end
+  
+  
+  def designer_category_min_price(image)
+    dc = image.user.designer_categories.select{|i| i.category==self}.first
+    dc.nil? ? 1 : dc.min_price
+  end
+  
   
 end

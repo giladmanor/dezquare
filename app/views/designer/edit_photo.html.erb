@@ -25,7 +25,8 @@
 					          </div>
 				        	</form>
 						</div>
-						<form id="info_form" action="/designer/set_image_info/<%=@image.id%>" class="clearfix">
+						<form id="info_form" action="/designer/set_image_info/" method="post" class="clearfix">
+							<input type="hidden" name="id" value="<%=@image.id%>">
 							<div class="image-details">
 								<div class="form-row edit-image-title clearfix">
 									<label class="font">Title:</label>

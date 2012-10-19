@@ -30,7 +30,7 @@
 						
 						<%
 						end
-						i= (@user.id==@author.id) ? 1 : 0
+						i= (!@user.nil? && @user.id==@author.id) ? 1 : 0
 						@author.images.each{|img|
 							i+=1
 							%>

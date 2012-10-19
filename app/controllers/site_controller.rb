@@ -38,6 +38,18 @@ class SiteController < ApplicationController
     redirect_to :action=>index
   end
   
+  def password_reminder
+    user = User.find_by_email(params[:email])
+    logger.debug "password recap for :#{user.inspect}"
+    unless user.nil?
+      UserMailer.designer_send_password(user).deliver
+      logger.debug "password recap sent"
+    end
+    
+    render :action=>:index
+  end
+  
+  
   def dashboard
     @author = @user
     @editable=true
@@ -118,8 +130,18 @@ class SiteController < ApplicationController
   end
   
   def load_user
-    @user=User.find(session[:user_id]) unless session[:user_id].nil?
+    begin
+      @user=User.find(session[:user_id]) unless session[:user_id].nil?
+    rescue
+      session[:user_id] = nil
+    end
     logger.debug "loaded user: #{@user.full_name}" unless @user.nil?
+    
+    if !@user.nil? && @user.designer && params[:controller]=="site" && params[:action]=="index"
+      redirect_to :controller=>:designer, :action=>:dashboard
+    end
+    
+    
   end
     
 end

@@ -40,4 +40,22 @@ class GameController < SiteController
     
   end
   
+  # Odd services
+  
+  def category_price_range
+    #category = Category.find(params[:id])
+    prices = DesignerCategory.find(:all, :conditions=>["category_id=?", params[:id]]).map{|dc| dc.min_price}.sort
+    logger.debug prices.inspect
+    res={
+      :min_price=>prices[10] || 10,
+      :max_price=>prices.last,
+      :max_designers=>prices.length
+      
+    }
+    render :json=>res
+  end
+  
+  
+  
+  
 end

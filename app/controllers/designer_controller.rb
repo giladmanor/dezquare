@@ -124,18 +124,19 @@ class DesignerController < SiteController
   end
   
   def set_image_info
-    image = @user.images.find(params[:id])
-    if image.nil?
-      redirect_to  :action => "edit_photo", :error=>"Please start by uploading an image"
-      return
-    end
+    image =(params[:id].nil? || params[:id]=="") ? Image.new : @user.images.find(params[:id]) 
+    
     image.name=params[:name]
     image.description=params[:description]
     image.category= Category.find_by_name(params[:category])
     image.tag_ids=params[:tags]
+    image.user=@user
     image.save
     
-    if params[:save_and]=="add"
+    if image.file_path.nil?
+      redirect_to  :action => "edit_photo", :id=>image.id
+      return
+    elsif params[:save_and]=="add"
       redirect_to  :action => "edit_photo"
     else
       redirect_to  :action => "profile"

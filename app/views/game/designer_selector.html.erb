@@ -12,8 +12,9 @@
 								
 								image_rates=@game.game_image_rates.select{|i| i.value==1}
 								
-								designers = image_rates.map{|r| r.image.user}.uniq
-								
+								designers = image_rates.map{|r| r.image.user}
+								rated =designers.map{|d| {:d=>d, :r=>designers.count(d)}}.uniq.sort{|a,b| b[:r]<=>a[:r]}
+								designers = rated.map{|r| r[:d]}
 								selected_tags = @game.images.map{|si| si.tags}.flatten.uniq
 								
 								others = User.all.select{|u| u.designer}.map{|dez|
@@ -42,7 +43,7 @@
 													</div>
 													<div class="details">
 														<div class="big">
-															<a href="/designer/profile/<%=d.id%>"><%=d.full_name%></a>
+															<a href="/designer/profile/<%=d.id%>" target="_blank"><%=d.full_name%></a>
 														</div>
 														<%=(d.location.nil? || d.location=="") ? '' : raw("<div class='small'>Location: <span>#{d.location}</span></div>")%>
 														<%
