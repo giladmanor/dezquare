@@ -9,23 +9,23 @@
 						<a style="float: right;font-size: 14px;" href="/designer/delete_image/<%=@image.id%>">delete</a>
 						<%end%> 
 					</h2>
+					<form id="info_form" action="/designer/set_photo"  enctype="multipart/form-data" method="post">
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo">
 							<div class="image" style="width: 235px;">
 								<img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>" style="max-width: 217px;max-height: 400px" />
 							</div>
-							<form action="/designer/upload_image"  enctype="multipart/form-data" method="post">
+							
 							  <div class="fileinputs">
 					            <div class="image" style="position: absolute;z-index: 0;background: #272425;width: 214px;height: 34px;color: white;text-align: center;font-size: 22px;padding-top: 2px;">
 					            	Upload
 					            </div>
-					            <input type="hidden" name="id" value="<%=@image.id%>">
 					            <input type="file" name="upload" id="upload" 
-					               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;cursor:hand ;width: 217px;height: 300px;margin-top: -262px;" />
+					               onchange="$('#save_and').val('continue');this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;cursor:hand ;width: 217px;height: 300px;margin-top: -262px;" />
 					          </div>
-				        	</form>
+				        	
 						</div>
-						<form id="info_form" action="/designer/set_image_info/" method="post" class="clearfix">
+						
 							<input type="hidden" name="id" value="<%=@image.id%>">
 							<div class="image-details">
 								<div class="form-row edit-image-title clearfix">
@@ -146,8 +146,9 @@
 									<a href="#" class="" onclick="$('#save_and').val('return');$('#info_form').submit();return false">Just upload this design</a>
 								</div>
 							</div>
-						</form>
-					</div>
+						
+						</div>
+					</form>
 				</div>
 				
 			</div>			

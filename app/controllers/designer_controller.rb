@@ -108,6 +108,51 @@ class DesignerController < SiteController
     @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
   end
   
+  
+  def set_photo
+    @image = (params[:id].nil? || params[:id]=="") ? Image.new : @user.images.find(params[:id]) 
+    unless params[:upload].nil?
+      #upload image
+      begin
+        @image = @user.set_image(params[:upload],DIR_PATH_REPOSITORY,@image.id)
+        flash[:notice] = "File has been uploaded successfully"
+        #redirect_to :action => "profile"
+        logger.debug "file upload success"
+      rescue Exception => e
+        flash[:error] = "Error with upload! Please retry."
+        logger.debug "file upload failed"
+        logger.debug "Error: #{e.inspect}"
+      end
+    end
+    
+    #set details
+    @image.name=params[:name]
+    @image.description=params[:description]
+    @image.category= Category.find_by_name(params[:category])
+    @image.tag_ids=params[:tags]
+    @image.user=@user
+    @image.save
+    
+    
+    logger.debug "Image id: #{@image.id}"
+    
+    @categories = Category.all
+    @tags = Tag.all
+    
+    if !@image.populated? || params[:save_and]=="continue"
+      render "edit_photo"
+      return
+    end
+    
+    if params[:save_and]=="add"
+      redirect_to  :action => "edit_photo"
+    else
+      redirect_to  :action => "profile"
+    end
+  end
+  
+  
+  
   def upload_image
     begin
       id = (params[:id].nil? || params[:id]=="") ? nil : params[:id] 

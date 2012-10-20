@@ -36,10 +36,14 @@ class User < ActiveRecord::Base
     }
   end
   
+  def file_suffix(file_name)
+    file_name.split(".").reverse.first
+  end
+  
   def set_image(upload,dir, id=nil)
     image = id.nil? ? Image.new : self.images.find(id)
     image.save
-    image.file_path =  "#{image.id}.#{upload.original_filename[-3,3]}"
+    image.file_path =  "#{image.id}.#{file_suffix(upload.original_filename)}"
     # create the file path
     path = File.join("#{dir}", "#{image.file_path}")
     # write the file
