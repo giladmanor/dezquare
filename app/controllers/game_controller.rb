@@ -35,6 +35,12 @@ class GameController < SiteController
     unless @game.is_complete
       render view
     else
+      unless @game.user.nil?
+        logger.debug "logging in user #{@game.user.full_name}"
+        session[:user_id] = @game.user.id
+      else
+        logger.debug "     !!!     User is empty      !!!"
+      end
       redirect_to :controller=>:site,:action=>:dashboard
     end
     
