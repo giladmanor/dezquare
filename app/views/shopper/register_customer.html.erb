@@ -1,7 +1,11 @@
+<p style="height: 700px;">&nbsp;</p>
+
 		
 	<div id="register-designer-popup" class="popup">
 		<div class="popup-content">
 			<div class="title">Sign-up to dezquare!</div>
+			
+			
 			<form action="/shopper/register" method="post">
 				<div class="formfield">
 					<input type="text" class="text" name="name" />
@@ -28,7 +32,7 @@
 					<label class="form-error">Invalid Password</label>
 				</div>
 				<div class="formfield">
-					<input type="password" class="text" name="re-password" />
+					<input type="password" class="text" name="re_password" />
 					<label class="abs">Re-enter Password</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Password does not match</label>
@@ -43,12 +47,19 @@
 				</div>
 				<div class="submit clearfix">
 					<input type="submit" class="button-orange" value="Sign Up!" />
-				</div>		
+				</div>	
+				<%
+			unless @error.nil?
+			%>
+			<p><label class="form-error" style="display:block"><%=raw(@error)%></label></p>
+			
+			<%end%>	
 			</form>
 			<div class="foot">
 				Already a member? <a href="#" id="bottom-login">Login!</a>
 			</div>
+			
 		</div>		
 	</div>
-	
+			
 	

@@ -34,12 +34,13 @@ class UserController < AdminController
     @user= params[:id].nil? ? User.new : User.find(params[:id])
     gp=@user.games.size
     gf=@user.games.where(:is_complete=>true).size
-    cts=@user.games.where(:is_complete=>true).map{|g| g.game_image_rates.created_at}.sort{|x,y| y<=>x}
-    act = (cts[0] - cts[cts.length])/gf unless cts.empty?
+    cts=@user.games.where(:is_complete=>true).map{|g| g.game_image_rates.map{|ir| ir.created_at}}.flatten.sort{|x,y| y<=>x}
+    
+    act = (cts[0] - cts[cts.length-1])/gf unless cts.empty?
     pi=@user.games.map{|g| g.images}.flatten.length
-    likes=@user.game_image_rates.map{|g| g.images}.flatten.length
-    passes=@user.game_image_rates.map{|g| g.images}.flatten.length
-    lg = cts=@user.games.where(:is_complete=>true).select{|g| g.game_image_rates[0].created_at-g.game_image_rates[g.game_image_rates.length].created_at > 10}.sort{|x,y| y<=>x}
+    likes=@user.game_image_rates.select{|i| i.value>0}.length
+    passes=@user.game_image_rates.select{|i| i.value<0}.length
+    lg = @user.games.where(:is_complete=>true).select{|g| g.game_image_rates.length > 20}.length
     @game_data = {
       :games_playes=> gp,
       :games_finished=>gf,

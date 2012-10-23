@@ -58,6 +58,15 @@ class SiteController < ApplicationController
     
   end
   
+  
+  def cancel_design
+    project = Project.find(params[:id])
+    project.canceled
+    project.save
+    redirect_to :action=>:dashboard, :project_grabbed=>project.id
+  end
+  
+  
   def settings
     @author = @user
     @editable=true

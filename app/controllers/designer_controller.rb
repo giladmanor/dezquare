@@ -13,6 +13,30 @@ class DesignerController < SiteController
     render "dashboard"
   end
   
+  def accept_project
+    project = Project.find(params[:id])
+    if project.status=="started"
+      project.grabbed
+      project.designer = @user
+      project.save
+    else
+      #TODO
+      @error= "Oops, too late."
+    end
+     redirect_to :action=>:dashboard, :project_grabbed=>project.id
+  end
+  
+  def reject_project
+    project = Project.find(params[:id])
+    gd = @user.game_designers.select{|gd| gd.game_id == project.game.id}.each{|gd| gd.destroy}
+    logger.debug gd
+    
+    redirect_to :action=>:dashboard
+  end
+  
+  
+  
+  
   def invite_for_game
     #TODO
     redirect_to :action=>:dashboard, :show_invite_success=>true

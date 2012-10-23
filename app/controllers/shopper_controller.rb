@@ -14,7 +14,7 @@ class ShopperController < SiteController
       redirect_to :controller=>:game,:action=>:index
     else
       logger.debug " found errors: #{user.errors.messages.values.join(', ')} "
-      @error="#{user.errors.messages.values.join(', ')}"
+      @error="#{user.errors.messages.values.join('</br>')}"
       render "register_customer"
     end
     

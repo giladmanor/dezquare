@@ -1488,7 +1488,7 @@ ul#portfolio-gallery {
 	height: 500px;
 	margin: 0px;
 	position: relative;
-	overflow: hidden;
+	overflow: scroll; /*was hidden */
 	padding: 0px;
 }
 ul#portfolio-gallery li { 
@@ -1910,8 +1910,7 @@ div.game-step div.categories a {
 	width: 246px;
 }
 div.game-step div.categories a.last { border-right: 0px none; }
-div.game-step div.categories a:hover,
-div.game-step div.categories a.active { background: #ededed; }
+div.game-step div.categories a:hover { background: #ededed; }
 div.game-step ul.icons {
 	padding: 40px 20px 0px 100px;
 	list-style-type: none;

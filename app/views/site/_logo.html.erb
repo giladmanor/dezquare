@@ -1,0 +1,19 @@
+<%
+home_link = "/site/index"
+unless @user.nil? 
+	if @user.shopper
+		home_link = "/site/dashboard"
+	elsif @user.designer
+		home_link = "/designer/dashboard"
+	else
+
+	end
+end
+
+%>
+				
+<h1 id="logo">
+	<a href="<%=home_link%>">
+		<img src="/img/logo.png" alt="Dezquare" />
+	</a>
+</h1>

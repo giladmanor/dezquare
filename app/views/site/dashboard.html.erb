@@ -5,13 +5,13 @@
 				<div id="sidebar">
 					<a href="/game/index" class="orange-button">Get a new design?</a>
 					<div class="title">
-						<a href="shopper-latest-designs.html">Latest Designs</a>
+						<a href="#">Latest Designs</a>
 					</div>
 					<div class="latest-designs">
 						<%
 						#active projects project.status!=:started
 						
-						@user.projects_out.reject{|p| p.status=="started"}.each{|project|
+						@user.projects_out.reject{|p| ["started", "canceled"].include?(p.status)  }.each{|project|
 							%>	
 							<div class="design">
 								<div class="col1">
@@ -69,13 +69,13 @@
 							<div class="project">
 								<div class="basic">
 									<div class="icon">
-										<img src="/img/icons/business-cards.png" />
+										<img src="/img/icons/<%=project.category.icon%>.png" />
 									</div>
 									<div class="name-and-client">
 										<div class="name single"><%=project.title%></div>
 									</div>
 									<div class="action wider">
-										<a href="#" class="black-button esmall-font cancel-design">Cancel Design</a>
+										<a href="/site/cancel_design/<%=project.id%>" class="black-button esmall-font ">Cancel Design</a>
 										<a href="#" class="pending">Pending Kickoff</a>
 									</div>
 								</div>
@@ -100,7 +100,7 @@
 														</div>
 														<div class="details">
 															<div class="big">
-																<a href="/designer/profile/<%=dez.id%>"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
+																<a target="_blank" href="/designer/profile/<%=dez.id%>"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
 															</div>
 															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
 															
@@ -130,10 +130,11 @@
 							<%
 						}
 						%>					
-						
-						
 					</div>
 				</div>
 			</div>			
 		</div>
+		
+		
+		
 	

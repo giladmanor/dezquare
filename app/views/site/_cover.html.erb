@@ -44,7 +44,7 @@
 	        	</form>
 	        	
 			</div>
-			<h2 id="profile-name"><%=@author.full_name%></h2>
+			<h2 id="profile-name"><a href="<%= @author.designer ? "/designer/profile/#{@author.id}" : ""%>"><%=@author.full_name%></a></h2>
 			
 			<%
 			if @author.designer

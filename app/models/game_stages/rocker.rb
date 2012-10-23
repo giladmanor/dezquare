@@ -6,7 +6,7 @@ class Rocker < StageImplementor
     game.project.save
     
     game.designers.each{|d|
-      UserMailer.designer_new_match(user).deliver
+      UserMailer.designer_new_match(d).deliver
     }
   end
   

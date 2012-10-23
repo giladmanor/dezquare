@@ -4,7 +4,7 @@ class Registrator < StageImplementor
   def self.set(game,params,arguments)
     
     return unless game.user.nil?
-    
+    #return unless params[:agree_tos]=="on"
     user = User.new
     user.name=params[:name]
     user.l_name=params[:l_name]
@@ -18,8 +18,11 @@ class Registrator < StageImplementor
         game.project.shopper = user
         game.project.save
       end
-        
+      
+    else
+          logger.debug "------- #{user.errors.inspect}"
     end
+    logger.debug "------- #{user.id}"
   end
   
   def self.complete?(game,arguments)

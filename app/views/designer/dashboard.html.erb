@@ -29,20 +29,20 @@
 						</div>
 						<div id="match-projects" class="white-box">	
 							<%
-							matches.reject{|g| g.project.nil? || g.user.nil?}.each{|game|
+							matches.reject{|g| g.project.nil? || g.user.nil? || g.project.status!="started"}.each{|game|
 								%>
 									<div class="project">
 										<div class="basic">
 											<div class="icon">
-												<img src="/img/icons/background-image.png" />
+												<img src="/img/icons/<%=game.category.icon%>.png" />
 											</div>
 											<div class="name-and-client">
 												<div class="name"><%=game.project.title%></div>
 												<div class="client"><%=game.user.full_name%></div>
 											</div>
 											<div class="action">
-												<a href="#" class="black-button esmall-font accept-design">Accept</a>
-												<a href="#" class="decline">Decline</a>
+												<a href="/designer/accept_project/<%=game.project.id%>" class="black-button esmall-font ">Accept</a>
+												<a href="/designer/reject_project/<%=game.project.id%>" class="">Decline</a>
 											</div>
 										</div>
 										<div class="detailed">
@@ -112,7 +112,7 @@
 		</div>
 	</div>
 	
-	<div id="window-overlay" <%= params[:show_invite_success]=="true" ? raw('style="display: block"') : ''%>></div>
+	<div id="window-overlay" <%= (params[:show_invite_success]=="true" || (!params[:project_grabbed].nil? && params[:project_grabbed]!="")) ? raw('style="display: block"') : ''%>></div>
 	<div id="mark-complete-popup" class="popup">
 		<span class="close"></span>
 		<div class="popup-content">
@@ -133,7 +133,7 @@
 	
 	<%=render "dashboard_popups"%>
 	
-	<div id="accept-project-popup" class="popup">
+	<div id="accept-project-popup" class="popup" <%= (!params[:project_grabbed].nil? && params[:project_grabbed]!="") ? raw('style="display: block"') : ''%>>
 		<span class="close"></span>
 		<div class="popup-content">
 			<div class="title">You’ve got it!</div>
@@ -142,7 +142,7 @@
 				and contact your customer with any questions and updates.
 			</div>
 			<div class="desc">We can’t wait to see your work!</div>
-			<a href="mailto:test@mail.com" class="black-button small-font">Contact Customer</a>
+			<a href="mailto:<%= (!params[:project_grabbed].nil? && params[:project_grabbed]!="") ? Project.find(params[:project_grabbed]).shopper.email : ''%>" class="black-button small-font">Contact Customer</a>
 		</div>		
 	</div>
 	
