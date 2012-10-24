@@ -80,7 +80,7 @@
 		</div>
 		<div class="latest-designs">
 		<%
-		projects.each{|project|
+		projects.reverse.each{|project|
 			%>
 			<div class="design">
 				<div class="col1">
@@ -93,15 +93,15 @@
 				</div>
 				<div class="col2">
 					<%
-					unless project.status==:completed
+					unless ["completed","delivered"].include?(project.status)
 						%>
-						<a href="/designer/complete_project/<%=project.id%>" class="sidebar-mark-complete">Mark<br/>Complete!</a>
+						<a href="#" class="sidebar-mark-complete" onclick="$('#project_mark_complete').attr('href','/designer/complete_project/<%=project.id%>')">Mark<br/>Complete!</a>
 						<%	
 					else
 						%>
 						<div class="completed">
-							<img src="img/bkg-checked-2.png" /><br/>
-							Completed
+							<img src="/img/bkg-checked-2.png" /><br/>
+							<%=project.display_status%>
 						</div>
 						<%
 					end

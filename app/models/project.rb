@@ -38,10 +38,10 @@ class Project < ActiveRecord::Base
   def display_status
     r={:started=>"Pending",
        :grabbed=>"Open",
-       :delivered=>"Open",
+       :delivered=>"Delivered",
        :completed=>"Completed",
        :canceled=>"Canceled"}
-    r[self.status]
+    r[self.status.to_sym]
   end
   
 end

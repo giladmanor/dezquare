@@ -355,7 +355,7 @@ $(document).ready(function(){
 			$("#match-projects").each(function(){
 				var self = $(this);
 				self.delegate("a.mark-complete", "click", function(e){
-					e.preventDefault();
+					//e.preventDefault();
 					overlay.show();
 					markCompletePopup.show();
 				});
@@ -371,30 +371,30 @@ $(document).ready(function(){
 				});
 			});			
 			markCompletePopup.find("a.black-button").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				markCompletePopup.hide();
-				$("#mark-complete-success-popup").show();
+				//$("#mark-complete-success-popup").show();
 			});
 			rejectProjectPopup.find("a.decline-anyway").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				rejectProjectPopup.hide();
 				overlay.hide();
 			});
 			
 			$("a.cancel-design").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				overlay.show();
 				cancelDesignPopup.show();
 				currentPopupActionButton = $(this);
 			});
 			$("a.customer-mark-complete").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				overlay.show();
 				completeDesignPopup.show();
 				currentPopupActionButton = $(this);
 			});
 			cancelDesignPopup.find("a.back").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				cancelDesignPopup.hide();
 				overlay.hide();
 			});
@@ -688,12 +688,12 @@ $(document).ready(function(){
 			});
 			
 			$(".sidebar-mark-complete").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				var button = $(this);
 				overlay.show();
 				markCompletePopup.show();
 				markCompletePopup.find("a.black-button").unbind().click(function(e){
-					e.preventDefault();
+					//e.preventDefault();
 					markCompletePopup.hide();
 					overlay.hide();
 					button.hide();

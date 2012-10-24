@@ -16,13 +16,18 @@ else
 		<%
 	elsif @user.designer
 		%>
-		<div id="profile-menu">
-			<a href="/designer/profile" class="base">Profile</a>
+		
+		<div id="profile-menu" style="width: auto;padding-left: 5px;padding-right: 5px">
+			
+			<a href="/designer/profile" style="background: none" class="base"><%=@user.full_name%></a>
 			<div class="expanded">
 				<a href="/designer/settings">Settings</a>
 				<a href="/site/logout" class="last">Logout</a>
 			</div>
 		</div>
+		<a href="/designer/dashboard" style="padding-top: 3px;text-align: center;float: right;margin-right: 5px;background: url(/img/dashboard_icon.png) no-repeat;height: 45px;width: 33px">
+			<span style="color: #FFF22D;"><%=@user.matches.reject{|g| g.project.nil? || g.user.nil? || g.project.status!="started"}.size%></span>
+		</a>
 		<%
 	else
 		%>

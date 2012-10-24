@@ -13,17 +13,31 @@ class DesignerController < SiteController
     render "dashboard"
   end
   
+  ###############################################################################
+  
   def accept_project
     project = Project.find(params[:id])
     if project.status=="started"
       project.grabbed
       project.designer = @user
       project.save
+      @res={
+        :mail_to=>"mailto:#{@user.email}",
+        :title=>"You`ve got it!",
+        :message=>"Take your time to learn your customer`s taste \nand contact your customer with any questions and updates.",
+        :desc=>"We can`t wait to see your work!"
+      }
     else
       #TODO
-      @error= "Oops, too late."
+      @res={
+        :mail_to=>"",
+        :title=>"Oops, you are too late...",
+        :message=>"Another designer has accepted this project before you.",
+        :desc=>"Sorry, maybe next time."
+      }
     end
-     redirect_to :action=>:dashboard, :project_grabbed=>project.id
+    logger.debug @res.inspect
+     render :json=>@res
   end
   
   def reject_project
@@ -34,7 +48,12 @@ class DesignerController < SiteController
     redirect_to :action=>:dashboard
   end
   
-  
+  def complete_project
+    project = Project.find(params[:id])
+    project.delivered
+    project.save
+    redirect_to :action=>:dashboard
+  end
   
   
   def invite_for_game
@@ -43,10 +62,15 @@ class DesignerController < SiteController
   end
   ###############################################################################
   
+  def latest_designs
+    @author =  @user
+  end
+  
+  
   def profile
     @author = params[:id].present? ? User.find(params[:id]) : @user 
-    
     @editable= (@author==@user)
+    
   end
   
   def enlarged_view

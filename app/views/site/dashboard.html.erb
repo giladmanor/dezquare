@@ -11,7 +11,7 @@
 						<%
 						#active projects project.status!=:started
 						
-						@user.projects_out.reject{|p| ["started", "canceled"].include?(p.status)  }.each{|project|
+						@user.projects_out.reverse.reject{|p| ["started", "canceled"].include?(p.status)  }.each{|project|
 							%>	
 							<div class="design">
 								<div class="col1">
@@ -24,7 +24,7 @@
 								</div>
 								<div class="col2">
 									<%
-									unless project.status==:completed
+									unless ["completed"].include?(project.status)
 										%>
 										<a href="/site/complete_project/<%=project.id%>" class="sidebar-mark-complete">Mark<br/>Complete!</a>
 										<%	
@@ -75,7 +75,7 @@
 										<div class="name single"><%=project.title%></div>
 									</div>
 									<div class="action wider">
-										<a href="/site/cancel_design/<%=project.id%>" class="black-button esmall-font ">Cancel Design</a>
+										<a href="#" class="black-button esmall-font cancel-design" onclick="$('#cancel_id').val('<%=project.id%>')">Cancel Design</a>
 										<a href="#" class="pending">Pending Kickoff</a>
 									</div>
 								</div>
@@ -135,6 +135,21 @@
 			</div>			
 		</div>
 		
-		
+	<div id="cancel-design-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want<br/>to cancel the design?</div>
+			<div class="subtitle">This action can’t be undone</div>
+			<div class="buttons">
+				<form id="cancel_design_form" action="/site/cancel_design" method="post">
+					<input type="hidden" id="cancel_id" name="id"/>
+				</form>
+				<a href="#" class="back">Back</a>
+				<a href="#" class="black-button small-font" onclick="$('#cancel_design_form').submit();return false;">Cancel Design</a>
+			</div>
+		</div>		
+	</div>		
+	
+	
 		
 	

@@ -1,54 +1,6 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-	<title>Dezquare</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
-	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-	<script type="text/javascript" src="js/main.js"></script></head>
-<body>
-	<div id="page">
-		<div id="header">
-			<div class="page-content clearfix">
-				<h1 id="logo">
-					<a href="dashboard.html">
-						<img src="img/logo.png" alt="Dezquare" />
-					</a>
-				</h1>
-				
-				<div id="profile-menu">
-					<a href="profile.html" class="base">Profile</a>
-					<div class="expanded">
-						<a href="settings.html">Settings</a>
-						<a href="index.html" class="last">Logout</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		
 		<div id="content">
 			<div class="page-content">
-				<div id="cover">
-					<div id="cover-image">
-						<span class="edit-field"></span>
-						<img src="img/temp/cover-image.jpg" alt="My Cover Image" />
-					</div>
-					<div id="profile-bar" class="clearfix">
-						<div id="profile-photo">
-							<img src="img/temp/profile-photo.jpg" alt="My Profile Photo" />
-							<span class="edit-field"></span>
-						</div>
-						<h2 id="profile-name">Axl Rose</h2>
-						<div id="profile-status">
-							<div class="current">
-								<span class="available">Available</span>
-							</div>
-							<div class="edit">
-								<span class="available">Available</span> / <span class="unavailable">Unavailable</span>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%=render "cover"%>
 				<div id="sidebar">
 					<a href="#" class="orange-button" id="got-new-client">Got a new client?</a>
 					<div class="title">
@@ -60,174 +12,93 @@
 						<h3>Latest Designs</h3>
 					</div>
 					<div id="match-projects" class="white-box">
-						<div class="project">
-							<div class="basic">
-								<div class="icon">
-									<img src="img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-								<div class="action wider">
-									<a href="#" class="black-button esmall-font mark-complete">Mark Complete</a>
-								</div>
-							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="title">About the desired Flyer</div>
-									<div class="about-project">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
-									</div>
-									<a href="mailto:client@dot.com" class="contact">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-										<div class="design last">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-									</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-							<div class="last-row">
-								<div class="col1">
-									<div class="payment">Payment: $100</div>
-								</div>
-								<div class="col2">
-									<div class="date">Started: 21:07, 27 MAY 2012</div>
-								</div>
-							</div>
-						</div>
+						<%
+						#active projects project.status!=:started
 						
-						<div class="project">
-							<div class="basic">
-								<div class="icon">
-									<img src="img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-								<div class="action wider">
-									<a href="#" class="black-button esmall-font mark-complete">Mark Complete</a>
-								</div>
-							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="already-requested">You've requested the taste for this customer</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
+						@user.projects_in.reverse.reject{|p| ["started", "canceled"].include?(p.status)  }.each{|project|
+							%>	
+							<div class="project">
+								<div class="basic">
+									<div class="icon">
+										<img src="/img/icons/<%=project.game.category.icon%>.png" />
+									</div>
+									<div class="name-and-client">
+										<div class="name"><%=project.title%></div>
+										<div class="client"><%=project.game.user.full_name%></div>
+									</div>
+									<div class="action wider">
+										Status: <%=project.display_status%>
+										<%
+										unless ["delivered", "completed"].include?(project.status)
+											%><a href="#" class="black-button esmall-font mark-complete">Mark Delivered</a><%
+										else
+											%><%
+										end
+										
+										%>
+										
 									</div>
 								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
+								<div class="detailed">
+									<div class="col1">
+										<div class="title">About the desired <%=project.game.category.name%></div>
+										<div class="about-project">
+											<%=project.info%>
 										</div>
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-										<div class="design last">
-											<img src="img/temp/project-photo.jpg" />
+										<a href="mailto:<%=project.game.user.email%>" class="contact">
+											<span class="icon"></span>
+											<span class="text">Contact client</span>
+										</a>
+									</div>
+									<div class="col2">
+										<div class="title">Designs Liked by <%=project.game.user.full_name%></div>
+										<div class="designs">
+										<%
+										images=project.game.game_image_rates.select{|r| r.value==1}.map{|r| r.image}
+										
+										images.take(3).each{|image|
+											%>
+											<div class="design">
+												<img src="/repository/<%=image.file_path%>" style="max-width: 119px;max-height: 128px;"/>
+											</div>
+											<%
+										}
+										%>
+										
+									</div>
+									<p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
+										<div class="taste-indicators">
+											<div class="title"><%=project.game.user.full_name%> Taste Indicators</div>
+											<ul>
+												<%
+												tags = images.map{|si| si.tags}.flatten.uniq
+												
+												tags.each{|tag|
+													%>
+													<li><%=tag.name%></li>	
+													<%	
+												}
+												
+												%>
+											</ul>
 										</div>
 									</div>
 								</div>
-							</div>
-							<div class="last-row">
-								<div class="col1">
-									<a href="mailto:client@dot.com" class="contact">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="date">Mapped: 21:07, 27 MAY 2012</div>
+								<div class="last-row">
+									<div class="col1">
+										<div class="payment">Payment: $<%=project.game.max_price%></div>
+									</div>
+									<div class="col2">
+										<div class="date"><%=project.game.created_at.strftime("%I:%M%p, %e %b %Y")%></div>
+									</div>
 								</div>
 							</div>
-						</div>
+							
+							<%
+						}
 						
-						<div class="project last">
-							<div class="basic">
-								<div class="icon">
-									<img src="img/icons/background-image.png" />
-								</div>
-								<div class="name-and-client">
-									<div class="name">Design Project Title</div>
-									<div class="client">Client's Full Name</div>
-								</div>
-								<div class="completed">Completed</div>
-							</div>
-							<div class="detailed">
-								<div class="col1">
-									<div class="title">About the desired Flyer</div>
-									<div class="about-project">
-										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur magna ipsum, congue eget tincidunt nec, ultricies sed ligula. Fusce accumsan ante et erat rhoncus ultrices. Morbi posuere adipiscing cursus. Integer sit amet quam ac urna rhoncus feugiat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed lobortis sodales lobortis. Aenean iaculis feugiat tortor et imperdiet. Sed convallis eros vel ante aliquam vitae pulvinar arcu ullamcorper. Sed ac eros nec enim ultrices dapibus. Aenean quis lorem sapien, vitae mollis magna. Nulla viverra tortor quis lectus vestibulum id convallis enim interdum.
-									</div>
-									<a href="mailto:client@dot.com" class="contact">
-										<span class="icon"></span>
-										<span class="text">Contact client</span>
-									</a>
-								</div>
-								<div class="col2">
-									<div class="title">Designs Liked by Full Name</div>
-									<div class="designs">
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-										<div class="design">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-										<div class="design last">
-											<img src="img/temp/project-photo.jpg" />
-										</div>
-									</div>
-									<div class="taste-indicators">
-										<div class="title">Full Name Taste Indicators</div>
-										<ul>
-											<li>* Colorful (Color Palette)</li>
-											<li>* Urban (Style)</li>
-											<li>* Realistic (Image)</li>
-											<li>* Minimalistic</li>
-											<li>* Geometric Shapes</li>
-										</ul>
-									</div>
-									
-								</div>
-							</div>
-							<div class="last-row">
-								<div class="col2">
-									<div class="date">Started: 21:07, 27 MAY 2012</div>
-								</div>
-							</div>
-						</div>
+						%>
+						
 						
 						<a href="#" id="dashboard-load-more" class="black-button small-font load-more">
 							<span>Show me more</span>
@@ -236,147 +107,4 @@
 				</div>
 			</div>			
 		</div>
-	</div>
 	
-	<div id="footer">
-		<div class="page-content">
-			<div id="copyright">&copy;dèzquare 2012</div>
-			<div id="footer-links">
-				<a href="about.html">About</a>
-				<span>|</span>
-				<a href="privacy.html">Privacy Policy</a>
-				<span>|</span>
-				<a href="terms.html">Terms of Use</a>
-			</div>
-		</div>
-	</div>
-	
-	<div id="window-overlay"></div>
-	<div id="mark-complete-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Have you completed the design?</div>
-			<div class="subtitle">
-				Before you mark the job as - "complete", <br/>
-				make sure that your client think so too.
-			</div>
-			<div class="dont-ask clearfix">
-				<span class="checkbox">
-					<input type="checkbox" name="dont-ask" />
-				</span>
-				<span class="text">Don't ask me again</span>
-			</div>
-			<a href="#" class="black-button small-font">Mark Complete</a>
-		</div>		
-	</div>
-	
-	<div id="mark-complete-success-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Have you completed the design?</div>
-			<div class="subtitle">
-				Nice job completing this project!<br/>
-				Get more projects<br/>
-				by uploading your awesome design!
-			</div>
-			<a href="#" class="black-button small-font">Upload design</a>
-		</div>		
-	</div>
-	
-	<div id="new-client-popup" class="popup">
-		<div class="popup-content">
-			<div class="title">Got new clients? </div>
-			<div class="subtitle">Find out what they like!</div>
-			<div class="desc">
-				Send your customer an invitation to play our "Taste game"<br/>
-				and get your customer's taste mapped instintly.
-			</div>
-			<form action="#">
-				<div class="form-row pr-title">
-					<label>Title:</label>
-					<div class="formfield">
-						<input type="text" name="title" class="text" />
-						<label class="form-error">Invalid title</label>
-					</div>
-				</div>
-				<div class="form-row pr-type">
-					<label>Add a Product Type:</label>
-					<div class="formfield">
-						<div class="combobox ">
-							<input type="hidden" name="product-type" value="" />
-							<div class="value">Background Image</div>
-							<div class="list">
-								<div class="option">Background Image</div>
-								<div class="option">Business Card</div>
-								<div class="option">Facebook Cover Image</div>
-								<div class="option">Infographic</div>
-								<div class="option">Laptop Sticker</div>
-								<div class="option">Logo</div>
-								<div class="option">Mobile Sticker</div>
-								<div class="option">Paper Design</div>
-								<div class="option">Personal Card</div>
-								<div class="option">Photo Image Fix</div>
-								<div class="option">Presentation design</div>
-								<div class="option">T-Shirt</div>
-								<div class="option">Tattoo</div>
-								<div class="option">Visual status</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="separator">Client's contact details:</div>
-				<div class="form-row pr-basic">
-					<label>First Name:</label>
-					<div class="formfield">
-						<input type="text" name="first-name" class="text" />
-						<label class="form-error">Invalid first name</label>
-					</div>
-				</div>
-				<div class="form-row pr-basic">
-					<label>Last Name:</label>
-					<div class="formfield">
-						<input type="text" name="last-name" class="text" />
-						<label class="form-error">Invalid last name</label>
-					</div>
-				</div>
-				<div class="form-row pr-basic">
-					<label>Email:</label>
-					<div class="formfield">
-						<input type="text" name="email" class="text" />
-						<label class="form-error">Invalid email</label>
-					</div>
-				</div>
-				<div class="buttons clearfix">
-					<input type="submit" class="button-orange" value="Submit" id="nc-submit" />
-					<a href="#" class="cancel">Cancel</a>
-				</div>
-			</form>
-		</div>		
-	</div>
-	
-	<div id="new-client-success-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Invitation sent!</div>
-			<div class="desc">
-				An invitation to take the "taste maping" game was sent to your client.<br/>
-				Sit back and relax while we map your clients taste
-			</div>
-		</div>		
-	</div>
-	
-	<div id="accept-project-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">You’ve got it!</div>
-			<div class="subtitle">
-				Take your time to learn your customer’s taste<br/>
-				and contact your customer with any questions and updates.
-			</div>
-			<div class="desc">We can’t wait to see your work!</div>
-			<a href="mailto:test@mail.com" class="black-button small-font">Contact Customer</a>
-		</div>		
-	</div>
-	
-</body>
-</html>

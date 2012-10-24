@@ -63,8 +63,16 @@ class SiteController < ApplicationController
     project = Project.find(params[:id])
     project.canceled
     project.save
-    redirect_to :action=>:dashboard, :project_grabbed=>project.id
+    redirect_to :action=>:dashboard
   end
+  
+  def complete_project
+    project = Project.find(params[:id])
+    project.completed
+    project.save
+    redirect_to :action=>:dashboard
+  end
+  
   
   
   def settings

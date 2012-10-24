@@ -27,6 +27,28 @@
 						<div class="white-band-title">
 							<h3>You've Got Matched!</h3>
 						</div>
+						<script type="text/javascript">
+							function accept_project(project_id)
+								{
+									$.ajax({
+									  type: "POST",
+									  url: "/designer/accept_project",
+									  data: { id:project_id},
+									  success: function(data){
+									  	if(data.mail_to!=""){
+									  		$('#grabber_mailto').attr("href",data.mail_to);
+									  		$('#grabber_mailto').show();
+									  	}
+									  	$('#grabber_title').text(data.title);
+									  	$('#grabber_message').text(data.message);
+									  	$('#grabber_desc').text(data.desc);
+									  	
+									  }
+									});
+									return false;
+								}
+						</script>
+						
 						<div id="match-projects" class="white-box">	
 							<%
 							matches.reject{|g| g.project.nil? || g.user.nil? || g.project.status!="started"}.each{|game|
@@ -41,8 +63,8 @@
 												<div class="client"><%=game.user.full_name%></div>
 											</div>
 											<div class="action">
-												<a href="/designer/accept_project/<%=game.project.id%>" class="black-button esmall-font ">Accept</a>
-												<a href="/designer/reject_project/<%=game.project.id%>" class="">Decline</a>
+												<a href="#" class="black-button esmall-font accept-design" onclick="accept_project(<%=game.project.id%>)">Accept</a>
+												<a href="#" class="decline" onclick="$('#cusomer_mail').attr('href','mailto:<%=game.user.email%>');$('#reject_project').attr('href','/designer/reject_project/<%=game.project.id%>');">Decline</a>
 											</div>
 										</div>
 										<div class="detailed">
@@ -71,7 +93,7 @@
 													}
 													%>
 													
-												</div>
+												</div><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
 												<div class="taste-indicators">
 													<div class="title"><%=game.user.full_name%> Taste Indicators</div>
 													<ul>
@@ -112,7 +134,7 @@
 		</div>
 	</div>
 	
-	<div id="window-overlay" <%= (params[:show_invite_success]=="true" || (!params[:project_grabbed].nil? && params[:project_grabbed]!="")) ? raw('style="display: block"') : ''%>></div>
+	<div id="window-overlay" <%= (params[:show_invite_success]=="true") ? raw('style="display: block"') : ''%>></div>
 	<div id="mark-complete-popup" class="popup">
 		<span class="close"></span>
 		<div class="popup-content">
@@ -127,22 +149,21 @@
 				</span>
 				<span class="text">Don't ask me again</span>
 			</div>
-			<a href="#" class="black-button small-font">Mark Complete</a>
+			<a href="#" class="black-button small-font" id="project_mark_complete">Mark Complete</a>
 		</div>		
 	</div>
 	
 	<%=render "dashboard_popups"%>
 	
-	<div id="accept-project-popup" class="popup" <%= (!params[:project_grabbed].nil? && params[:project_grabbed]!="") ? raw('style="display: block"') : ''%>>
-		<span class="close"></span>
+	<div id="accept-project-popup" class="popup" >
+		<span class="close" onclick="location='/designer/dashboard'"></span>
 		<div class="popup-content">
-			<div class="title">You’ve got it!</div>
-			<div class="subtitle">
-				Take your time to learn your customer’s taste<br/>
-				and contact your customer with any questions and updates.
+			<div class="title" id="grabber_title">Checking...</div>
+			<div class="subtitle" id="grabber_message">
+				We are now checking the projects availability. 
 			</div>
-			<div class="desc">We can’t wait to see your work!</div>
-			<a href="mailto:<%= (!params[:project_grabbed].nil? && params[:project_grabbed]!="") ? Project.find(params[:project_grabbed]).shopper.email : ''%>" class="black-button small-font">Contact Customer</a>
+			<div class="desc" id="grabber_desc">Please wait</div>
+			<a href="" id="grabber_mailto" class="black-button small-font" style="display: none">Contact Customer</a>
 		</div>		
 	</div>
 	
@@ -155,7 +176,7 @@
 				This project might be easier than you think!<br/>
 				<span>Give your client a chance</span>
 			</div>
-			<a href="mailto:test@mail.com" class="black-button small-font">Contact Client</a>
-			<a href="#" class="decline-anyway">decline anyway</a>
+			<a href="" id="cusomer_mail" class="black-button small-font">Contact Client</a>
+			<a href="#" id="reject_project" class="decline-anyway">decline anyway</a>
 		</div>		
 	</div>
