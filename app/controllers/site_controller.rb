@@ -119,7 +119,7 @@ class SiteController < ApplicationController
     end
     
     loc = request.referer.split('?')[0].split('/').reverse
-    redirect_to :controller=>loc[1], :action=>loc[0]
+    redirect_to :controller=>loc[1], :action=>loc[0], :crop_avatar=>true
   end
   
   def upload_cover
@@ -134,8 +134,32 @@ class SiteController < ApplicationController
       logger.debug "Error: #{e.inspect}"
     end
     loc = request.referer.split('?')[0].split('/').reverse
+    redirect_to :controller=>loc[1], :action=>loc[0], :crop_cover=>true
+  end
+  
+  def crop_cover
+    path = File.join("#{DIR_PATH_COVERS}", "#{@user.cover}")
+    x=params[:x1].to_f * params[:sr].to_f
+    y=params[:y1].to_f * params[:sr].to_f
+    w=params[:w].to_f * params[:sr].to_f
+    h=params[:h].to_f * params[:sr].to_f
+    Image.crop(path,x,y,w,h)
+    loc = request.referer.split('?')[0].split('/').reverse
     redirect_to :controller=>loc[1], :action=>loc[0]
   end
+  
+  def crop_avatar
+    path = File.join("#{DIR_PATH_AVATARS}", "#{@user.avatar}")
+    x=params[:x1].to_f * params[:sr].to_f
+    y=params[:y1].to_f * params[:sr].to_f
+    w=params[:w].to_f * params[:sr].to_f
+    h=params[:h].to_f * params[:sr].to_f
+    Image.crop(path,x,y,w,h)
+    loc = request.referer.split('?')[0].split('/').reverse
+    redirect_to :controller=>loc[1], :action=>loc[0]
+  end
+  
+  
   
   # filters ---------------------------------------------------------------------------
   

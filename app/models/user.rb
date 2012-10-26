@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  has_many :images
+  has_many :images, :order=>"ord"
   has_many :user_languages
   has_many :languages , :through=>:user_languages
   
@@ -46,30 +46,30 @@ class User < ActiveRecord::Base
     image.file_path =  "#{image.id}.#{file_suffix(upload.original_filename)}"
     # create the file path
     path = File.join("#{dir}", "#{image.file_path}")
+    thumb_path = File.join("#{dir}","thumbnail", "#{image.file_path}")
     # write the file
     File.open(path, "wb") { |f| f.write(upload.read) }
+    image.copy_to_thumbnail(dir)
     self.images<<image
     image
   end
   
   def set_avatar(upload,dir)
-    self.avatar =  "#{self.id}.#{upload.original_filename[-3,3]}"
+    self.avatar =  "#{self.id}.#{file_suffix(upload.original_filename)}"
     # create the file path
     path = File.join("#{dir}", "#{self.avatar}")
     # write the file
     File.open(path, "wb") { |f| f.write(upload.read) }
     self.save
-    
   end
   
   def set_cover(upload,dir)
-    self.cover =  "#{self.id}.#{upload.original_filename[-3,3]}"
+    self.cover =  "#{self.id}.#{file_suffix(upload.original_filename)}"
     # create the file path
     path = File.join("#{dir}", "#{self.cover}")
     # write the file
     File.open(path, "wb") { |f| f.write(upload.read) }
     self.save
-    
   end
   
   

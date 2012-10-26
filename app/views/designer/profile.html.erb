@@ -1,3 +1,4 @@
+
 		<div id="content">
 			<div class="page-content">
 				<%=render "cover"%>
@@ -18,7 +19,7 @@
 						</div>
 						-->
 					</div>
-					<div id="designer-samples" class="full-portfolio">
+					<div id="designer-samples" class="full-portfolio with-drag">
 						
 						<%
 						if @editable
@@ -34,8 +35,8 @@
 						@author.images.each{|img|
 							i+=1
 							%>
-							<a href="/designer/enlarged_view/<%=img.id%>" class="sample <%= (i%3==0) ? 'last' : ''%>">
-								<img src="/repository/<%=img.file_path%>" alt="<%=img.name%>" />
+							<a href="/designer/enlarged_view/<%=img.id%>" id="image_id_<%=img.id%>" class="sample <%= (i%3==0) ? 'last' : ''%>">
+								<img src="/repository/thumbnail/<%=img.file_path%>?t=<%=Time.now.to_f%>"  alt="<%=img.name%>" />
 							</a>
 							<%
 							}
@@ -72,4 +73,8 @@
 			<a href="#" class="black-button small-font">Mark Complete</a>
 		</div>		
 	</div>
+	
+	
+	
+	
 	

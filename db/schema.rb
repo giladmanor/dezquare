@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121015013249) do
+ActiveRecord::Schema.define(:version => 20121026164528) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -139,6 +139,7 @@ ActiveRecord::Schema.define(:version => 20121015013249) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
+    t.integer  "ord"
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"

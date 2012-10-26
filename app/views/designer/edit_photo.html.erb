@@ -12,10 +12,11 @@
 					<form id="info_form" action="/designer/set_photo"  enctype="multipart/form-data" method="post">
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo">
-							<div class="image" style="width: 235px;">
-								<img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>" style="max-width: 217px;max-height: 400px" />
+							<div class="image">
+								<div style="width:213px; height:252px; overflow:hidden;">
+									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview"/>
+								</div>
 							</div>
-							
 							  <div class="fileinputs">
 					            <div class="image" style="position: absolute;z-index: 0;background: #272425;width: 214px;height: 34px;color: white;text-align: center;font-size: 22px;padding-top: 2px;">
 					            	Upload
@@ -154,5 +155,46 @@
 			</div>			
 		</div>
 	</div>
+	
+	
+	<%
+	
+	if @crop
+		%>
+	
+			<div id="window-overlay" style="display: block;"></div>
+			 <div id="crop-popup" class="popup" style="display: block;">
+			  <span class="close"></span>
+			  <div class="popup-content">
+			   <div class="title">Move and Scale the frame to crop</div>
+			   <form action="/designer/crop_image" method="post">
+			    <table cellspacing="0" cellpadding="0">
+			     <tr>
+			      <td>
+			       <img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>" class="cropped-image" alt="Flowers" />
+			      </td>        
+			     </tr>
+			    </table>
+				<input type="hidden" name="id" value="<%=@image.id%>" />
+			    <input type="hidden" size="4" class="x1" name="x1" />
+			    <input type="hidden" size="4" class="y1" name="y1" />
+			    <input type="hidden" size="4" class="x2" name="x2" />
+			    <input type="hidden" size="4" class="y2" name="y2" />
+			    <input type="hidden" size="4" class="w" name="w" />
+			    <input type="hidden" size="4" class="h" name="h" />
+			   </form>
+			   
+			   <a href="#" class="black-button small-font">Done!</a>
+			  </div>  
+		 	</div>
+	
+			
+		<%
+	end
+	
+	
+	%>
+	
+	
 	
 	

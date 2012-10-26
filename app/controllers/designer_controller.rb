@@ -75,6 +75,25 @@ class DesignerController < SiteController
     
   end
   
+  def set_image_order
+    ids = params[:ids].split(",").map{|id| id.to_i}
+    logger.debug ids.inspect
+    i=0
+    ids.each{|id|
+     image = @user.images.find(id)
+     unless image.ord==i
+       image.ord = i
+       image.save
+     end
+     i+=1  
+    }
+    @user.images
+    
+    render :text=>:ok
+  end
+  
+  
+  
   def enlarged_view
     @image = Image.find(params[:id])
     @author = @image.user
@@ -156,6 +175,7 @@ class DesignerController < SiteController
     @categories = Category.all
     @tags = Tag.all
     @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
+    @crop = params[:crop]
   end
   
   
@@ -168,6 +188,7 @@ class DesignerController < SiteController
         flash[:notice] = "File has been uploaded successfully"
         #redirect_to :action => "profile"
         logger.debug "file upload success"
+        @crop = true
       rescue Exception => e
         flash[:error] = "Error with upload! Please retry."
         logger.debug "file upload failed"
@@ -195,48 +216,24 @@ class DesignerController < SiteController
     end
     
     if params[:save_and]=="add"
-      redirect_to  :action => "edit_photo"
+      redirect_to  :action => "edit_photo", :crop=>true
     else
       redirect_to  :action => "profile"
     end
   end
   
-  
-  
-  def upload_image
-    begin
-      id = (params[:id].nil? || params[:id]=="") ? nil : params[:id] 
-      image = @user.set_image(params[:upload],DIR_PATH_REPOSITORY,id)
-      flash[:notice] = "File has been uploaded successfully"
-      #redirect_to :action => "profile"
-      logger.debug "file upload success"
-    rescue Exception => e
-      flash[:error] = "Error with upload! Please retry."
-      logger.debug "file upload failed"
-      logger.debug "Error: #{e.inspect}"
-    end
-    redirect_to  :action => "edit_photo", :id=>image.id
+  def crop_image
+    logger.debug "-------------------------------------------------------------------------------------"
+    image = @user.images.find(params[:id])
+    
+    image.crop_thumbnail(image,DIR_PATH_REPOSITORY,params[:x1],params[:y1],params[:w],params[:h] )
+    
+    
+    logger.debug "-------------------------------------------------------------------------------------"
+    redirect_to  :action => "edit_photo", :id=>params[:id]
   end
   
-  def set_image_info
-    image =(params[:id].nil? || params[:id]=="") ? Image.new : @user.images.find(params[:id]) 
-    
-    image.name=params[:name]
-    image.description=params[:description]
-    image.category= Category.find_by_name(params[:category])
-    image.tag_ids=params[:tags]
-    image.user=@user
-    image.save
-    
-    if image.file_path.nil?
-      redirect_to  :action => "edit_photo", :id=>image.id
-      return
-    elsif params[:save_and]=="add"
-      redirect_to  :action => "edit_photo"
-    else
-      redirect_to  :action => "profile"
-    end
-  end
+  
   
   def delete_image
     image = @user.images.find(params[:id])

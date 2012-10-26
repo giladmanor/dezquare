@@ -744,6 +744,32 @@ div#reject-project-popup a.decline-anyway {
 	font-family: 'QuickSandRegular';
 	font-size: 14px;
 }
+
+div#crop-popup {
+ background: none;
+ margin-left: -118px;
+ top: 86px;
+ width: 610px;
+}
+div#crop-popup div.popup-content {
+ padding-bottom: 20px;
+}
+div#crop-popup form {
+ padding: 0px;
+ margin: 0px 20px 15px;
+ border: 1px solid #b2b2b2;
+}
+div#crop-popup table { 
+ text-align: center; 
+ width: 100%;
+}
+div#crop-popup div.jcrop-holder { margin: 0px auto; }
+div#crop-popup a.black-button { 
+ margin: 0px auto;
+ width: 270px; 
+}
+
+
 /* End Popups */
 
 /* Form Elements */

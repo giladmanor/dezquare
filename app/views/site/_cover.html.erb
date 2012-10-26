@@ -5,7 +5,7 @@
 			<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
 			  <div class="fileinputs">
 	            <div style="position: absolute;z-index: 0;">
-	            	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" alt="My Cover Image" />
+	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" alt="My Cover Image" />
 	            </div>
 	            <% 
 	            if @editable
@@ -26,16 +26,18 @@
 				
 				<form action="/designer/upload_avatar"  enctype="multipart/form-data" method="post">
 				  <div class="fileinputs">
-		            <div style="position: absolute;z-index: 0;overflow:hidden">
-		            	<img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" />
-		            </div>
+		            
+		            <div style="overflow: hidden; width: 117px; height: 117px;">
+			         <img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" id="preview" />
+			         
+			        </div>
 		            <% 
 		            if @editable
 		            %>
 		            
 		            <span class="edit-field"></span>
 		            <input type="file" name="upload" id="upload" 
-		               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: 0px -20px;cursor:hand " />
+		               onchange="this.form.submit();" style="opacity: 0.01;z-index: 1;float:left;margin: 0px -20px;cursor:hand ;position: absolute; top: 0;z-index: 18;" />
 		          	<%
 		            end
 		            %>
@@ -76,3 +78,75 @@
 		</div>
 	</div>
 </div>
+
+
+
+<%
+if params[:crop_cover]=="true"
+	%>
+<div id="window-overlay" style="display: block;"></div>	
+<div id="crop-popup" class="popup for-cover" style="display: block; top: 210px;">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Move and Scale the frame to crop</div>
+	   	<form action="/site/crop_cover" method="post">
+	    	<table cellspacing="0" cellpadding="0">
+			    <tr>
+				    <td>
+				    	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" class="cropped-image" alt="Flowers" />
+				    </td>        
+			    </tr>
+	    	</table>
+	
+			<input type="hidden" size="4" class="x1" name="x1" />
+			<input type="hidden" size="4" class="y1" name="y1" />
+			<input type="hidden" size="4" class="x2" name="x2" />
+			<input type="hidden" size="4" class="y2" name="y2" />
+			<input type="hidden" size="4" class="w" name="w" />
+			<input type="hidden" size="4" class="h" name="h" />
+			<input type="text" size="4" class="sr" name="sr" />
+	   </form>
+	   
+	   <a href="#" class="black-button small-font">Done!</a>
+	</div>  
+</div>	
+	
+	<%
+end
+
+if params[:crop_avatar]=="true"
+	%>
+<div id="window-overlay" style="display: block;"></div>
+<div id="crop-popup" class="popup for-profile" style="display: block; top: 210px;">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Move and Scale the frame to crop</div>
+		<form action="/site/crop_avatar" method="post">
+			<table cellspacing="0" cellpadding="0">
+				<tr>
+					<td>
+						<img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" class="cropped-image" alt="Flowers" />
+					</td>        
+				</tr>
+			</table>
+		
+			<input type="hidden" size="4" class="x1" name="x1" />
+			<input type="hidden" size="4" class="y1" name="y1" />
+			<input type="hidden" size="4" class="x2" name="x2" />
+			<input type="hidden" size="4" class="y2" name="y2" />
+			<input type="hidden" size="4" class="w" name="w" />
+			<input type="hidden" size="4" class="h" name="h" />
+			<input type="hidden" size="4" class="sr" name="sr" />
+		</form>
+	   
+		<a href="#" class="black-button small-font">Done!</a>
+	</div>  
+</div>
+	
+	
+	<%
+end
+%>
+
+
+

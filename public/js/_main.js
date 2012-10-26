@@ -355,7 +355,7 @@ $(document).ready(function(){
 			$("#match-projects").each(function(){
 				var self = $(this);
 				self.delegate("a.mark-complete", "click", function(e){
-					e.preventDefault();
+					//e.preventDefault();
 					overlay.show();
 					markCompletePopup.show();
 				});
@@ -371,30 +371,30 @@ $(document).ready(function(){
 				});
 			});			
 			markCompletePopup.find("a.black-button").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				markCompletePopup.hide();
-				$("#mark-complete-success-popup").show();
+				//$("#mark-complete-success-popup").show();
 			});
 			rejectProjectPopup.find("a.decline-anyway").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				rejectProjectPopup.hide();
 				overlay.hide();
 			});
 			
 			$("a.cancel-design").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				overlay.show();
 				cancelDesignPopup.show();
 				currentPopupActionButton = $(this);
 			});
 			$("a.customer-mark-complete").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				overlay.show();
 				completeDesignPopup.show();
 				currentPopupActionButton = $(this);
 			});
 			cancelDesignPopup.find("a.back").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				cancelDesignPopup.hide();
 				overlay.hide();
 			});
@@ -445,8 +445,6 @@ $(document).ready(function(){
 				{
 					$(this).addClass("active");
 				}
-				
-				$(this).siblings("a").removeClass("active");
 				
 				var selectors = "";
 				var categories = gameCategories.children("a").each(function(){
@@ -690,12 +688,12 @@ $(document).ready(function(){
 			});
 			
 			$(".sidebar-mark-complete").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				var button = $(this);
 				overlay.show();
 				markCompletePopup.show();
 				markCompletePopup.find("a.black-button").unbind().click(function(e){
-					e.preventDefault();
+					//e.preventDefault();
 					markCompletePopup.hide();
 					overlay.hide();
 					button.hide();
@@ -944,55 +942,6 @@ $(document).ready(function(){
 		};
 		/* End Base Functions */
 		
-		/* DRAG */
-		var designerSamples = $("#designer-samples.with-drag");
-		designerSamples.find("> a.last").css("margin-right", "20px");
-		designerSamples.width(designerSamples.width() + 25);
-		if (designerSamples.length)
-		{
-			designerSamples.parents("#main").css({ "position": "relative" });
-			designerSamples.sortable({
-				 items: "> a:not(.upload-image)",
-				 "start": function() {
-					designerSamples.parents("#main").css({ "z-index": 30 });
-					$("#window-overlay").show();
-				 },
-				 "stop": function(a,b,c) {
-					$("#window-overlay").hide();
-						
-					var ids = [];
-						
-					b.item.parent().children(".sample").each(function() {
-						if (!$(this).hasClass("upload-image"))
-						{
-							var id = $(this).attr("id");
-							if (typeof id != "undefined")
-							{
-								ids.push(id.replace("image_id_", ""));
-							}
-						}
-					});
-					
-					var queryString = "";
-					for (var i in ids)
-					{
-						queryString = queryString + ids[i] + ",";
-					}
-					if (queryString.length > 0)
-					{
-						queryString = queryString.substring(0, queryString.length -1 );
-					}
-					
-					$.ajax({
-						"url": "/designer/set_image_order",
-						"type": "POST",
-						"data": { "ids": queryString }
-					});
-				 }
-			});
-		}
-		/* END DRAG */
-		
 		(this.Init = function()
 		{
 			self = this;
@@ -1000,149 +949,6 @@ $(document).ready(function(){
 			BindEvents();
 			BuildSliders();
 			SetWelcomeSlidesHeight();
-			
-			var cropPopup = $("#crop-popup");
-			if (cropPopup.length > 0)
-			{
-				if (cropPopup.hasClass("for-cover"))
-				{
-					CreateCoverJCrop(cropPopup, 985, 241, $("#cover-preview"));
-				}
-				else if (cropPopup.hasClass("for-profile"))
-				{
-					CreateCoverJCrop(cropPopup, 117, 117, $("#preview"));
-				}
-				else
-				{
-					CreateJCrop(cropPopup, 213, 252, $("#preview"));
-				}
-			}
 		})();
 	}
 })(window);
-
-function CreateJCrop(holder, width, height, preview)
-{
-	var jcrop_api, boundx, boundy;
-				  
-	holder.find('img.cropped-image').Jcrop({
-		onChange: updatePreview,
-		onSelect: updatePreview,
-		aspectRatio: width / height,
-		//minSize: [width, height],
-		setSelect: [0,0,width,height]
-	},function(){
-		// Use the API to get the real image size
-		var bounds = this.getBounds();
-		boundx = bounds[0];
-		boundy = bounds[1];
-		// Store the API in the jcrop_api variable
-		jcrop_api = this;
-	});
-
-	function updatePreview(c)
-	{
-		if (parseInt(c.w) > 0)
-		{
-			var rx = width / c.w;
-			var ry = height / c.h;
-
-			preview.css({
-				width: Math.round(rx * boundx) + 'px',
-				height: Math.round(ry * boundy) + 'px',
-				marginLeft: '-' + Math.round(rx * c.x) + 'px',
-				marginTop: '-' + Math.round(ry * c.y) + 'px'
-			});
-  
-			holder.find('.x1').val(c.x);
-			holder.find('.y1').val(c.y);
-			holder.find('.x2').val(c.x2);
-			holder.find('.y2').val(c.y2);
-			holder.find('.w').val(c.w);
-			holder.find('.h').val(c.h);
-		}
-	};
-	
-	holder.find("a.black-button").click(function(e) {
-		e.preventDefault();
-		holder.find("form").submit();
-	});
-}
-
-function CreateCoverJCrop(holder, width, height, preview)
-{
-	var jcrop_api, boundx, boundy;
-	
-	var image = holder.find('img.cropped-image');
-	
-	holder.find('img.cropped-image').each(function() {
-		if (this.complete)
-		{
-			startCrop(holder, width, height, preview);
-		}
-		else
-		{
-			$(this).load(function() {
-				startCrop(holder, width, height, preview);
-			});
-		}
-	});
-	
-	function startCrop(holder, width, height, preview) {
-	
-		var shrinkRatio = image.width() / 566;
-		image.width(image.width() / shrinkRatio);
-		
-		width = width / shrinkRatio;
-		height = height / shrinkRatio;
-		
-		holder.find('.sr').val(shrinkRatio);
-		
-		holder.find('img.cropped-image').Jcrop({
-			onChange: updatePreview,
-			onSelect: updatePreview,
-			aspectRatio: width / height,
-			//minSize: [width, height],
-			setSelect: [0,0,width,height]
-		},function(){
-			// Use the API to get the real image size
-			var bounds = this.getBounds();
-			boundx = bounds[0];
-			boundy = bounds[1];
-			// Store the API in the jcrop_api variable
-			jcrop_api = this;
-		});
-
-		function updatePreview(c)
-		{
-			if (parseInt(c.w) > 0)
-			{
-				var rx = width / c.w;
-				var ry = height / c.h;
-
-				preview.css({
-					width: Math.round(rx * boundx * shrinkRatio) + 'px',
-					height: Math.round(ry * boundy * shrinkRatio) + 'px',
-					marginLeft: '-' + Math.round(rx * c.x * shrinkRatio) + 'px',
-					marginTop: '-' + Math.round(ry * c.y * shrinkRatio) + 'px'
-				});
-	  
-				holder.find('.x1').val(c.x);
-				holder.find('.y1').val(c.y);
-				holder.find('.x2').val(c.x2);
-				holder.find('.y2').val(c.y2);
-				holder.find('.w').val(c.w);
-				holder.find('.h').val(c.h);
-			}
-		};
-		
-		holder.find("a.black-button").click(function(e) {
-			e.preventDefault();
-			holder.find("form").submit();
-		});
-	}	
-}
-
-
-
-				
