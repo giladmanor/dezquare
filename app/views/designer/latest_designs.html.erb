@@ -30,7 +30,7 @@
 										Status: <%=project.display_status%>
 										<%
 										unless ["delivered", "completed"].include?(project.status)
-											%><a href="#" class="black-button esmall-font mark-complete">Mark Delivered</a><%
+											%><a href="#" class="black-button esmall-font mark-complete" class="sidebar-mark-complete" onclick="$('#project_mark_complete').attr('href','/designer/complete_project/<%=project.id%>')">Mark Delivered</a><%
 										else
 											%><%
 										end
@@ -106,5 +106,20 @@
 					</div>
 				</div>
 			</div>			
+		</div>
+		
+		
+		<div id="window-overlay"></div>
+		<div id="mark-complete-popup" class="popup">
+			<span class="close"></span>
+			<div class="popup-content">
+				<div class="title">Have you completed the design?</div>
+				<div class="subtitle">
+					Before you mark the job as - "complete", <br/>
+					make sure that your client think so too.
+				</div>
+				
+				<a href="#" class="black-button small-font" id="project_mark_complete">Mark Complete</a>
+			</div>		
 		</div>
 	

@@ -41,7 +41,7 @@ Dezquare::Application.configure do
       :port                 => 587,
       :domain               => 'dezquare.com',
       :user_name            => 'hello@dezquare.com',
-      :password             => 'za150535',
+      :password             => 'za150535 S',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
     

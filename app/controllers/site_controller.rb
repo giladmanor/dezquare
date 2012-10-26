@@ -73,7 +73,9 @@ class SiteController < ApplicationController
     redirect_to :action=>:dashboard
   end
   
-  
+  def latest_designs
+    @author=@user
+  end
   
   def settings
     @author = @user

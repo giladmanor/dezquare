@@ -45,14 +45,16 @@ class DesignerController < SiteController
     gd = @user.game_designers.select{|gd| gd.game_id == project.game.id}.each{|gd| gd.destroy}
     logger.debug gd
     
-    redirect_to :action=>:dashboard
+    loc = request.referer.split('?')[0].split('/').reverse
+    redirect_to :controller=>loc[1], :action=>loc[0]
   end
   
   def complete_project
     project = Project.find(params[:id])
     project.delivered
     project.save
-    redirect_to :action=>:dashboard
+    loc = request.referer.split('?')[0].split('/').reverse
+    redirect_to :controller=>loc[1], :action=>loc[0]
   end
   
   
