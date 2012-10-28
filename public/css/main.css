@@ -60,7 +60,7 @@ div#header div#profile-menu {
 	font-family: Verdana;
 	font-size: 14px;
 	line-height: 18px;
-	padding: 20px 0px 10px;
+	/*padding: 20px 0px 10px;*/
 	float: right;
 	width: 103px;
 	z-index: 5;
@@ -68,6 +68,7 @@ div#header div#profile-menu {
 div#header div#profile-menu a.base {
 	color: #fff22d;
 	display: block;
+	padding: 20px 0px 10px;
 	background: url(../img/bkg-profile-menu.png) center center no-repeat;
 	text-align: center;
 }
@@ -1514,9 +1515,24 @@ ul#portfolio-gallery {
 	height: 500px;
 	margin: 0px;
 	position: relative;
-	overflow: scroll; /*was hidden */
+	overflow-x: hidden; /*was hidden */
 	padding: 0px;
 }
+
+ul#portfolio-gallery::-webkit-scrollbar {
+    width: 4px;
+}
+ 
+ul#portfolio-gallery::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+ul#portfolio-gallery::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
 ul#portfolio-gallery li { 
 	overflow: hidden; 
 	position: absolute;
@@ -1535,6 +1551,7 @@ ul#portfolio-gallery li div.col1 {
 ul#portfolio-gallery li div.col2 {
 	float: right;
 	width: 280px;
+	padding-right:10px;
 }
 ul#portfolio-gallery div.col2 div.row1 {
 	line-height: 14px;

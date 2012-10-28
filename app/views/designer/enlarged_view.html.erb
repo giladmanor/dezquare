@@ -11,7 +11,8 @@
 					<div id="portfolio-big" class="white-box">
 						<a href="#" id="portfolio-prev"></a>
 						<a href="#" id="portfolio-next"></a>
-						<ul id="portfolio-gallery">
+						<div class="expandable">
+						<ul id="portfolio-gallery" >
 						<%
 						@author.images.each{|image|
 							active = image.id==@image.id ? 'class="active"' : ''
@@ -67,7 +68,7 @@
 							
 							
 						</ul>
-						
+						</div>
 					</div>
 				</div>
 			</div>			
