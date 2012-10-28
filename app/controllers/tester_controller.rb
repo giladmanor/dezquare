@@ -12,6 +12,10 @@ class TesterController < ApplicationController
     
   end
   
+  def clear
+    
+    render :text =>Rails.cache.clear 
+  end
   
   
 end
