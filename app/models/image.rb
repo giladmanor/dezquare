@@ -21,16 +21,26 @@ class Image < ActiveRecord::Base
   end
   
   
-  def crop_thumbnail(image, dir, x,y,w,h)
+  def crop_thumbnail(image, dir, x,y,w,h,dw)
     img_file = Magick::Image.read(dir+image.file_path).first
-    thumb = img_file.crop(x.to_f,y.to_f,w.to_f,h.to_f)
+    sr = (img_file.columns/dw.to_f)
     
-    source_path = File.join("#{dir}", "#{image.file_path}")
+    logger.debug " #{img_file.columns} ->(((((((((((((#{sr})))))))))))))"
+    
+    x=x.to_f*sr
+    y=y.to_f*sr
+    w=w.to_f*sr
+    h=h.to_f*sr
+    
+    logger.debug x
+    logger.debug w
+    
+    thumb = img_file.crop(x,y,w,h).resize(213,252)
+    
     path = File.join("#{dir}","thumbnail", "#{image.file_path}")
     logger.debug path
-    res = thumb.write(path)
-    img_file.write(source_path)
-    logger.debug res.inspect
+    thumb.write(path)
+    
   end
   
   def self.crop(file,x,y,w,h)

@@ -14,7 +14,7 @@
 						<div class="photo">
 							<div class="image">
 								<div style="width:213px; height:252px; overflow:hidden;">
-									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview"/>
+									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" />
 								</div>
 							</div>
 							  <div class="fileinputs">
@@ -171,7 +171,7 @@
 			    <table cellspacing="0" cellpadding="0">
 			     <tr>
 			      <td>
-			       <img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>" class="cropped-image" alt="Flowers" />
+			       <img src="/repository/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>" class="cropped-image" style="max-width: 450px;max-height: 500px"/>
 			      </td>        
 			     </tr>
 			    </table>
@@ -182,6 +182,7 @@
 			    <input type="hidden" size="4" class="y2" name="y2" />
 			    <input type="hidden" size="4" class="w" name="w" />
 			    <input type="hidden" size="4" class="h" name="h" />
+			    <input type="hidden" size="4" class="sr" name="sr" />
 			   </form>
 			   
 			   <a href="#" class="black-button small-font">Done!</a>

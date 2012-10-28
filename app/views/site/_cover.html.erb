@@ -5,7 +5,7 @@
 			<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
 			  <div class="fileinputs">
 	            <div style="position: absolute;z-index: 0;">
-	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" alt="My Cover Image" />
+	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" alt="My Cover Image" />
 	            </div>
 	            <% 
 	            if @editable
@@ -28,7 +28,7 @@
 				  <div class="fileinputs">
 		            
 		            <div style="overflow: hidden; width: 117px; height: 117px;">
-			         <img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>" alt="My Profile Photo" id="preview" />
+			         <img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>?t=<%=Time.now.to_f%>" alt="My Profile Photo" id="preview" />
 			         
 			        </div>
 		            <% 
@@ -46,7 +46,7 @@
 	        	</form>
 	        	
 			</div>
-			<h2 id="profile-name"><a href="<%= @author.designer ? "/designer/profile/#{@author.id}" : ""%>"><%=@author.full_name%></a></h2>
+			<h2 id="profile-name"><a href="<%= @author.designer ? "/designer/profile/#{@author.id}" : ""%>?t=<%=Time.now.to_f%>"><%=@author.full_name%></a></h2>
 			
 			<%
 			if @author.designer
@@ -93,7 +93,7 @@ if params[:crop_cover]=="true"
 	    	<table cellspacing="0" cellpadding="0">
 			    <tr>
 				    <td>
-				    	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>" class="cropped-image" alt="Flowers" />
+				    	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" class="cropped-image" alt="Flowers" />
 				    </td>        
 			    </tr>
 	    	</table>

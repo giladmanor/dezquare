@@ -226,7 +226,7 @@ class DesignerController < SiteController
     logger.debug "-------------------------------------------------------------------------------------"
     image = @user.images.find(params[:id])
     
-    image.crop_thumbnail(image,DIR_PATH_REPOSITORY,params[:x1],params[:y1],params[:w],params[:h] )
+    image.crop_thumbnail(image,DIR_PATH_REPOSITORY,params[:x1],params[:y1],params[:w],params[:h],params[:sr] )
     
     
     logger.debug "-------------------------------------------------------------------------------------"

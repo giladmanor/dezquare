@@ -1030,12 +1030,16 @@ function CreateJCrop(holder, width, height, preview)
 		onSelect: updatePreview,
 		aspectRatio: width / height,
 		//minSize: [width, height],
-		setSelect: [0,0,width,height]
+		setSelect: [10,10,width,height]
 	},function(){
 		// Use the API to get the real image size
 		var bounds = this.getBounds();
 		boundx = bounds[0];
 		boundy = bounds[1];
+		
+		var image = holder.find('img.cropped-image');
+		holder.find('.sr').val(image.width());
+		
 		// Store the API in the jcrop_api variable
 		jcrop_api = this;
 	});
@@ -1060,6 +1064,7 @@ function CreateJCrop(holder, width, height, preview)
 			holder.find('.y2').val(c.y2);
 			holder.find('.w').val(c.w);
 			holder.find('.h').val(c.h);
+			
 		}
 	};
 	
