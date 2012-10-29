@@ -466,13 +466,27 @@ $(document).ready(function(){
 				}
 			});
 			
-			gameIcons.find("a").click(function(e){
+			/*gameIcons.find("a").click(function(e){
 				e.preventDefault();
 				gameIcons.find("a").removeClass("active");
 				$(this).addClass("active");
 				$("#game-step-2").show();
 				window.scrollTo(0, $(document).height());
+			});*/
+			
+
+			
+			gameIcons.find(".nosoon").click(function(e){
+				e.preventDefault();
+				gameIcons.find(".nosoon").removeClass("active");
+				$(this).addClass("active");
+				$("#game-step-2").show();
+				window.scrollTo(0, $(document).height());
 			});
+			
+			$('.soon').removeAttr('href');
+			$('.soon').removeAttr('onclick');
+			$('.soon').unbind('click');
 			
 			$("#game-step-2 #submit").click(function(){
 				$(this).parents("form").submit();
@@ -776,6 +790,23 @@ $(document).ready(function(){
 				
 				return !errors;
 			});
+			
+				$("#info_form").click(function(e){
+					var form = $(this);
+					var errors = false;
+					var title = form.find("input[name=name]");
+					var description = form.find("textarea[name=description]");
+
+					form.find(".form-error").hide();
+
+					var checkboxes = form.find("span.checkbox.checked");
+
+					if (checkboxes.length > 8)
+					{
+						form.find(".other-tags .form-error").show();
+						errors = true;
+					}
+				});
 			
 			$("#settings-languages div.formfield").each(function(){
 				var field = $(this);

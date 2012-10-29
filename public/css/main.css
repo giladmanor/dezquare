@@ -161,7 +161,7 @@ div#footer {
 	line-height: 26px;
 	margin-top: -26px;
 	position: absolute;
-	bottom:0;
+	/*bottom:0;*/
 	width:100%;
 }
 div#footer div#copyright { float: left; }
