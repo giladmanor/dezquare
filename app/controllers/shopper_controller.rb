@@ -2,6 +2,12 @@ class ShopperController < SiteController
   
   def register
     logger.debug " creating a new shopper "
+    unless params[:agree_tos]=="on"
+      @error="You need to agree to the Terms of Service"
+      render "register_customer"
+      return
+    end
+    
     user = User.new  
     attr = params.delete_if{|k,v| !user.respond_to?(k.to_sym)}
     user.update_attributes(attr.except(:id))

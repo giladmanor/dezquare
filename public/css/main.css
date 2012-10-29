@@ -160,7 +160,9 @@ div#footer {
 	height: 26px;
 	line-height: 26px;
 	margin-top: -26px;
-	position: relative;
+	position: absolute;
+	bottom:0;
+	width:100%;
 }
 div#footer div#copyright { float: left; }
 div#footer div#footer-links { float: right; }

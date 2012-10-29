@@ -60,12 +60,13 @@
 														</div>
 														<div class="details">
 															<div class="big">
-																<a target="_blank" href="/designer/profile/<%=dez.id%>"><%=dez.full_name%><%=(dez.location.nil? || dez.location=="") ? '' : ", #{dez.location}"%></a>
+																<a target="_blank" href="/designer/profile/<%=dez.id%>"><%=dez.full_name%></a>
 															</div>
+															<div class="small"><%=(dez.location.nil? || dez.location=="") ? '' : "From #{dez.location}"%></div>
 															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
 															
 														</div>
-														<div class="status">Pending</div>
+														
 													</div>		
 													<%
 													}
@@ -99,4 +100,23 @@
 				</div>
 			</div>			
 		</div>
+		
+		<div id="window-overlay"></div>
+	
+	<div id="cancel-design-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want<br/>to cancel the design?</div>
+			<div class="subtitle">This action can’t be undone</div>
+			<div class="buttons">
+				<form id="cancel_design_form" action="/site/cancel_design" method="post">
+					<input type="hidden" id="cancel_id" name="id"/>
+				</form>
+				<a href="#" class="back">Back</a>
+				<a href="#" class="black-button small-font" onclick="$('#cancel_design_form').submit();return false;">Cancel Design</a>
+			</div>
+		</div>		
+	</div>	
+	
+	
 	

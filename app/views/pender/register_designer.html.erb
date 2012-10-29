@@ -28,15 +28,27 @@
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Link</label>
 				</div>
+				<div class="formfield clearfix agree">
+					<span class="checkbox">
+						<input type="checkbox" name="agree_tos" />
+					</span>
+					<span class="text">
+						I agree to the <a href="/site/privacy">Privacy Policy</a> &amp; <a href="/site/terms">Terms of Service</a>.
+					</span>
+				</div>
 				<div class="submit clearfix">
 					<input type="submit" class="button-orange" value="Send" />
 				</div>		
 			</form>
 			<div class="foot">
-				Already a member? <a href="#" id="bottom-login">Login!</a>
+				Already a member? <a href="#" id="bottom-login" onclick="$('#login-popup').show();$('#register-designer-popup').hide();">Login!</a>
 			</div>
+			<label class="form-error" <%= !@error.nil? ? "style='display:block'" : ""%>><%=@error%></label>
 		</div>		
+		
 	</div>
+	
+	
 	
 	<div id="login-popup" class="popup" <%= @state=="login" ? "style='display:block'" : ""%>>
 		<span class="close"></span>

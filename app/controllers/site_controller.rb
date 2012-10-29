@@ -101,6 +101,11 @@ class SiteController < ApplicationController
     unless @user.save
       @error = @user.error.message
     end
+    
+    if @error.nil?
+      redirect_to :action=>:dashboard
+      return
+    end
     redirect_to :action=>:settings, :error=>@error
   end
   

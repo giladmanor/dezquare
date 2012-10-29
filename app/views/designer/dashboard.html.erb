@@ -51,7 +51,7 @@
 						
 						<div id="match-projects" class="white-box">	
 							<%
-							matches.reject{|g| g.project.nil? || g.user.nil? || g.project.status!="started"}.each{|game|
+							matches.reverse.reject{|g| g.project.nil? || g.user.nil? }.each{|game|
 								%>
 									<div class="project">
 										<div class="basic">
@@ -63,8 +63,25 @@
 												<div class="client"><%=game.user.full_name%></div>
 											</div>
 											<div class="action">
+												<%
+												disable_contact = false
+												
+												if game.project.status=="started"
+												%>
 												<a href="#" class="black-button esmall-font accept-design" onclick="accept_project(<%=game.project.id%>)">Accept</a>
 												<a href="#" class="decline" onclick="$('#cusomer_mail').attr('href','mailto:<%=game.user.email%>');$('#reject_project').attr('href','/designer/reject_project/<%=game.project.id%>');">Decline</a>
+												<%
+												elsif @user.id==game.project.designer_id
+												%>
+												<span>Taken by you</span>
+												<%	
+												else
+													disable_contact = true
+												%>
+												<span>Taken by someone else</span>
+												<%
+												end
+												%>
 											</div>
 										</div>
 										<div class="detailed">
@@ -72,11 +89,19 @@
 												<div class="title">About the desired <%=game.category.name%></div>
 												<div class="about-project">
 													<%=game.project.info%>
-												</div>
-												<a href="mailto:<%=game.user.email%>" class="contact">
-													<span class="icon"></span>
-													<span class="text">Contact client</span>
-												</a>
+												</div><br />
+												<div class="about-project">File Types: <%=game.project.file_types%></div>
+												<%
+												unless disable_contact
+													%>
+													<a href="mailto:<%=game.user.email%>" class="contact">
+														<span class="icon"></span>
+														<span class="text">Contact client</span>
+													</a>
+													<%
+												end
+												%>
+												
 											</div>
 											<div class="col2">
 												<div class="title">Designs Liked by <%=game.user.full_name%></div>
@@ -111,7 +136,9 @@
 												</div>
 											</div>
 										</div>
+										
 										<div class="last-row">
+											
 											<div class="col1">
 												<div class="payment">Payment: $<%=game.max_price%></div>
 											</div>

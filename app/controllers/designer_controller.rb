@@ -22,7 +22,7 @@ class DesignerController < SiteController
       project.designer = @user
       project.save
       @res={
-        :mail_to=>"mailto:#{@user.email}",
+        :mail_to=>"mailto:#{project.game.user.email}",
         :title=>"You`ve got it!",
         :message=>"Take your time to learn your customer`s taste \nand contact your customer with any questions and updates.",
         :desc=>"We can`t wait to see your work!"
@@ -216,7 +216,7 @@ class DesignerController < SiteController
     end
     
     if params[:save_and]=="add"
-      redirect_to  :action => "edit_photo", :crop=>true
+      redirect_to  :action => "edit_photo"
     else
       redirect_to  :action => "profile"
     end

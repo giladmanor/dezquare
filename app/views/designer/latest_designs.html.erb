@@ -27,7 +27,7 @@
 										<div class="client"><%=project.game.user.full_name%></div>
 									</div>
 									<div class="action wider">
-										Status: <%=project.display_status%>
+										
 										<%
 										unless ["delivered", "completed"].include?(project.status)
 											%><a href="#" class="black-button esmall-font mark-complete" class="sidebar-mark-complete" onclick="$('#project_mark_complete').attr('href','/designer/complete_project/<%=project.id%>')">Mark Delivered</a><%
@@ -36,7 +36,7 @@
 										end
 										
 										%>
-										
+										Status: <%=project.display_status%>
 									</div>
 								</div>
 								<div class="detailed">
