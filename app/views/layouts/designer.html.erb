@@ -1,8 +1,20 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-	<title>Dezquare</title>
+	<title>dèzquare | Design Portfolio of <%=@author.nil? ? "" : @author.full_name%></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<META NAME="Description" CONTENT='Complete Graphic Design Portfolio of <%=@author.nil? ? "" : @author.full_name%>. Including the best <%=@author.nil? ? "" : @author.categories.map{|c| c.name}.join(", ")%>'>
+    
+	
+	<%
+	unless @author.nil?
+	%>
+	<meta property="og:title" content="<%=@author.full_name%> | dèzquare" />
+	
+	<meta property="og:image" content="http://dezquare.com/user_avatars/<%=@author.avatar%>" />
+	<%end%>
+	
+	
 	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
 	<link href="/css/jScrollPane.css" media="screen" rel="stylesheet" type="text/css" > 
 	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
@@ -17,6 +29,9 @@
 	<script type="text/javascript" src="/js/main.js"></script>
 	<script type="text/javascript" src="/js/jquery.expander.js"></script>
 	<script type="text/javascript" src="/js/custom.js"></script>
+	
+	
+	
 	</head>
 <body>
 	<%=render "qualaroo"%>

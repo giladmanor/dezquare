@@ -5,7 +5,7 @@
 				<div id="sidebar">
 					<a href="/game/index" class="orange-button">Get a new design?</a>
 					<%
-					projects = @user.projects_out.reverse.reject{|p| ["started", "canceled"].include?(p.status)  }
+					projects = @user.projects_out.reverse.reject{|p| ["started", "canceled",nil].include?(p.status)  }
 					
 					
 					if projects.length>0
@@ -27,7 +27,7 @@
 									<div class="name">
 										<a href="/site/latest_designs"><%=project.title%></a>
 									</div>
-									<div class="by">By <span><%=project.designer.full_name%></span></div>
+									<div class="by">By <span><%=project.designer.nil? ? "" : project.designer.full_name%></span></div>
 									<div class="started">Started: <%=project.created_at.strftime("%e %b")%></div>
 									<div class="status">Status: <%=project.display_status%></div>
 								</div>

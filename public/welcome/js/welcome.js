@@ -19,7 +19,7 @@ $('.button-welcome').click (function(e){
 		$('span#pop_error').show();
 	}
 	if ($('input').val() === (pass)) {
-		window.location = "../site/index";
+		window.location = "/site/index?k=kjsnidu";
 	}
 	return false;
   });

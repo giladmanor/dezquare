@@ -16,7 +16,7 @@
 						<%
 						#initiated projects project.status==:started
 						
-						@user.projects_out.reverse.reject{|p| ["started", "canceled"].include?(p.status)  }.each{|project|
+						@user.projects_out.reverse.reject{|p| ["started", "canceled", nil].include?(p.status)  }.each{|project|
 							%>
 							
 							<div class="project">

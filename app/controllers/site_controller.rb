@@ -7,7 +7,11 @@ class SiteController < ApplicationController
   DIR_PATH_COVERS = "#{Rails.root}/public/user_covers/"
   
   def index
-    
+    if params[:k].nil? && session[:k].nil?
+      redirect_to "/welcome/welcome"
+    else
+      session[:k] = true
+    end
   end
   
   def login
