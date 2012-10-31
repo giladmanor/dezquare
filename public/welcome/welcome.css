@@ -9,6 +9,8 @@ body {
 	line-height: 1.6;
 	height: 100%;
 	margin: 0px;
+	padding:0px;
+	text-align:center;
 }
 a {
 	color: #e86f45;
@@ -341,9 +343,21 @@ span.close {
 	width: 11px;
 }
 /* welcome pop-up */
-div#bg_welcome {
-	background-image: url(../img/bg_welcome.png) left top no-repeat;
+div#bg_welcome img{
+	
 }
+
+#pfont {
+	font-size:20px; margin:0px; margin-left:0px;
+}
+
+
+#imgpop {
+	width:15px;
+	height:15px;
+	margin-bottom:4px;
+}
+
 #pop_error {
 	color:red;
 	margin-left:172px;
@@ -354,6 +368,11 @@ div#bg_welcome {
 	position:absolute;
 	bottom:20px;
 }
+
+.dont {
+	margin-left:356px;
+}
+
 
 div.popup div.popup-content {
 	background: #fff;
