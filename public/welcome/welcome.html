@@ -9,9 +9,11 @@
 		
 </head>
 <body>
+	<div id="bg_welcome"> <img src="./img/welcome.png" alt="Bg Welcome">
 	<div id="login-popup" class="popup " style="display: block; ">
 			<div class="popup-content">
 				<div class="title">Welcome to dèzquare</div>
+				<div class="content_pop"><h4 style="display: none; margin-left:0px">We <img id="imgpop" src="./img/love.png" alt="Love"> TNW Readers</h4><p id="pfont"><span style="color:#ff7040">Grab your code</span> and join us!</p></div>
 				<form action="/site/login" method="post">
 					<div id="login-alert" class="form-error" style="display: none; ">Unknown Email Address or Password</div>
 
@@ -25,6 +27,7 @@
 				<div id="error">
 <span id="pop_error">Sorry, wrong code! Try again...</span>
 			</div>	
+			<div class="dont"><a href="#">dont have a code?</a></div>
 			</div>	
 		</div>		
 	</div>
