@@ -19,3 +19,7 @@
 /public/repository/*
 /public/user_covers/*
 /public/user_avatars/*
+
+app/.DS_Store
+
+.DS_Store
