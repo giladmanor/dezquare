@@ -3,7 +3,7 @@
 	<div id="register-designer-popup" class="popup" <%= @state.nil? ? "" : "style='display:none'"%>>
 		<div class="popup-content">
 			<div class="title">Request an invite to dezquare!</div>
-			<form action="/pender/register_designer_success" method="post">
+			<form action="/pender/register_designer_success" method="post" id="register-designer-form">
 				<div class="formfield">
 					<input type="text" class="text" name="name" />
 					<label class="abs">First Name</label>
@@ -35,6 +35,7 @@
 					<span class="text">
 						I agree to the <a href="/site/privacy">Privacy Policy</a> &amp; <a href="/site/terms">Terms of Service</a>.
 					</span>
+					<label class="form-error">Please agree to our terms and conditions</label>
 				</div>
 				<div class="submit clearfix">
 					<input type="submit" class="button-orange" value="Send" />

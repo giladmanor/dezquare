@@ -9,6 +9,7 @@
 						<a style="float: right;font-size: 14px;" href="/designer/delete_image/<%=@image.id%>">delete</a>
 						<%end%> 
 					</h2>
+					<div style="float: left"><a href="/designer/edit_photo/<%=@image.id%>?crop=true"><img src="/img/crop_icon.png" style="margin-left: 5px;margin-top: 19px;width: 19px;"/></a></div>
 					<form id="info_form" action="/designer/set_photo"  enctype="multipart/form-data" method="post">
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo">

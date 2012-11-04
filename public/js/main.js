@@ -930,6 +930,93 @@ $(document).ready(function(){
 				
 				BindComboboxEvents(combo);
 			});
+			
+			$("#register-customer-form").submit(function(ev) {
+				var f = $(this);
+				var fn = f.find("input[name=name]");
+				var ln = f.find("input[name=l_name]");
+				var e = f.find("input[name=email]");
+				var p = f.find("input[name=password]");
+				var cp = f.find("input[name=re_password]");
+				var tos = f.find("span.checkbox");
+				
+				f.find(".form-error").hide();
+				var errors = false;
+				
+				if ($.trim(fn.val()) == "")
+				{
+					fn.siblings(".form-error").show();
+					errors = true;
+				}
+				if ($.trim(ln.val()) == "")
+				{
+					ln.siblings(".form-error").show();
+					errors = true;
+				}
+				if (!IsValidEmail(e.val()))
+				{
+					e.siblings(".form-error").show();
+					errors = true;
+				}
+				if (p.val().length < 6)
+				{
+					p.siblings(".form-error").show();
+					errors = true;
+				}
+				else if (p.val() != cp.val())
+				{
+					cp.siblings(".form-error").show();
+					errors = true;
+				}				
+				if (!tos.hasClass("checked"))
+				{
+					tos.siblings(".form-error").show();
+					errors = true;
+				}
+			
+				return !errors;
+			});
+			
+			$("#register-designer-form").submit(function(ev) {
+				var f = $(this);
+				var fn = f.find("input[name=name]");
+				var ln = f.find("input[name=l_name]");
+				var e = f.find("input[name=email]");
+				var l = f.find("input[name=portfolio_link]");
+				var tos = f.find("span.checkbox");
+				
+				f.find(".form-error").hide();
+				var errors = false;
+				
+				if ($.trim(fn.val()) == "")
+				{
+					fn.siblings(".form-error").show();
+					errors = true;
+				}
+				if ($.trim(ln.val()) == "")
+				{
+					ln.siblings(".form-error").show();
+					errors = true;
+				}
+				if (!IsValidEmail(e.val()))
+				{
+					e.siblings(".form-error").show();
+					errors = true;
+				}
+				if ($.trim(l.val()) == "")
+				{
+					l.siblings(".form-error").show();
+					errors = true;
+				}
+				if (!tos.hasClass("checked"))
+				{
+					tos.siblings(".form-error").show();
+					errors = true;
+				}
+			
+				return !errors;
+			});
+			
 			/*
 			$("div#cover div#cover-image img").load(function(){
 				var image = $(this);
@@ -1037,11 +1124,11 @@ $(document).ready(function(){
 			{
 				if (cropPopup.hasClass("for-cover"))
 				{
-					CreateCoverJCrop(cropPopup, 985, 241, $("#cover-preview"));
+					CreateJCrop(cropPopup, 985, 241, $("#cover-preview"));
 				}
 				else if (cropPopup.hasClass("for-profile"))
 				{
-					CreateCoverJCrop(cropPopup, 117, 117, $("#preview"));
+					CreateJCrop(cropPopup, 117, 117, $("#preview"));
 				}
 				else
 				{
