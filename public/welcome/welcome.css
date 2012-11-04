@@ -374,7 +374,10 @@ div#bg_welcome img{
 }
 
 .mozilla {
-	margin-left:156px;
+	position:relative;
+	bottom:20px;
+	right:244px;
+	
 }
 
 div.popup div.popup-content {
