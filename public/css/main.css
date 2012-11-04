@@ -1029,6 +1029,16 @@ div#cover div#cover-image img {
 	height: 100%;
 	width: 100%;
 }
+
+#crop_upload {
+	
+	position:relative;
+	top:60px;
+	left:20px;
+	z-index:100;
+	display:inline;
+}
+
 div#cover div#profile-bar {
 	background: url(../img/bkg-profile-bar.png) left top repeat-x;
 	font-family: 'QuickSandRegular';
