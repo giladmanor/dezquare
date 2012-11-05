@@ -93,7 +93,7 @@ if params[:crop_cover]=="true"
 	    	<table cellspacing="0" cellpadding="0">
 			    <tr>
 				    <td>
-				    	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" class="cropped-image" alt="Flowers" />
+				    	<img src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" class="cropped-image"  style="max-width: 450px;max-height: 500px" />
 				    </td>        
 			    </tr>
 	    	</table>
