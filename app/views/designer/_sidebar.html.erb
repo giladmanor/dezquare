@@ -40,7 +40,7 @@
 		<%if @editable && (@author.about.nil? || @author.about=="")%>
 			<a href="/designer/settings">Add a short Bio</a>
 		<%else%>
-			<%=@author.about%>
+			<p style="white-space: pre-wrap"><%=@author.about%></p>
 		<%end%>
 	</div>
 	
