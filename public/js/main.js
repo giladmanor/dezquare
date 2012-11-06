@@ -856,59 +856,6 @@ $(document).ready(function(){
 				$("#got-new-client").click();
 			});
 
-			$("#upload-file").each(function(){
-				$(this).uploadify({
-					swf           : 'swf/uploadify.swf',
-					uploader      : '/controller/action',
-					auto: false,
-					width: 213,
-					height: 32,
-					buttonText: "Browse"
-				});
-			})
-			
-			$("#upload-cover-image").each(function(){
-				$(this).uploadify({
-					swf           : 'swf/uploadify.swf',
-					uploader      : '/controller/action',
-					auto: false,
-					width: 35,
-					height: 35,
-					buttonText: "&nbsp;"
-				});
-			});			
-			$("#sidebar-upload-cover-photo").each(function(){
-				$(this).uploadify({
-					swf           : 'swf/uploadify.swf',
-					uploader      : '/controller/action',
-					auto: false,
-					width: 180,
-					height: 20,
-					buttonText: "Upload cover photo"
-				});
-			});			
-			
-			$("#upload-profile-image").each(function(){
-				$(this).uploadify({
-					swf           : 'swf/uploadify.swf',
-					uploader      : '/controller/action',
-					auto: false,
-					width: 35,
-					height: 35,
-					buttonText: "&nbsp;"
-				});
-			});	
-			$("#sidebar-upload-profile-photo").each(function(){
-				$(this).uploadify({
-					swf           : 'swf/uploadify.swf',
-					uploader      : '/controller/action',
-					auto: false,
-					width: 180,
-					height: 20,
-					buttonText: "Upload profile photo"
-				});
-			});
-			
 			$("#ccs").each(function(){
 				$(this).find(".list-scroll").show();
 				$(this).find(".list").jScrollPane();
@@ -1022,49 +969,6 @@ $(document).ready(function(){
 			
 				return !errors;
 			});
-			
-			/*
-			$("div#cover div#cover-image img").load(function(){
-				var image = $(this);
-				var parent = image.parents("div#cover div#cover-image").eq(0);
-				if (image.height() > parent.height())
-				{
-					image.width(parent.width());
-					image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
-				}
-			});
-			
-			$("div#profile-photo img").load(function(){
-				var image = $(this);
-				var parent = image.parents("div#profile-photo").eq(0);
-				image.removeAttr("style");
-				if (image.height() > parent.height() && image.width() > parent.width())
-				{
-					image.parent().width(parent.width()).height(parent.height()).css("overflow", "hidden");
-					image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
-					image.css("margin-left", ((image.width() - parent.width()) / 2 * (-1)) + "px");
-				}
-			});
-			
-			$("#designer-samples a.sample img").each(function(){
-				$(this).load(function(){
-					var image = $(this);
-					var parent = image.parents("a.sample").eq(0);					
-					if (image.height() > parent.height() && image.width() > parent.width())
-					{
-						image.css("margin-top", ((image.height() - parent.height()) / 2 * (-1)) + "px");
-						image.css("margin-left", ((image.width() - parent.width()) / 2 * (-1)) + "px");
-					}
-				});
-			});
-			
-			$(".top-matches img").load(function(){
-				$(this).removeAttr("style").width(56).height(56);
-			});
-			$(".found-match img").load(function() {
-				$(this).removeAttr("style").width(58).height(58);
-			});
-			*/
 		};
 		/* End Base Functions */
 		
@@ -1148,63 +1052,11 @@ $(document).ready(function(){
 function CreateJCrop(holder, width, height, preview)
 {
 	var jcrop_api, boundx, boundy;
-				  
-	holder.find('img.cropped-image').Jcrop({
-		onChange: updatePreview,
-		onSelect: updatePreview,
-		aspectRatio: width / height,
-		//minSize: [width, height],
-		setSelect: [10,10,width,height]
-	},function(){
-		// Use the API to get the real image size
-		var bounds = this.getBounds();
-		boundx = bounds[0];
-		boundy = bounds[1];
-		
-		var image = holder.find('img.cropped-image');
-		holder.find('.sr').val(image.width());
-		
-		// Store the API in the jcrop_api variable
-		jcrop_api = this;
-	});
-
-	function updatePreview(c)
-	{
-		if (parseInt(c.w) > 0)
-		{
-			var rx = width / c.w;
-			var ry = height / c.h;
-
-			preview.css({
-				width: Math.round(rx * boundx) + 'px',
-				height: Math.round(ry * boundy) + 'px',
-				marginLeft: '-' + Math.round(rx * c.x) + 'px',
-				marginTop: '-' + Math.round(ry * c.y) + 'px'
-			});
-  
-			holder.find('.x1').val(c.x);
-			holder.find('.y1').val(c.y);
-			holder.find('.x2').val(c.x2);
-			holder.find('.y2').val(c.y2);
-			holder.find('.w').val(c.w);
-			holder.find('.h').val(c.h);
-			
-		}
-	};
-	
-	holder.find("a.black-button").click(function(e) {
-		e.preventDefault();
-		holder.find("form").submit();
-	});
-}
-
-function CreateCoverJCrop(holder, width, height, preview)
-{
-	var jcrop_api, boundx, boundy;
 	
 	var image = holder.find('img.cropped-image');
+	image.css("opacity", 0);
 	
-	holder.find('img.cropped-image').each(function() {
+	image.each(function() {
 		if (this.complete)
 		{
 			startCrop(holder, width, height, preview);
@@ -1217,17 +1069,18 @@ function CreateCoverJCrop(holder, width, height, preview)
 		}
 	});
 	
-	function startCrop(holder, width, height, preview) {
-	
-		var shrinkRatio = image.width() / 566;
-		image.width(image.width() / shrinkRatio);
+	function startCrop(holder, width, height, preview) 
+	{
+		image.attr("style", "opacity: 0;")
+		var originalWidth = image.width();
+		var originalHeight = image.height();
 		
-		width = width / shrinkRatio;
-		height = height / shrinkRatio;
-		
-		holder.find('.sr').val(shrinkRatio);
-		
-		holder.find('img.cropped-image').Jcrop({
+		image.css({
+			"max-width": "566px",
+			"max-height": "400px",
+			"opacity": 1
+		});
+		image.Jcrop({
 			onChange: updatePreview,
 			onSelect: updatePreview,
 			aspectRatio: width / height,
@@ -1238,6 +1091,20 @@ function CreateCoverJCrop(holder, width, height, preview)
 			var bounds = this.getBounds();
 			boundx = bounds[0];
 			boundy = bounds[1];
+			
+			var image = holder.find('img.cropped-image');
+			holder.find('.sr').val(image.width());
+			
+			var ratio = image.width() / originalWidth;
+			var iRatio = originalWidth / image.width();
+			
+			preview.css({
+				width: image.width() * iRatio,
+				height: image.height(),
+				marginLeft: '0px',
+				marginTop: '0px'
+			});
+			
 			// Store the API in the jcrop_api variable
 			jcrop_api = this;
 		});
@@ -1250,10 +1117,10 @@ function CreateCoverJCrop(holder, width, height, preview)
 				var ry = height / c.h;
 
 				preview.css({
-					width: Math.round(rx * boundx * shrinkRatio) + 'px',
-					height: Math.round(ry * boundy * shrinkRatio) + 'px',
-					marginLeft: '-' + Math.round(rx * c.x * shrinkRatio) + 'px',
-					marginTop: '-' + Math.round(ry * c.y * shrinkRatio) + 'px'
+					width: Math.round(rx * boundx) + 'px',
+					height: Math.round(ry * boundy) + 'px',
+					marginLeft: '-' + Math.round(rx * c.x) + 'px',
+					marginTop: '-' + Math.round(ry * c.y) + 'px'
 				});
 	  
 				holder.find('.x1').val(c.x);
@@ -1264,15 +1131,11 @@ function CreateCoverJCrop(holder, width, height, preview)
 				holder.find('.h').val(c.h);
 			}
 		};
-		
-		holder.find("a.black-button").click(function(e) {
-			e.preventDefault();
-			holder.find("form").submit();
-			
-		});
-	}	
+	}
+	
+	holder.find("a.black-button").click(function(e) {
+		e.preventDefault();
+		holder.find("form").submit();
+	});
 }
-
-
-
 				

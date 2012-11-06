@@ -144,10 +144,12 @@ class SiteController < ApplicationController
   
   def crop_cover
     path = File.join("#{DIR_PATH_COVERS}", "#{@user.cover}")
-    x=params[:x1].to_f * params[:sr].to_f
-    y=params[:y1].to_f * params[:sr].to_f
-    w=params[:w].to_f * params[:sr].to_f
-    h=params[:h].to_f * params[:sr].to_f
+    img_file = Magick::Image.read(path).first
+    sr = (img_file.columns/params[:sr].to_f)
+    x=params[:x1].to_f * sr
+    y=params[:y1].to_f * sr
+    w=params[:w].to_f * sr
+    h=params[:h].to_f * sr
     Image.crop(path,x,y,w,h)
     loc = request.referer.split('?')[0].split('/').reverse
     redirect_to :controller=>loc[1], :action=>loc[0]
@@ -155,10 +157,12 @@ class SiteController < ApplicationController
   
   def crop_avatar
     path = File.join("#{DIR_PATH_AVATARS}", "#{@user.avatar}")
-    x=params[:x1].to_f * params[:sr].to_f
-    y=params[:y1].to_f * params[:sr].to_f
-    w=params[:w].to_f * params[:sr].to_f
-    h=params[:h].to_f * params[:sr].to_f
+    img_file = Magick::Image.read(path).first
+    sr = (img_file.columns/params[:sr].to_f)
+    x=params[:x1].to_f * sr
+    y=params[:y1].to_f * sr
+    w=params[:w].to_f * sr
+    h=params[:h].to_f * sr
     Image.crop(path,x,y,w,h)
     loc = request.referer.split('?')[0].split('/').reverse
     redirect_to :controller=>loc[1], :action=>loc[0]
