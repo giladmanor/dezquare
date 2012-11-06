@@ -29,6 +29,21 @@
 		
 	</div>
 	<div class="title">
+		Expertise:
+		<%if @editable%>
+		<a href="/designer/settings" class="edit">
+			<img src="/img/pen.png" alt="Edit" />
+		</a>
+		<%end%>
+	</div>
+	<div class="sidebar-white-box">
+		<%if @editable && (@user.skills.nil? || @user.skills=="")%>
+			<a href="/designer/settings">Tell us about your skills!</a>
+		<%else%>
+			<p style="white-space: pre-wrap"><%=@user.skills%></p>
+		<%end%>
+		</div>
+	<div class="title">
 		About <%=@author.name%>:
 		<%if @editable%>
 		<a href="/designer/settings" class="edit">
@@ -44,6 +59,21 @@
 		<%end%>
 	</div>
 	
+	<div class="title">
+		Education:
+		<%if @editable%>
+		<a href="/designer/settings" class="edit">
+			<img src="/img/pen.png" alt="Edit" />
+		</a>
+		<%end%>
+	</div>
+	<div class="sidebar-white-box">
+		<%if @editable && (@user.education.nil? || @user.education=="")%>
+			<a href="/designer/settings">Where did you get those amazing skills?</a>
+		<%else%>
+			<p style="white-space: pre-wrap"><%=@user.education%></p>
+		<%end%>
+		</div>
 	<div class="sidebar-white-box">
 		<div>
 			<a href="http://www.facebook.com/sharer/sharer.php?u=http://dezquare.com/designer/profile/<%=@author.id%>" target="_blank">Share this profile on Facebook &raquo;</a>

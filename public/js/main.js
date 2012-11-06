@@ -539,12 +539,18 @@ $(document).ready(function(){
 					errors = true;
 				}
 				
+				
 				if ($.trim(descriptionField.val()) == "")
 				{
 					descriptionField.siblings("label.form-error").show();;
 					errors = true;
 				}
 				
+				if ($.trim(descriptionField.val().length) <= 250)
+				{
+					descriptionField.siblings("label.form-error").show();;
+					errors = true;
+				}
 				//Andrew, can you please add a validation section for file type selectors, field name is: filetype[]
 				
 				

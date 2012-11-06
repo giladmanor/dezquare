@@ -115,6 +115,9 @@ class DesignerController < SiteController
     @user.dez_profile=params[:dez_profile]
     @user.suspend=params[:suspend]
     @user.languages=params[:language]
+    @user.education=params[:education]
+    @user.skills=params[:skills]
+    @user.direct_link=params[:direct_link]
     
     @user.designer_categories.clear
     Category.all.each{ |c|

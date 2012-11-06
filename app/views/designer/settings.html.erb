@@ -171,17 +171,32 @@
 												<img src="/img/icon-plus.png" alt="Add" />
 											</a>
 										</div>
-										
-										
 									</div>
-									
 								</div>
-								<div class="col2">
+								<div class="col2" style="position: relative; top: 0; right: 0px; display: inline; z-index:100;">
 									<h4>About You:</h4>
 									<div class="formfield">
 										<textarea name="about"><%=@user.about%></textarea>
 										<label class="abs wt">What would you like us to know about you?</label>
 									</div>
+								</div>
+								<div class="col3" style="position: relative; width: 280px; left: 334px; top: 28px;">
+									<h4>Education:</h4>
+									<div class="formfield">
+										<textarea maxChars="140" name="education"><%=@user.education%></textarea>
+										<label class="abs wt">Where did you get those amazing skills?</label>
+									</div>
+								</div>
+								<div class="col4" style="position: relative; width: 280px; left: 334px; top: 28px;">
+									<h4>Expertis:</h4>
+									<div class="formfield">
+										<textarea maxChars="140" name="skills"><%=@user.skills%></textarea>
+										<label class="abs wt">Tell us about your skills.</label>
+									</div>
+								</div>
+								<div class="direct_links" style="width: 280px;display: inline; position: relative; top: -373px; 		right: -2px;">
+									<h4>Direct link to public profile</h4>
+									<p style="display:inline">http://dezquare.com/d/</p><input style="width: 150px" type="text" class="text" name="direct_link" value="<%=@user.direct_link%>" placeholder="YourNickName">
 								</div>
 							</fieldset>
 							
