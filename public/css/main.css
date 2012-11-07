@@ -165,7 +165,7 @@ div#footer {
 	bottom:0;
 	width:100%;
 }
-div#footer div#copyright { float: left; }
+div#footer div#copyright { float: left; width:101px;}
 div#footer div#footer-links { float: right; }
 div#footer div#footer-links a {
 	color: #666;
