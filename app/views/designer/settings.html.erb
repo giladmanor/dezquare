@@ -187,16 +187,12 @@
 										<label class="abs wt">Where did you get those amazing skills?</label>
 									</div>
 								</div>
-								<div class="col4" style="position: relative; width: 280px; left: 0px; top: -74px;">
+								<div class="col4" style="position: relative; width: 280px; left: 0px; top: -173px;">
 									<h4>Expertise:</h4>
 									<div class="formfield">
 										<textarea maxChars="140" name="skills"><%=@user.skills%></textarea>
 										<label class="abs wt">Tell us about your skills.</label>
 									</div>
-								</div>
-								<div class="direct_links" style="width: 280px;display: inline; position: relative; top: -373px; 		right: -2px;">
-									<h4>Direct link to public profile</h4>
-									<p style="display:inline">http://dezquare.com/d/</p><input style="width: 150px" type="text" class="text" name="direct_link" value="<%=@user.direct_link%>" placeholder="YourNickName">
 								</div>
 							</fieldset>
 							
@@ -263,6 +259,10 @@
 										</span>
 										<span class="text">Make my profile available only to dezquare users.</span>
 									</div> -->
+									<div class="direct_links">
+										<h4>Direct link to public profile</h4>
+										<p style="display:inline">http://dezquare.com/d/<input style="width: 135px; display:inline" type="text" class="text" name="direct_link" value="<%=@user.direct_link%>" placeholder="YourNickName"></p>
+									</div>
 								</div>
 								<div class="col2">
 									<h4>Change my password:</h4>
