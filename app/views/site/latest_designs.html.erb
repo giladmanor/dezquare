@@ -61,6 +61,8 @@
 														<div class="details">
 															<div class="big">
 																<a target="_blank" href="/designer/profile/<%=dez.id%>"><%=dez.full_name%></a>
+																<a style="position:relative; top:5px" href="mailto:<%=dez.email%>" class="contact">
+																		<span id="mailhide" class="icon"></span></a>
 															</div>
 															<div class="small"><%=(dez.location.nil? || dez.location=="") ? '' : "From #{dez.location}"%></div>
 															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>

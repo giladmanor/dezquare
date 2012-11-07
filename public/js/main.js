@@ -970,6 +970,13 @@ $(document).ready(function(){
 				return !errors;
 			});
 		};
+		
+		function hideMail()	//this function hides the mail icon
+				{
+		   $('div.match.disabled').find('.icon').hide();
+				}
+						hideMail();
+		
 		/* End Base Functions */
 		
 		/* DRAG */
@@ -1107,8 +1114,9 @@ function CreateJCrop(holder, width, height, preview)
 			
 			// Store the API in the jcrop_api variable
 			jcrop_api = this;
-		});
-
+		});		
+		
+			
 		function updatePreview(c)
 		{
 			if (parseInt(c.w) > 0)
