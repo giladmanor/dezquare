@@ -22,4 +22,12 @@ class TexController < ApplicationController
     #end
   
   end
+  
+  def fewriufnwoeruifhpwriufh
+    res=["Images = #{Image.all.size}",
+        "Shoppers = #{User.where(:shopper=>true).size}",
+        "Projects = #{Project.where(:status=>"completed").size} completed, #{Project.where(:status=>"started").size} started, #{Project.where(:status=>"grabbed").size} grabbed"]
+    
+    render :text=>res.join("<br/>")
+  end
 end
