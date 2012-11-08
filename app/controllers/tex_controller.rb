@@ -1,6 +1,6 @@
 class TexController < ApplicationController
   def t
-      
+      return
       list_users = []
       
       User.where("designer =1").each{|user|
