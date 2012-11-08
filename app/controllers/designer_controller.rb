@@ -117,8 +117,11 @@ class DesignerController < SiteController
     @user.languages=params[:language]
     @user.education=params[:education]
     @user.skills=params[:skills]
-    @user.direct_link=params[:direct_link]
-    
+    unless User.all.map{|u| u.direct_link}.include?(params[:direct_link])
+      @user.direct_link=params[:direct_link] 
+    else
+      #TODO inform user that the url is taken
+    end
     @user.designer_categories.clear
     Category.all.each{ |c|
       ucp = DesignerCategory.new
@@ -147,6 +150,9 @@ class DesignerController < SiteController
     redirect_to  :action => "profile"
   end
   
+  def direct_link_unique
+    render :text=> !User.all.map{|u| u.direct_link}.include?(params[:id])
+  end
   
   
   def reset_password

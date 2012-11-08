@@ -16,6 +16,11 @@ class UserMailer < ActionMailer::Base
     mail(:to => @user.email,:subject => "New Matched Customer!")
   end
   #
+  def shopper_complete_registration(user)
+    @user = user
+    mail(:to => @user.email,:subject => "Welcome to Dezquare")
+  end
+  
   def pender_complete_request(user)
     @user = user
     mail(:to => @user.email,:subject => "So you want to be part of the gang")

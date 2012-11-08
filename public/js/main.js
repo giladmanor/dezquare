@@ -376,7 +376,7 @@ $(document).ready(function(){
 				$("#mark-complete-success-popup").show();
 			});
 			rejectProjectPopup.find("a.decline-anyway").click(function(e){
-				e.preventDefault();
+				//e.preventDefault();
 				rejectProjectPopup.hide();
 				overlay.hide();
 			});

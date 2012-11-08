@@ -15,7 +15,7 @@ class ShopperController < SiteController
     logger.debug " shopper to save: #{user.inspect} "
     if user.save
       logger.debug " shopper saved with id:#{user.id} "
-      UserMailer.pender_complete_request(user).deliver
+      UserMailer.shopper_complete_registration(user).deliver
       session[:user_id] = user.id
       redirect_to :controller=>:game,:action=>:index
     else
