@@ -37,10 +37,10 @@
 		<%end%>
 	</div>
 	<div class="sidebar-white-box">
-		<%if @editable && (@user.skills.nil? || @user.skills=="")%>
+		<%if @editable && (@author.skills.nil? || @author.skills=="")%>
 			<a href="/designer/settings">Tell us about your skills!</a>
 		<%else%>
-			<p style="white-space: pre-wrap"><%=@user.skills%></p>
+			<p style="white-space: pre-wrap"><%=@author.skills%></p>
 		<%end%>
 		</div>
 	<div class="title">
@@ -68,10 +68,10 @@
 		<%end%>
 	</div>
 	<div class="sidebar-white-box">
-		<%if @editable && (@user.education.nil? || @user.education=="")%>
+		<%if @editable && (@author.education.nil? || @author.education=="")%>
 			<a href="/designer/settings">Where did you get those amazing skills?</a>
 		<%else%>
-			<p style="white-space: pre-wrap"><%=@user.education%></p>
+			<p style="white-space: pre-wrap"><%=@author.education%></p>
 		<%end%>
 		</div>
 	<div class="sidebar-white-box">
