@@ -546,7 +546,7 @@ $(document).ready(function(){
 					errors = true;
 				}
 				
-				if ($.trim(descriptionField.val().length) <= 250)
+				if ((descriptionField.val().length) <= 250)
 				{
 					descriptionField.siblings("label.form-error").show();;
 					errors = true;
