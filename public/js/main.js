@@ -937,6 +937,7 @@ $(document).ready(function(){
 				var e = f.find("input[name=email]");
 				var l = f.find("input[name=portfolio_link]");
 				var tos = f.find("span.checkbox");
+				var dl = f.find("input[name=direct_link]");
 				
 				f.find(".form-error").hide();
 				var errors = false;
@@ -966,7 +967,11 @@ $(document).ready(function(){
 					tos.siblings(".form-error").show();
 					errors = true;
 				}
-			
+				if ($.trim(dl.val()) == "")
+				{
+					dl.siblings(".form-error").show();
+					errors = true;
+				}
 				return !errors;
 			});
 		};

@@ -261,7 +261,7 @@
 									</div> -->
 									<div class="direct_links">
 										<h4>Direct link to public profile</h4>
-									<p><input id="dynamic" onclick="this.value='';" onfocus="this.select()"  onblur="this.value=!this.value?'http://dezquare.com/d/<%=@user.direct_link%>':this.value;"style="width: 208px; display:inline" type="text" class="text" name="direct_link" value="http://dezquare.com/d/<%=@user.direct_link%>" placeholder="YourNickName"><a style="margin-left: 5px;background-color:#000000; color:#ffffff; padding:5px" href="#" id="copy-dynamic">Copy</a></p>
+									<p><input id="dynamic" onfocus="this.select()"  onblur="this.value=!this.value?'http://dezquare.com/d/<%=@user.direct_link%>':this.value;"style="width: 208px; display:inline" type="text" class="text" name="direct_link" value="<%=@user.direct_link%>" placeholder="YourNickName"><a style="margin-left: 5px;background-color:#000000; color:#ffffff; padding:5px" href="#" id="copy-dynamic">Copy</a></p>
 	
 									</div>
 								</div>
