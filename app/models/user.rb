@@ -1,3 +1,4 @@
+require 'digest'
 class User < ActiveRecord::Base
   has_many :images, :order=>"ord"
   has_many :user_languages
@@ -72,5 +73,18 @@ class User < ActiveRecord::Base
     self.save
   end
   
+  def get_token
+    Digest::MD5.hexdigest "#{self.id}-#{self.email}"
+  end
+  
+  def confirm_email(h)
+    logger.debug "is the token valid?: #{h==self.get_token}"
+    if h==self.get_token && !self.email_confirm
+      logger.debug "Confirming email: #{self.email}"
+      self.email_confirm=true
+      return self.save
+    end
+    false
+  end
   
 end

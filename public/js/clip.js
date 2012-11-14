@@ -7,7 +7,7 @@
     // the text of the paragraph with ID "description"
     $('a#copy-dynamic').zclip({
         path:'http://dezquare.com/js/ZeroClipboard.swf',
-        copy:function(){return $('input#dynamic').val();}
+        copy:function(){return "http://dezquare.com/d/"+$('input#dynamic').val();}
     });
     // The link with ID "copy-dynamic" will copy the current value
     // of a dynamically changing input with the ID "dynamic"

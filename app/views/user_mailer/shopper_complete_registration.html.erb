@@ -4,37 +4,12 @@
     <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
   </head>
   <body>
-    <h1>Hey <%= @user.name %>,</h1>
-    <p>
-      Welcome to dèzquare, you've got awesome taste!
-</p>
-    <p>
-At dèzquare we help you to quickly find a talented graphic designer <br />
+   <p >Hi <%=@user.name%>,</p><p ><br></p><p >Welcome to dèzquare - the design square!</p><p ><br></p>
+   <p >Press on the following link to activate your account and join the party.</p>
+<p ><a href="http://www.dezquare.com/confirm/email/<%=@user.get_token%>?u=<%=@user.id%>">Confirm this mail address</a></p>
+<p ><br></p><p >Stay awesome stay stylish!</p><p >The dèzquare gang</p><p ><br></p><p ><br></p>
 
-by mapping your taste and matching you accordingly to a designer you'll love.
-</p>
-    <p>
-We do this with 3 easy steps: <br />
 
-1. Select a product and a price-range<br />
 
-2. Play a short game<br />
-
-3. Get matched to a talented designer and kickoff the design.<br />
-</p>
-    <p>
-So, what are you waiting for? Click on the link below and <a href="http://www.dezquare.com/game/">start your first design!</a> 
-
-</p>
-    <p>
-If you have any questions or feedback feel free to email us at – info@dezquare.com
-</p>
-<p>
-Stay awesome!<br />
-
-The dèzquare gang.
-
-    </p>
-   
   </body>
 </html>

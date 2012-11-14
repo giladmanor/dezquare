@@ -122,6 +122,17 @@ class DesignerController < SiteController
     else
       #TODO inform user that the url is taken
     end
+    
+    logger.debug "===================================================================================="
+    if @user.email!=params[:email]
+      @user.email=params[:email]
+      @user.email_confirm=false
+      logger.debug "shopper_change_email"
+      @send_email_change = true
+    end
+    logger.debug "===================================================================================="
+    
+    
     @user.designer_categories.clear
     Category.all.each{ |c|
       ucp = DesignerCategory.new
@@ -147,6 +158,7 @@ class DesignerController < SiteController
     
     
     @user.save
+    UserMailer.shopper_change_email(@user).deliver if @send_email_change
     redirect_to  :action => "profile"
   end
   

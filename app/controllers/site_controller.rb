@@ -13,7 +13,7 @@ class SiteController < ApplicationController
   def login
     @user = User.find_by_email(params[:email])
     logger.debug "#{@user.inspect}"
-    if !@user.nil? && @user.password==params[:password]
+    if !@user.nil? && @user.password==params[:password] && @user.email_confirm
       session[:user_id]=@user.id
       logger.debug "##############################################################################################################"
       
@@ -30,7 +30,19 @@ class SiteController < ApplicationController
     loc = request.referer.split('?')[0].split('/').reverse
     loc = ["index","site"] if loc[1]==""
     
-    redirect_to :controller=>loc[1], :action=>loc[0],:state=>"login", :error=>"Wrong email or password"
+    if @user.nil?
+      redirect_to :controller=>loc[1], :action=>loc[0],:state=>"login", :error=>"Wrong email or password"
+    elsif !@user.email_confirm
+      redirect_to :controller=>:site, :action=>:index,:state=>"confirm", :error=>""
+    else
+      redirect_to :controller=>loc[1], :action=>loc[0],:state=>"login", :error=>"Wrong email or password"
+    end
+  end
+  
+  def resend_confirmation
+    @user = User.find_by_email(params[:email])
+    UserMailer.shopper_change_email(@user).deliver
+    redirect_to :action=>:index
   end
   
   def logout
@@ -87,12 +99,21 @@ class SiteController < ApplicationController
   def set_details
     @user.name = params[:name]
     @user.l_name=params[:l_name]
-    @user.email=params[:email]
+    logger.debug "===================================================================================="
+    if @user.email!=params[:email]
+      @user.email=params[:email]
+      @user.email_confirm=false
+      logger.debug "shopper_change_email"
+      @send_email_change = true
+    end
+    logger.debug "===================================================================================="
     
     
     if params[:old_password].present? && params[:new_password].present? && params[:repeat_new_password].present?
       if params[:new_password]==params[:repeat_new_password]
         @user.password=params[:new_password]
+        logger.bebug "shopper_change_passwords"
+        UserMailer.shopper_change_password(@user).deliver
       else
         @error="PASSWORD"
       end
@@ -102,7 +123,10 @@ class SiteController < ApplicationController
       @error = @user.error.message
     end
     
+    
+    
     if @error.nil?
+      UserMailer.shopper_change_email(@user).deliver if @send_email_change
       redirect_to :action=>:dashboard
       return
     end

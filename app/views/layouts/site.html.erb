@@ -42,7 +42,7 @@
 			</div>
 		</div>
 	</div>
-<div id="window-overlay" <%= params[:state]=="login" ? "style='display:block'" : ""%>></div>
+<div id="window-overlay" <%= ["login","confirm"].include?(params[:state]) ? "style='display:block'" : ""%>></div>
 	<div id="login-popup" class="popup " <%= params[:state]=="login" ? "style='display:block'" : ""%>>
 		<span class="close"></span>
 		<div class="popup-content">
@@ -73,6 +73,31 @@
 			<div class="foot">
 				Don't have an account? <a href="/site/register">Sign-up!</a>
 			</div>
+		</div>		
+	</div>
+	
+	<div id="comfirm-popup" class="popup " <%= params[:state]=="confirm" ? "style='display:block'" : ""%>>
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you real?!</div>
+			
+			<form action="/site/resend_confirmation" method="post">
+				<div class="subtitle">Show us you're human</div>
+				<div class="desc">
+					by clicking on the link <br />
+					in the email we sent you.
+				</div>
+				<div class="formfield">
+					<label class="abs">Enter your email to re-send the confirmation email</label>
+					<input type="text" class="text" name="email" />
+					
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Re-Send" />
+				</div>		
+				
+			</form>
+			
 		</div>		
 	</div>
 	

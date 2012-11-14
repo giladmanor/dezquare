@@ -74,6 +74,38 @@
 	</div>
 	
 	
+	<div id="login-popup" class="popup " <%= params[:state]=="login" ? "style='display:block'" : ""%>>
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="/site/login" method="post">
+				<div id="login-alert" class="form-error"<%= !params[:error].nil? ? "style='display:block'" : ""%>>Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot">
+					<a href="#" id="forgot-password" <%= !params[:error].nil? ? "style='display:block'" : ""%>>I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="/site/register">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
 	
 	
 	

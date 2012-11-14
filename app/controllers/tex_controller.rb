@@ -33,9 +33,12 @@ class TexController < ApplicationController
         "Shoppers = #{User.where(:shopper=>true).size}",
         "Projects = #{Project.where(:status=>"completed").size} completed, #{Project.where(:status=>"started").size} started, #{Project.where(:status=>"grabbed").size} grabbed",
         "Images Per Category = <p>#{Category.all.map{|c| "-#{c.name} has==>#{c.images.size} images"}.join("<br/>")}</p>",
+        "<hr/>",
         "Top10 Designer tags= <p>#{tdt.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
         "Top10 User tags=<p>#{tut.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
-        "the Game was played = #{Game.all.size} times"]
+        "<hr/>",
+        "the Game was played = #{Game.all.size} times",
+        "the Game was played = #{Game.all.select{|g| (Time.now - g.created_at)<2.days }.size} times the last 2 days"]
     
     render :text=>res.join("<br/>")
   end

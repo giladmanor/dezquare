@@ -107,7 +107,7 @@
 												<div class="title">Designs Liked by <%=game.user.full_name%></div>
 												<div class="designs">
 													<%
-													images=game.game_image_rates.select{|r| r.value==1}.map{|r| r.image}
+													images=game.game_image_rates.select{|r| r.value==1}.map{|r| r.image}.compact
 													
 													images.take(3).each{|image|
 														%>

@@ -1,4 +1,6 @@
 Dezquare::Application.routes.draw do
+  get "confirm/email"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
