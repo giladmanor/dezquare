@@ -24,9 +24,18 @@ class TexController < ApplicationController
   end
   
   def fewriufnwoeruifhpwriufh
+    d_tagged = User.all.select{|u| u.designer}.map{|u| u.images.map{|i| i.tags}}.flatten
+    tdt = Tag.all.map{|t| {:n=>t.name,:c=>d_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)
+    u_tagged = User.all.select{|u| u.shopper}.map{|u| u.game_image_rates.select{|gir| gir.value>0 && !gir.image.nil?}.map{|ir| ir.image.tags}}.flatten
+    tut = Tag.all.map{|t| {:n=>t.name,:c=>u_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)
+    
     res=["Images = #{Image.all.size}",
         "Shoppers = #{User.where(:shopper=>true).size}",
-        "Projects = #{Project.where(:status=>"completed").size} completed, #{Project.where(:status=>"started").size} started, #{Project.where(:status=>"grabbed").size} grabbed"]
+        "Projects = #{Project.where(:status=>"completed").size} completed, #{Project.where(:status=>"started").size} started, #{Project.where(:status=>"grabbed").size} grabbed",
+        "Images Per Category = <p>#{Category.all.map{|c| "-#{c.name} has==>#{c.images.size} images"}.join("<br/>")}</p>",
+        "Top10 Designer tags= <p>#{tdt.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
+        "Top10 User tags=<p>#{tut.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
+        "the Game was played = #{Game.all.size} times"]
     
     render :text=>res.join("<br/>")
   end
