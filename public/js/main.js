@@ -967,11 +967,11 @@ $(document).ready(function(){
 					tos.siblings(".form-error").show();
 					errors = true;
 				}
-				if ($.trim(dl.val()) == "")
-				{
-					dl.siblings(".form-error").show();
-					errors = true;
-				}
+				// if ($.trim(dl.val()) == "")
+				// {
+					// dl.siblings(".form-error").show();
+					// errors = true;
+				// }
 				return !errors;
 			});
 		};
