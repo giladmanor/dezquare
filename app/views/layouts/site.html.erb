@@ -19,6 +19,14 @@
 	<%=render "google_a"%>
 	</head>
 <body>
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=390493057700097";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 	<%=render "qualaroo"%>
 	<div id="page">
 		<div id="header">
@@ -83,18 +91,23 @@
 			
 			<form action="/site/resend_confirmation" method="post">
 				<div class="subtitle">Show us you're human</div>
-				<div class="desc">
-					by clicking on the link <br />
-					in the email we sent you.
+
+
+				<div class="desc" style="text-align: center;">
+					by clicking on the link in the email we sent you.
 				</div>
+				<br>
+
 				<div class="formfield">
 					<label class="abs">Enter your email to re-send the confirmation email</label>
 					<input type="text" class="text" name="email" />
 					
 				</div>
 				<div class="submit clearfix">
-					<input type="submit" class="button-orange" value="Re-Send" />
-				</div>		
+
+					<input style="position: relative; right: 91px;" type="submit" class="button-orange" value="Re-Send" />
+				</div>	
+
 				
 			</form>
 			

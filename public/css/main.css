@@ -2022,7 +2022,7 @@ div.game-step div.buttons a.cancel {
 }
 
 .ui-slider {
-	background: url(../img/bkg-ui-slider.png) left top no-repeat;
+	/*background: url(../img/bkg-ui-slider.png) left top no-repeat;*/
 	height: 11px;
 	position: relative;
 	width: 467px;
@@ -2037,6 +2037,7 @@ div.game-step div.buttons a.cancel {
 	width: 16px;
 	outline: none;
 	z-index: 2;
+	display: none;
 }
 .ui-slider .ui-slider-range {
 	background: url(../img/bkg-ui-slider-range.png) left top no-repeat;
@@ -2044,7 +2045,7 @@ div.game-step div.buttons a.cancel {
 	height: 9px;
 	cursor: pointer;
 	z-index: 1; 
-	display: block;
+	display: none;
 }
 div.price-slider-holder {
 	padding-top: 50px;
@@ -2615,9 +2616,203 @@ div#welcome-slider div#welcome-slide6-content {
 	margin-top: -180px;
 	top: 50%; 
 }
+div#price-buttons-container {
+	position: relative;
+	height: 80px;
+	width: 730px;
+	left: 105px;
+	background-color: grey;
+}
+div#price-buttons {
+	height: 80px;
+	background-color: blue;
+}
+
+div.button_price_game {
+	height:80px;
+	background-color:#ffffff;
+}
+
+div.button_price_game ul {
+	margin-left:-29px;
+}
+
+div.button_price_game ul li{
+	list-style-type:none;
+	padding:4px 0px;
+	padding-top:10px;
+	display:inline;
+	background-color:#ffffff;
+	margin-left:10px;
+	border:1px solid #d5c6cc;
+	-moz-box-shadow:  0 0 3px #d5c6cc;
+	-webkit-box-shadow:  0 0 3px #d5c6cc;
+	box-shadow:  0 0 3px #d5c6cc;
+}
+
+div.button_price_game ul li:hover {
+/*	list-style-type:none;
+	padding:5px 22px;
+	display:inline;
+	background-color:#ff7040;
+	margin-left:10px;
+	border:1px solid #d5c6cc;*/
+	padding:4px 0px;
+	padding-top:10px;
+	-moz-box-shadow:  0 0 0px #888;
+	-webkit-box-shadow:  0 0 0px#888;
+	box-shadow:  0 0 0px #888;
+	background-color:#000000;
+	border:1px solid #ffffff;
+
+}
+
+div.button_price_game ul li.active{
+	
+	/*	list-style-type:none;
+		padding:5px 22px;
+		display:inline;
+		background-color:#ff7040;
+		margin-left:10px;
+		border:1px solid #d5c6cc;*/
+		padding:4px 0px;
+		padding-top:10px;
+		background-color:#ff7040;
+		border:1px solid #ffffff;
+}
+
+div.button_price_game a.white-button {
+	padding: 10px 27px;
+	text-decoration: none;
+	color:#000000;
+	font-size: 15px;
+	font-family: 'QuickSandBold'
+}
+
+div.button_price_game a.white-button.active {
+	padding: 6px 27px;
+	text-decoration: none;
+	background-color:#ff7040;
+	color:#ffffff;
+	font-size: 15px;
+	font-family: 'QuickSandBold'
+}
+
+
+div.button_price_game a.white-button:hover {
+	font-size: 15px;
+	font-family: 'QuickSandBold';
+	color:#ffffff;
+}
+
+.loading_text {
+	display:none;
+	position: relative;
+	left: 617px;
+}
+.loading_image {
+	position:relative;
+	display:none;
+	z-index:100;
+}
+
+.thousand {
+	display: block;
+	position: relative;
+	left: 618px;
+	top: -42px;
+}
+
+.container_new {
+	height:574px; 
+	width:940px; 
+	background-image:url('/img/game4.jpg');
+}
+
+.msg_taste {
+	width:465px; 
+	height:212px; 
+	position: relative;
+	top: 33px;
+}
+
+.msg_taste_title {
+	height:50px; 
+	width:465px; 
+	background-color:#ffffff; 
+	opacity:0.8;
+}
+
+.msg_taste_content b {
+	color:#ff7040;
+}
+
+.msg_taste_title b {
+	color:#ff7040;
+}
+
+#bossy {
+	margin:0;
+}
+
+.msg_taste_content {
+	width:465px; 
+	height:150px; 
+	background-color:#ffffff; 
+	opacity:0.8; 
+	position: relative; 
+	top: 9px;
+}
+
+.msg_taste_content p {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	position: relative;
+	font-size: 15px;
+	left: 16px;
+	top: 16px;
+}
+
+.facebook a {
+	width:200px; 
+	height:30px; 
+	background-color:blue; 
+	top: 24px;
+	left: 113px; 
+	position: relative;
+}
+
+.twitter a {
+	width:200px; 
+	height:30px; 
+	background-color:cyan; 
+	top: 24px;
+	left: 131px; 
+	position: relative;
+}
+
+.designers_bar {
+	height:100px; 
+	background-color:#ffffff; 
+	opacity:0.8; 
+	position:relative; 
+	top:240px;
+}
+
+
+
+
+
 
 
 
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
+
+
+
+
+
+

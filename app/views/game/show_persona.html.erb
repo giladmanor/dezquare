@@ -1,0 +1,211 @@
+
+				<div class="wide-page-holder game-step" id="game-step-3">
+					<div class="wide-page-wrap">
+						<h2>Let’s get to know your taste!</h2>
+						<h3 class="congrats-title">
+							<span>Congrats!</span>
+							We found your matches!
+						</h3>
+						
+							<div class="container_new">
+								<div class="msg_taste">
+									<div class="msg_taste_title">
+										<h3 id="bossy">YOU'VE GOT A <b>BOSSY</b> TASTE</h3>
+									</div>
+									<div class="msg_taste_content">
+										<span><p><b>You are the boss.</b> You are ambitious, strong and focused. 
+										You are creative thinker with the ability to think outside the box. You know exactly what you want and (one way or another) you will get it.<p></span>
+										<span class="facebook"><a class="popupf" href="http://www.facebook.com/sharer.php?s=100&p[title]=This is my taste&p[summary]=Dezquare knows my taste!! find out yours! at http://www.dezquare.com&p[url]=http://198.101.192.45/bossy.html&p[images][0]=../img/icons/logod.png"
+											 target="_blank"><img src="/img/face_button.png" alt="Face Button"></a><script>
+												  $('.popupf').click(function(event) {
+												    var width  = 575,
+												        height = 300,
+												        left   = ($(window).width()  - width)  / 2,
+												        top    = ($(window).height() - height) / 2,
+												        url    = this.href,
+												        opts   = 'status=1' +
+												                 ',width='  + width  +
+												                 ',height=' + height +
+												                 ',top='    + top    +
+												                 ',left='   + left;
+														
+												    window.open(url, 'facebook', opts);
+
+												    return false;
+												  });
+												</script></span>
+											
+										<span class="twitter"><a id="twitter" class="popup" href="http://twitter.com/share?text=Dezquare knows my taste!! find out yours! at http://www.dezquare.com" original-title="Share on Twitter"><img src="/img/twit_butt.png" alt="Tweeter Button"></a>	<script>
+											  $('.popup').click(function(event) {
+											    var width  = 575,
+											        height = 300,
+											        left   = ($(window).width()  - width)  / 2,
+											        top    = ($(window).height() - height) / 2,
+											        url    = this.href,
+											        opts   = 'status=1' +
+											                 ',width='  + width  +
+											                 ',height=' + height +
+											                 ',top='    + top    +
+											                 ',left='   + left;
+
+											    window.open(url, 'twitter', opts);
+
+											    return false;
+											  });
+											</script></span>
+									<!--div class="fb-like" data-href="http://www.dezquare.com/" data-send="false" data-width="450" data-show-faces="false"></div-->
+									</div>
+								</div>
+								<div class="designers_bar">	
+							</div>
+						</div>
+						</div>
+							<form action="/game/next" method="post">
+							<div id="found-matches" style="position:relative; top: -139px; left: 42px; border-bottom:0px">
+								<%
+								
+								image_rates=@game.game_image_rates.select{|i| i.value==1}
+								
+								designers = image_rates.map{|r| r.image.user}
+								rated =designers.map{|d| {:d=>d, :r=>designers.count(d)}}.uniq.sort{|a,b| b[:r]<=>a[:r]}
+								designers = rated.map{|r| r[:d]}
+								selected_tags = @game.images.map{|si| si.tags}.flatten.uniq
+								
+								others = User.all.select{|u| u.designer}.map{|dez|
+									dez_tags = dez.images.map{|dezi| dezi.tags}.flatten.uniq
+									rate = (dez_tags+selected_tags).length - (dez_tags+selected_tags).uniq.length 
+									{:d=>dez, :r=>rate}
+								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
+								
+								designers = (designers+others).uniq.compact.take(3)
+								
+								
+								designers.each{|d|
+									%>
+
+											<div class="found-match" style="display:inline; position: relative;">
+												<div class="col1" style="display:none">
+													<span class="checkbox checked">
+														<input type="checkbox" name="designers[]" value="<%=d.id%>" checked="checked" />
+													</span>
+												</div>
+												<div class="col2">
+													<div class="top-matches">
+														<div class="match">
+															<div class="profile-image">
+																<img src="/user_avatars/<%= d.avatar.nil? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" 
+																	style="max-width: 56px;max-height: 56px"/>
+															</div>
+															<div class="details">
+																<div class="big" style="font-size:13px">
+																	<a href="/designer/profile/<%=d.id%>" target="_blank"><%=d.full_name%></a>
+																</div>
+																<%=(d.location.nil? || d.location=="") ? '' : raw("<div class='small'>Location: <span>#{d.location}</span></div>")%>
+																<%
+																unless d.languages.empty?
+																	%><div class="small">Languages: <span><%=raw(d.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></span></div><%
+																end
+
+																%>
+
+
+															</div>												
+														</div>											
+													</div>
+													<div class="description" style="display:none">
+														<%=d.about%> 
+													</div>
+												</div>
+												<div class="col3" style="display:none">
+													<div class="title"><%=d.full_name%>’s Taste:</div>
+													<div class="images">
+														<%
+														images =d.images.take(3) 
+														images.each{|di|
+															%>
+															<img src="/repository/thumbnail/<%=di.file_path%>" style="max-width: 58px;max-height: 58px"/>
+															<%
+														}
+														%>
+
+													</div>
+													<ul>
+														<%
+														tags = images.map{|i| i.tags}.flatten.uniq
+
+														tags.take(3).each{|t|
+															%>
+															<li><%=t.name%></li>
+															<%
+														}
+														%>
+													</ul>
+												</div>
+											</div>
+									
+									
+									<%
+								}
+								%>
+								
+								
+								
+							
+							</div>
+							<div class="buttons2 clearfix">
+								
+								
+								<a style="position: relative;top: -15px;left: 15px;" href="/game/index" class="black-button big-font">
+									<img src="/img/arrow-left.png" class="normal" />
+									<img src="/img/arrow-left-orange.png" class="hover" />
+									Replay
+								</a>
+								<a style="position: relative;top: -15px;right: 15px;" href="#" class="black-button big-font next personas" id="submit-game4">
+									Next
+									<img src="/img/arrow-right.png" class="normal" />
+									<img src="/img/arrow-right-orange.png" class="hover" />
+								</a>
+							</div>
+						</form>
+					</div>
+				</div>
+				
+				<div id="nothing-selected-popup" class="popup">
+						<span class="close"></span>
+						<div class="popup-content">
+							<div class="title">Please select a match</div>			
+							<div class="message">
+								To Kickoff the design you must select at least one designer match or<br/>
+								replay the game to get different matches.
+							</div>
+
+							<div class="buttons clearfix">
+								<a href="/game/index" class="replay">Replay</a>
+								<a href="#" class="orange-button big-font">OK</a>
+							</div>
+						</div>
+					</div>			
+
+
+	
+	<div id="submit-selected-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want to<br/>remove this match?</div>			
+			<div class="message">
+				The designers we matched for you will need to accept your invitation.<br/>
+				we highly recommand to send the invitation to all of your matches.<br/>
+				You’ll be surprised with how quickly they get your taste.<br/>
+			</div>
+			<div class="never-show">
+				<!-- <span class="checkbox checked">
+					<input type="submit" name="never-show" />
+				</span>
+				<span class="text">Never show me that again</span> -->
+			</div>
+			<div class="buttons clearfix">
+				<a href="#" class="replay">Cancel</a>
+				<a href="game4.html" class="orange-button big-font">Yes</a>
+			</div>
+		</div>
+	</div>

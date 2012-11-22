@@ -78,6 +78,66 @@ $(document).ready(function(){
 			});
 		};
 		
+		/* this is the new price elements and buttons */
+		var price_button = $('.white-button');
+		price_button.click(function(e) {  
+		e.preventDefault();	
+		var textNone = $('.loading_text');
+		var imageShow = $('.loading_image');
+		var leftText = setTimeout( "$('.loading_text').css('left','10px');",3000 );
+		var timeImage = setTimeout( "$('.loading_image').css('display','none');",3000 );
+		var timeText = setTimeout( "$('.loading_text').css('display','inline');",3000 );
+		price_button.removeClass('active');
+		if ($(this).hasClass('active')) {
+			$(this).removeClass('active');
+		}
+		else {
+			$(this).addClass('active');
+		}
+		
+		if ($('#249').hasClass('active')) {
+			textNone.css('display','none');
+			imageShow.css('display','inline');
+			imageShow.css('left' , '63px');
+			timeImage;
+			leftText;
+			timeText;
+			
+		}
+		if ($('#499').hasClass('active')) {
+			textNone.css('display','none');
+			imageShow.css('display','inline');
+			imageShow.css('left' , '197px');
+			timeImage;
+			setTimeout( "$('.loading_text').css('left','148px');",3000 );
+			timeText;
+		}
+			if ($('#749').hasClass('active')) {
+			textNone.css('display','none');
+			imageShow.css('display','inline');
+			imageShow.css('left' , '351px');
+			timeImage;
+			setTimeout( "$('.loading_text').css('left','300px');",3000 );
+			timeText;
+		}
+		if ($('#999').hasClass('active')) {
+			textNone.css('display','none');
+			imageShow.css('display','inline');
+			imageShow.css('left' , '503px');
+			timeImage;
+			setTimeout( "$('.loading_text').css('left','453px');",3000 );
+			timeText;
+		}
+		if ($('#1000').hasClass('active')) {
+			textNone.css('display','none');
+			imageShow.css('display','inline');
+			imageShow.css('left' , '641px');
+			timeImage;
+			setTimeout( "$('.loading_text').css('left','591px');",3000 );
+			timeText;
+		}
+		});
+		
 		function BindLanguageEvents(field)
 		{
 			field.find(".list .option").click(function(){
@@ -502,6 +562,15 @@ $(document).ready(function(){
 				$("#selected-image").val(src);
 				$(this).parents("form").submit();
 			});
+			
+			$('#submit-game4').click(function(e){
+				e.preventDefault();
+				if (!$(this).hasClass("personas"))
+				{
+					$(this).parents("form").submit();
+				}
+			});
+			
 			submitGame3.click(function(e){
 				e.preventDefault();
 				if (!$(this).hasClass("disabled"))
@@ -522,6 +591,7 @@ $(document).ready(function(){
 				
 				$(this).parents("form").submit();
 			});
+					
 			
 			game3.find("#submit-step-5").click(function(e){
 				e.preventDefault();

@@ -27,3 +27,5 @@ app/.DS_Store
 db/.DS_Store
 
 public/.DS_Store
+
+public/welcome/.DS_Store
