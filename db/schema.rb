@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121114091957) do
+ActiveRecord::Schema.define(:version => 20121122153320) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -151,6 +151,24 @@ ActiveRecord::Schema.define(:version => 20121114091957) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "persona_tags", :force => true do |t|
+    t.integer  "tag_id"
+    t.integer  "persona_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "persona_tags", ["persona_id"], :name => "index_persona_tags_on_persona_id"
+  add_index "persona_tags", ["tag_id"], :name => "index_persona_tags_on_tag_id"
+
+  create_table "personas", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
   create_table "project_comments", :force => true do |t|
     t.integer  "project_id"
     t.integer  "user_id"
@@ -191,6 +209,7 @@ ActiveRecord::Schema.define(:version => 20121114091957) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "adjective"
   end
 
   create_table "user_languages", :force => true do |t|

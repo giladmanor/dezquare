@@ -42,4 +42,14 @@ class TexController < ApplicationController
     
     render :text=>res.join("<br/>")
   end
+  
+  
+  def ghtdljutgv
+    img_tags = ImageTag.all.where(:tag_id=>params[:id])
+    
+    render :text=> img_tags.map{|i| "<img src='/repository/#{i.image.file_path}' />"}.join("<br/>")
+    
+  end
+  
+  
 end
