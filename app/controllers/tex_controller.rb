@@ -1,6 +1,6 @@
 class TexController < ApplicationController
   def t
-      return
+      return nil
       list_users = []
       
       User.where("designer =1").each{|user|
@@ -51,5 +51,13 @@ class TexController < ApplicationController
     
   end
   
+  
+  def kniurefdlaisedrlsaeuchbrs8453vesol45
+    render :text=> User.all.select{|u| u.designer}.map{|u| "#{u.full_name}, #{u.email}"}.join("<br/>")
+  end
+  
+  def skfniegk438v5489bltixe58ntuylo5gh8
+    render :text=> Project.all.select{|p| ["started", "grabbed"].include?(p.status)}.map{|p| "<p>Product: #{p.category.name}<br/>[#{p.id}] '#{p.title}' |#{p.display_status}|<br/>Shopper: #{p.shopper.nil? ? "--" : p.shopper.full_name} #{p.shopper.nil? ? "--" : p.shopper.email}<br/> Designer: #{p.designer.nil? ? "--" : p.designer.full_name} #{p.designer.nil? ? "--" : p.designer.email}</p>"}.join("<hr/>")
+  end
   
 end
