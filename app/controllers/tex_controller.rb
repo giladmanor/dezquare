@@ -57,7 +57,26 @@ class TexController < ApplicationController
   end
   
   def skfniegk438v5489bltixe58ntuylo5gh8
-    render :text=> Project.all.select{|p| ["started", "grabbed"].include?(p.status)}.map{|p| "<p>Product: #{p.category.name}<br/>[#{p.id}] '#{p.title}' |#{p.display_status}|<br/>Shopper: #{p.shopper.nil? ? "--" : p.shopper.full_name} #{p.shopper.nil? ? "--" : p.shopper.email}<br/> Designer: #{p.designer.nil? ? "--" : p.designer.full_name} #{p.designer.nil? ? "--" : p.designer.email}</p>"}.join("<hr/>")
+    render :text=> Project.all.select{|p| ["started", "grabbed"].include?(p.status)}.map{|p|
+      [
+        "<p>Product: #{p.category.name}<br/>[#{p.id}] '#{p.title}' |#{p.display_status}|",
+        "Shopper: #{p.shopper.nil? ? "--" : p.shopper.full_name} #{p.shopper.nil? ? "--" : p.shopper.email}",
+        "Designer: #{p.designer.nil? ? "--" : p.designer.full_name} #{p.designer.nil? ? "--" : p.designer.email}",
+        "Candidates: #{p.game.designers.map{|d| d.email}.join(', ')}",
+        "Tags: #{p.game.images.map{|i| i.tags.map{|t| t.name}}.flatten.uniq.join(", ")}",
+        "</p>"
+      ].join("<br/>")
+    }.join("<hr/>")
+      
+  end
+  
+  def peronassssdkniuvt
+    render :text => Persona.all.map{|p| "<hr/> <h3>#{p.name}</h3><p>#{p.tags.map{|t| t.name}.join(',')}</p> #{images_for_persona(p).join(",")}<hr/>"}.join(".")
+  end
+  
+  def images_for_persona(persona)
+    persona_tags = persona.tags
+    Image.all.map{|i| {:i=>i, :rate=>(persona_tags-i.tags).length}}.sort{|a,b| a[:rate]<=>b[:rate]}.take(20).map{|i| "#{i[:rate]}<img width='128' height='128' src='/repository/#{i[:i].file_path}'/>"}
   end
   
 end
