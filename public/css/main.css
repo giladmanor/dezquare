@@ -6,7 +6,7 @@ body {
 	font-family: 'PTSansRegular';
 	font-size: 12px;
 	line-height: 1.6;
-	min-height: 100%;
+	height: 100%;
 	position:relative;
 	margin: 0px;
 }
@@ -101,6 +101,15 @@ div#header div#profile-menu div.expanded a {
 }
 div#header div#profile-menu div.expanded a.last { border: 0px none; }
 
+div#header.black {
+	background: #0e0f0e;
+	border: 0px none;
+}
+div#header.black a.header-button {
+	background: #fff22d;
+	color: #0e0f0e;
+}
+
 div#content { 
 	overflow: hidden;
 	padding-bottom: 42px; 
@@ -165,7 +174,7 @@ div#footer {
 	bottom:0;
 	width:100%;
 }
-div#footer div#copyright { float: left; width:101px;}
+div#footer div#copyright { float: left; width:110px;}
 div#footer div#footer-links { float: right; }
 div#footer div#footer-links a {
 	color: #666;
@@ -2274,6 +2283,295 @@ fieldset#game-register div.already {
 	font-size: 20px;
 	margin-bottom: 20px;
 }
+
+div#game-step-6 div.wide-page-wrap { padding-top: 0px; }
+div#game-step-6 h2 {
+	border-bottom: 1px solid #d9d9d9;
+	font-family: 'QuickSandRegular';
+	margin-bottom: 20px;
+	text-align: center;
+	line-height: 40px;
+}
+div#game-step-6 h4.big-orange {
+	color: #ff7040;
+	font-family: 'QuickSandRegular';
+	font-size: 36px;
+	line-height: 36px;
+	margin-bottom: 30px;
+	text-align: center;
+}
+div#game-step-6 h4.big-orange span { color: #272425; }
+div#game-step-6 div.buttons2 a.black-button,
+div#game-step-6 div.buttons2 a.red-button {
+	float: left;
+	width: 150px;
+}
+div#game-step-6 div.buttons2 a.next { float: right; }
+div#game-step-6 div.big-image-holder {
+	margin-bottom: 20px;
+	position: relative;
+}
+div#game-step-6 div.big-image-holder > img {
+	display: block;
+	margin: 0px auto;
+}
+div#game-step-6 div.big-image-info {
+	background: url(../img/game-end/bkg-box.png) left top repeat;
+	color: #fff;
+	padding: 25px;
+	position: absolute;
+	right: 17px;
+	top: 44px;
+	width: 467px;
+}
+div#game-step-6 div.big-image-info.width-480 { width: 480px; }
+div#game-step-6 div.big-image-info.width-515 { width: 515px; }
+div#game-step-6 div.big-image-info div.title {
+	font-size: 92px;
+	line-height: 70px;
+	text-align: center;
+}
+div#game-step-6 div.big-image-info div.title.font-size-82 { font-size: 82px; }
+div#game-step-6 div.big-image-info div.title.font-size-50 { 
+	font-size: 50px; 
+	line-height: 50px;
+}
+div#game-step-6 div.big-image-info div.title span {
+	font-size: 40px;
+	font-family: 'QuickSandRegular';
+}
+div#game-step-6 div.big-image-holder div.description {
+	font-family: 'QuickSandRegular';
+	font-size: 13px;
+	line-height: 22px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+div#game-step-6 div.big-image-holder div.description span { color: #fff22d; }
+div#game-step-6 div.big-image-holder div.share {
+	text-align: right;
+	padding-right: 5px;
+}
+div#game-step-6 div.big-image-holder div.share a { margin-left: 10px; }
+
+div#page.public-responsive div#header {  
+	position: absolute;
+	z-index: 10;
+	min-width: 700px;
+	width: 100%;
+}
+div#page.public-responsive div#footer {
+	bottom: 0px;
+	margin: 0px;
+	position: absolute;
+	z-index: 10;
+	min-width: 700px;
+	width: 100%;
+}
+body.responsive-layout div.page-content,
+div#page.public-responsive div.page-content { 
+	min-width: 700px; 
+	max-width: 990px;
+	width: auto;
+}
+div#public-holder {
+	background: #000;
+	left: 0px;
+	position: absolute;
+	text-align: center;
+	top: 0px;
+	height: 100%;
+	min-width: 700px;
+	width: 100%;
+	overflow: hidden;
+	z-index: 5;
+}
+div#public-holder img { 
+	min-height: 100%;
+	min-width: 100%; 
+}
+div#public-holder ul#background-transition {
+	height: 100%;
+	left: 0px;
+	margin: 0px;
+	padding: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 2;
+}
+div#public-holder ul#background-transition li {
+	height: 100%;
+	left: 0px;
+	overflow: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 2;
+}
+div#public-holder ul#background-transition li.first { 
+	opacity: 1;
+	z-index: 3; 
+}
+div#public-holder div.box-holder {
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	top: 120px;
+	z-index: 3;
+}
+div#public-holder div.box {
+	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	color: #fff;
+	margin: 0px 0px 0px auto;
+	padding: 25px 25px;
+	width: 620px;
+}
+div#public-holder div.box div.title {
+	font-size: 120px;
+	line-height: 100px;
+	margin-bottom: 10px;
+}
+div#public-holder div.box div.title.font-size-105 { font-size: 105px; }
+div#public-holder div.box div.title.font-size-70 { font-size: 70px; }
+div#public-holder div.box div.title span {
+	font-family: 'QuickSandRegular';
+	font-size: 90px;
+}
+div#public-holder div.box div.title.font-size-70 span { font-size: 64px; }
+div#public-holder div.box div.description {
+	font-size: 17px;
+	font-family: 'QuickSandRegular';
+	line-height: 27px;
+	margin-bottom: 20px;
+}
+div#public-holder div.box div.description span { color: #fff22d; }
+div#public-holder div.box a.button {
+	background: #000;
+	color: #fff;
+	display: block;
+	line-height: 30px;
+	font-size: 20px;
+	font-family: 'QuickSandBold';
+	height: 30px;
+}
+div#public-holder div.box a.button:hover,
+div#public-holder div.box a.button span { color: #60e148; }
+div#public-holder div.box a.button:hover span { color: #fff; }
+
+div#public-holder div.box-404 {
+	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	color: #fff;
+	margin: 0px 0px 0px auto;
+	padding: 55px 25px 25px;
+	width: 630px;
+}
+div#public-holder div.box-404 div.title {
+	font-size: 146px;
+	line-height: 90px;
+	text-align: right;
+}
+div#public-holder div.box-404 div.title span {
+	font-family: 'QuickSandRegular';
+	float: left;
+	font-size: 72px;
+}
+div#public-holder div.box-404 div.description {
+	font-family: 'QuickSandRegular';
+	font-size: 26px;
+	margin-bottom: 20px;
+}
+div#public-holder div.box-404 a.button {
+	background: #60e148;
+	color: #272425;
+	display: block;
+	line-height: 30px;
+	font-size: 20px;
+	font-family: 'QuickSandBold';
+	height: 30px;
+}
+div#public-holder div.box-404 a.button:hover {
+	background: #fff;
+	color: #000;
+}
+
+div#public-holder div.box-404.light { 
+	background-image: url(../img/game-end/bkg-box3.png); 
+	color: #272425;
+}
+div#public-holder div.box-404.light a.button {
+	background: #000;
+	color: #fff;
+}
+div#public-holder div.box-404.light a.button:hover {
+	background: #fff;
+	color: #000;
+}
+
+div#public-holder div.box-home {
+	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	color: #fff;
+	margin: 0px auto;
+	padding: 25px 0px;
+	width: 660px;
+}
+div#public-holder div.box-home div.title {
+	font-size: 120px;
+	line-height: 110px;
+}
+div#public-holder div.box-home div.description {
+	font-family: 'QuickSandRegular';
+	font-size: 24px;
+	margin-bottom: 15px;
+}
+div#public-holder div.box-home a.button {
+	background: #fff22d;
+	color: #0e0f0e;
+	display: block;
+	font-family: 'QuickSandBold';
+	font-size: 22px;
+	line-height: 40px;
+	margin: 0px auto;
+	width: 500px;
+}
+div#public-holder div.box-home a.button:hover {
+	background: #0e0f0e;
+	color: #fff22d;
+}
+
+body.responsive-layout div#page {
+	position: relative;
+	z-index: 2;
+}
+body.responsive-layout div#footer {
+	position: relative;
+	z-index: 3;
+}
+body.responsive-layout div#header { 
+	z-index: 5; 
+	position: relative;
+}
+body.responsive-layout div#public-holder { z-index: 4; }
+
+div#public-holder div.author {
+	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	box-shadow: 1px 0px 3px #444;
+	bottom: 70px;
+	color: #fff;
+	font-family: 'QuickSandRegular';
+	font-size: 28px;
+	line-height: 30px;
+	left: 0px;
+	text-align: left;
+	padding: 10px;
+	position: absolute;
+}
+div#public-holder div.author span {
+	color: #60e148;
+	display: block;
+}
+div#public-holder div.author span a { color: #60e148; }
 
 div#three-icons { 
 	overflow: hidden; 
