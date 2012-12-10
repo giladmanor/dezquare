@@ -18,12 +18,22 @@ class User < ActiveRecord::Base
   
   validates_uniqueness_of :email, :message=>"Email already taken"
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message=>"%{value} is an invalid email"
-  validates :password, :length=>{:in => 6..20}  
+  #validates :password, :length=>{:in => 6..20}  
   
   
   def create_password(limit=6)
     o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
     self.password=(0..50).map{ o[rand(o.length)]}.take(limit).join;
+  end
+  
+  def password=(red)
+    black = Digest::MD5.hexdigest red
+    write_attribute(:password, black)
+  end
+  
+  def password?(red)
+    black = Digest::MD5.hexdigest red
+    self.password == black
   end
   
   def full_name
@@ -85,6 +95,14 @@ class User < ActiveRecord::Base
       return self.save
     end
     false
+  end
+
+  def self.encript_all_passwords
+    users = User.all
+    users.each{|u|
+      u.password = u.password || "123456"
+      u.save
+    }
   end
   
 end

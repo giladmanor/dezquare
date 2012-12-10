@@ -13,7 +13,7 @@ class SiteController < ApplicationController
   def login
     @user = User.find_by_email(params[:email])
     logger.debug "#{@user.inspect}"
-    if !@user.nil? && @user.password==params[:password] && @user.email_confirm
+    if !@user.nil? && @user.password?(params[:password]) && @user.email_confirm
       session[:user_id]=@user.id
       logger.debug "##############################################################################################################"
       

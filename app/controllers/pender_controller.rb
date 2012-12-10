@@ -19,7 +19,7 @@ class PenderController < SiteController
     attr = params.delete_if{|k,v| !user.respond_to?(k.to_sym)}
     user.update_attributes(attr.except(:id))
     user.pender=true
-    user.password = "ooooooooooooooooooo"
+    user.password = "gsregsvergsegsr"
     logger.debug " pender to save: #{user.inspect} "
     if user.save
       logger.debug " pender saved with id:#{user.id} "
