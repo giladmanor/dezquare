@@ -539,8 +539,6 @@ $(document).ready(function(){
 				window.scrollTo(0, $(document).height());
 			});*/
 			
-
-			
 			gameIcons.find(".nosoon").click(function(e){
 				e.preventDefault();
 				gameIcons.find(".nosoon").removeClass("active");
@@ -596,7 +594,6 @@ $(document).ready(function(){
 				
 				$(this).parents("form").submit();
 			});
-					
 			
 			game3.find("#submit-step-5").click(function(e){
 				e.preventDefault();
@@ -613,7 +610,6 @@ $(document).ready(function(){
 					titleField.siblings("label.form-error").show();;
 					errors = true;
 				}
-				
 				
 				if ($.trim(descriptionField.val()) == "")
 				{
@@ -876,23 +872,23 @@ $(document).ready(function(){
 				return !errors;
 			});
 			
-				$("#info_form").click(function(e){
-					var form = $(this);
-					var errors = false;
-					var title = form.find("input[name=name]");
-					var description = form.find("textarea[name=description]");
+			$("#info_form").click(function(e){
+				var form = $(this);
+				var errors = false;
+				var title = form.find("input[name=name]");
+				var description = form.find("textarea[name=description]");
 
-					form.find(".form-error").hide();
+				form.find(".form-error").hide();
 
-					var checkboxes = form.find("span.checkbox.checked");
+				var checkboxes = form.find("span.checkbox.checked");
 
-					if (checkboxes.length > 8)
-					{
-						form.find(".other-tags .form-error").show();
-						errors = true;
-					}
-				});
-			
+				if (checkboxes.length > 8)
+				{
+					form.find(".other-tags .form-error").show();
+					errors = true;
+				}
+			});
+
 			$("#settings-languages div.formfield").each(function(){
 				var field = $(this);
 				BindLanguageEvents(field);
@@ -1214,6 +1210,25 @@ $(document).ready(function(){
 				sl.find("div.buttons a.black-button").click(function(e){
 					e.preventDefault();
 					sl.submit();
+				});
+			});
+			
+			$("#game-connect").each(function() {
+				var p = $(this);
+				p.find("a.login").click(function(e) {
+					e.preventDefault();
+					overlay.show();
+					loginPopup.show();
+				});
+				p.find("div.social-sign a").click(function(e) {
+					e.preventDefault();
+					overlay.show();
+					$("#signup-2-popup").show();					
+				});
+				p.find("a.old-school").click(function(e) {
+					e.preventDefault();
+					overlay.show();
+					$("#signup-3-popup").show();
 				});
 			});
 		};
