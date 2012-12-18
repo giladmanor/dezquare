@@ -361,6 +361,11 @@ $(document).ready(function(){
 				loginPopup.hide();
 				forgotPasswordPopup.show();
 			});
+			loginPopup.find("a.register").click(function(e){
+				e.preventDefault();
+				loginPopup.hide();
+				$("#signup-1-popup").show();
+			});
 			loginPopup.find("span.close").click(function(){
 				$("#register-designer-popup").show();
 			});
@@ -740,7 +745,11 @@ $(document).ready(function(){
 			$(".vchecked").each(function(){
 				var box = $(this);
 				box.siblings("input.text").blur(function(){
-					if ($.trim($(this).val()) != "")
+					if ($(this).hasClass("password") && $(this).val().length >= 6)
+					{
+						box.css("display", "block");
+					}
+					else if (!$(this).hasClass("password") && $.trim($(this).val()) != "")
 					{
 						box.css("display", "block");
 					}
@@ -1043,6 +1052,169 @@ $(document).ready(function(){
 					// errors = true;
 				// }
 				return !errors;
+			});
+			
+			$("#game-tastes a").click(function(e) {
+				e.preventDefault();
+				if ($(this).hasClass("active"))
+				{
+					$(this).removeClass("active");
+				}
+				else
+				{
+					$(this).addClass("active");
+				}
+			});
+			
+			$("#designer-matches").each(function(){
+				var dm = $(this);
+				var matches = dm.find("div.match");
+				var edp = $("#expanded-designer-popup");
+				var eip = $("#expanded-image-popup"); 
+				matches.find("a").click(function(e) {
+					e.preventDefault();
+					overlay.show();
+					edp.show();
+				});
+				
+				edp.find("div.gallery a").click(function(e) {
+					e.preventDefault();
+					edp.hide();
+					eip.show();
+				});
+				eip.find("a.black-button").click(function(e) {
+					e.preventDefault();
+					eip.hide();
+					edp.show();
+				});
+				
+				matches.find("span.checkbox").click(function() {
+					if (!$(this).hasClass("checked"))
+					{
+						var button = $(this);
+						button.addClass("checked").find("input").attr("checked", true);
+						overlay.show();
+						submitSelectedPopup.show();
+						
+						submitSelectedPopup.find("a.orange-button").unbind().click(function(e){
+							e.preventDefault();
+							button.removeClass("checked").find("input").attr("checked", false);
+							submitSelectedPopup.hide();
+							overlay.hide();
+						});
+						
+						submitSelectedPopup.find("a.replay").unbind().click(function(e){
+							e.preventDefault();
+							submitSelectedPopup.hide();
+							overlay.hide();
+						});
+					}
+				})
+			}); 
+			
+			$("#quiz-big-image").each(function() {
+				var p = $(this);
+				var r = $(this).find("#ruex-popup");
+				var i = $(this).find("#intimate-popup");
+				p.find("a.excited").click(function(e) {
+					e.preventDefault();
+					r.show();
+				});
+				p.find("a.signup").click(function(e) {
+					e.preventDefault();
+					overlay.show();
+					$("#signup-1-popup").show();
+				});
+				p.find("a.intimate").click(function(e) {
+					e.preventDefault();
+					r.hide();
+					i.show();
+				});
+				i.find("a.back").click(function(e) {
+					e.preventDefault();
+					i.hide();
+					r.show();
+				});
+			});
+			
+			$("#signup-1-popup").each(function() {
+				var p = $(this);
+				p.find("a.login").click(function(e) {
+					e.preventDefault();
+					p.hide();
+					loginPopup.show();
+				});
+				p.find("div.social-sign a").click(function(e) {
+					e.preventDefault();
+					p.hide();
+					$("#signup-2-popup").show();					
+				});
+				p.find("a.old-school").click(function(e) {
+					e.preventDefault();
+					p.hide();
+					$("#signup-3-popup").show();
+				});
+			});
+			
+			$("#signup-2-popup").each(function() {
+				var p = $(this);
+				p.find("a.submit-pf").click(function(e) {
+					e.preventDefault();
+					p.find("form").submit();;
+				});
+			});
+			
+			$("#signup-3-popup").each(function() {
+				var p = $(this);
+				p.find("a.login").click(function(e) {
+					e.preventDefault();
+					p.hide();
+					loginPopup.show();
+				});
+				p.find("a.submit-pf").click(function(e) {
+					e.preventDefault();
+					p.find("form").submit();;
+				});
+			});
+			
+			$(".register-step1-popup div.buttons.dynamic").each(function(){
+				var buttons = $(this).children("a");
+				var input = $(this).children("input");
+				buttons.click(function(e){
+					e.preventDefault();
+					buttons.removeClass("active");
+					$(this).addClass("active");
+					input.val($(this).index() == 0 ? "designer" : "customer");
+				});
+			});
+			
+			$("#sel-prod").each(function() {
+				var sl = $(this);
+				var icons = sl.find("ul#game-icons a");
+				var pr = sl.find("#price-ranges");
+				icons.click(function(e) {
+					e.preventDefault();
+					icons.removeClass("active");
+					$(this).addClass("active");
+					pr.show();
+					window.scroll(0, $(document).height());
+				});
+				sl.find("div.price-slider-holder a").click(function(e) {
+					e.preventDefault();
+					$(this).addClass("active");
+					$(this).siblings("a").removeClass("active");
+					var cols = sl.find("div.price-slider-info div.col");
+					cols.removeClass("load"); 
+					cols.eq($(this).index()).addClass("load");
+				});
+				sl.find("div.buttons a.cancel").click(function(e){
+					e.preventDefault();
+					history.back(1);
+				});
+				sl.find("div.buttons a.black-button").click(function(e){
+					e.preventDefault();
+					sl.submit();
+				});
 			});
 		};
 		
