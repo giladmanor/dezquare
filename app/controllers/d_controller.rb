@@ -6,13 +6,13 @@ class DController < ApplicationController
     unless @author.nil?
       render :file=>"designer/profile", :layout=>"designer"
     else
-      redirect_to :action=>:omg
+      redirect_to :action=>:ohno
     end
     #redirect_to "/designer/profile/#{user.id}/#{params[:id]}"
   end
   
-  def omg
-    
+  def ohno
+    render :file =>"d/#{["a","b"].shuffle.first}"
   end
   
 end

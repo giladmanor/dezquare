@@ -32,7 +32,7 @@
 								<div style="height: 413px">
 									<img src="/repository/<%= image.file_path%>" style="max-width: 672px;max-height: 416px;" />
 								</div>
-								
+								<p><%=raw(image.tags.map{|t| t.name}.join("&nbsp;|&nbsp;"))%></p>
 								<div class="buttons-select clearfix" style="margin-top: 34px;width: 400px;text-align: center;padding-left: 30%;">
 									<a href="/game/next?image_id=<%=image.id%>&selected=pass" class="black-button huge-font" >Pass</a>
 									<a href="/game/next?image_id=<%=image.id%>&selected=like" class="orange-button huge-font" >Like</a>

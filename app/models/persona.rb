@@ -2,10 +2,13 @@ class Persona < ActiveRecord::Base
   has_many :persona_tags
   has_many :tags, :through=>:persona_tags
   
+  has_many :persona_images
+  
   def self.find_by_tags(tags)
     flat=tags.map{|t| t.personas}.flatten
-    personas = Persona.all.map{|p| {:p=>p, :rate=>flat.count(p)}}.sort{|a,b| b.rate<=>a.rate}
     
+    personas = Persona.all.map{|p| {:p=>p, :rate=>flat.count(p)}}.sort{|a,b| b[:rate]<=>a[:rate]}
+    logger.debug "list od persona's: #{personas.inspect}"
     personas.first
   end
   

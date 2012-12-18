@@ -59,5 +59,6 @@ Dezquare::Application.routes.draw do
   
   match 'designer/profile(/:id(/:lalala))', :to=> "designer#profile"
   match ':controller(/:action(/:id))(.:format)'
+  match 'soooo(/:id)', :to=> "persona#index"
   match ':id',:to => 'd#index'
 end

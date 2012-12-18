@@ -33,10 +33,11 @@
 							  url: "/game/category_price_range",
 							  data: { id:category_id},
 							  success: function(data){
-							  	$('.max_price.active').attr("data-min",data.min_price);
-							  	$('.max_price.active').attr("data-max",data.max_price);
-							  	$('.max_price.active').attr("data-value",data.max_price-100);
-							  	$('.max_designers').text(random+data.max_designers + ' designers available');
+							  	//$('.max_price.active').attr("data-min",data.min_price);
+							  	//$('.max_price.active').attr("data-max",data.max_price);
+							  	//$('.max_price.active').attr("data-value",data.max_price-100);
+							  	$('.max_designers').text(1+data.max_designers + ' designers available');
+							  	
 							  	BuildSliders();
 							  }
 							});
@@ -54,23 +55,13 @@
 									<div id="price-buttons">
 										<div class="button_price_game">
 											<ul id="list-price-buttons">
-											<li><a class="white-button max_price price-slider" onclick="get_price()" id="249" data-min="30" data-max="249" data-value="150" href="#"><input name="max_price" type="hidden" value="150">$249 &rsaquo;</a></li>
-											<li><a class="white-button max_price price-slider" onclick="get_price()" id="499" data-min="250" data-max="499" data-value="350" href="#"><input name="max_price" type="hidden" value="350">$250-$499</a></li>
-											<li><a class="white-button max_price active price-slider" onclick="get_price()" id="749" data-min="500" data-max="749" data-value="650" href="#"><input name="max_price" type="hidden" value="650">$500-$749</a></li>
-											<li><a class="white-button max_price price-slider" onclick="get_price()" id="999" data-min="750" data-max="999" data-value="850" href="#"><input name="max_price" type="hidden" value="850">$750-$999</a></li>
-											<li><a class="white-button max_price price-slider" onclick="get_price()" id="1000" data-min="1000" data-max="10000" data-value="2000" href="#"><input name="max_price" type="hidden" value="2000">&lsaquo; $1000</a></li>
+											<li><a class="white-button max_price price-slider" onclick="get_range()" id="249" data-min="30" data-max="249" data-value="150" href="#"><input name="max_price" type="hidden" value="150">$249 &rsaquo;</a></li>
+											<li><a class="white-button max_price price-slider" onclick="get_range()" id="499" data-min="250" data-max="499" data-value="350" href="#"><input name="max_price" type="hidden" value="350">$250-$499</a></li>
+											<li><a class="white-button max_price active price-slider" onclick="get_range()" id="749" data-min="500" data-max="749" data-value="650" href="#"><input name="max_price" type="hidden" value="650">$500-$749</a></li>
+											<li><a class="white-button max_price price-slider" onclick="get_range()" id="999" data-min="750" data-max="999" data-value="850" href="#"><input name="max_price" type="hidden" value="850">$750-$999</a></li>
+											<li><a class="white-button max_price price-slider" onclick="get_range()" id="1000" data-min="1000" data-max="10000" data-value="2000" href="#"><input name="max_price" type="hidden" value="2000">&lsaquo; $1000</a></li>
 											</ul>
-											<script>
-											function get_price(category_id)
-										{	random = Math.ceil(Math.random() * 200) + 3;
-											$.ajax({
-											  type: "POST",
-											  url: '/game/category_price_range',
-											  success: function(data) {
-											    $('.max_designers').text(random+data.max_designers + ' designers available');
-											  }
-											});}
-											</script>
+											
 										<span class="loading_image"><img id="loading_img" src="/img/loading.gif"/></span>
 										<span class="loading_text max_designers"><p>designers<br />available</p></span>
 										<div>
@@ -91,6 +82,7 @@
 								<a href="/site/index" class="cancel">Cancel</a>
 							</div>
 						</form>
+						<p>x</p>
 					</div>
 				</div>
 			

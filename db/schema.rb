@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121122153320) do
+ActiveRecord::Schema.define(:version => 20121213095238) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -150,6 +150,17 @@ ActiveRecord::Schema.define(:version => 20121122153320) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "persona_images", :force => true do |t|
+    t.integer  "persona_id"
+    t.string   "description"
+    t.string   "file_path"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "user_id"
+  end
+
+  add_index "persona_images", ["persona_id"], :name => "index_persona_images_on_persona_id"
 
   create_table "persona_tags", :force => true do |t|
     t.integer  "tag_id"
