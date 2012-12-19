@@ -2320,8 +2320,8 @@ div#expanded-designer-popup div.gallery a {
 }
 div#expanded-designer-popup div.taste div.ttl {
 	font-family: 'QuickSandRegular';
-	font-size: 24px;
-	line-height: 28px;
+	font-size: 22px;
+	line-height: 26px;
 	margin-bottom: 10px;
 }
 div#expanded-designer-popup div.taste ul {
@@ -2329,8 +2329,8 @@ div#expanded-designer-popup div.taste ul {
 	list-style-type: none;
 	padding: 0px;
 	margin: 0px;
-	line-height: 28px;
-	font-size: 18px;
+	line-height: 22px;
+	font-size: 15px;
 }
 
 div#expanded-image-popup {
@@ -2341,6 +2341,10 @@ div#expanded-image-popup {
 div#expanded-image-popup div.image {
 	margin-bottom: 30px;
 	text-align: center;
+}
+div#expanded-image-popup div.image img {
+	max-height: 400px;
+	max-width: 500px;
 }
 div#expanded-image-popup a.black-button {
 	margin: 0px auto;
@@ -3328,70 +3332,6 @@ div#welcome-slide6 a.black-button {
 div#welcome-slider div#welcome-slide6-content { 
 	margin-top: -180px;
 	top: 50%; 
-}
-div#price-buttons-container {
-	position: relative;
-	height: 80px;
-	width: 730px;
-	left: 105px;
-	background-color: grey;
-}
-div#price-buttons {
-	height: 80px;
-	background-color: blue;
-}
-
-div.button_price_game {
-	height:80px;
-	background-color:#ffffff;
-}
-
-div.button_price_game ul {
-	margin-left:-29px;
-}
-
-div.button_price_game ul li{
-	list-style-type:none;
-	padding:4px 0px;
-	padding-top:10px;
-	display:inline;
-	background-color:#ffffff;
-	margin-left:10px;
-	border:1px solid #d5c6cc;
-	-moz-box-shadow:  0 0 3px #d5c6cc;
-	-webkit-box-shadow:  0 0 3px #d5c6cc;
-	box-shadow:  0 0 3px #d5c6cc;
-}
-
-div.button_price_game ul li:hover {
-/*	list-style-type:none;
-	padding:5px 22px;
-	display:inline;
-	background-color:#ff7040;
-	margin-left:10px;
-	border:1px solid #d5c6cc;*/
-	padding:4px 0px;
-	padding-top:10px;
-	-moz-box-shadow:  0 0 0px #888;
-	-webkit-box-shadow:  0 0 0px#888;
-	box-shadow:  0 0 0px #888;
-	background-color:#000000;
-	border:1px solid #ffffff;
-
-}
-
-div.button_price_game ul li.active{
-	
-	/*	list-style-type:none;
-		padding:5px 22px;
-		display:inline;
-		background-color:#ff7040;
-		margin-left:10px;
-		border:1px solid #d5c6cc;*/
-		padding:4px 0px;
-		padding-top:10px;
-		background-color:#ff7040;
-		border:1px solid #ffffff;
 }
 
 div#game-connect div.wide-page-wrap { padding-top: 0px; }
