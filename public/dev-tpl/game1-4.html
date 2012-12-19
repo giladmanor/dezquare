@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<meta property="og:image" content="http://dezquare.andreiserban.com/img/game-end/gaga.jpg"/>
+	<meta property="og:title" content="We've got your taste"/>
+	<meta property="og:description" content="I just got my taste playing on Dezquare"/>
+</head>
+<body>
+	<div id="page">
+		<div id="header" class="black">
+			<div class="page-content clearfix">
+				<h1 id="logo">
+					<a href="index.html">
+						<img src="img/logo-white.png" alt="Dezquare" />
+					</a>
+				</h1>
+				
+				<a id="login" class="header-button" href="#">Login / Signup</a>
+			</div>
+		</div>
+		
+		<div id="content">		
+			<div class="page-content">
+				
+				<div class="wide-page-holder game-step" id="game-step-1-4">
+					<div class="wide-page-wrap">
+						<h2 class="margin-30">Meet your matches</h2>
+						<div id="designer-matches">
+							<div class="description">
+								Apple pie muffin ice cream. Candy dessert jelly chocolate cake jelly beans jelly. 
+								Gummies sugar plum apple pie gummi bears carrot cake faworki cupcake cookie jujubes. 
+								Applicake candy canes sugar plum.
+							</div>
+							<form action="game1-5.html">
+								<div class="match">
+									<div class="image">
+										<a href="#">
+											<img src="img/temp/match1.jpg" alt="Joshua Z." />
+										</a>
+									</div>
+									<div class="name">Joshua Z.</div>
+									<span class="checkbox checked">
+										<input type="checkbox" name="match[]" value="1" />
+									</span>
+								</div>
+								<div class="match">
+									<div class="image">
+										<a href="#">
+											<img src="img/temp/match1.jpg" alt="Joshua Z." />
+										</a>
+									</div>
+									<div class="name">Joshua Z.</div>
+									<span class="checkbox checked">
+										<input type="checkbox" name="match[]" value="1" />
+									</span>
+								</div>
+								<div class="match last">
+									<div class="image">
+										<a href="#">
+											<img src="img/temp/match1.jpg" alt="Joshua Z." />
+										</a>
+									</div>
+									<div class="name">Joshua Z.</div>
+									<span class="checkbox checked">
+										<input type="checkbox" name="match[]" value="1" />
+									</span>
+								</div>
+								<input type="submit" value="Invite your matches to bid on the project" class="submit black-input-1" />
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+		
+	</div>
+	
+	<div id="footer">
+		<div class="page-content">
+			<div id="copyright">&copy;dèzquare 2012</div>
+			<div id="footer-links">
+				<a href="about.html">About</a>
+				<span>|</span>
+				<a href="privacy.html">Privacy Policy</a>
+				<span>|</span>
+				<a href="terms.html">Terms of Use</a>
+			</div>
+		</div>
+	</div>
+	
+	<div id="window-overlay"></div>
+	<div id="expanded-designer-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="image">
+				<img src="img/temp/match1.jpg" alt="Joshua Z." />
+			</div>
+			<div class="details">
+				<div class="name">Joshua Z.</div>
+				<ul>
+					<li>From: <span>Israel</span></li>
+					<li>Languages: <span>Hebrew</span></li>
+					<li>Education: <span>Bezalel Achademy of art</span></li>
+					<li>Expertise: <span>Branding. Print</span></li>
+				</ul>
+			</div>
+			<div class="gallery">
+				<a href="#">
+					<img src="img/temp/profile-photo-2.jpg" alt="alt" />
+				</a>
+				<a href="#">
+					<img src="img/temp/profile-photo-2.jpg" alt="alt" />
+				</a>
+				<a href="#">
+					<img src="img/temp/profile-photo-2.jpg" alt="alt" />
+				</a>
+				<a href="#">
+					<img src="img/temp/profile-photo-2.jpg" alt="alt" />
+				</a>
+				<a href="#">
+					<img src="img/temp/profile-photo-2.jpg" alt="alt" />
+				</a>
+			</div>
+			<div class="taste">
+				<div class="ttl">Axl Rose’s Taste:</div>
+				<ul>
+					<li>* Colorful (Color Palette)</li>
+					<li>* Urban (Style)</li>
+					<li>* Realistic (Image)</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	
+	<div id="expanded-image-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="image">
+				<img src="img/temp/showoff.jpg" alt="" />
+			</div>
+			<a href="#" class="black-button big-font">Back</a>
+		</div>
+	</div>
+	
+	<div id="login-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="index.html" method="post">
+				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot">
+					<a href="#" id="forgot-password">I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="register.html">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="forgot-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Get a new Password</div>
+			<form action="" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<label class="form-error">Invalid email address</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+				</div>		
+			</form>
+		</div>
+	</div>
+	
+	<div id="submit-selected-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Are you sure you want to<br/>remove this match?</div>			
+			<div class="message">
+				The designers we matched for you will need to accept your invitation.<br/>
+				we highly recommand to send the invitation to all of your matches.<br/>
+				You’ll be surprised with how quickly they get your taste.<br/>
+			</div>
+			<div class="never-show">
+				<span class="checkbox checked">
+					<input type="submit" name="never-show" />
+				</span>
+				<span class="text">Never show me that again</span>
+			</div>
+			<div class="buttons clearfix">
+				<a href="#" class="replay">Cancel</a>
+				<a href="game4.html" class="orange-button big-font">Yes</a>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
