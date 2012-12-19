@@ -2497,7 +2497,7 @@ div#game-step-3 h4 {
 	text-align: center;
 }
 div#image-select {
-	margin: 0px auto 110px;
+	margin: 0px auto 80px;
 	width: 400px;
 }
 div#image-select ul.image {
@@ -2513,6 +2513,10 @@ div#image-select ul.image li {
 	display: none;
 	left: 0px;
 	top: 0px;
+}
+div#image-select ul.image li img {
+	height: 439px;
+	width: 402px;
 }
 div#image-select a.black-button {
 	float: left;
@@ -2678,6 +2682,7 @@ div.game-step h2 {
 }
 div.game-step h2.gray { color: #b4b3b4; }
 div.game-step h2.no-margin { margin-bottom: 0px; }
+div.game-step h2.margin-10 { margin-bottom: 10px; }
 div.game-step h2.margin-30 { margin-bottom: 30px; }
 div.game-step h2.no-border { border-bottom: 0px none; }
 div.game-step h2.font-size-24 { font-size: 24px; }
@@ -2772,6 +2777,9 @@ div#game-step-6 div.big-image-holder div.share {
 	padding-right: 5px;
 }
 div#game-step-6 div.big-image-holder div.share a { margin-left: 10px; }
+div#game-step-6 div.big-image-holder div.share a img.hover { display: none; }
+div#game-step-6 div.big-image-holder div.share a:hover img.normal { display: none; }
+div#game-step-6 div.big-image-holder div.share a:hover img.hover { display: inline; }
 
 div#page.public-responsive div#header {  
 	position: absolute;
