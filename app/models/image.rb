@@ -9,6 +9,9 @@ class Image < ActiveRecord::Base
   has_many :image_tags
   has_many :tags, :through=>:image_tags
   
+  has_one :persona_image
+  has_one :persona, :through=>:persona_image, :autosave=>true
+  
   def populated?
     !self.name.nil? && !self.category.nil? && self.tags.length>0 && !self.file_path.nil?
   end
@@ -47,6 +50,12 @@ class Image < ActiveRecord::Base
     img_file = Magick::Image.read(file).first
     thumb = img_file.crop(x.to_f,y.to_f,w.to_f,h.to_f)
     thumb.write(file)
+  end
+  
+  def compile_persona
+    rated_persona = Persona.find_by_tags(self.tags)
+    self.persona =rated_persona[:p]
+    
   end
   
   

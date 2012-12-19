@@ -2,7 +2,10 @@
 <%
 if @user.nil?
 	%>
+	
 	<a id="login" class="header-button" href="/site/register">Login / Signup</a>
+	<div style="float: right">&nbsp;</div>
+	<a class="header-button" href="/game/index" style="background: none;color: black">Start a Project</a>
 	<%
 else
 	if @user.shopper

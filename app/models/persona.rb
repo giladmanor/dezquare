@@ -3,12 +3,16 @@ class Persona < ActiveRecord::Base
   has_many :tags, :through=>:persona_tags
   
   has_many :persona_images
+  has_many :images, :through=>:persona_images
+  
+  has_many :persona_image_backgrounds
+  
   
   def self.find_by_tags(tags)
     flat=tags.map{|t| t.personas}.flatten
     
     personas = Persona.all.map{|p| {:p=>p, :rate=>flat.count(p)}}.sort{|a,b| b[:rate]<=>a[:rate]}
-    logger.debug "list od persona's: #{personas.inspect}"
+    logger.debug "list of persona's: #{personas.inspect}"
     personas.first
   end
   
@@ -20,8 +24,8 @@ class Persona < ActiveRecord::Base
     self.save
   end
   
-  def images
-    Image.all.map{|i| {:i=>i,:dev=>(i.tags-self.tags).length}}.sort{|a,b| a[:dev]<=>b[:dev]}.map{|i| i[:i]}
-  end
+  # def images
+    # Image.all.map{|i| {:i=>i,:dev=>(i.tags-self.tags).length}}.sort{|a,b| a[:dev]<=>b[:dev]}.map{|i| i[:i]}
+  # end
   
 end

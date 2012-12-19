@@ -20,6 +20,10 @@
 		
 		<div id="content">		
 			<div class="page-content">
+				<%
+				unless @game.stage.progress_label.nil? || @game.stage.progress_label.length==0 
+				
+				%>
 				
 				<div id="game-bar" class="active-<%=@game.type.labels.index(@game.stage.progress_label)+1%>">
 					<%
@@ -40,6 +44,9 @@
 					
 					
 				</div>
+				<%
+				end
+				%>
 				
 				<%= yield %>
 				

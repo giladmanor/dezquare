@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121213095238) do
+ActiveRecord::Schema.define(:version => 20121219061256) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -94,6 +94,7 @@ ActiveRecord::Schema.define(:version => 20121213095238) do
     t.integer  "category_id"
     t.integer  "project_id"
     t.decimal  "max_price",          :precision => 10, :scale => 0
+    t.text     "data"
   end
 
   add_index "games", ["game_type_id"], :name => "index_games_on_game_type_id"
@@ -151,13 +152,24 @@ ActiveRecord::Schema.define(:version => 20121213095238) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "persona_images", :force => true do |t|
+  create_table "persona_image_backgrounds", :force => true do |t|
     t.integer  "persona_id"
+    t.integer  "user_id"
     t.string   "description"
     t.string   "file_path"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "user_id"
+  end
+
+  add_index "persona_image_backgrounds", ["persona_id"], :name => "index_persona_image_backgrounds_on_persona_id"
+  add_index "persona_image_backgrounds", ["user_id"], :name => "index_persona_image_backgrounds_on_user_id"
+
+  create_table "persona_images", :force => true do |t|
+    t.integer  "persona_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "image_id"
+    t.integer  "rate"
   end
 
   add_index "persona_images", ["persona_id"], :name => "index_persona_images_on_persona_id"

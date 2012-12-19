@@ -3,10 +3,12 @@ class GameController < SiteController
   
   def index
     @game = Game.new
-    @game.type= GameType.all.first
+    
     
     if params[:id].present?
       @game.type= GameType.find_by_name(params[:id])
+    else 
+      @game.type= GameType.all.first
     end
      
     @game.user=@user

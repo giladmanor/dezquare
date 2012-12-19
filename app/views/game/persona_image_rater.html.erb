@@ -1,0 +1,48 @@
+<div class="wide-page-holder game-step" id="game-step-3">
+	<div class="wide-page-wrap">
+		<h2>Let’s get to know your taste!</h2>
+		<h4>Select the designs you like</h4>
+		<form action="/game/next">
+			<div id="image-select" style="text-align: center;width: auto;">
+				
+				<%
+				
+				logger.debug "#### #{@game.stage.args}"
+				
+				viewed_personas = @game.images.map{|i| i.persona}.uniq
+				viewed_personas = [] if viewed_personas.length==Persona.all.size 
+				images = Persona.all.map{|p| p.images.shuffle.take(20)}.flatten.reject{|i| viewed_personas.include?(i.persona) || @game.images.include?(i)}
+				
+				logger.debug "--------------------------------------------------------------"
+				image=images.shuffle.first
+				logger.debug " image choosen  #{image.inspect}"
+				
+				
+				logger.debug "--------------------------------------------------------------"
+				
+				%>
+				
+				<div style="height: 413px">
+					<img src="/repository/thumbnail/<%= image.file_path%>" style="max-width: 672px;max-height: 416px;" />
+				</div>
+				<div class="buttons-select clearfix" style="margin-top: 34px;width: 400px;text-align: center;padding-left: 30%;">
+					<a href="/game/next?image_id=<%=image.id%>&selected=pass" class="black-button huge-font" >Pass</a>
+					<a href="/game/next?image_id=<%=image.id%>&selected=like" class="orange-button huge-font" >Like</a>
+				</div>
+			</div>
+			<div class="buttons2 clearfix">
+				<!-- <a href="game1.html" class="black-button big-font">
+					<img src="/img/arrow-left.png" class="normal" />
+					<img src="/img/arrow-left-orange.png" class="hover" />
+					Back
+				</a> -->
+				<a href="#" class="black-button big-font disabled next" id="submit">
+					Next
+					<img src="/img/arrow-right.png" class="normal" />
+					<img src="/img/arrow-right-orange.png" class="hover" />
+				</a>
+			</div>
+		</form>
+	</div>
+</div>
+			

@@ -1,6 +1,6 @@
 class PersonaImage < ActiveRecord::Base
   belongs_to :persona
-  belongs_to :user
+  belongs_to :image
   
   
   

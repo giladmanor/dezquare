@@ -1,6 +1,6 @@
 <%
 
-tags = @game.images.map{|si| si.tags}.flatten
+tags = @game.game_image_rates.select{|gir| gir.value>0}.map{|gir| gir.image.tags}.flatten
 logger.debug "Selected tags for persona: #{tags.inspect}"
 @persona = Persona.find_by_tags(tags)[:p]
 
@@ -14,7 +14,7 @@ logger.debug "Selected tags for persona: #{tags.inspect}"
 		</h4>
 		<form action="#" id="game5-form">
 			<div class="big-image-holder">
-				<img src="/persona/img/<%=raw(@persona.persona_images.first.file_path)%>" style="width: 949px;"/>
+				<img src="/persona/img/<%=raw(@persona.persona_image_backgrounds.first.file_path)%>" style="width: 949px;"/>
 				<div class="big-image-info">
 					<div class="title">
 						<span>You are so</span> <%=@persona.name.upcase%>
@@ -34,9 +34,9 @@ logger.debug "Selected tags for persona: #{tags.inspect}"
 			</div>
 			<div class="buttons2 clearfix">
 				
-				<a href="/game/next?start=true" class="black-button big-font next" id="submit-step-5">
-					Next
-					<img src="/img/arrow-right.png" />
+				<a href="/game/index" class="black-button big-font next" id="submit-step-5">
+					Start a Project
+					
 				</a>
 			</div>
 		</form>
