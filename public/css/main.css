@@ -2496,6 +2496,37 @@ div#game-step-3 h4 {
 	margin: 0px 0px 30px;
 	text-align: center;
 }
+div#game-progress {
+	background: #202020;
+	border-radius: 7px;
+	margin: 0px auto 15px;
+	padding: 4px;
+	width: 357px;
+}
+div#game-progress div#game-progress-holder {
+	position: relative;
+	height: 7px;
+}
+div#game-progress div#game-progress-line1 {
+	background: url(../img/bkg-progress.png) left top repeat-x;
+	border-radius: 3px;
+	position: absolute;
+	left: 0px;
+	width: 70%;
+	top: 0px;
+	height: 100%;
+	z-index: 1;
+}
+div#game-progress div#game-progress-line2 {
+	background: url(../img/bkg-progress.png) left -7px repeat-x;
+	border-radius: 3px;
+	position: absolute;
+	left: 0px;
+	width: 30%;
+	top: 0px;
+	height: 100%;
+	z-index: 2;
+}
 div#image-select {
 	margin: 0px auto 80px;
 	width: 400px;
@@ -2514,7 +2545,7 @@ div#image-select ul.image li {
 	left: 0px;
 	top: 0px;
 }
-div#image-select ul.image li img {
+div#image-select img {
 	height: 439px;
 	width: 402px;
 }

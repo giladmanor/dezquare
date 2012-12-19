@@ -1,9 +1,15 @@
 ﻿				<div class="wide-page-holder game-step" id="game-step-3">
-					<div class="wide-page-wrap">
+					<div class="wide-page-wrap" style="padding-top: 40px; padding-bottom: 10px;">
 						<h2>Let’s get to know your taste!</h2>
 						<h4>Select the designs you like</h4>
+						<div id="game-progress">
+							<div id="game-progress-holder">
+								<div id="game-progress-line1"></div>
+								<div id="game-progress-line2"></div>
+							</div>
+						</div>
 						<form action="/game/next">
-							<div id="image-select" style="text-align: center;width: auto;">
+							<div id="image-select">
 								
 								<%
 								
@@ -22,10 +28,13 @@
 								
 								%>
 								
-								<div style="height: 413px">
-									<img src="/repository/thumbnail/<%= image.file_path%>" style="max-width: 672px;max-height: 416px;" />
-								</div>
-								<div class="buttons-select clearfix" style="margin-top: 34px;width: 400px;text-align: center;padding-left: 30%;">
+								<ul class="image">
+									<li class="active">
+										<img src="/repository/thumbnail/<%= image.file_path%>" />
+									</li>
+								</ul>
+								
+								<div class="buttons-select clearfix">
 									<a href="/game/next?image_id=<%=image.id%>&selected=pass" class="black-button huge-font" >Pass</a>
 									<a href="/game/next?image_id=<%=image.id%>&selected=like" class="orange-button huge-font" >Like</a>
 								</div>
