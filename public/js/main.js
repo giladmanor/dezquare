@@ -1202,6 +1202,7 @@ $(document).ready(function(){
 					var cols = sl.find("div.price-slider-info div.col");
 					cols.removeClass("load"); 
 					cols.eq($(this).index()).addClass("load");
+					get_range(cols.eq($(this).index()));
 				});
 				sl.find("div.buttons a.cancel").click(function(e){
 					e.preventDefault();

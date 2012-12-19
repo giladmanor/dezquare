@@ -52,11 +52,9 @@ class GameController < SiteController
   
   def category_price_range
     #category = Category.find(params[:id])
-    prices = DesignerCategory.find(:all, :conditions=>["category_id=?", params[:id]]).map{|dc| dc.min_price}.sort
+    prices = DesignerCategory.find(:all, :conditions=>["category_id=? and min_price<?", params[:id],params[:min].to_i]).map{|dc| dc.min_price}.sort
     logger.debug prices.inspect
     res={
-      :min_price=>prices[10] || 10,
-      :max_price=>prices.last,
       :max_designers=>prices.length
       
     }
