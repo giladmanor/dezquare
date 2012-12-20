@@ -2527,8 +2527,9 @@ div#game-progress div#game-progress-line2 {
 	height: 100%;
 	z-index: 2;
 }
+div#game-step-3 h4 { margin-bottom: 15px; }
 div#image-select {
-	margin: 0px auto 80px;
+	margin: 0px auto 20px;
 	width: 400px;
 }
 div#image-select ul.image {
