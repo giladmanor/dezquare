@@ -41,7 +41,7 @@ class SiteController < ApplicationController
   
   def resend_confirmation
     @user = User.find_by_email(params[:email])
-    UserMailer.shopper_change_email(@user).deliver
+    UserMailer.shopper_change_email(@user).deliver unless @user.nil?
     redirect_to :action=>:index
   end
   
