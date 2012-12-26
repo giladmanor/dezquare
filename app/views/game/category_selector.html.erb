@@ -1,8 +1,9 @@
 <div class="wide-page-holder game-step" id="game-step-1">
 	<div class="wide-page-wrap">
 		<h2>Select a Product</h2>
-		<form action="game1-3.html" method="post" id="sel-prod">
+		<form action="/game/next" method="post" id="sel-prod">
 			<input type="hidden" name="category_id"  />
+			<input type="hidden" name="max_price"  />
 			<ul class="icons" id="game-icons">
 				<%
 				Category.all.each{|c|
@@ -27,14 +28,14 @@
 						<a href="#" class="white-button small-font">$250-$499</a>
 						<a href="#" class="white-button small-font">$500-$749</a>
 						<a href="#" class="white-button small-font">$750-$999</a>
-						<a href="#" class="white-button small-font orange-font">&gt; 1000$</a>
+						<a href="#" class="white-button small-font orange-font">&gt; $1000</a>
 					</div>
 					<div class="price-slider-info loader">
-						<div class="col" value="0"></div>
-						<div class="col" value="249"></div>
-						<div class="col" value="500"></div>
-						<div class="col" value="750"></div>
-						<div class="col" value="1000"></div>
+						<div class="col" value="0" max="250"></div>
+						<div class="col" value="249"  max="500"></div>
+						<div class="col" value="500" max="750"></div>
+						<div class="col" value="750" max="1000"></div>
+						<div class="col" value="1000" max="99999999"></div>
 					</div>
 					<div class="buttons clearfix">
 						<a href="#" class="black-button big-font" id="submit">
@@ -53,18 +54,17 @@
 					
 <script type="text/javascript">
 	function get_range(elm){
-		
+		$('input[name=max_price]').val(elm.attr("max"));
+		elm.parent().children().text("");
 		var category_id = $('input[name=category_id]').val();
 		$.ajax({
 		  	type: "POST",
 		  	url: "/game/category_price_range",
 		  	data: { id:category_id, min:elm.attr("value")},
 		  	success: function(data){
-			  	//$('.max_price.active').attr("data-min",data.min_price);
-			  	//$('.max_price.active').attr("data-max",data.max_price);
-			  	//$('.max_price.active').attr("data-value",data.max_price-100);
-			  	elm.text(1+data.max_designers + ' designers available');
+			  	elm.text(1+data.max_designers*2 + ' designers available');
 		  		elm.removeClass("load");
+		  		
 		}
 		});
 		return false;

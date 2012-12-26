@@ -20,7 +20,7 @@ class PersonaImageRater < StageImplementor
   end
   
   def self.complete?(game,arguments)
-    (game.images.length>(Persona.all.size*2)) && (game.game_image_rates.select{|gir| gir.value>0}.length>1)
+    (game.images.length>(Persona.all.size)) && (game.game_image_rates.select{|gir| gir.value>0}.length>1)
   end
   
   def self.default_arguments

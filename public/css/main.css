@@ -1,7 +1,7 @@
 ﻿@import url('fonts/fonts.css');
 html { height: 100%; }
 body {
-	background: url(../img/pattern.jpg) left top repeat;
+	background: url(/img/pattern.jpg) left top repeat;
 	color: #272425;
 	font-family: 'PTSansRegular';
 	font-size: 12px;
@@ -70,12 +70,12 @@ div#header div#profile-menu a.base {
 	color: #fff22d;
 	display: block;
 	padding: 20px 0px 10px;
-	background: url(../img/bkg-profile-menu.png) center center no-repeat;
+	background: url(/img/bkg-profile-menu.png) center center no-repeat;
 	text-align: center;
 }
 div#header div#profile-menu.shopper { width: 90px; }
 div#header div#profile-menu.shopper a.base {
-	background: url(../img/bkg-profile-menu-2.png) left center no-repeat;
+	background: url(/img/bkg-profile-menu-2.png) left center no-repeat;
 	text-align: left;
 	padding-left: 10px;
 }
@@ -186,7 +186,7 @@ div#homepage-banner {
 	overflow: hidden;
 }
 div#homepage-banner a#start {
-	background: url(../img/bkg-homepage-banner.jpg) left top no-repeat;
+	background: url(/img/bkg-homepage-banner.jpg) left top no-repeat;
 	color: #272425;
 	float: left;
 	font-family: 'QuickSandBold';
@@ -197,7 +197,7 @@ div#homepage-banner a#start {
 }
 div#homepage-banner a#start span { cursor: pointer; }
 div#homepage-banner span#overlay {
-	background: url(../img/bkg-overlay.png) left top repeat;
+	background: url(/img/bkg-overlay.png) left top repeat;
 	display: none;
 	height: 100%;
 	left: 0px;
@@ -208,7 +208,7 @@ div#homepage-banner span#overlay {
 }
 div#homepage-banner a#start:hover span#overlay { display: block; }
 div#homepage-banner span#button {
-	background: url(../img/bkg-banner-button.png) left top no-repeat;
+	background: url(/img/bkg-banner-button.png) left top no-repeat;
 	height: 176px;
 	left: 83px;
 	position: absolute;
@@ -279,7 +279,7 @@ div#designer-samples div.title {
 	padding: 0px 10px;
 }
 div#designer-samples a.sample {
-	background: url(../img/image-frame.png) left top no-repeat;
+	background: url(/img/image-frame.png) left top no-repeat;
 	border: 1px solid #ddd;
 	float: left;
 	height: 250px;
@@ -305,7 +305,7 @@ div#designer-samples span.info {
 	position: absolute;
 }
 div#designer-samples span.info span.row {
-	background: url(../img/bkg-overlay-2.png) left top repeat;
+	background: url(/img/bkg-overlay-2.png) left top repeat;
 	color: #fff;
 	clear: both;
 	float: left;
@@ -319,7 +319,7 @@ div#designer-samples span.info span.row span { color: #fffc00; }
 /* End Homepage */
 
 div#window-overlay {
-	background: url(../img/bkg-overlay-3.png) left top repeat;
+	background: url(/img/bkg-overlay-3.png) left top repeat;
 	display: none;
 	position: fixed;
 	left: 0px;
@@ -331,7 +331,7 @@ div#window-overlay {
 
 /* Popups */
 div.popup {
-	background: url(../img/bkg-popup.png) center bottom no-repeat;
+	background: url(/img/bkg-popup.png) center bottom no-repeat;
 	display: none;
 	left: 50%;
 	margin-left: -242px;
@@ -342,7 +342,7 @@ div.popup {
 	z-index: 30;
 }
 span.close {
-	background: url(../img/bkg-close.png) left top no-repeat;
+	background: url(/img/bkg-close.png) left top no-repeat;
 	cursor: pointer;
 	height: 11px;
 	position: absolute;
@@ -877,7 +877,7 @@ label.form-error {
 	left: 0px;
 }
 span.checkbox {
-	background: url(../img/bkg-checkbox.png) left top no-repeat;
+	background: url(/img/bkg-checkbox.png) left top no-repeat;
 	cursor: pointer;
 	display: block;
 	height: 16px;
@@ -906,7 +906,7 @@ input.button-orange:active {
 	box-shadow: 0px 1px 3px #999;
 }
 span.vchecked {
-	background: url(../img/bkg-checked.png) left top no-repeat;
+	background: url(/img/bkg-checked.png) left top no-repeat;
 	display: none;
 	height: 12px;
 	position: absolute;
@@ -925,7 +925,7 @@ div.combobox {
 }
 div.combobox.active { z-index: 5; }
 div.combobox div.value {
-	background: url(../img/bkg-arrow.png) right center no-repeat;	
+	background: url(/img/bkg-arrow.png) right center no-repeat;	
 	height: 24px;
 	padding-left: 10px;
 	line-height: 24px;
@@ -1127,7 +1127,7 @@ div#cover {
 	position: relative; 
 }
 div#cover div#cover-image {
-	background: url(../img/bkg-cover-image.png) left top no-repeat;
+	background: url(/img/bkg-cover-image.png) left top no-repeat;
 	height: 241px;
 	padding: 3px;
 	position: relative;
@@ -1162,7 +1162,7 @@ div#cover div#cover-image img {
 	display:inline;
 }
 div#cover div#profile-bar {
-	background: url(../img/bkg-profile-bar.png) left top repeat-x;
+	background: url(/img/bkg-profile-bar.png) left top repeat-x;
 	font-family: 'QuickSandRegular';
 	height: 46px;
 	left: 2px;
@@ -1173,7 +1173,7 @@ div#cover div#profile-bar {
 	z-index: 3;
 }
 div#cover div#profile-photo {
-	background: url(../img/bkg-profile-photo.png) left top no-repeat;
+	background: url(/img/bkg-profile-photo.png) left top no-repeat;
 	bottom: -3px;
 	height: 117px;
 	left: 3px;
@@ -1208,7 +1208,7 @@ div#cover div#profile-status div.current-static {
 	padding-left: 5px;
 }
 div#cover div#profile-status div.edit {
-	background: url(../img/bkg-profile-status.png) left top no-repeat;
+	background: url(/img/bkg-profile-status.png) left top no-repeat;
 	display: none;
 	float: left;
 	padding-left: 5px;
@@ -1250,7 +1250,7 @@ div#cover a.back-to-results span.rest {
 }
 
 span.edit-field {
-	background: url(../img/icons.png) left top no-repeat;
+	background: url(/img/icons.png) left top no-repeat;
 	cursor: pointer;
 	display: none;
 	height: 35px;
@@ -1480,7 +1480,7 @@ div#match-projects a.contact {
 	text-decoration: none;
 }
 div#match-projects a.contact span.icon {
-	background: url(../img/icons.png) -68px top no-repeat;
+	background: url(/img/icons.png) -68px top no-repeat;
 	float: left;
 	height: 15px;
 	margin-right: 5px;
@@ -1513,7 +1513,7 @@ div#match-projects a.load-more {
 	margin-top: 30px;
 }
 div#match-projects a.load-more span {
-	background: url(../img/bkg-load-more.png) center center no-repeat;
+	background: url(/img/bkg-load-more.png) center center no-repeat;
 	display:block;
 }
 div.top-matches div.match {
@@ -1527,7 +1527,7 @@ div.top-matches div.match.disabled div.small,
 div.top-matches div.match.disabled div.small span { color: #bbbaba; }
 div.top-matches div.match.disabled div.profile-image { opacity: 0.3; }
 div.top-matches div.profile-image {
-	background: url(../img/bkg-match-frame.png) left top no-repeat;
+	background: url(/img/bkg-match-frame.png) left top no-repeat;
 	float: left;
 	height: 63px;
 	margin-right: 5px;
@@ -1625,7 +1625,7 @@ div#portfolio-big {
 }
 a#portfolio-prev {
 	display: none;
-	background: url(../img/icons.png) -91px top no-repeat;
+	background: url(/img/icons.png) -91px top no-repeat;
 	height: 26px;
 	left: 7px;
 	position: absolute;
@@ -1635,7 +1635,7 @@ a#portfolio-prev {
 }
 a#portfolio-next {
 	display: none;
-	background: url(../img/icons.png) -105px top no-repeat;
+	background: url(/img/icons.png) -105px top no-repeat;
 	height: 26px;
 	right: 7px;
 	position: absolute;
@@ -1712,14 +1712,14 @@ ul#portfolio-gallery div.meta {
 	bottom: 0px;
 }
 ul#portfolio-gallery a.download {
-	background: url(../img/icons.png) -124px top no-repeat;
+	background: url(/img/icons.png) -124px top no-repeat;
 	float: left;
 	height: 30px;
 	margin-right: 9px;
 	width: 17px;
 }
 ul#portfolio-gallery a.share {
-	background: url(../img/icons.png) -150px top no-repeat;
+	background: url(/img/icons.png) -150px top no-repeat;
 	float: left;
 	height: 30px;
 	width: 18px;
@@ -1856,7 +1856,7 @@ form.settings-form h5 {
 	margin: 0px 0px 10px;
 }
 form.settings-form h5.has-circle {
-	background: url(../img/bkg-circle.png) left center no-repeat;
+	background: url(/img/bkg-circle.png) left center no-repeat;
 	padding-left: 20px;
 }
 form.settings-form div.agree { margin-bottom: 5px; }
@@ -1898,23 +1898,23 @@ div#pricing-levels-sliders div.price-slider-holder {
 	width: 326px;
 }
 div#pricing-levels-sliders .ui-slider { 
-	background-image: url(../img/bkg-ui-slider-2.png); 
+	background-image: url(/img/bkg-ui-slider-2.png); 
 	height: 9px;
 	margin: 0px 0px 0px auto;
 	width: 326px;
 }
 div#pricing-levels-sliders .ui-slider .ui-slider-range { 
-	background-image: url(../img/bkg-ui-slider-range-2.png); 
+	background-image: url(/img/bkg-ui-slider-range-2.png); 
 	height: 6px;
 }
 div#pricing-levels-sliders .ui-slider .ui-slider-handle {
-	background-image: url(../img/bkg-ui-slider-handle-2.png); 
+	background-image: url(/img/bkg-ui-slider-handle-2.png); 
 	top: -2px;
 	height: 16px;
 	width: 14px;
 }
 div#pricing-levels-sliders span.price-slider-tooltip {
-	background: url(../img/bkg-price-2.png) left top no-repeat;
+	background: url(/img/bkg-price-2.png) left top no-repeat;
 	height: 27px;
 	top: -35px;
 	left: -22px;
@@ -2023,7 +2023,7 @@ div.shopper-settings form fieldset { border: 0px none; }
 
 /* Game */ 
 div#game-bar {
-	background: url(../img/bkg-game-bar.png) left top no-repeat;
+	background: url(/img/bkg-game-bar.png) left top no-repeat;
 	line-height: 36px;
 	height: 36px;
 	overflow: hidden;
@@ -2155,7 +2155,7 @@ div.game-step div.price-slider-info div.col {
 	text-align: center;
 	width: 120px;
 }
-div.game-step div.price-slider-info div.col.load { background: url(../img/preloader.gif) center 2px no-repeat; } 
+div.game-step div.price-slider-info div.col.load { background: url(/img/preloader.gif) center 2px no-repeat; } 
 div.game-step div.buttons {
 	border-top: 1px solid #f2f2f2;
 	padding-top: 30px;
@@ -2189,7 +2189,7 @@ ul#game-tastes {
 	position: relative;
 }
 #game-tastes li span.white-glow {
-	background: url(../img/bkg-white-glow.png) left top repeat;
+	background: url(/img/bkg-white-glow.png) left top repeat;
 	display: none;
 	height: 100%;
 	left: 0px;
@@ -2198,7 +2198,7 @@ ul#game-tastes {
 	width: 100%;	
 }
 #game-tastes li span.heart {
-	background: url(../img/icons.png) -159px -39px no-repeat;
+	background: url(/img/icons.png) -159px -39px no-repeat;
 	height: 59px;
 	left: 50%;
 	margin-left: -31px;
@@ -2223,7 +2223,7 @@ div#photo-picker div.col1 {
 div#photo-picker div.col1 div.description { margin-bottom: 20px; }
 div#photo-picker div.col1 div.rate { overflow: hidden; }
 div#photo-picker div.col1 div.rate span {
-	background: url(../img/icons.png) left -60px no-repeat;
+	background: url(/img/icons.png) left -60px no-repeat;
 	float: left;
 	margin-right: 2px;
 	height: 23px;
@@ -2238,7 +2238,7 @@ div#photo-picker div.col2 {
 div#photo-picker div.col2 img { box-shadow: 0px 0px 2px #555; }
 div#photo-picker div.col3 { float: left; }
 div#photo-picker div.col3 a {
-	background: url(../img/icons.png) -27px -38px no-repeat;
+	background: url(/img/icons.png) -27px -38px no-repeat;
 	display: block;
 	margin-bottom: 3px;
 	height: 60px;
@@ -2386,7 +2386,7 @@ div#results-share div.share-area div.col2 {
 	position: relative; 
 }
 div#results-share div.share-area div.big-image-info {
-	background: url(../img/game-end/bkg-box.png) left top repeat;
+	background: url(/img/game-end/bkg-box.png) left top repeat;
 	color: #fff;
 	padding: 25px;
 	position: absolute;
@@ -2418,13 +2418,13 @@ div#results-share a.skip {
 }
 
 .ui-slider {
-	/*background: url(../img/bkg-ui-slider.png) left top no-repeat;*/
+	/*background: url(/img/bkg-ui-slider.png) left top no-repeat;*/
 	height: 11px;
 	position: relative;
 	width: 467px;
 }
 .ui-slider .ui-slider-handle {
-	background: url(../img/bkg-ui-slider-handle.png) left top no-repeat;
+	background: url(/img/bkg-ui-slider-handle.png) left top no-repeat;
 	position: absolute;
 	height: 16px;
 	top: -4px;
@@ -2436,7 +2436,7 @@ div#results-share a.skip {
 	display: none;
 }
 .ui-slider .ui-slider-range {
-	background: url(../img/bkg-ui-slider-range.png) left top no-repeat;
+	background: url(/img/bkg-ui-slider-range.png) left top no-repeat;
 	position: absolute;
 	height: 9px;
 	cursor: pointer;
@@ -2449,7 +2449,7 @@ div.price-slider-holder {
 	width: 467px;
 }
 span.price-slider-tooltip {
-	background: url(../img/bkg-price.png) left top no-repeat;
+	background: url(/img/bkg-price.png) left top no-repeat;
 	display: block;
 	height: 34px;
 	padding-top: 10px;
@@ -2508,7 +2508,7 @@ div#game-progress div#game-progress-holder {
 	height: 7px;
 }
 div#game-progress div#game-progress-line1 {
-	background: url(../img/bkg-progress.png) left top repeat-x;
+	background: url(/img/bkg-progress.png) left top repeat-x;
 	border-radius: 3px;
 	position: absolute;
 	left: 0px;
@@ -2518,7 +2518,7 @@ div#game-progress div#game-progress-line1 {
 	z-index: 1;
 }
 div#game-progress div#game-progress-line2 {
-	background: url(../img/bkg-progress.png) left -7px repeat-x;
+	background: url(/img/bkg-progress.png) left -7px repeat-x;
 	border-radius: 3px;
 	position: absolute;
 	left: 0px;
@@ -2743,7 +2743,7 @@ div#game-step-6 div.big-image-holder > img {
 }
 
 div#ruex-popup {
-	background: url(../img/bkg-white-glow.png) left top repeat;
+	background: url(/img/bkg-white-glow.png) left top repeat;
 	display: none;
 	height: 100%;
 	left: 0px;
@@ -2755,7 +2755,7 @@ div#ruex-popup a.monochrome-button { margin: 0px auto 18px; }
 div#ruex-popup a.monochrome-button.signup { margin-top: 200px; }
 
 div#intimate-popup {
-	background: url(../img/bkg-white-glow.png) left top repeat;
+	background: url(/img/bkg-white-glow.png) left top repeat;
 	display: none;
 	height: 100%;
 	left: 0px;
@@ -2772,7 +2772,7 @@ div#intimate-popup div.video iframe { display: block; }
 div#intimate-popup a.monochrome-button { margin: 0px auto 18px; }
 
 div#game-step-6 div.big-image-info {
-	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	background: url(/img/game-end/bkg-box2.png) left top repeat;
 	color: #fff;
 	padding: 25px;
 	position: absolute;
@@ -2881,7 +2881,7 @@ div#public-holder div.box-holder {
 	z-index: 3;
 }
 div#public-holder div.box {
-	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	background: url(/img/game-end/bkg-box2.png) left top repeat;
 	color: #fff;
 	margin: 0px 0px 0px auto;
 	padding: 25px 25px;
@@ -2920,7 +2920,7 @@ div#public-holder div.box a.button span { color: #60e148; }
 div#public-holder div.box a.button:hover span { color: #fff; }
 
 div#public-holder div.box-404 {
-	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	background: url(/img/game-end/bkg-box2.png) left top repeat;
 	color: #fff;
 	margin: 0px 0px 0px auto;
 	padding: 55px 25px 25px;
@@ -2956,7 +2956,7 @@ div#public-holder div.box-404 a.button:hover {
 }
 
 div#public-holder div.box-404.light { 
-	background-image: url(../img/game-end/bkg-box3.png); 
+	background-image: url(/img/game-end/bkg-box3.png); 
 	color: #272425;
 }
 div#public-holder div.box-404.light a.button {
@@ -2969,7 +2969,7 @@ div#public-holder div.box-404.light a.button:hover {
 }
 
 div#public-holder div.box-home {
-	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	background: url(/img/game-end/bkg-box2.png) left top repeat;
 	color: #fff;
 	margin: 0px auto;
 	padding: 25px 0px;
@@ -3014,7 +3014,7 @@ body.responsive-layout div#header {
 body.responsive-layout div#public-holder { z-index: 4; }
 
 div#public-holder div.author {
-	background: url(../img/game-end/bkg-box2.png) left top repeat;
+	background: url(/img/game-end/bkg-box2.png) left top repeat;
 	box-shadow: 1px 0px 3px #444;
 	bottom: 70px;
 	color: #fff;
@@ -3132,7 +3132,7 @@ div#upload-profile-image.uploadify {
 }
 .uploadify div#upload-cover-image-button,
 .uploadify div#upload-profile-image-button { 
-	background: url("../img/icons.png") no-repeat scroll left top transparent;
+	background: url("/img/icons.png") no-repeat scroll left top transparent;
 	color: #ff7040; 
     cursor: pointer;
     display: none;
@@ -3169,7 +3169,7 @@ div#welcome-slider div.welcome-slide-content {
 	width: 100%;
 }
 div#welcome-slide1 h2.text {
-	background: url(../img/welcome/bkg-slide1.jpg) center top no-repeat;
+	background: url(/img/welcome/bkg-slide1.jpg) center top no-repeat;
 	font-size: 94px;
 	line-height: 94px;
 	margin-bottom: 30px;
@@ -3189,7 +3189,7 @@ div#welcome-slide2 {
 	color: #f1f1f1;
 }
 div#welcome-slide2 a.button {
-	background: url(../img/welcome/bkg-slide2-button.jpg) left top no-repeat;
+	background: url(/img/welcome/bkg-slide2-button.jpg) left top no-repeat;
 	font-family: 'QuickSandRegular';
 	bottom: 0px;
 	display: block;
@@ -3243,7 +3243,7 @@ div#welcome-slide3 div.icons div.text {
 	line-height: 22px;
 }
 div#welcome-slide3 a.button {
-	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	background: url(/img/welcome/bkg-slide3-button.jpg) left top no-repeat;
 	bottom: -1px;
 	color: #272425;
 	display: block;
@@ -3304,7 +3304,7 @@ div#welcome-slide4 ul div.small {
 	line-height: 30px;
 }
 div#welcome-slide4 a.button {
-	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	background: url(/img/welcome/bkg-slide3-button.jpg) left top no-repeat;
 	bottom: -1px;
 	color: #272425;
 	display: block;
@@ -3331,7 +3331,7 @@ div#welcome-slide5 h3 {
 	margin-bottom: 40px;
 }
 div#welcome-slide5 a.button {
-	background: url(../img/welcome/bkg-slide3-button.jpg) left top no-repeat;
+	background: url(/img/welcome/bkg-slide3-button.jpg) left top no-repeat;
 	bottom: -1px;
 	display: block;
 	font-family: 'QuickSandRegular';

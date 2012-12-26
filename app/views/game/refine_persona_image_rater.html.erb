@@ -2,10 +2,14 @@
 					<div class="wide-page-wrap">
 						<h2>Let’s get to know your taste!</h2>
 						<h4>Select the designs you like</h4>
+						<%
+						s=5
+						@game.images.size.times{|a| s=s+((100-s)/10)}
+						%>
 						<div id="game-progress">
 							<div id="game-progress-holder">
 								<div id="game-progress-line1"></div>
-								<div id="game-progress-line2"></div>
+								<div id="game-progress-line2" style="width:<%=s%>%"></div>
 							</div>
 						</div>
 						<form action="/game/next">
@@ -17,7 +21,7 @@
 								
 								viewed_personas = @game.game_image_rates.select{|gir| gir.value>0}.map{|g| g.image.persona}
 								
-								images = viewed_personas.map{|p| p.images.shuffle.take(20)}.flatten.reject{|i| @game.images.include?(i)}
+								images = viewed_personas.map{|p| p.images.shuffle.take(20)}.flatten.reject{|i| @game.images.include?(i) || [492,280,622,581].include?(i.id)}
 								
 								logger.debug "--------------------------------------------------------------"
 								image=images.shuffle.first
