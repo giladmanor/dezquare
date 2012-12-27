@@ -42,8 +42,8 @@ class DesignerController < SiteController
   
   def reject_project
     project = Project.find(params[:id])
-    gd = @user.game_designers.select{|gd| gd.game_id == project.game.id}.each{|gd| gd.destroy}
-    logger.debug gd
+    gds = @user.game_designers.select{|gd| gd.game_id == project.game.id}.each{|gd| gd.destroy}
+    logger.debug gds
     
     loc = request.referer.split('?')[0].split('/').reverse
     redirect_to :controller=>loc[1], :action=>loc[0]

@@ -1,64 +1,110 @@
-
-		<div id="content">
-			<div class="page-content">
-				<div id="homepage-banner">
-					<a href="/game/index/persona" id="start">
-						<span id="overlay"></span>
-						<span id="button">
-							<span class="left">Find Your Taste</span>
-							<span class="right">
-								Start<br/>now
-								<img src="/img/arrow-white.png" />
-							</span>
-						</span>
-					</a>
-					<div id="game-description">
-						<div class="row1">We map your taste and match you to a designer you'll love.</div>
-						<div class="row2">Play</div>
-						<div class="row3">Our game</div>
-						<div class="row2">Match</div>
-						<div class="row3">A designer to your taste</div>
-						<div class="row2 orange">Rock!</div>
-						<div class="row3 space">Your design</div>
-						<div class="row4">It's as simple as playing a "Hot or Not" game.</div>
-					</div>
-				</div>
-				<div id="designer-samples">
-					<div class="title">Check out some of our designers' work:</div>
-					
-					<a href="http://dezquare.com/designer/profile/45" class="sample">
-						<img src="/img/temp/T-Shirt_index.jpg" alt="T-Shirt_index" />
-						<span class="info">
-							<span class="row">a <span>T-Shirt</span></span>
-							<span class="row">by <span>Gustavo Brigante</span></span>
-						</span>
-					</a>
-					<a href="http://dezquare.com/designer/profile/42" class="sample">
-						<img src="/img/temp/fb_cover_index.jpg" alt="fb_cover_index" />
-						<span class="info">
-							<span class="row">a <span>Facebook<br/>Cover Image</span></span>
-							<span class="row">by <span>Eduardo Sa</span></span>
-						</span>
-					</a>
-					<a href="http://dezquare.com/designer/profile/3" class="sample">
-						<img src="/img/temp/flyer_index.jpg" alt="flyer_index" />
-						<span class="info">
-							<span class="row">a <span>Flyer</span></span>
-							<span class="row">by <span>Jacopo Severitano</span></span>
-						</span>
-					</a>
-					<a href="http://dezquare.com/designer/profile/11" class="sample last">
-						<img src="/img/temp/business_card_index.jpg" alt="business_card_index" />
-						<span class="info">
-							<span class="row">a <span>Business Card</span></span>
-							<span class="row">by <span>IS Creative Studio</span></span>
-						</span>
-					</a>
-				</div>
+<div id="public-holder">
+	<div class="box-holder">
+		<div class="page-content">
+			<div class="box-home">
+				<div class="title">WELCOME</div>
+				<div class="description">Good design is happening everywhere.<br/>Get influanced. Get design.</div>
+				<a href="game2-1.html" class="button">START</a>
 			</div>
-		</div>		
+		</div>
 	</div>
 	
+	<ul id="background-transition">
+		<li class="first displayed">
+			<img src="/img/game-end/slider1.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider2.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider3.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider4.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider5.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider6.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider7.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+		<li>
+			<img src="/img/game-end/slider8.jpg" />
+			<div class="author">
+				HIDDEN RUINS//
+				<span>
+					<a href="http://www.dezquare.com/designer/profile/99">JOSUHA ZARAGAZA</a>
+				</span>
+			</div>
+		</li>
+	</ul>
 	
-	
-	
+	<script type="text/javascript">
+		var backgroundTransition, backgroundTransitionSlides;
+		$(window).load(function() {
+			backgroundTransition = $("#background-transition");
+			backgroundTransitionSlides = backgroundTransition.children("li");
+			backgroundTransitionSlides.css("opacity", "0");
+			backgroundTransition.children("li.first").css("opacity", "1").removeClass("first");
+			setTimeout("BackgroundSlide()", 2000);
+		});
+		function BackgroundSlide()
+		{
+			var currentSlide = backgroundTransition.children("li.displayed");
+			var nextSlideIndex = currentSlide.index() + 1 >= backgroundTransitionSlides.length ? 0 : currentSlide.index() + 1;
+			var nextSlide = backgroundTransitionSlides.eq(nextSlideIndex);
+			
+			currentSlide.animate({ "opacity": "0" }, 2000);
+			nextSlide.animate({ "opacity": "1" }, 2000, function() {
+				currentSlide.removeClass("displayed");
+				nextSlide.addClass("displayed");
+				setTimeout("BackgroundSlide()", 4000);
+			});
+		}
+	</script>
+</div>
