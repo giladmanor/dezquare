@@ -16,6 +16,7 @@ $(document).ready(function(){
 		var gameCategories, gameIcons;
 		var changeFlyerFlag = false;
 		var currentPopupActionButton = null;
+		var scrollIsDown = false;
 		
 		function IsValidEmail(email) 
 		{
@@ -1252,7 +1253,44 @@ $(document).ready(function(){
 					}
 				});
 			});
+			
+			window.loaded = 0;
+			$(window).scroll(0,0);
+			$(window).scroll(function(e) {
+				if (window.loaded < 10 && GetScrollOffsetsX() == $(document).height() - $(window).height() && scrollIsDown == false)
+				{
+					scrollIsDown = true;
+					$.ajax({
+						"url": "/dev-tpl/pulse-boxes.html",
+						"dataType": "html",
+						"success": function(html) {
+							scrollIsDown = false;
+							window.loaded++;
+							$("#pulse-boxes").append(html);
+							$('#pulse-boxes').masonry('reload');
+						}
+					});
+				}
+			});
 		};
+		
+		function GetScrollOffsetsX() 
+		{
+			w = window;
+
+			if (w.pageXOffset != null)
+			{
+				return w.pageYOffset;
+			}
+			 
+			var d = w.document;
+			if (document.compatMode == "CSS1Compat")
+			{
+				return d.documentElement.scrollTop;
+			}
+			
+			return d.body.scrollTop; 
+		}
 		
 		function hideMail()	//this function hides the mail icon
 				{
@@ -1315,7 +1353,7 @@ $(document).ready(function(){
 			itemSelector: '.box',
 			columnWidth: 245
 		});
-		$('#pulse-boxes div.box').click(function(){
+		$('#pulse-boxes').delegate("div.box", "click", function(){
 			var p = $("#pulse-popup");
 			p.show();
 			overlay.show();

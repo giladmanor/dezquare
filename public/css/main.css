@@ -3511,7 +3511,7 @@ div#pulse-bar {
 	background: url(/img/bkg-pulse-bar.png) left top repeat-x;
 	height: 146px;
 	left: 0px;
-	position: absolute;
+	position: fixed;
 	top: 60px;
 	width: 100%;
 	z-index: 18;
@@ -3536,7 +3536,6 @@ div#pulse-bar div.row2 a {
 div#pulse-bar div.row2 a.black-button { float: right; }
 
 div#pulse-boxes { 
-	overflow: hidden;
 	box-shadow: 0px 0px 7px #555;
 	background: #fff;
 	padding: 110px 0px 1px 9px;
@@ -3558,14 +3557,14 @@ div#pulse-boxes div.box div.info {
 }
 div#pulse-boxes div.box div.row1 {
 	font-family: 'QuickSandBold';
-	font-size: 26px;
+	font-size: 22px;
 	padding: 5px 7px 0px;
-	line-height: 28px;
+	line-height: 26px;
 	margin-bottom: 10px;
 }
 div#pulse-boxes div.box div.row2 {
 	font-family: 'QuickSandRegular';
-	font-size: 15px;
+	font-size: 13px;
 	padding: 0px 7px 7px;
 }
 div#pulse-boxes div.box.size-1 {
@@ -3600,7 +3599,7 @@ div#pulse-popup {
 	position: absolute;
 	display: none;
 	left: 50%;
-	top: 165px;
+	top: 30px;
 	margin-left: -495px;
 	width: 990px;
 	z-index: 50;
@@ -3680,6 +3679,13 @@ div#pulse-popup div.pcontent iframe {
 	border: 0px none;
 	height: 1000px;
 	display: block;
+}
+div#page.fixed-header div#header {
+	position: fixed;
+	min-width: 990px;
+	left: 0px;
+	width: 100%;
+	top: 0px;
 }
 /* End Pulse Page */
 
