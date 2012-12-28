@@ -1232,6 +1232,26 @@ $(document).ready(function(){
 					$("#signup-3-popup").show();
 				});
 			});
+			
+			$("#top-search-form").each(function() {
+				var h = $(this);
+				var f = h.find("form");
+				h.find("#search-button").click(function(e){
+					e.preventDefault();
+					if (!h.hasClass("expanded"))
+					{
+						f.find("div.mask").hide();
+						f.animate({
+							"width": "222px",
+							"height": "28px",
+							"margin-top": "22px"
+						}, 300, function() {
+							h.addClass("expanded");
+							f.find("input.text").focus();
+						});
+					}
+				});
+			});
 		};
 		
 		function hideMail()	//this function hides the mail icon
@@ -1290,6 +1310,20 @@ $(document).ready(function(){
 			});
 		}
 		/* END DRAG */
+		
+		$('#pulse-boxes').masonry({
+			itemSelector: '.box',
+			columnWidth: 245
+		});
+		$('#pulse-boxes div.box').click(function(){
+			var p = $("#pulse-popup");
+			p.show();
+			overlay.show();
+			p.find("span.close").unbind().click(function() {
+				p.hide();
+				overlay.hide();
+			});
+		});
 		
 		(this.Init = function()
 		{
@@ -1377,9 +1411,8 @@ function CreateJCrop(holder, width, height, preview)
 			
 			// Store the API in the jcrop_api variable
 			jcrop_api = this;
-		});		
-		
-			
+		});
+
 		function updatePreview(c)
 		{
 			if (parseInt(c.w) > 0)
