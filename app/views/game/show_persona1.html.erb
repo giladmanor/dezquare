@@ -1,0 +1,197 @@
+<%
+
+tags = @game.game_image_rates.select{|gir| gir.value>0}.map{|gir| gir.image.tags}.flatten
+logger.debug "Selected tags for persona: #{tags.inspect}"
+@persona = Persona.find_by_tags(tags)[:p]
+
+%>
+<div class="wide-page-holder game-step" id="game-step-6">
+	<div class="wide-page-wrap">
+		<h2 class="margin-30">The Quiz</h2>
+		<form action="#" id="game5-form">
+			<div id="quiz-big-image" class="big-image-holder">
+				<img src="/persona/img/<%=raw(@persona.persona_image_backgrounds.first.file_path)%>" style="width: 949px;"/>
+				<div class="big-image-info">
+					<div class="title">
+						<span>You are so</span> <%=@persona.name.upcase%>
+					</div>
+					<div class="description">
+						<%=raw(@persona.description)%>
+					</div>
+					<a href="#" class="dark-black-button big-font excited">Are you excited?</a>
+				</div>
+				
+				<div id="ruex-popup">
+					<a href="#" class="monochrome-button signup">Signup &amp; Showoff your taste</a>
+					<a href="#" class="monochrome-button intimate">Get intimate with your taste</a>
+					<a href="/game/next" class="monochrome-button down">Get down to business</a>
+				</div>
+				
+				<div id="intimate-popup">
+					<div class="video">
+						<iframe width="560" height="315" src="http://www.youtube.com/embed/<%=@persona.vid%>" frameborder="0" allowfullscreen></iframe>
+					</div>
+					<a href="#" class="monochrome-button back">Go Back</a>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div id="window-overlay"></div>
+<div id="login-popup" class="popup">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Sign-in to dezquare!</div>
+		<div class="social-sign">
+			<a href="/auth/facebook">
+				<img src="/img/connect-fb.png" alt="Connect with Facebook" />
+			</a>
+			<a href="/auth/twitter">
+				<img src="/img/connect-twitter.png" alt="Connect with Twitter" />
+			</a>
+		</div>
+		<div class="or">- or -</div>
+		<form action="index.html" method="post">
+			<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
+			<div class="formfield">
+				<input type="text" class="text" name="email" />
+				<label class="abs">E-mail address</label>
+			</div>
+			<div class="formfield">
+				<input type="password" class="text" name="password" />
+				<label class="abs">Password</label>
+			</div>
+			<div class="submit clearfix">
+				<span class="remember-me">
+					<span class="checkbox">
+						<input type="checkbox" name="remember-me" />
+					</span>
+					<span class="text">Remember Me</span>
+				</span>
+				<input type="submit" class="button-orange" value="Submit" />
+			</div>		
+			<div class="forgot">
+				<a href="#" id="forgot-password">I forgot my password</a>
+			</div>
+		</form>
+		<div class="foot">
+			Don't have an account? <a href="#" class="register">Sign-up!</a>
+		</div>
+	</div>		
+</div>
+
+
+<div id="signup-1-popup" class="popup">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Sign-up to dezquare!</div>
+		<div class="social-sign">
+			<a href="#">
+				<img src="/img/connect-fb.png" alt="Connect with Facebook" />
+			</a>
+			<a href="#">
+				<img src="/img/connect-twitter.png" alt="Connect with Twitter" />
+			</a>
+		</div>
+		<div class="social-info">We will never ever expose you or your friends without your permission.</div>
+		<div class="or">- or -</div>
+		<a href="#" class="orange-button old-school big-font">Use our old school sign-up</a>
+		<div class="foot">
+			Already have an account? <a href="#" class="login">Sign-in!</a>
+		</div>
+	</div>		
+</div>
+
+<div id="signup-2-popup" class="popup">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Nice to meet you, Axl Rose!</div>
+		<div class="small-brief">We just need two more things:</div>
+		<form action="game2-1b.html" method="post">
+			<div class="register-step1-popup">
+				<div class="buttons clearfix gray dynamic">
+					<a href="register-designer.html" class="black-button small-font">I'm a<br/>Designer</a>
+					<a href="register-customer.html" class="orange-button small-font">I need<br/>a design</a>
+					<input type="hidden" name="user_type" />
+				</div>
+			</div>
+			<div class="formfield">
+				<input type="password" class="text password" name="password" />
+				<label class="abs">Password</label>
+				<span class="vchecked"></span>
+				<label class="form-error">Invalid Password</label>
+			</div>
+		</form>
+		<a href="#" class="orange-button done big-font submit-pf">Done!</a>
+	</div>	
+</div>
+
+<div id="signup-3-popup" class="popup">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Sign-in to dezquare!</div>
+		<form action="game2-1b.html" method="post">
+			<div class="formfield">
+				<input type="text" class="text" name="first-name" />
+				<label class="abs">First Name</label>
+				<span class="vchecked"></span>
+				<label class="form-error">Invalid First Name</label>
+			</div>
+			<div class="formfield">
+				<input type="text" class="text" name="last-name" />
+				<label class="abs">Last Name</label>
+				<span class="vchecked"></span>
+				<label class="form-error">Invalid Last Name</label>
+			</div>
+			<div class="formfield">
+				<input type="text" class="text" name="email" />
+				<label class="abs">E-mail address</label>
+				<span class="vchecked"></span>
+				<label class="form-error">Invalid Email</label>
+			</div>
+			<div class="formfield">
+				<input type="password" class="text password" name="password" />
+				<label class="abs">Password</label>
+				<span class="vchecked"></span>
+				<label class="form-error">Invalid Password</label>
+			</div>
+			<div class="register-step1-popup">
+				<div class="buttons clearfix gray dynamic">
+					<a href="register-designer.html" class="black-button small-font">I'm a<br/>Designer</a>
+					<a href="register-customer.html" class="orange-button small-font">I need<br/>a design</a>
+					<input type="hidden" name="user_type" />
+				</div>
+			</div>
+			<div class="formfield clearfix agree">
+				<span class="checkbox">
+					<input type="checkbox" name="agree_tos" />
+				</span>
+				<span class="text">
+					I agree to the <a href="privacy.html">Privacy Policy</a> &amp; <a href="terms.html">Terms of Service</a>.
+				</span>
+			</div>
+			<a href="#" class="orange-button done big-font submit-pf">Done!</a>
+		</form>
+		<div class="foot">
+			Already have an account? <a href="#" class="login">Sign-in!</a>
+		</div>
+	</div>	
+</div>
+
+<div id="forgot-popup" class="popup">
+	<span class="close"></span>
+	<div class="popup-content">
+		<div class="title">Get a new Password</div>
+		<form action="" method="post">
+			<div class="formfield">
+				<input type="text" class="text" name="email" />
+				<label class="abs">E-mail address</label>
+				<label class="form-error">Invalid email address</label>
+			</div>
+			<div class="submit clearfix">
+				<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+			</div>		
+		</form>
+	</div>
+</div>

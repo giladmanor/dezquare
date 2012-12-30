@@ -1,0 +1,55 @@
+<div class="wide-page-holder game-step" id="game-step-6">
+	<div class="wide-page-wrap">
+		<h2 class="margin-30">The Quiz</h2>
+		<div id="photo-picker" class="clearfix">
+			<div class="col1">
+				<div class="description">
+					Apple pie muffin ice cream. 
+					Candy dessert jelly chocolate 
+					cake jelly beans jelly. Gummies 
+					sugar plum apple pie gummi bears 
+					carrot cake faworki cupcake cookie 
+					jujubes. Applicake candy canes 
+					sugar plum.
+				</div>
+				<%
+				
+				hearts = game.data[:refine_persona_likes].nil? ? 0 : game.data[:refine_persona_likes].to_i 
+				%>
+				<div class="rate">
+					<%
+					hearts.times{
+						%><span class="red"></span><%
+					}
+					(3-hearts).times{
+						%><span></span><%
+					}
+					%>
+				</div>
+			</div>
+			<%
+								
+			logger.debug "#### #{@game.stage.args}"
+			
+			viewed_personas = @game.game_image_rates.select{|gir| gir.value>0}.map{|g| g.image.persona}
+			
+			images = viewed_personas.map{|p| p.images.shuffle.take(20)}.flatten.reject{|i| @game.images.include?(i) || [492,280,622,581].include?(i.id) || i.file_path.nil?}
+			
+			logger.debug "--------------------------------------------------------------"
+			image=images.shuffle.first
+			logger.debug " image choosen  #{image.inspect}"
+			
+			
+			logger.debug "--------------------------------------------------------------"
+			
+			%>
+			<div class="col2">
+				<img src="/repository/thumbnail/<%= image.file_path%>" />
+			</div>
+			<div class="col3">
+				<a href="game2-2.html" class="love"></a>
+				<a href="#" class="pass"></a>
+			</div>
+		</div>
+	</div>
+</div>

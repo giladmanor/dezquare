@@ -41,3 +41,7 @@ gem 'jquery-rails'
 gem 'acts_as_tree'
 gem 'rmagick'
 #gem "rmagick", "~> 2.13.1"
+
+gem 'omniauth', :git => 'git://github.com/intridea/omniauth.git'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'
