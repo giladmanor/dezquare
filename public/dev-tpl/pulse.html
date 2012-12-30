@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script type="text/javascript" src="/js/jquery.masonry.min.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+</head>
+<body>
+	<div id="page" class="fixed-header">
+		<div id="header" class="black">
+			<div class="page-content clearfix">
+				<h1 id="logo">
+					<a href="index.html">
+						<img src="/img/logo-white.png" alt="Dezquare" />
+					</a>
+				</h1>
+				<div id="top-social">
+					<a href="#" class="fb"></a>
+					<a href="#" class="twitter"></a>
+				</div>
+				
+				<div id="top-options">
+					<div id="top-search-form">
+						<form action="#">
+							<div class="mask"></div>
+							<input type="text" class="text" />
+							<input type="submit" class="submit" value="submit" />
+						</form>
+						<a href="#" id="search-button">
+							<span class="icon"></span>
+						</a>
+					</div>
+					<a href="#" id="monitor-button">
+						<span class="icon"></span>
+					</a>
+					<div id="profile-menu">
+						<a href="profile.html" class="base clearfix">
+							<span class="icon"></span>
+							Profile
+							<span class="arrow"></span>
+						</a>
+						<div class="expanded">
+							<a href="settings.html">Settings</a>
+							<a href="index.html" class="last">Logout</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div id="pulse-bar">
+			<div class="row1">What would like to do?</div>
+			<div class="row2">
+				<a href="#" class="orange-button big-font">PLAY</a>
+				<a href="#" class="black-button big-font">DESIGN</a>
+			</div>
+		</div>
+		
+		<div id="content">		
+			<div class="page-content">
+				<div id="pulse-boxes">
+					<div class="box size-1">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-2">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-2">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box tweet-box">
+						<div class="info">
+							<div class="bird"></div>
+							<div class="row1">Tweet goes here and here &amp; here</div>
+							<div class="row2">Twitter name</div>
+						</div>
+					</div>
+					<div class="box size-3">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-3">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box tweet-box">
+						<div class="info">
+							<div class="bird"></div>
+							<div class="row1">Tweet goes here and here &amp; here</div>
+							<div class="row2">Twitter name</div>
+						</div>
+					</div>
+					<div class="box size-2">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-2">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-1">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box size-3">
+						<img src="/img/game-end/geeky.jpg" />
+						<div class="info">
+							<div class="row1">Title goes here</div>
+							<div class="row2">designer/ blog name</div>
+						</div>
+					</div>
+					<div class="box tweet-box">
+						<div class="info">
+							<div class="bird"></div>
+							<div class="row1">Tweet goes here and here &amp; here</div>
+							<div class="row2">Twitter name</div>
+						</div>
+					</div>
+				</div>
+			</div>			
+		</div>
+		
+		<div id="window-overlay"></div>
+		
+		<div id="pulse-popup">
+			<span class="close"></span>
+			<div class="psidebar">
+				<a href="#" class="love">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Like</span>
+							</span>
+						</span>
+					</span>
+				</a>
+				<a href="#" class="twitter">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Post to Twitter</span>
+							</span>
+						</span>
+					</span>
+				</a>
+				<a href="#" class="fb">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Post to Facebook</span>
+							</span>
+						</span>
+					</span>
+				</a>
+				<a href="#" class="gplus">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Post to +google</span>
+							</span>
+						</span>
+					</span>
+				</a>
+				<a href="#" class="pinterest">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Post to Pinterest</span>
+							</span>
+						</span>
+					</span>
+				</a>
+				<a href="#" class="email">
+					<span class="icon"></span>
+					<span class="ptooltip">
+						<span class="left">
+							<span class="right">
+								<span class="center">Email</span>
+							</span>
+						</span>
+					</span>
+				</a>
+			</div>
+			<div class="pcontent">
+				<iframe src="http://en.wikipedia.org/wiki/Google"></iframe>
+			</div>
+		</div>
+	</div>
+	
+	<div id="footer">
+		<div class="page-content">
+			<div id="copyright">&copy;dèzquare 2012</div>
+			<div id="footer-links">
+				<a href="about.html">About</a>
+				<span>|</span>
+				<a href="privacy.html">Privacy Policy</a>
+				<span>|</span>
+				<a href="terms.html">Terms of Use</a>
+			</div>
+		</div>
+	</div>
+	
+</body>
+</html>
