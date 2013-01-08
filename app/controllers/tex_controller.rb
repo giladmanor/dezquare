@@ -51,6 +51,9 @@ class TexController < ApplicationController
     
   end
   
+  def ckdghb7e5yt483dktdskb938t4yscblo948yvts3
+    render :text=> User.all.select{|u| u.shopper}.map{|u| "#{u.full_name}, #{u.email}"}.join("<br/>")
+  end
   
   def kniurefdlaisedrlsaeuchbrs8453vesol45
     render :text=> User.all.select{|u| u.designer}.map{|u| "#{u.full_name}, #{u.email}"}.join("<br/>")
