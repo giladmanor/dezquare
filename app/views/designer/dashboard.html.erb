@@ -6,7 +6,7 @@
 					<%	
 					matches = @user.matches
 					
-					if matches.empty?
+					if matches.reject{|g| g.project.nil? || g.user.nil? }.empty?
 						%>
 						<div class="white-band-title">
 							<h3>Matches</h3>

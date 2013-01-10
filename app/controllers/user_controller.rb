@@ -76,6 +76,7 @@ class UserController < AdminController
       user.create_password(6) 
       user.pender=false
       user.designer=true  
+      user.email_confirm=true
     else
       user.available=true
     end
