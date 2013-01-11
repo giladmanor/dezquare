@@ -1914,6 +1914,7 @@ div#pricing-levels-sliders .ui-slider .ui-slider-handle {
 	top: -2px;
 	height: 16px;
 	width: 14px;
+	display: block;
 }
 div#pricing-levels-sliders span.price-slider-tooltip {
 	background: url(/img/bkg-price-2.png) left top no-repeat;
