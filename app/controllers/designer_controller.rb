@@ -141,7 +141,7 @@ class DesignerController < SiteController
       @user.designer_categories << ucp
     }
     
-    if params[:old_password].present? && @user.password==params[:old_password] && params[:new_password].present? && params[:new_password]==params[:repeat_password]
+    if params[:old_password].present? && @user.password?(params[:old_password]) && params[:new_password].present? && params[:new_password]==params[:repeat_password]
       @user.password=params[:new_password]
     end
         

@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   #validates :password, :length=>{:in => 6..20}  
   
   
-  def create_password(limit=6)
+  def create_password(limit=7)
     o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
     self.password=(0..50).map{ o[rand(o.length)]}.take(limit).join;
   end
