@@ -19,7 +19,9 @@ class UserMailer < ActionMailer::Base
   
   def designer_new_match(user)
     @user = user
-    mail(:to => @user.email,:subject => "New Matched Customer!")
+    #mail(:to => @user.email,:subject => "New Matched Customer!")
+    mail(:to => 'ronen@dezquare.com',:subject => "New Matched Customer!")
+    
   end
   
   #----------------------------------------------------------------------------------

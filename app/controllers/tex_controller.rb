@@ -1,4 +1,4 @@
-class TexController < ApplicationController
+class TexController < AdminController
   def t
       return nil
       list_users = []
@@ -41,6 +41,7 @@ class TexController < ApplicationController
         "the Game was played = #{Game.all.select{|g| (Time.now - g.created_at)<2.days }.size} times the last 2 days"]
     
     render :text=>res.join("<br/>")
+    
   end
   
   

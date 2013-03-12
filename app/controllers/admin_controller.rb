@@ -5,7 +5,7 @@ class AdminController < ApplicationController
   
   def login
     
-    if true#params[:user]=="limor_jishai" && params[:password]=="ZA150535"
+    if (params[:user]=="limor_jishai" && params[:password]=="ZA150535")
       session[:login]=:valid
       redirect_to :action=>:dashboard
       return

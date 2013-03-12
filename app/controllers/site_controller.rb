@@ -133,6 +133,33 @@ class SiteController < ApplicationController
     redirect_to :action=>:settings, :error=>@error
   end
   
+  # contact-us form ------------------------------------------------------------------
+  def contact
+    @message = ContactMessage.new
+  end
+  
+  def contact_sent
+    if @user.present?
+      params[:contact_message][:name] = @user.full_name
+      params[:contact_message][:email] = @user.email
+    end
+    @message = ContactMessage.new(params[:contact_message])
+    if @message.valid?
+      NotificationMailer.new_message(@message).deliver
+      #redirect_to(root_path, :alert => "Message was successfully sent.")
+      @confirm = 1
+      render :contact
+    else
+      #flash.now.alert = "Please fill all fields."
+      logger.debug " found errors: #{@message.errors.messages.values.join(', ')} "
+      @error="#{@message.errors.messages.values.join(', ')}"
+      #render :action => "contact"
+      #redirect_to :action=>:contact, :error=>@error
+      render :contact
+     #render :text => "FAILED VALIDATION"
+    end
+  end
+  
   # profile images upload ------------------------------------------------------------
   
   def upload_avatar

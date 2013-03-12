@@ -1051,6 +1051,46 @@ $(document).ready(function(){
 				return !errors;
 			});
 			
+			$("#new_contact_message").submit(function(ev) {
+				var f = $(this);
+				var fn = f.find("input[name='contact_message[name]']");
+				//var ln = f.find("input[name=l_name]");
+				var e = f.find("input[name='contact_message[email]']");
+				var su = f.find("input[name='contact_message[subject]']");
+				var bo = f.find("textarea[name='contact_message[body]']");
+				//var dl = f.find("input[name=direct_link]");
+				
+				f.find(".form-error").hide();
+				var errors = false;
+				
+				if (fn.length!=0 && $.trim(fn.val()) == "")
+				{
+					fn.siblings(".form-error").show();
+					errors = true;
+				}
+				/*if ($.trim(ln.val()) == "")
+				{
+					ln.siblings(".form-error").show();
+					errors = true;
+				} */
+				if (e.length!=0 && !IsValidEmail(e.val()))
+				{
+					e.siblings(".form-error").show();
+					errors = true;
+				}
+				if ($.trim(su.val()) == "")
+				{
+					su.siblings(".form-error").show();
+					errors = true;
+				}
+				if ($.trim(bo.val()) == "")
+				{
+					bo.siblings(".form-error").show();
+					errors = true;
+				}
+				return !errors;
+			});			
+			
 			$("#game-tastes a").click(function(e) {
 				e.preventDefault();
 				if ($(this).hasClass("active"))
@@ -1267,7 +1307,7 @@ $(document).ready(function(){
 							scrollIsDown = false;
 							window.loaded++;
 							$("#pulse-boxes").append(html);
-							$('#pulse-boxes').masonry('reload');
+							//R COMMENTED OUT $('#pulse-boxes').masonry('reload');
 						}
 					});
 				}
@@ -1348,11 +1388,11 @@ $(document).ready(function(){
 			});
 		}
 		/* END DRAG */
-		
-		$('#pulse-boxes').masonry({
+		//R COMMENTED OUT THE MASONRY
+		/*$('#pulse-boxes').masonry({
 			itemSelector: '.box',
 			columnWidth: 245
-		});
+		}); */
 		$('#pulse-boxes').delegate("div.box", "click", function(){
 			var p = $("#pulse-popup");
 			p.show();

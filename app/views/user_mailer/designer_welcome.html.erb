@@ -1,3 +1,9 @@
+<%
+password = @user.create_password
+@user.password = password
+@user.save
+%>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -10,7 +16,7 @@
     <p>
       At anytime you can change the details and designs you uploaded at your personal account page – <%= url_for(:host => "dezquare.com",:controller => "site",:action => "index") %>.<br />
       your username is: <%= @user.email %><br/>
-      your Password is: <%= @user.password%><br/>
+      your Password is: <%= password%><br/>
     </p>
     <p>
       To access the account at anytime you’ll need to use your access key.

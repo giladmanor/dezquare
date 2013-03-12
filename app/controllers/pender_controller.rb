@@ -8,7 +8,7 @@ class PenderController < SiteController
   def register_designer_success
     logger.debug " creating a new pender "
     
-     unless params[:agree_tos]=="on"
+    unless params[:agree_tos]=="on"
       @error="You need to agree to the Terms of Service"
       @state=params[:state]
       render "register_designer"

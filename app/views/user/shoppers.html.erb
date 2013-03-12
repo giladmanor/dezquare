@@ -1,5 +1,5 @@
 <article class="module width_full">
-	<header><h3>Shoppers</h3></header>
+	<header><h3>Shoppers (<%=@users.count.nil? ? '' : @users.count%>)</h3></header>
 	<form class="quick_search" action="/user/list?view=shoppers" method="post">
 		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
 	</form>

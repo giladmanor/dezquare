@@ -8,7 +8,8 @@
 		<%end%>
 	</div>
 	<div class="sidebar-white-box">
-		<%if @editable && (@author.dob.nil?)%>
+		<% summary_blank = (@author.dob.blank?) && (@author.location.blank?) && (@author.languages.blank?) %>
+		<%if @editable && summary_blank %>
 			<a href="/designer/settings">Give us the basics</a>
 		<%else%>
 			<div id="sidebar-summary">

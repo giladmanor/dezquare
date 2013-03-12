@@ -136,7 +136,9 @@ class DesignerController < SiteController
     @user.designer_categories.clear
     Category.all.each{ |c|
       ucp = DesignerCategory.new
-      ucp.min_price=params["price_#{c.id}"].gsub("$","").to_f
+      if params["price_#{c.id}"].present?
+        ucp.min_price=params["price_#{c.id}"].gsub("$","").to_f
+      end
       ucp.category_id=c.id
       @user.designer_categories << ucp
     }

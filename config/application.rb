@@ -63,7 +63,7 @@ module Dezquare
       :port                 => 587,
       :domain               => 'dezquare.com',
       :user_name            => 'hello@dezquare.com',
-      :password             => 'za150535',
+      :password             => 'NoFrontier1',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }
     

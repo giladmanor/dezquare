@@ -14,8 +14,9 @@ development:
   reconnect: false
   database: dezquare
   pool: 5
-  username: ror
-  password: ror
+  port: 8889
+  username: root
+  password: root
   socket: /Applications/MAMP/tmp/mysql/mysql.sock
 
 # Warning: The database defined as "test" will be erased and

@@ -1,6 +1,7 @@
 Dezquare::Application.routes.draw do
   get "confirm/email"
-
+  match 'site/contact' => 'site#contact', :as => 'contact', :via => :get
+  match 'site/contact' => 'site#contact_sent', :as => 'contact', :via => :post
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
@@ -61,4 +62,5 @@ Dezquare::Application.routes.draw do
   match ':controller(/:action(/:id))(.:format)'
   match 'soooo(/:id)', :to=> "persona#index"
   match ':id',:to => 'd#index'
+  
 end

@@ -1,0 +1,133 @@
+<!-- <div id="contact-popup" class="popup" style='display:block'>
+		<div class="popup-content"> -->
+<div id="contact-popup">
+	<div class="page-content">
+		<div class="center-wrap">				
+			<div class="title"><h2>Get in touch with us!</h2></div>
+			<!--<form action="/pender/register_designer_success" method="post" id="contact-form">-->
+			<div class="center-wrap-box static-page tall" style="display:<%= @confirm.present? ? 'none' : 'block' %>;">
+						<%= form_for @message, :url => contact_path do |form| %>
+							<% if @message.errors.any? %>
+    			 				<div id="error_explanation">
+     								<span style="color: red"><%= pluralize(@message.errors.count, "error") %> prohibited your post from being sent:</span>
+      								<%= !@error.nil? ? @error : ""%>
+    							</div>
+  							<% end %>
+  							<fieldset>
+  						<% if @user.present? %>
+  							<p><h4>Name: <%=@user.full_name%></h4></p>
+						<% else %>
+							<div class="formfield">
+								<!--<input type="text" class="text" name="name" />-->
+								<%= form.text_field :name, :class => "text" %>
+								<label class="abs">Name</label>
+								<span class="vchecked"></span>
+								<label class="form-error">Invalid Name</label>
+							</div>
+							<div class="formfield">
+								<%= form.text_field :email, :class => "text" %>
+								<label class="abs">E-mail address</label>
+								<span class="vchecked"></span>
+								<label class="form-error">Invalid Email Address</label>
+							</div>
+						<%end%>
+							<div class="formfield">
+								<%= form.text_field :subject, :class =>"text" %>
+								<label class="abs">Subject</label>
+								<span class="vchecked"></span>
+								<label class="form-error">Invalid Subject</label>
+							</div>
+							<div class="formfield">
+								<%= form.text_area :body, :class =>"text" %>
+								<label class="abs">Message</label>
+								<span class="vchecked"></span>
+								<label class="form-error">Invalid Message</label>
+							</div>
+							<div class="submit clearfix">
+								<input type="submit" class="button-orange" value="Send" />
+							</div>		
+						<!--</form>-->
+						<label class="form-error" <%= !@error.nil? ? "style='display:block;'" : ""%>><%=@error%>RONEN</label>
+						</fieldset>
+						<%end%>
+				
+				<div class="foot">
+					<center><p><h3>You can also shoot us an <a href="mailto:info@dezquare.com">email</a></h3></p></center>
+				</div>
+				
+			</div>			
+		</div>
+	</div>
+</div>
+
+<div id="contact-us-popup" class="popup" style="display:<%= @confirm.present? ? 'block' : 'none' %>;">
+	<br>
+<div class="popup-content">
+	<center>
+	<div class="title">Thank you!</div>
+	<BR>
+	<h4>You're message has been sent.</h4>
+	<BR>
+	<form action="/site/index" method="post" id="contact-confirm-form">
+		<div class="submit clearfix">
+			<input type="submit" class="button-orange" value="OK" />
+		</div>		
+	</form>
+	</center>
+	<br><br>
+</div>
+</div>
+
+<div id="contact-us-popup" class="popup" style='display:none'>
+<div class="popup-content">
+	<div class="title">Keep in touch with us!</div>
+<%= form_for @message, :url => contact_path do |form| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2 style="color: red"><%= pluralize(@message.errors.count, "error") %> prohibited your post from being sent:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <fieldset class="fields">
+    <div class="field">
+      <%= form.label :name, :html => {:class =>"abs"} %>
+      <%= form.text_field :name %>
+      <span class="vchecked"></span>
+      <label class="form-error">Invalid Name</label>
+    </div>
+    
+    <div class="field">
+      <%= form.label :email, :html => {:class =>"abs"} %>
+      <%= form.text_field :email %>
+      <span class="vchecked"></span>
+      <label class="form-error">Invalid Email Address</label>
+    </div>
+    <div class="field">
+      <%= form.label :subject, :html => {:class =>"abs"} %>
+      <%= form.text_field :subject %>
+      <span class="vchecked"></span>
+      <label class="form-error">Invalid Subject</label>
+    </div>
+    
+    <div class="field">
+      <%= form.label :body, :html => {:class =>"abs"} %>
+      <%= form.text_area :body %>
+      <span class="vchecked"></span>
+      <label class="form-error">Invalid Message</label>
+    </div>
+  </fieldset>
+  <div class="submit clearfix">
+  	<fieldset class="actions">
+   	 <input type="submit" class="button-orange" value="Send" />
+  	</fieldset>
+  </div>
+<% end %>
+</div>
+</div>
+
