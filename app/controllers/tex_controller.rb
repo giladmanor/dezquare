@@ -23,6 +23,21 @@ class TexController < AdminController
   
   end
   
+  def updatecolorsforimages
+    Image.find_each do |img|   ##### (CHANGED) USING FIND_EACH INSTEAD OF ALL
+      if img.user_id.present? && img.file_path.present?
+        if img.dominant_colors.empty?
+          img.dominant_colors= img.get_dominant_colors
+          img.color_histogram= img.get_color_histogram
+          img.save
+        end
+      else 
+        img.destroy unless img.nil?
+      end
+    end
+    render :text => "Images colors updated successfully!"
+  end
+  
   def fewriufnwoeruifhpwriufh
     d_tagged = User.all.select{|u| u.designer}.map{|u| u.images.map{|i| i.tags}}.flatten
     tdt = Tag.all.map{|t| {:n=>t.name,:c=>d_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)

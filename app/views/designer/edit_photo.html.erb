@@ -28,8 +28,17 @@
 					            	<input type="file" name="upload" id="upload" onchange="$('#save_and').val('continue');this.form.submit();" style="opacity: 0; width: 380px; height: 350px; transform: scale(10);cursor:hand;" />
 		          				</div>	
 				          </div>
-						</div>
 						
+	<% if @image.id.present? %>					
+		<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
+		<tr style="border:1px solid; border-color: #000000; border-collapse: collapse;">
+			<% @image.get_dominant_colors.each do |col| %>
+				<td height="30" style="background-color:<%= col %>; border:1px solid; border-color: #000000; border-collapse: collapse;">&nbsp;</td>
+			<% end %>
+		</tr>
+		</table></p>
+	<% end %>
+			</div>			
 							<input type="hidden" name="id" value="<%=@image.id%>">
 							<div class="image-details">
 								<div class="form-row edit-image-title clearfix">
@@ -73,9 +82,9 @@
 										<%
 										l = (@tags.length/3).ceil
 										
-										tags1=@tags[0..l]
-										tags2=@tags[(l+1)..(2*l +1)]
-										tags3=@tags[(2*l +2)..(@tags.length)]
+										tags1=@tags[0..l-1]
+										tags2=@tags[(l)..(2*l-1)]
+										tags3=@tags[(2*l)..(@tags.length)]
 										
 										%>
 										

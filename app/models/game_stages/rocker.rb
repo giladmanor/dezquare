@@ -2,6 +2,11 @@ class Rocker < StageImplementor
   
   
   def self.set(game,params,arguments)
+    if game.set_dominant_colors
+      game.user.dominant_colors = game.dominant_colors
+      game.user.save
+    end
+    
     game.project.started
     game.project.save
     

@@ -22,6 +22,16 @@
 								<div class="col1">
 									<div class="image">
 										<img src="/repository/<%=image.file_path%>" alt="Portfolio Image" style="max-height: 472px;"/>
+	<center>								
+	<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
+		<tr style="border:1px solid; border-color: #000000; border-collapse: collapse;">
+			<% image.dominant_colors.each do |col| %>
+				<td height="30" style="background-color:<%= col %>; border:1px solid; border-color: #000000; border-collapse: collapse;">&nbsp;</td>
+			<% end %>
+		</tr>
+		</table>
+	</p>
+	</center>
 									</div>
 									<div class="meta">
 										<span class="published-on">
@@ -44,6 +54,7 @@
 										
 									</h4>
 									<p style="white-balance : pre-wrap"><%=image.description%></p>
+									
 									<h4 class="orange">Taste Indicators</h4>
 									<p>
 										<%

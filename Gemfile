@@ -40,4 +40,5 @@ gem 'jquery-rails'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 gem 'acts_as_tree'
 gem 'rmagick'
+gem 'prizm'
 #gem "rmagick", "~> 2.13.1"

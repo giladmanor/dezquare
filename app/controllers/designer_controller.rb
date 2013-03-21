@@ -224,9 +224,12 @@ class DesignerController < SiteController
     @image.description=params[:description]
     @image.category= Category.find_by_name(params[:category])
     @image.tag_ids=params[:tags]
+    @image.dominant_colors= @image.get_dominant_colors
+    @image.color_histogram= @image.get_color_histogram
     @image.user=@user
     @image.save
     
+    @user.set_designer_colors
     
     logger.debug "Image id: #{@image.id}"
     
@@ -255,7 +258,6 @@ class DesignerController < SiteController
     logger.debug "-------------------------------------------------------------------------------------"
     redirect_to  :action => "edit_photo", :id=>params[:id]
   end
-  
   
   
   def delete_image

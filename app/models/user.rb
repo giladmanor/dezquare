@@ -1,5 +1,7 @@
 require 'digest'
 class User < ActiveRecord::Base
+  serialize :dominant_colors, Array
+  
   has_many :images, :order=>"ord"
   has_many :user_languages
   has_many :languages , :through=>:user_languages
@@ -104,5 +106,15 @@ class User < ActiveRecord::Base
       u.save
     }
   end
+  
+  def set_designer_colors
+    if self.designer
+      images_group = []
+      self.images.map {|c| images_group << c}
+      self.dominant_colors = Image.multicolors(images_group)
+      self.save
+    end  
+  end
+  
   
 end
