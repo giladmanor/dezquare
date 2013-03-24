@@ -43,7 +43,7 @@
 													</div>
 													<div class="details">
 														<div class="big">
-															<a href="/designer/profile/<%=d.id%>" target="_blank"><%=d.full_name%></a>
+															<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><%=d.full_name%></a>
 														</div>
 														<%=(d.location.nil? || d.location=="") ? '' : raw("<div class='small'>Location: <span>#{d.location}</span></div>")%>
 														<%

@@ -116,5 +116,13 @@ class User < ActiveRecord::Base
     end  
   end
   
-  
+  def set_identifier
+    identifier = '1'
+    begin
+      o =  [('a'..'z'),('A'..'Z')].map{|i| i.to_a}.flatten
+      identifier  =  (0...20).map{ o[rand(o.length)] }.join
+    end while User.where("url_identifier = ?", identifier).present?
+    self.url_identifier = identifier
+  end
+
 end

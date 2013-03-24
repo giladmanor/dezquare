@@ -1,4 +1,5 @@
 Dezquare::Application.routes.draw do
+  #get '*foo', to: 'd#maintain'   ##########:: MAINTENANCE MODE
   get "confirm/email"
   match 'site/contact' => 'site#contact', :as => 'contact', :via => :get
   match 'site/contact' => 'site#contact_sent', :as => 'contact', :via => :post

@@ -46,7 +46,7 @@
 	        	</form>
 	        	
 			</div>
-			<h2 id="profile-name"><a href="<%= @author.designer ? "/designer/profile/#{@author.id}" : ""%>?t=<%=Time.now.to_f%>"><%=@author.full_name%></a></h2>
+			<h2 id="profile-name"><a href="<%= @author.designer ? "/designer/profile/#{@author.url_identifier}" : ""%>?t=<%=Time.now.to_f%>"><%=@author.full_name%></a></h2>
 			
 			<%
 			if @author.designer

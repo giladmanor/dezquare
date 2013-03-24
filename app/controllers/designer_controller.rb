@@ -70,7 +70,20 @@ class DesignerController < SiteController
   
   
   def profile
-    @author = params[:id].present? ? User.find(params[:id]) : @user 
+    #@author = params[:id].present? ? User.find(params[:id]) : @user
+    #@author = params[:id].present? ? User.where("url_identifier = ?",params[:id]) : @user
+    ###@author = params[:id].present? ? User.find_by_url_identifier(params[:id]) : @user
+    if params[:id].present?
+      @author = User.find_by_url_identifier(params[:id])
+      if @author.blank?
+        redirect_to :controller => :d, :action => :ohno
+      end
+    else 
+      @author = @user
+    end
+      
+    logger.debug "###### AUTHOR::::: #{@author.inspect}" 
+    logger.debug "###### USER::::: #{@user.inspect}"     
     @editable= (@author==@user)
     
   end

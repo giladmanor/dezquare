@@ -75,8 +75,9 @@ class UserController < AdminController
     unless generate_password.nil?
       user.create_password(6) 
       user.pender=false
-      user.designer=true  
+      user.designer=true 
       user.email_confirm=true
+      user.set_identifier
     else
       user.available=true
     end

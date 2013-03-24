@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130320152741) do
+ActiveRecord::Schema.define(:version => 20130321171235) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -277,6 +277,7 @@ ActiveRecord::Schema.define(:version => 20130320152741) do
     t.string   "skills"
     t.boolean  "email_confirm"
     t.text     "dominant_colors"
+    t.string   "url_identifier"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
