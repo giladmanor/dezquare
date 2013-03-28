@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('roboto-light-webfont.eot');
+    src: url('roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('roboto-light-webfont.woff') format('woff'),
+         url('roboto-light-webfont.ttf') format('truetype'),
+         url('roboto-light-webfont.svg#Roboto') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('roboto-thin-webfont.eot');
+    src: url('roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('roboto-thin-webfont.woff') format('woff'),
+         url('roboto-thin-webfont.ttf') format('truetype'),
+         url('roboto-thin-webfont.svg#Roboto') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Novacento';
+    src: url('novecentowide-light-webfont.eot');
+    src: url('novecentowide-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('novecentowide-light-webfont.woff') format('woff'),
+         url('novecentowide-light-webfont.ttf') format('truetype'),
+         url('novecentowide-light-webfont.svg#Novacento') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'Novacento';
+    src: url('novecentowide-medium-webfont.eot');
+    src: url('novecentowide-medium-webfont.eot?#iefix') format('embedded-opentype'),
+         url('novecentowide-medium-webfont.woff') format('woff'),
+         url('novecentowide-medium-webfont.ttf') format('truetype'),
+         url('novecentowide-medium-webfont.svg#Novacento') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Novacento';
+    src: url('novecentowide-demibold-webfont.eot');
+    src: url('novecentowide-demibold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('novecentowide-demibold-webfont.woff') format('woff'),
+         url('novecentowide-demibold-webfont.ttf') format('truetype'),
+         url('novecentowide-demibold-webfont.svg#Novacento') format('svg');
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+@font-face {
+    font-family: 'OpenSansRegular';
+    src: url('opensans-regular-webfont.eot');
+    src: url('opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('opensans-regular-webfont.woff') format('woff'),
+         url('opensans-regular-webfont.ttf') format('truetype'),
+         url('opensans-regular-webfont.svg#OpenSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'QuickSandRegular';
+    src: url('quicksand-regular-webfont.eot');
+    src: url('quicksand-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('quicksand-regular-webfont.woff') format('woff'),
+         url('quicksand-regular-webfont.ttf') format('truetype'),
+         url('quicksand-regular-webfont.svg#QuickSandRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'QuickSandBold';
+    src: url('quicksand-bold-webfont.eot');
+    src: url('quicksand-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('quicksand-bold-webfont.woff') format('woff'),
+         url('quicksand-bold-webfont.ttf') format('truetype'),
+         url('quicksand-bold-webfont.svg#QuickSandBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PTSans';
+    src: url('pt_sans-web-regular-webfont.eot');
+    src: url('pt_sans-web-regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('pt_sans-web-regular-webfont.woff') format('woff'),
+         url('pt_sans-web-regular-webfont.ttf') format('truetype'),
+         url('pt_sans-web-regular-webfont.svg#PTSans') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'PTSans';
+    src: url('pt_sans-web-bold-webfont.eot');
+    src: url('pt_sans-web-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('pt_sans-web-bold-webfont.woff') format('woff'),
+         url('pt_sans-web-bold-webfont.ttf') format('truetype'),
+         url('pt_sans-web-bold-webfont.svg#PTSans') format('svg');
+    font-weight: 700;
+    font-style: normal;
+}

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<link href="css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/jquery.event.move.js"></script>
+	<script type="text/javascript" src="js/jquery.event.swipe.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/profile.js"></script>
+</head>
+<body>
+	<section id="page" class="profile-scroll profile">
+		<header id="header" class="clearfix">
+			<h1 id="logo">
+				<a href="index.html">
+					<img src="img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			<div class="square"></div>
+		</header>
+		<section id="content">
+			<section id="top-bar" class="clearfix">
+				<div class="user-info">
+					<div class="content1">
+						<h2>
+							<a href="#">LIMOR GOLDHABER</a>
+						</h2>
+					</div>
+					<div class="content2">
+						<address>Tel-Aviv, Israel</address>
+					</div>
+					<span class="decorator"></span>
+				</div>
+				<nav>
+					<a href="#">
+						<span class="content">
+							<span class="text">Explore</span>
+						</span>
+						<span class="decorator"></span>
+					</a>
+					<a href="#">
+						<span class="content">
+							<span class="text">My Taste</span>
+						</span>
+						<span class="decorator"></span>
+					</a>
+					<a href="#" class="different">
+						<span class="content">
+							<span class="text">New</span>
+						</span>
+					</a>
+				</nav>
+			</section>
+			
+			<section id="profile-widgets">
+				<section id="taste-config">
+					<div class="title">Your Taste is:</div>
+					<div class="prop">
+						<div class="level" style="width: 45%;">
+							<div class="name">Geeky</div>
+							<div class="value">45%</div>
+						</div>
+					</div>
+					<div class="prop">
+						<div class="level" style="width: 95%;">
+							<div class="name">Sophisticated</div>
+							<div class="value">95%</div>
+						</div>
+					</div>
+					<div class="prop">
+						<div class="level" style="width: 14%;">
+							<div class="name">Playful</div>
+							<div class="value">14%</div>
+						</div>
+					</div>
+					<div class="prop">
+						<div class="level" style="width: 63%;">
+							<div class="name">Sexy</div>
+							<div class="value">63%</div>
+						</div>
+					</div>
+					<div class="prop">
+						<div class="level" style="width: 25%;">
+							<div class="name">Gaga</div>
+							<div class="value">25%</div>
+						</div>
+					</div>
+				</section>
+				<div id="stats-map" class="clearfix">
+					<img src="img/map.png" alt="Map" />
+					<div class="bubble size-10" style="left: 60%; top: 40%;">
+						<div class="hover">
+							<canvas width="64" height="51"></canvas>
+							<div class="disc"></div>
+							<div class="avatars">
+								<a href="#">
+									<img src="img/temp/avatar.png" alt="Name" />
+								</a><a href="#">
+									<img src="img/temp/avatar.png" alt="Name" />
+								</a><a href="#">
+									<img src="img/temp/avatar.png" alt="Name" />
+								</a>
+								<div class="country">Israel</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id="stats-map-title">
+					Your taste<br/>
+					is <span class="color">inspired</span> by<br/>
+					people from:
+				</div>
+				
+				<div id="latest-likes">
+					<ul>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<img src="img/temp/like.jpg" alt="Photo Name"/>
+							</a>
+						</li>
+					</ul>
+					<div class="title">Your Latest Likes</div>
+					
+					<div id="designer-props">
+						<div class="colors">
+							<div class="title">Your colors</div>
+							<div class="subject">
+								<div class="color" style="background: #0c3c8e;"></div>
+								<div class="color" style="background: #00a4a4;"></div>
+								<div class="color" style="background: #00a1ce;"></div>
+								<div class="color" style="background: #5eb00e;"></div>
+								<div class="color" style="background: #d0d300;"></div>
+								<div class="color" style="background: #2f7528;"></div>
+								<div class="color" style="background: #da005f;"></div>
+								<div class="color" style="background: #e73e1b;"></div>
+								<div class="color" style="background: #f38e00;"></div>
+								<div class="color" style="background: #616161;"></div>
+							</div>
+							<div class="black-title clearfix">
+								<span>U FANCY A DESIGN</span>
+								<span>THAT IS:</span>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 5%;"></div>
+								<div class="name">Urban</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 10%;"></div>
+								<div class="name">Colorful</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 25%;"></div>
+								<div class="name">No Text</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 80%;"></div>
+								<div class="name">Minimalism</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 100%;"></div>
+								<div class="name">Realistic Image</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 5%;"></div>
+								<div class="name">Black &amp; White</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 10%;"></div>
+								<div class="name">Colorful</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 25%;"></div>
+								<div class="name">No Text</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 80%;"></div>
+								<div class="name">Minimalism</div>
+							</div>
+							<div class="prop">
+								<div class="level" style="width: 100%;"></div>
+								<div class="name">Realistic Image</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+			</section>
+			
+			<section id="profile-content" class="my-profile">
+				<section id="profile-photo-bar">
+					<div id="profile-photo-bar-content">
+						<div id="profile-photo">
+							<img src="img/bkg-avatar.png" alt="Placeholder" />
+						</div>
+						<div class="name">LIMOR GOLDHABER</div>
+						<address>Tel-Aviv, Israel</address>
+						<ul class="options">
+							<li class="tour">
+								<a href="#">
+									<span class="icon">
+										<img src="img/icon-tour.png" alt="Tour" />
+									</span>
+									Take the Welcome Tour
+								</a>
+							</li>
+							<li>
+								<a href="#">
+									<span class="icon">
+										<img src="img/icon-help.png" alt="Help" />
+									</span>
+									Need Help?
+								</a>
+							</li>
+						</ul>
+					</div>
+					<a href="#" class="foot-link line-3">
+						<span class="holder">
+							<span class="text">Payments</span>
+						</span>
+					</a>
+					<a href="#" class="foot-link line-2">
+						<span class="holder">
+							<span class="text">Settings</span>
+						</span>
+					</a>
+					<a href="#" class="foot-link line-1">
+						<span class="holder">
+							<span class="text">Logout</span>
+						</span>
+					</a>
+				</section>
+				<section id="profile-overlay-white">
+					<section id="designs-bar">
+						<div id="designs-bar-content">
+							<div class="title">YOUR Designs</div>
+							<a href="#" class="add-new">
+								<span class="icon"></span>
+								new design
+							</a>
+							<a href="#" class="design">
+								<span class="notes">1</span>
+								<span class="name">Google Logo</span>
+								<span class="details">
+									Designer <em class="color">David Bowie</em>
+								</span>
+								<span class="details">Started: 20 MAY</span>
+								<span class="details color">Status: Open</span>
+								<span class="active"></span>
+								<span class="decorator"></span>
+							</a>
+							<a href="#" class="design">
+								<span class="notes">3</span>
+								<span class="name">Google Logo</span>
+								<span class="details">
+									Designer <em class="color">David Bowie</em>
+								</span>
+								<span class="details">Started: 20 MAY</span>
+								<span class="details color">Status: Open</span>
+								<span class="decorator"></span>
+							</a>
+							<a href="#" class="design">
+								<span class="name">Google Logo</span>
+								<span class="details">
+									Designer <em class="color">David Bowie</em>
+								</span>
+								<span class="details">Started: 20 MAY</span>
+								<span class="details color">Status: Open</span>
+								<span class="decorator"></span>
+							</a>
+						</div>
+					</section>
+				</section>
+			</section>
+			<span id="restore-arrow"></span>
+		</section>
+		<footer id="footer" class="clearfix">
+			<div class="copyright">&copy;dezquare 2012-2013</div>
+			<nav class="links">
+				<a href="#">About</a>
+				<span>|</span>
+				<a href="#">Privacy Policy</a>
+				<span>|</span>
+				<a href="#">Terms of Use</a>
+				<span>|</span>
+				<a href="#">Blog</a>
+				<span>|</span>
+				<a href="#">Facebook</a>
+				<span>|</span>
+				<a href="#">Twitter</a>
+			</nav>
+		</footer>
+	</section>
+</body>
+</html>

@@ -1,0 +1,478 @@
+@media (min-width: 2000px) {
+	#designs-bar .title { font-size: 28px; }
+	#designs-bar .add-new { font-size: 14px; }
+	#designs-bar .design { font-size: 14px; }
+	#profile-photo-bar .name { font-size: 24px; }
+	#profile-photo-bar address { font-size: 22px; }
+	#profile-photo-bar .options a { font-size: 14px; }
+	#profile-photo-bar .foot-link { font-size: 24px; }
+	
+	#stats-map-title { font-size: 44px; }
+	#top-bar { height: 7%; }
+	#latest-likes ul img { 
+		display: block;
+		width: 160px;
+		height: 160px; 
+	}
+	#latest-likes .title { font-size: 20px; }
+	
+	#designer-props { width: 320px; }
+	#designer-props .black-title span { font-size: 26px; }
+	#designer-props .prop .level { height: 12px; }
+	#designer-props .prop {
+		font-size: 18px;
+		line-height: 18px;
+		margin-bottom: 18px;
+	}
+	
+	#profile-content.my-profile #profile-photo-bar {
+		left: -12%;
+		width: 12%
+	}
+	
+	#profile-photo-bar .name { font-size: 24px; }
+	#profile-photo-bar address { font-size: 18px; }
+	#profile-photo-bar .options a { font-size: 15px; }
+	#profile-photo-bar .foot-link { font-size: 25px; }
+	
+	#landing .text h2 { 
+		font-size: 160px;
+		line-height: 80px; 
+	}
+	#landing .text h3 { font-size: 110px; }
+	#landing .text h4 {
+		font-size: 28px;
+		line-height: 32px;
+		margin-bottom: 50px;
+	}
+	#landing .buttons a {
+		font-size: 60px;
+		height: 90px;
+		line-height: 90px;
+		width: 300px;
+	}
+	
+	#designer-selector { margin-top: 220px; }
+}
+
+@media (max-height: 999px) and (max-width: 1440px) {
+	#persona-steps.for-step-1.for-project-1 { top: 260px; }
+	#taste-selector.project-1 div.title-2r { margin-bottom: 30px; }
+	#taste-selector.project-1 article .title { line-height: 44px; }
+	#taste-selector.project-1 article .title.r2 { line-height: 22px; }
+	#taste-selector.project-1 article a { font-size: 16px; }
+	
+	#design-selector.project-2 {
+		margin-left: -225px;
+		top: 70px;
+		width: 450px;
+	}
+	#design-selector-description.for-project-2 { top: 170px; }
+	#persona-steps.persona2.for-project-2 { top: 320px; }
+	#design-selector.project-2 div.image,
+	#design-selector.project-2 div.image img {
+		height: 400px;
+		width: 320px;
+	}
+	
+	#persona-steps.persona3.for-project-3 { top: 190px; }
+	
+	#designer-selector { margin-top: 15px; }
+	#designer-selector div.title-2r { margin-bottom: 10px; }
+	.matched-designers .action {
+		height: 135px;
+		width: 150px;
+	}
+	.matched-designers .action .default {
+		font-size: 32px;
+		line-height: 140px;
+	}
+	.matched-designers .action .x,
+	.matched-designers .action .v { 
+		line-height: 135px;
+		height: 135px; 
+	}
+	.matched-designers .head .name {
+		font-size: 18px;
+		line-height: 18px;
+		margin-bottom: 0px;
+	}
+	.matched-designers .details { width: 475px; }
+	.matched-designers .designer { margin-bottom: 5px; }
+	.matched-designers .personal-info { margin-left: 72px; }
+	.matched-designers .row1 { padding: 8px 10px 5px; }
+	.matched-designers .extended {
+		font-size: 11px;
+		line-height: 15px;
+	} 
+	.matched-designers .row2 { padding: 3px 10px; }
+	.matched-designers .avatar img { max-height: 60px; }
+	.matched-designers .prefered-colors .colors { margin-bottom: 1px; }
+	.matched-designers .prefered-colors .color { height: 5px; }
+	#designer-selector .next {
+		margin: 10px auto 5px;
+		font-size: 22px;
+		line-height: 40px;
+	}
+	
+	#full-brief {
+		margin-left: -550px;
+		margin-top: -320px;
+		width: 1100px;
+	}
+	#full-brief .content {
+		padding: 35px 30px 25px;
+	}
+	#full-brief .basic-info { padding-right: 30px; }
+	#full-brief .taste-and-style {
+		margin-left: 210px;
+		padding-left: 30px;
+	}
+	#full-brief .basic-info .avatar,
+	#full-brief .basic-info .avatar img { width: 180px; }
+	#full-brief .basic-info .name {
+		font-size: 32px;
+		margin-bottom: 15px;
+	}
+	#full-brief .profile-config li {
+		font-size: 14px; 
+		margin-bottom: 5px; 
+	}
+	#full-brief .taste-and-style .big-title {
+		font-size: 46px;
+		line-height: 42px;
+		margin-bottom: 10px;
+	}
+	#full-brief .most-colors .color { height: 8px; }
+	#full-brief .text-title { font-size: 18px; }
+	#full-brief .taste-and-style .taste-top { margin-bottom: 15px; }
+	#full-brief .basic-info .button { font-size: 16px; }
+	#full-brief .user-stats { padding: 0px 10px 0px 0px; }
+	
+	#interview-payment div.title-2r { margin-bottom: 10px; }
+	#interview-banner { margin-bottom: 15px; }
+	#interview-payment-content .form { padding-top: 10px; }
+	.form .formfield { margin-bottom: 10px; }
+	.form .submit-row { padding-top: 0px; }
+}
+
+@media (max-height: 899px), (max-width: 1679px) {
+	#landing .text h2 { font-size: 120px; }
+	#landing .text h3 { font-size: 80px; }
+	#landing .text h4 {
+		font-size: 20px;
+		line-height: 28px;
+		margin-bottom: 30px;
+	}
+	#landing .buttons a {
+		font-size: 40px;
+		height: 60px;
+		line-height: 60px;
+	}
+}
+
+@media (max-height: 799px), (max-width: 1439px) {
+	#landing .text h2 { font-size: 100px; }
+	#landing .text h3 { font-size: 60px; }
+	#landing .text h4 {
+		font-size: 18px;
+		line-height: 24px;
+		margin-bottom: 20px;
+	}
+	#landing .buttons a {
+		font-size: 30px;
+		height: 50px;
+		line-height: 50px;
+		width: 200px;
+	}
+}
+
+@media (max-height: 879px), (max-width: 1279px) {
+	div.title-2r { 
+		font-size: 38px;
+	 	line-height: 40px;
+	}
+	div.title-2r div.r2 { font-size: 28px; }
+	
+	#persona-steps.for-step-1 { top: 290px; }
+	
+	#design-selector {
+		margin-left: -270px;
+		width: 541px;
+	}
+	#design-selector-description { top: 240px; }
+	#persona-steps.persona2 { top: 410px; }
+	#persona-steps.persona3 { top: 330px; }
+	#design-selector div.image,
+	#design-selector div.image img,
+	#word-selector div.image,
+	#word-selector div.image img {
+		height: 520px;
+		width: 412px;
+	}
+	#word-selector {
+		margin-left: -354px;
+		width: 708px;
+	}
+
+	section#display { margin-right: 20px; }
+	section#game-persona-result div.title { 
+		font-size: 60px;
+		line-height: 70px; 
+	}
+	section#game-persona-result div.description div.text { margin-right: 330px; }
+	section#game-persona-result div.description p {
+		font-size: 18px;
+		line-height: 26px;
+		margin-bottom: 15px;
+	}
+	section#game-persona-result ul.images { width: 316px; }
+	section#game-persona-result ul.images li {
+		margin-right: 7px;
+		margin-bottom: 5px;
+		width: 151px;
+	}
+	section#game-persona-result ul.images img {
+		height: 151px;
+		width: 151px;
+	}
+	section#game-persona-result .resume .text { font-size: 16px; }
+	section#game-persona-result .resume { margin-bottom: 10px; }
+}
+
+@media (max-height: 799px) {
+	#taste-selector div.title-2r { margin-bottom: 40px; }
+	div.title-2r { 
+		font-size: 32px;
+	 	line-height: 36px;
+	}
+	div.title-2r div.r2 { font-size: 26px; }
+	
+	#persona-steps.for-step-1 { top: 265px; }
+		
+	#design-selector {
+		margin-left: -240px;
+		width: 480px;
+	}
+	#design-selector-description { top: 200px; }
+	#persona-steps.persona2 { top: 350px; }
+	#persona-steps.persona3 { top: 280px; }
+	
+	#design-selector div.image,
+	#design-selector div.image img,
+	#word-selector div.image,
+	#word-selector div.image img {
+		height: 440px;
+		width: 350px;
+	}
+	
+	#word-selector {
+		margin-left: -325px;
+		width: 650px;
+	}
+	
+	section#game-persona-result ul.images { display: none; }
+	section#game-persona-result div.description div.text { margin-right: 0px; }
+	
+	#designer-props { top: 140px; }
+	#designer-props .color { margin-bottom: 10px; }
+	#designer-props .black-title { 
+		margin-bottom: 10px; 
+		font-size: 21px;
+		line-height: 20px;
+	}
+	#designer-props .black-title span { margin-bottom: 1px; }
+	#designer-props .prop .level { height: 5px; }
+}
+
+@media (max-width: 1279px) {
+	#taste-selector {
+		margin-left: -190px;
+		width: 579px; 
+	}
+	#taste-selector article { width: 181px; }
+	#taste-selector article a { font-size: 16px; }
+	
+	#profile-photo-bar .options li { line-height: 18px; }
+	#profile-photo-bar .options .icon { width: 20px; }
+	#profile-photo-bar .options .icon img { height: 20px; }
+	#profile-photo-bar .foot-link { margin-bottom: 24px; }
+}
+
+/* IPAD Portrait only */
+@media (min-height: 800px) and (max-width: 1000px) {
+	#top-bar { height: 7%; }
+	
+	#persona-steps.persona3.for-project-3 { top: 260px; }
+	#designer-selector { padding-left: 220px; }
+}
+
+/* End IPAD Portrait only */
+/* IPAD Landscape only */
+@media (min-width: 800px) and (max-width: 1000px) and (max-height: 1000px) {
+	#taste-selector div.title-2r { margin-bottom: 40px; }
+	div.title-2r { 
+		font-size: 32px;
+	 	line-height: 36px;
+	}
+	
+	#persona-steps.for-step-1 { top: 215px; }
+	#taste-selector { top: 20px; }
+	
+	#design-selector-description { top: 140px; }
+	#persona-steps.persona2 { top: 300px; }
+	#persona-steps.persona3 { top: 200px; }
+	#design-selector { top: 20px; }
+	#word-selector { top: 20px; }
+	
+	.register-screen-content { top: 20px; }
+	
+	#top-bar { height: 10%; }
+	#taste-config { top: 20%; }
+	#profile-photo-bar .options li { line-height: 18px; }
+	#profile-photo-bar .options .icon { width: 20px; }
+	#profile-photo-bar .options .icon img { height: 20px; }
+	#profile-content.my-profile #profile-photo-bar {
+		left: -20%;
+		width: 20%
+	}
+	#profile-photo-bar .foot-link { 
+		font-size: 18px;
+		margin-bottom: 24px; 
+	}
+	
+	#persona-steps.for-step-1.for-project-1 { top: 190px; }
+	
+	#design-selector.project-2 { top: 20px; }
+	#design-selector-description.for-project-2 { top: 120px; }
+	#persona-steps.persona2.for-project-2 { top: 270px; }
+	
+	#persona-steps.persona3.for-project-3 { top: 150px; }
+	#designer-selector { 
+		padding-left: 220px;
+		margin-top: 0px; 
+	}
+	#designer-selector div.title-2r { margin-bottom: 5px; }
+	#designer-selector div.title-2r div.r2 {
+		font-size: 22px;
+		line-height: 28px;
+	}
+	.matched-designers .action {
+		height: 125px;
+		width: 140px;
+	}
+	.matched-designers .action .default { line-height: 130px; }
+	.matched-designers .action .x,
+	.matched-designers .action .v { 
+		line-height: 125px;
+		height: 125px; 
+	}
+	.matched-designers .head .name {
+		font-size: 18px;
+		line-height: 18px;
+		margin-bottom: 0px;
+	}
+	.matched-designers .details { width: 485px; } 
+	.matched-designers .thumbs .image { border: 0px none; }
+	.matched-designers .thumbs img { height: 40px; }
+	.matched-designers .prefered-colors .title {
+		font-size: 10px;
+		line-height: 10px;
+	}
+	#designer-selector .next { 
+		margin: 10px auto 5px;
+		line-height: 34px;
+		font-size: 18px;  
+	}
+	#designer-selector .or a { font-size: 14px; }
+	
+	#full-brief .profile-config li.gap { margin-bottom: 20px; }
+	#full-brief {
+		margin-left: -450px;
+		margin-top: -270px;
+		width: 920px;
+	}
+	#full-brief .profile-config { margin-bottom: 30px; }
+	#full-brief .grid { height: 310px; }
+	#full-brief #design-gallery .image-item.item-1 {
+		left: 0px;
+		top: 0px;
+		height: 100px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-2 {
+		left: 0px;
+		top: 105px;
+		height: 205px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-3 {
+		left: 210px;
+		top: 0px;
+		height: 205px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-4 {
+		left: 210px;
+		top: 210px;
+		height: 100px;
+		width: 100px;
+	}
+	#full-brief #design-gallery .image-item.item-6 {
+		left: 420px;
+		top: 0px;
+		height: 100px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-7 {
+		left: 420px;
+		top: 105px;
+		height: 100px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-8 {
+		left: 315px;
+		top: 210px;
+		height: 100px;
+		width: 205px;
+	}
+	#full-brief #design-gallery .image-item.item-9 {
+		left: 525px;
+		top: 210px;
+		height: 100px;
+		width: 100px;
+	}
+	#overlay { position: fixed; }
+	
+	#interview-payment { padding-left: 260px; }
+	#interview-payment div.title-2r div.r2 { 
+		font-size: 22px;
+		line-height: 26px; 
+	}
+	#interview-payment-content { width: 700px; }
+	#interview-banner .info { font-size: 18px; }
+	#interview-banner { margin-bottom: 7px; }
+	#interview-banner .price,
+	#interview-banner .info,
+	#interview-banner .alt { line-height: 56px; }
+	#interview-banner .close { line-height: 58px; }
+	#interview-banner .images { padding: 4px 0px 0px 5px; }
+	#interview-payment-content .form { position: relative; }
+	.form .col { width: 350px; }
+	.form .formfield { margin-bottom: 8px; }
+	.form .col2 { width: 340px; } 
+	.form input.text { float: left; }
+	.form label {
+		font-size: 14px;
+		width: 115px;
+	}
+	.form .col2 label { width: 105px; }
+	.form .note { margin-left: 120px; }
+	#interview-payment-content .form .submit-row {
+		position: absolute;
+		right: 30px;
+		bottom: 10px;
+	}
+}
+/* End IPAD Landscape only */
+

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<link href="css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+</head>
+<body>
+	<section id="page">
+		<header id="header" class="clearfix">
+			<h1 id="logo">
+				<a href="index.html">
+					<img src="img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			<div class="square"></div>
+		</header>
+		<section id="content">
+			<section id="content-inside">
+				<section class="sidebar-alt-screens">
+					
+					<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+						<section class="register-screen-content">
+							<h2>Sign-up to dèzquare</h2>
+							<form action="register-confirmation.html">
+								<div class="formfield">
+									<input type="text" name="first_name" class="text validation-normal" />
+									<label class="abs">First Name</label>
+									<span class="vchecked"></span>
+									<label class="form-error">Invalid First Name</label>
+								</div>
+								<div class="formfield">
+									<input type="text" name="last_name" class="text validation-normal" />
+									<label class="abs">Last Name</label>
+									<span class="vchecked"></span>
+									<label class="form-error">Invalid Last Name</label>
+								</div>
+								<div class="formfield">
+									<input type="text" name="email" class="text validation-email" />
+									<label class="abs">E-mail address</label>
+									<span class="vchecked"></span>
+									<label class="form-error">Invalid Email</label>
+								</div>
+								<div class="formfield">
+									<input type="password" name="password" class="text validation-password">
+									<label class="abs">Password</label>
+									<span class="vchecked"></span>
+									<label class="form-error">Invalid Password</label>
+								</div>
+								<div class="formfield">
+									<input type="password" name="re_password" class="text validation-password" />
+									<label class="abs">Re-enter Password</label>
+									<span class="vchecked"></span>
+									<label class="form-error">Password does not match</label>
+								</div>
+								<div class="formfield clearfix agree">
+									<span class="checkbox">
+										<input type="checkbox" name="agree_tos" />
+									</span>
+									<span class="text">
+										I agree to the <a href="privacy.html">Privacy Policy</a> &amp; <a href="terms.html">Terms of Service</a>.
+									</span>
+								</div>
+								<div class="submit clearfix">
+									<input type="submit" value="Sign Up!" class="button-orange" />
+								</div>		
+							</form>
+						</section>
+						<div class="sidebar-bottom-note centered">
+							Already have an account? <a href="login.html">Login!</a>
+						</div>
+					</section>
+					
+				</section>
+			</section>
+		</section>
+	</section>
+</body>
+</html>

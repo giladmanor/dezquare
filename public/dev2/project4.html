@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<link href="css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+	<link href="css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script src="js/jquery.mCustomScrollbar.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/game-persona.js"></script>
+</head>
+<body>
+	<section id="page">
+		<header id="header" class="clearfix">
+			<h1 id="logo">
+				<a href="index.html">
+					<img src="img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			<div class="square"></div>
+		</header>
+		<section id="content">
+			<section id="content-inside">
+				
+				<div id="money-back">
+					<div class="image">
+						<img src="img/icon-money-back.png" alt="Money back" />
+					</div>
+					<div class="text">
+						100% money back<br/>guarantee
+					</div>
+				</div>
+				
+				<section id="persona-steps" class="project4">
+					<div class="step">
+						<div class="icon"></div>
+						<div class="text">Select a creative field</div>
+					</div>
+					<div class="step step2">
+						<div class="icon"></div>
+						<div class="text">Find your taste</div>
+					</div>
+					<div class="step step3 active">
+						<div class="icon"></div>
+						<div class="text">Get matched</div>
+					</div>
+					<div class="step step4">
+						<div class="icon"></div>
+						<div class="text">ENTER THE WORKSPACE</div>
+					</div>
+				</section>
+				
+				<section id="interview-payment">
+					<div class="title-2r centered">
+						<div class="r1">Show us you’re serious</div>
+						<div class="r2 color">Pay $10 to invite your matches for an interview</div>
+					</div>
+					
+					<div id="interview-payment-content">
+						<div id="interview-banner">
+							<span class="close">
+								<img src="img/icon-x-2.png" alt="Close" />
+							</span>
+							<div class="content short">
+								<div class="images">
+									<div class="image">
+										<img alt="Thumb Alt" src="img/temp/thumb.jpg">
+									</div>
+									<div class="image">
+										<img alt="Thumb Alt" src="img/temp/thumb.jpg">
+									</div>
+									<div class="image">
+										<img alt="Thumb Alt" src="img/temp/thumb.jpg">
+									</div>
+								</div>
+								<div class="info">send invites for an interview</div>
+								<div class="price">Total price: <span class="price-value">$10</span></div>
+								<div class="alt">
+									<a href="#">go back to your matches</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="form">
+							<form action="#" method="post" class="clearfix">
+								<div class="col">
+									<div class="title">Billing Address</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Prefix:
+										</label>
+										<div class="combobox gender">
+											<div class="value">Mr.</div>
+											<input type="hidden" name="gender" value="mr" />
+											<ul class="options">
+												<li value_str="mr">Mr.</li>
+												<li value_str="mrs">Mrs.</li>
+											</ul>
+										</div>
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											First name:
+										</label>
+										<input type="text" class="text" name="first_name" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Last name:
+										</label>
+										<input type="text" class="text" name="last_name" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Address Line 1:
+										</label>
+										<input type="text" class="text" name="address_1" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											Address Line 2:
+										</label>
+										<input type="text" class="text" name="address_2" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Country:
+										</label>
+										<div class="combobox country">
+											<div class="value">Israel</div>
+											<input type="hidden" name="gender" value="mr" />
+											<ul class="options">
+												<li value_str="1">France</li>
+												<li value_str="2">Germany</li>
+												<li value_str="3">Israel</li>
+											</ul>
+										</div>
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											City:
+										</label>
+										<input type="text" class="text" placeholder="Enter your city" name="city" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											State/Province:
+										</label>
+										<input type="text" class="text" placeholder="Select State" name="state" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Zip/ Postal Code:
+										</label>
+										<input type="text" class="text" name="zipcode" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Phone Number:
+										</label>
+										<input type="text" class="text" placeholder="10 digits only, no dashes" name="phone" />
+									</div>
+								</div>
+								<div class="col col2">
+									<div class="title clearfix">
+										Payment Methods
+										<img src="img/braintree.png" alt="Braintree" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											First name:
+										</label>
+										<input type="text" class="text" name="card_first_name" />
+									</div>
+									<div class="formfield clearfix">
+										<label>
+											<span class="req color">*</span>
+											Last name:
+										</label>
+										<input type="text" class="text" name="card_last_name" />
+									</div>
+									<div class="formfield clearfix card-number">
+										<label>
+											<span class="req color">*</span>
+											Card number:
+										</label>
+										<input type="text" class="text" name="card_number_1" />
+										<input type="text" class="text" name="card_number_2" />
+										<input type="text" class="text" name="card_number_3" />
+										<input type="text" class="text last" name="card_number_4" />
+										
+										<div class="note color">(the 16 digits on the front of the card)</div>
+										<div class="card-pics">
+											<img src="img/cards.png" alt="Cards" />
+										</div>
+									</div>
+									<div class="formfield cvc">
+										<label>
+											<span class="req color">*</span>
+											CVC or CVS:
+										</label>
+										<input type="text" class="text" name="card_cvc" />
+										<img src="img/icon-card.png" alt="Card" />
+										<div class="note color">
+											(Last 3 digits on back of card.<br/>Amex: 4 digits code on front)
+										</div>
+									</div>
+									<div class="formfield">
+										<label>
+											<span class="req color">*</span>
+											Expiration Date:
+										</label>
+										<div class="combobox date">
+											<div class="value">MM</div>
+											<input type="hidden" name="month" value="" />
+											<ul class="options">
+												<li value_str="1">01</li>
+												<li value_str="2">02</li>
+												<li value_str="3">03</li>
+												<li value_str="4">04</li>
+												<li value_str="5">05</li>
+												<li value_str="6">06</li>
+												<li value_str="7">07</li>
+												<li value_str="8">08</li>
+												<li value_str="9">09</li>
+												<li value_str="10">10</li>
+												<li value_str="11">11</li>
+												<li value_str="12">12</li>
+											</ul>
+										</div>
+										<div class="combobox date">
+											<div class="value">YY</div>
+											<input type="hidden" name="year" value="" />
+											<ul class="options">
+												<li value_str="2013">13</li>
+												<li value_str="2014">14</li>
+												<li value_str="2015">15</li>
+												<li value_str="2016">16</li>
+												<li value_str="2017">17</li>
+												<li value_str="2018">18</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="submit-row">
+									<button>PURCHASE</button>
+									<a href="#">Go back</a>
+								</div>
+							</form>
+						</div>
+					</div>
+					
+				</section>
+						
+			</section>
+			
+			<section id="top-bar" class="keep-down clearfix">
+				<div class="user-info">
+					<div class="content1">
+						<h2>
+							<a href="#">LIMOR GOLDHABER</a>
+						</h2>
+					</div>
+					<div class="content2">
+						<address>Tel-Aviv, Israel</address>
+					</div>
+					<span class="decorator"></span>
+				</div>
+				<nav>
+					<a href="#">
+						<span class="content">
+							<span class="text">Explore</span>
+						</span>
+						<span class="decorator"></span>
+					</a>
+					<a href="#">
+						<span class="content">
+							<span class="text">My Taste</span>
+						</span>
+						<span class="decorator"></span>
+					</a>
+					<a href="#" class="different">
+						<span class="content">
+							<span class="text">New</span>
+						</span>
+					</a>
+				</nav>
+			</section>
+			
+		</section>
+		
+		<footer id="footer" class="clearfix shadow">
+			<div class="copyright">&copy;dezquare 2012-2013</div>
+			<nav class="links">
+				<a href="#">About</a>
+				<span>|</span>
+				<a href="#">Privacy Policy</a>
+				<span>|</span>
+				<a href="#">Terms of Use</a>
+				<span>|</span>
+				<a href="#">Blog</a>
+				<span>|</span>
+				<a href="#">Facebook</a>
+				<span>|</span>
+				<a href="#">Twitter</a>
+			</nav>
+		</footer>
+		
+	</section>
+</body>
+</html>
