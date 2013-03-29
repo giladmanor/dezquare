@@ -21,9 +21,18 @@ $(document).ready(function(){
 	$("#designer-selector").each(function(){
 		var ds = $(this);
 		var overlay = $("#overlay");
-		var fullBrief = $("#full-brief")
+		var fullBrief = $("#full-brief");
+		var a = ds.find(".action");
+		if (navigator.userAgent.indexOf("mobile") == -1 && navigator.userAgent.toLowerCase().indexOf("ipad") == -1)
+		{
+			a.addClass("has-hover");
+		}
+		else
+		{
+			a.find(".x").remove();
+		}
 		
-		ds.find(".action").click(function(e){
+		a.click(function(e){
 			e.preventDefault();
 			
 			if ($(this).hasClass("active"))

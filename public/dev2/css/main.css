@@ -25,7 +25,7 @@ h2 {
 	position: relative;
 	width: 100%;
 	overflow: hidden;
-	min-height: 700px;
+	min-height: 665px;
 	min-width: 1012px;
 }
 #page.profile { min-height: 630px; }
@@ -49,6 +49,17 @@ h2 {
 	right: 0px;
 	top: 0px;
 	z-index: 10;
+}
+#header .links {
+	position: absolute;
+	right: 150px;
+	top: 15px;
+}
+#header .links a {
+	color: #fff22d;
+	font-size: 20px;
+	font-family: 'Roboto';
+	font-weight: 300;
 }
 #footer {
 	background: #dadada;
@@ -491,13 +502,15 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 /* End Game Persona Results */
 
 /* New Project */
+#designer-selector  { margin-top: 40px; }
+#designer-selector div.title-2r { margin-bottom: 10px; }
 .matched-designers {
 	margin: 0px auto;
 	width: 628px;
 }
 .matched-designers .designer {
 	border: 1px solid #9e9e9e;
-	margin-bottom: 12px;
+	margin-bottom: 10px;
 }
 .matched-designers .action {
 	border-right: 1px solid #9e9e9e;
@@ -523,15 +536,17 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 .matched-designers .action .x { background: #ff7040; }
 .matched-designers .action .x img,
 .matched-designers .action .v img { vertical-align: middle; }
-.matched-designers .action:hover .default,
+
+.matched-designers .action.has-hover:hover .default,
 .matched-designers .action.active .default,
-.matched-designers .action.active:hover .v { display: none; }
-.matched-designers .action:hover .v,
+.matched-designers .action.has-hover.active:hover .v { display: none; }
+
+.matched-designers .action.has-hover:hover .v,
 .matched-designers .action.active .v { display: block; }
-.matched-designers .action.active:hover .x { display: block; }
+.matched-designers .action.has-hover.active:hover .x { display: block; }
+
 .matched-designers .details {
-	float: right;
-	width: 457px;
+	margin-left: 168px;
 }
 .matched-designers .row1 {
 	border-bottom: 1px solid #999;
@@ -580,7 +595,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	font-size: 12px;
 	line-height: 17px;
 }
-.matched-designers .row2 { padding: 5px 11px; }
+.matched-designers .row2 { padding: 5px 10px 0px; }
 .matched-designers .thumbs { float: left; }
 .matched-designers .thumbs .image {
 	border: 1px solid #d7d7d7;
@@ -621,12 +636,13 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 }
 .matched-designers a.button.black:hover { background: #FF7040; }
 #designer-selector .next {
-	margin: 28px auto 10px;
+	margin: 10px auto 5px;
 	display: block;
 	width: 304px;
 	font-family: 'Novacento';
 	font-weight: 300;
 }
+#designer-selector .next:hover { background: #FF7040; }
 #designer-selector .or { text-align: center; }
 #designer-selector .or a {
 	font-family: 'Novacento';
@@ -690,7 +706,10 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	font-size: 16px;
 	font-weight: 100;
 }
-#full-brief .profile-config li { margin-bottom: 10px; }
+#full-brief .profile-config li { 
+	margin-bottom: 10px;
+	white-space: nowrap; 
+}
 #full-brief .profile-config li.gap { margin-bottom: 50px; }
 #full-brief .profile-config img {
 	vertical-align: -4px;
@@ -776,7 +795,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 }
 #full-brief .grid {
 	position: relative;
-	height: 410px;
+	height: 400px;
 	width: 100%;
 }
 #full-brief #design-gallery { border: 0px none; }
@@ -835,11 +854,13 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	width: 130px;
 }
 
+#interview-payment { margin-top: 40px; }
+#interview-payment div.title-2r { margin-bottom: 10px; }
 #interview-payment-content {
 	margin: 0px auto;
 	width: 800px
 }
-#interview-banner { margin-bottom: 32px; }
+#interview-banner { margin-bottom: 17px; }
 #interview-banner .close {
 	float: left;
 	cursor: pointer;
@@ -893,7 +914,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 
 #interview-payment-content .form {
 	border-top: 1px solid #bdbbbc;
-	padding-top: 20px;
+	padding-top: 10px;
 }
 .form .col {
 	float: left;
@@ -912,11 +933,12 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	margin-bottom: 8px;
 }
 .form .title img { float: right; }
-.form .formfield { margin-bottom: 15px; }
+.form .formfield { margin-bottom: 12px; }
 .form label {
 	float: left;
 	padding-left: 10px;
 	position: relative;
+	font-weight: 100;
 	margin: 0px;
 	font-size: 18px;
 	line-height: 24px;
@@ -972,7 +994,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 }
 .form .submit-row {
 	clear: both;
-	padding-top: 25px;
+	padding-top: 10px;
 	text-align: center;
 }
 .form .submit-row button {
@@ -1006,6 +1028,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	background: url(../img/combobox-arrow.png) right center no-repeat;
 	cursor: pointer; 
 	line-height: 22px;
+	font-weight: 100;
 	font-family: 'Roboto';
 	padding-left: 7px;
 }
@@ -1165,6 +1188,164 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	position: absolute;
 	top: 0px;
 	width: 100%;
+}
+
+#profile-analytics {
+	position: absolute;
+	left: 20px;
+	top: 20%;
+	right: 22%;
+	bottom: 10%;
+}
+#profile-analytics .title {
+	font-size: 26px;
+	font-family: 'Novacento';
+	font-weight: 200;
+	white-space: nowrap;
+	margin-bottom: 15px;
+}
+
+#analytics-matches {
+	position: absolute;
+	left: -20px;
+	top: 0;
+	width: 28%;
+	height: 45%;
+}
+#analytics-matches .title { padding-left: 20px; }
+#analytics-matches .match {
+	padding-bottom: 10px;
+	padding-left: 20px;
+	border-bottom: 1px solid #c3c2c3;
+	margin-bottom: 10px;
+	position: relative;
+}
+#analytics-matches .match.last {
+	padding-bottom: 0px;
+	border-bottom: 0px none;
+	margin-bottom: 0px;
+}
+#analytics-matches .match .avatar {
+	border: 1px solid #c7c7c7;
+	float: left;
+	width: 62px;
+}
+#analytics-matches .match .avatar img {
+	width: 100%;
+	display: block;
+}
+#analytics-matches .match .personal-info { margin-left: 70px; }
+#analytics-matches .match ul {
+	list-style-type: none;
+	padding: 0px;
+	font-size: 12px;
+	line-height: 16px;
+	font-family: 'Roboto';
+	font-weight: 100;
+	margin: 0px;
+}
+#analytics-matches .button {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	font-family: 'Novacento';
+	font-weight: 300;
+	color: #fff;
+	background: #231F20;
+	font-size: 12px;
+	line-height: 20px;
+	padding: 0px 10px;
+}
+#analytics-matches .button:hover { background: #ff7040; }
+#analytics-matches .name {
+	font-family: 'Novacento';
+	font-weight: 300;
+	line-height: 12px;
+	margin-bottom: 5px;
+	font-weight: 500;
+	font-size: 14px;
+}
+
+#analytics-likes {
+	top: 57%;
+	left: 0px;
+	position: absolute;
+	height: 45%;
+	width: 28%;
+}
+#analytics-likes .images {
+	float: left;
+	position: relative;
+}
+#analytics-likes .images a.image {
+	float: left;
+	margin-right: 1px;
+	margin-bottom: 1px;
+	max-width: 32%;
+	overflow: hidden;
+}
+#analytics-likes .images a.new-row { clear: both; }
+#analytics-likes .images a img {
+	display: block;
+	max-width: 100%;
+}
+#analytics-likes .read-more {
+	color: #231f20;
+	border-bottom: 1px solid #aaa; 
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: 17px;
+	position: absolute;
+	right: 10px;
+	bottom: -28px;
+}
+
+#analytics-style {
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	width: 67%;
+	height: 45%;
+}
+#analytics-style #not-enough-info { text-align: center; }
+#analytics-style #not-enough-info .text {
+	text-align: center;
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: 24px;
+	margin-bottom: 10px;
+}
+#analytics-style #not-enough-info .button:hover { background: #ff7040; }
+
+#analytics-colors {
+	position: absolute;
+	right: 0px;
+	top: 57%;
+	width: 67%;
+	height: 45%;
+}
+#analytics-colors .colors {
+	position: absolute;
+	left: 0px;
+	top: 18%;
+	bottom: 0px;
+	right: 0px;
+	z-index: 2;
+}
+#analytics-colors .colors .color {
+	position: absolute;
+	left: 0px;
+	bottom: 0px;
+	width: 10%;
+}
+#analytics-colors .line {
+	background: #fff;
+	position: absolute;
+	height: 2px;
+	left: 0px;
+	right: 0px;
+	top: 90%;
+	z-index: 3;
 }
 
 #taste-config {

@@ -1,4 +1,4 @@
-@media (min-width: 2000px) {
+@media (min-width: 2000px), (min-height: 1000px) {
 	#designs-bar .title { font-size: 28px; }
 	#designs-bar .add-new { font-size: 14px; }
 	#designs-bar .design { font-size: 14px; }
@@ -52,10 +52,21 @@
 		width: 300px;
 	}
 	
-	#designer-selector { margin-top: 220px; }
+	#designer-selector { margin-top: 80px; }
+	#designer-selector div.title-2r { margin-bottom: 20px; }
+	.matched-designers .designer { margin-bottom: 12px; }
+	#designer-selector .next { margin: 28px auto 10px; }
+	
+	#interview-payment div.title-2r { margin-bottom: 20px; }
+	.form .submit-row { padding-top: 25px; }
+	#interview-banner { margin-bottom: 32px; }
+	.form .formfield { margin-bottom: 15px; }
+	#interview-payment-content .form { padding-top: 20px; }
 }
-
+/*
 @media (max-height: 999px) and (max-width: 1440px) {
+	*/
+@media (max-height: 949px) {
 	#persona-steps.for-step-1.for-project-1 { top: 260px; }
 	#taste-selector.project-1 div.title-2r { margin-bottom: 30px; }
 	#taste-selector.project-1 article .title { line-height: 44px; }
@@ -77,43 +88,46 @@
 	
 	#persona-steps.persona3.for-project-3 { top: 190px; }
 	
-	#designer-selector { margin-top: 15px; }
-	#designer-selector div.title-2r { margin-bottom: 10px; }
+	#designer-selector { margin-top: 20px; }
+	#designer-selector div.title-2r { margin-bottom: 5px; }
+	.matched-designers { width: 570px; }
 	.matched-designers .action {
-		height: 135px;
-		width: 150px;
+		height: 130px;
+		width: 130px;
 	}
 	.matched-designers .action .default {
-		font-size: 32px;
-		line-height: 140px;
+		font-size: 28px;
+		line-height: 135px;
 	}
+	.matched-designers .details { margin-left: 130px; }
 	.matched-designers .action .x,
 	.matched-designers .action .v { 
-		line-height: 135px;
-		height: 135px; 
+		line-height: 130px;
+		height: 130px; 
 	}
 	.matched-designers .head .name {
 		font-size: 18px;
 		line-height: 18px;
 		margin-bottom: 0px;
 	}
-	.matched-designers .details { width: 475px; }
-	.matched-designers .designer { margin-bottom: 5px; }
+	.matched-designers .designer { margin-bottom: 8px; }
 	.matched-designers .personal-info { margin-left: 72px; }
 	.matched-designers .row1 { padding: 8px 10px 5px; }
 	.matched-designers .extended {
 		font-size: 11px;
 		line-height: 15px;
 	} 
-	.matched-designers .row2 { padding: 3px 10px; }
+	.matched-designers .row2 { padding: 3px 10px 0px; }
 	.matched-designers .avatar img { max-height: 60px; }
 	.matched-designers .prefered-colors .colors { margin-bottom: 1px; }
 	.matched-designers .prefered-colors .color { height: 5px; }
 	#designer-selector .next {
 		margin: 10px auto 5px;
-		font-size: 22px;
-		line-height: 40px;
+		font-size: 20px;
+		line-height: 36px;
 	}
+	#designer-selector .or a { font-size: 16px; }
+	.matched-designers .thumbs img { height: 42px; }
 	
 	#full-brief {
 		margin-left: -550px;
@@ -134,6 +148,7 @@
 		font-size: 32px;
 		margin-bottom: 15px;
 	}
+	#full-brief .profile-config { margin-bottom: 100px; }
 	#full-brief .profile-config li {
 		font-size: 14px; 
 		margin-bottom: 5px; 
@@ -149,11 +164,27 @@
 	#full-brief .basic-info .button { font-size: 16px; }
 	#full-brief .user-stats { padding: 0px 10px 0px 0px; }
 	
+	#interview-payment { margin-top: 25px; }
 	#interview-payment div.title-2r { margin-bottom: 10px; }
-	#interview-banner { margin-bottom: 15px; }
+	#interview-banner { margin-bottom: 10px; }
 	#interview-payment-content .form { padding-top: 10px; }
-	.form .formfield { margin-bottom: 10px; }
+	#interview-banner .info,
+	#interview-banner .price { line-height: 60px; }
+ 	#interview-banner .alt { line-height: 58px; }	
+	#interview-banner .images { padding-top: 6px; }	 
+	.form .formfield { margin-bottom: 9px; }
 	.form .submit-row { padding-top: 0px; }
+	.form label { 
+		font-size: 16px;
+		line-height: 22px; 
+	}
+	.form .text,
+	.combobox .value {
+		height: 20px;
+		line-height: 20px;
+		font-size: 14px;
+	}
+	.combobox .options { top: 20px; }
 }
 
 @media (max-height: 899px), (max-width: 1679px) {
@@ -309,7 +340,7 @@
 
 /* End IPAD Portrait only */
 /* IPAD Landscape only */
-@media (min-width: 800px) and (max-width: 1000px) and (max-height: 1000px) {
+@media (min-width: 800px) and (max-width: 1000px) and (max-height: 1000px), (max-height: 750px) {
 	#taste-selector div.title-2r { margin-bottom: 40px; }
 	div.title-2r { 
 		font-size: 32px;
@@ -342,7 +373,8 @@
 	}
 	
 	#persona-steps.for-step-1.for-project-1 { top: 190px; }
-	
+	.matched-designers { width: 540px; }  
+	.matched-designers .avatar img { max-height: 50px; }
 	#design-selector.project-2 { top: 20px; }
 	#design-selector-description.for-project-2 { top: 120px; }
 	#persona-steps.persona2.for-project-2 { top: 270px; }
@@ -350,50 +382,78 @@
 	#persona-steps.persona3.for-project-3 { top: 150px; }
 	#designer-selector { 
 		padding-left: 220px;
-		margin-top: 0px; 
+		margin-top: 3px; 
 	}
 	#designer-selector div.title-2r { margin-bottom: 5px; }
+	#designer-selector div.title-2r div.r1 {
+		font-size: 30px;
+		line-height: 30px;
+	}
 	#designer-selector div.title-2r div.r2 {
 		font-size: 22px;
 		line-height: 28px;
 	}
 	.matched-designers .action {
-		height: 125px;
-		width: 140px;
+		height: 115px;
+		width: 120px;
 	}
-	.matched-designers .action .default { line-height: 130px; }
-	.matched-designers .action .x,
+	.matched-designers .action .default { line-height: 120px; }
+	.matched-designers .designer { margin-bottom: 4px; } 
 	.matched-designers .action .v { 
-		line-height: 125px;
-		height: 125px; 
+		line-height: 115px;
+		height: 115px; 
 	}
+	.matched-designers .row1 { padding: 5px 8px 5px; }
 	.matched-designers .head .name {
-		font-size: 18px;
-		line-height: 18px;
+		font-size: 15px;
+		line-height: 14px;
 		margin-bottom: 0px;
 	}
-	.matched-designers .details { width: 485px; } 
+	.matched-designers .ranking { margin-top: 0px; }
+	.matched-designers .details { margin-left: 120px; } 
 	.matched-designers .thumbs .image { border: 0px none; }
 	.matched-designers .thumbs img { height: 40px; }
+	.matched-designers .extended { line-height: 14px; }
+	.matched-designers .personal-info { margin-left: 62px; }
 	.matched-designers .prefered-colors .title {
 		font-size: 10px;
 		line-height: 10px;
 	}
 	#designer-selector .next { 
-		margin: 10px auto 5px;
-		line-height: 34px;
-		font-size: 18px;  
+		margin: 5px auto 3px;
+		line-height: 30px;
+		font-size: 16px;  
 	}
-	#designer-selector .or a { font-size: 14px; }
+	#designer-selector .or a { font-size: 12px; }
 	
 	#full-brief .profile-config li.gap { margin-bottom: 20px; }
 	#full-brief {
-		margin-left: -450px;
-		margin-top: -270px;
+		margin-left: -440px;
+		margin-top: -250px;
 		width: 920px;
 	}
-	#full-brief .profile-config { margin-bottom: 30px; }
-	#full-brief .grid { height: 310px; }
+	#full-brief .basic-info { padding-right: 20px; }
+	#full-brief .profile-config { margin-bottom: 20px; }
+	#full-brief .grid { height: 305px; }
+	#full-brief .taste-and-style {
+		margin-left: 200px;
+		padding-left: 20px;
+	}
+	#full-brief .taste-and-style .big-title {
+		font-size: 40px;
+		line-height: 36px;
+		margin-bottom: 10px;
+	}
+	#full-brief .user-stats ul {
+		font-size: 15px;
+		line-height: 24px;
+	}
+	#full-brief .user-stats .count {
+		font-size: 18px;
+		line-height: 24px;
+		width: 50px;
+	}
+	#full-brief .taste-and-style .taste-top { margin-bottom: 5px; }
 	#full-brief #design-gallery .image-item.item-1 {
 		left: 0px;
 		top: 0px;
@@ -442,24 +502,38 @@
 		height: 100px;
 		width: 100px;
 	}
-	#overlay { position: fixed; }
+	#overlay { 
+		position: fixed;
+		right: auto;
+		bottom: auto;
+		height: 2000px;
+		width: 2000px; 
+	}
 	
-	#interview-payment { padding-left: 260px; }
+	#interview-payment { 
+		padding-left: 260px;
+		margin-top: 0px; 
+	}
 	#interview-payment div.title-2r div.r2 { 
 		font-size: 22px;
 		line-height: 26px; 
 	}
 	#interview-payment-content { width: 700px; }
-	#interview-banner .info { font-size: 18px; }
+	#interview-banner .info { font-size: 16px; }
 	#interview-banner { margin-bottom: 7px; }
 	#interview-banner .price,
-	#interview-banner .info,
-	#interview-banner .alt { line-height: 56px; }
-	#interview-banner .close { line-height: 58px; }
+	#interview-banner .info { line-height: 44px; }
+	#interview-banner .alt { line-height: 42px; }
+	#interview-banner .close { line-height: 46px; }
 	#interview-banner .images { padding: 4px 0px 0px 5px; }
+	#interview-banner .image img { height: 35px; }
 	#interview-payment-content .form { position: relative; }
+	.form .title {
+		font-size: 16px;
+		line-height: 28px;
+	}
 	.form .col { width: 350px; }
-	.form .formfield { margin-bottom: 8px; }
+	.form .formfield { margin-bottom: 6px; }
 	.form .col2 { width: 340px; } 
 	.form input.text { float: left; }
 	.form label {
@@ -468,10 +542,30 @@
 	}
 	.form .col2 label { width: 105px; }
 	.form .note { margin-left: 120px; }
-	#interview-payment-content .form .submit-row {
-		position: absolute;
-		right: 30px;
-		bottom: 10px;
+	.form .submit-row button {
+		line-height: 30px;
+		font-size: 16px;
+		height: 30px;
+	}
+	
+	#profile-analytics .title {
+		font-size: 16px;
+		margin-bottom: 5px;
+	}
+	#analytics-matches { width: 40%; }
+	#analytics-likes { top: 60%; }
+	#analytics-style {
+		left: 42%;
+		width: 53%;
+	}
+	#analytics-colors {
+		top: 60%;
+		left: 42%;
+		width: 53%;
+	}
+	#analytics-colors .colors {
+		top: 12%;
+		bottom: 5%;
 	}
 }
 /* End IPAD Landscape only */

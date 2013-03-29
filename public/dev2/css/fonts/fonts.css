@@ -32,6 +32,16 @@
 }
 @font-face {
 	font-family: 'Novacento';
+    src: url('novecentowide-book-webfont.eot');
+    src: url('novecentowide-book-webfont.eot?#iefix') format('embedded-opentype'),
+         url('novecentowide-book-webfont.woff') format('woff'),
+         url('novecentowide-book-webfont.ttf') format('truetype'),
+         url('novecentowide-book-webfont.svg#Novacento') format('svg');
+    font-weight: 200;
+    font-style: normal;
+}
+@font-face {
+	font-family: 'Novacento';
     src: url('novecentowide-medium-webfont.eot');
     src: url('novecentowide-medium-webfont.eot?#iefix') format('embedded-opentype'),
          url('novecentowide-medium-webfont.woff') format('woff'),

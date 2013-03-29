@@ -72,6 +72,10 @@ $(document).ready(function(){
 			l.slideUp(300);
 		});
 		
+		c.mouseleave(function(){
+			l.slideUp(300);
+		});
+		
 		l.children("li").click(function(){
 			var key = $(this).attr("value_str");
 			var value = $(this).text();
