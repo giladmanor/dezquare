@@ -6,7 +6,7 @@
         var self;
         var isAjax = false;
         
-        var s = 150;
+        var s = 130;
 		var m = 5;
 		var imageGridHolder, overlay;
 		var childrenSelector = ".image-item";
@@ -170,6 +170,11 @@
 			self = this;
 			
 			InitializeObjects();
+			
+			if (!profileContent.is(":visible"))
+			{
+				return false;
+			}
 			
 			var mod = imageGridHolder.height() % (s+m);
 			var rc = Math.floor(imageGridHolder.height() / (s+m));

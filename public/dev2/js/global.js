@@ -6,7 +6,6 @@ $(document).ready(function(){
 	sidebar = $("#sidebar");
 	sidebarScreens = sidebar.find(".sidebar-alt-screen");
 	fullScreenImages = $("img.full-screen");
-	
 	$(".formfield").each(function(){
 		var f= $(this);
 		var l = f.find("label.abs");
@@ -66,6 +65,8 @@ $(document).ready(function(){
 		v.click(function(e){
 			l.slideDown(300);
 			e.stopPropagation();
+		}).hover(function(){
+			l.slideDown(300);
 		});
 		
 		$(document).click(function(){
@@ -142,4 +143,34 @@ function IsValidEmail(email)
 	var regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
 	
 	return regex.test(email);
+}
+
+function GetScrollBarWidth() 
+{
+	var inner = document.createElement('p');
+	inner.style.width = "100%";
+	inner.style.height = "200px";
+	
+	var outer = document.createElement('div');
+	outer.style.position = "absolute";
+	outer.style.top = "0px";
+	outer.style.left = "0px";
+	outer.style.visibility = "hidden";
+	outer.style.width = "200px";
+	outer.style.height = "150px";
+	outer.style.overflow = "hidden";
+	outer.appendChild (inner);
+	
+	document.body.appendChild(outer);
+	var w1 = inner.offsetWidth;
+	outer.style.overflow = 'scroll';
+	var w2 = inner.offsetWidth;
+	if (w1 == w2)
+	{
+		w2 = outer.clientWidth;
+	} 
+	
+	document.body.removeChild(outer);
+	
+	return (w1 - w2);
 }

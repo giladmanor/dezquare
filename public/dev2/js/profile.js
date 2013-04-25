@@ -1,4 +1,4 @@
-var profileContent, restoreArrow;
+var profileContent, profilePhotoBar, profileConfig, restoreArrow, userChatFeed;
 var isScrolling = false;
 var $page, profileWidgets;
 
@@ -7,9 +7,12 @@ $(document).ready(function(){
 	$page.scrollLeft(0);
 	profileWidgets = $page.find("#profile-widgets");
 	profileContent = $("#profile-content");
+	profilePhotoBar = profileContent.find("#profile-photo-bar");
+	profileConfig = profileContent.find("#profile-config");
 	restoreArrow = $("#restore-arrow");
 	var ml = 79;
 	var mpml = 95;
+	var scrollBarWidth = GetScrollBarWidth();
 	
 	if (typeof ImageMasonry != "undefined")
 	{
@@ -32,7 +35,22 @@ $(document).ready(function(){
 	{
 		$("#page.profile-scroll").scroll(function(){
 			profileWidgets.css({ "left": $page.scrollLeft() });
+			
 			restoreArrow.css("display", profileContent.position().left < 0 ? 'block' : 'none');
+			
+			if (profileContent.position().left - profilePhotoBar.width() < 0)
+			{
+				profilePhotoBar.height(profilePhotoBar.height());
+				profileContent.addClass("hide-masonry");
+				profileConfig.css("bottom", 20 + scrollBarWidth);
+			}
+			else
+			{
+				profilePhotoBar.removeAttr("style");
+				profileContent.removeClass("hide-masonry");
+				profileConfig.removeAttr("style");
+			}
+			
 			if (typeof ImageMasonry != "undefined")
 			{
 				window.ImageMasonryLoadNewItems(Math.floor($(this).scrollLeft() / 1800));
@@ -40,8 +58,25 @@ $(document).ready(function(){
 		});
 		
 		var myimage = document.getElementById("page");
+		userChatFeed = document.getElementById("user-chat-feed");
+		var selectProjectCombo = document.getElementById("select-project-combo");
 		if (myimage.addEventListener) 
 		{
+			if (userChatFeed != null)
+			{
+				userChatFeed.addEventListener("mousewheel", DenyMouseWheelHandler, false);
+				userChatFeed.addEventListener("wheel", DenyMouseWheelHandler, false);
+				
+				var $userChatFeed = $(userChatFeed);
+				$(userChatFeed).scrollTop($userChatFeed.children("#user-chat-feed-inside").height() - $userChatFeed.height());
+			}
+			
+			if (selectProjectCombo != null)
+			{
+				selectProjectCombo.addEventListener("mousewheel", DenyMouseWheelHandler, false);
+				selectProjectCombo.addEventListener("wheel", DenyMouseWheelHandler, false);
+			}
+			
 			// IE9, Chrome, Safari, Opera
 			myimage.addEventListener("mousewheel", MouseWheelHandler, false);
 			/*
@@ -79,6 +114,7 @@ $(document).ready(function(){
     	newLeft = newLeft > maxLeft ? maxLeft : newLeft;
     	if (newLeft < 0)
     	{
+    		profileContent.addClass("hide-masonry");
     		if (profileContent.hasClass("public-profile"))
     		{
     			window.ImageMasonryLoadNewItems(Math.floor(newLeft / 700));
@@ -91,6 +127,7 @@ $(document).ready(function(){
     	}
     	else
     	{
+    		profileContent.removeClass("hide-masonry");
     		restoreArrow.hide();
     	}
     	
@@ -134,6 +171,26 @@ $(document).ready(function(){
     		$(this).addClass("active");
     	}
     });
+    
+    $("#designer-list .show-full-brief").click(function(){
+		var fb = $("#full-brief");
+		fb.show();
+		fb.siblings("#overlay").show();
+	});
+	
+	$("#full-brief .close").click(function(){
+		var p = $(this).parent();
+		p.hide();
+		p.siblings("#overlay").hide();
+	});
+});
+
+$(window).load(function(){
+	if (userChatFeed != null)
+	{
+		var $userChatFeed = $(userChatFeed);
+		$(userChatFeed).scrollTop($userChatFeed.children("#user-chat-feed-inside").height() - $userChatFeed.height());
+	}
 });
 
 function MouseWheelHandlerFF(e) 
@@ -150,7 +207,6 @@ function MouseWheelHandlerFF(e)
 
 	return false;
 }
-
 function MouseWheelHandler(e) 
 {
 	if (e.wheelDeltaY != 0 && e.wheelDeltaX == 0)
@@ -159,4 +215,8 @@ function MouseWheelHandler(e)
 	}
 
 	return false;
+}
+function DenyMouseWheelHandler(e)
+{
+	e.stopPropagation();
 }

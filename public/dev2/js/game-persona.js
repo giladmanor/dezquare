@@ -59,6 +59,18 @@ $(document).ready(function(){
 		});
 	});
 	
+	$("#matches-found .matches .image").click(function(){
+		var fb = $("#full-brief");
+		fb.show();
+		fb.siblings("#overlay").show();
+	});
+	
+	$("#full-brief .close").click(function(){
+		var p = $(this).parent();
+		p.hide();
+		p.siblings("#overlay").hide();
+	});
+	
 	$("#interview-banner").each(function(){
 		var ib = $(this);
 		$(this).children(".close").click(function(){
