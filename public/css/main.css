@@ -1,8 +1,9 @@
 ﻿@import url('fonts/fonts.css');
 html { height: 100%; }
 body {
-	background: url(/img/pattern.jpg) left top repeat;
-	color: #272425;
+	/*background: url(/img/pattern.jpg) left top repeat;
+	color: #272425; */
+	background-color: #F2F2F2 /*#E8E1E4*/;
 	font-family: 'PTSansRegular';
 	font-size: 12px;
 	line-height: 1.6;
@@ -37,14 +38,15 @@ img { vertical-align: middle; }
 a img { border: 0px none; }
 div#page { min-height: 100%; }
 div#header {
-	background: #fff22d;
+	/*background: #fff22d;*/
+	background: #FFFFFF;
 	border-bottom: 1px solid #bdbdbd;
 	margin-bottom: 25px;
 }
 div#header div.page-content { height: 60px; }
 div#header a.header-button {
 	background: #272425;
-	color: #fff22d;
+	color: #FFFFFF; /*#fff22d;*/
 	float: right;
 	font-family: Verdana;
 	font-size: 14px;
@@ -56,7 +58,7 @@ div#header div#profile-menu {
 	cursor: pointer;
 	position: relative;
 	background: #272425;
-	color: #fff22d;
+	color: #FFFFFF; /*#fff22d; */
 	float: right;
 	font-family: Verdana;
 	font-size: 14px;
@@ -67,7 +69,7 @@ div#header div#profile-menu {
 	z-index: 5;
 }
 div#header div#profile-menu a.base {
-	color: #fff22d;
+	color: #FFFFFF; /*#fff22d;*/
 	display: block;
 	padding: 20px 0px 10px;
 	background: url(/img/bkg-profile-menu.png) center center no-repeat;
@@ -91,9 +93,9 @@ div#header div#profile-menu div.expanded {
 div#header div#profile-menu:hover div.expanded { display: block; }
 div#header div#profile-menu div.expanded a {
 	background: #272425;
-	border-bottom: 2px solid #ede12c;
+	border-bottom: 2px solid #FFFFFF; /*#ede12c;*/
 	box-shadow: 0px 1px 3px #333;
-	color: #fff22d;
+	color: #FFFFFF; /*#fff22d;*/
 	display: block;
 	padding: 10px 0px;
 	text-align: center;
@@ -106,7 +108,7 @@ div#header.black {
 	border: 0px none;
 }
 div#header.black a.header-button {
-	background: #fff22d;
+	background: #FFFFFF; /*#fff22d;*/
 	color: #0e0f0e;
 }
 
@@ -218,7 +220,7 @@ div#homepage-banner span#button {
 }
 div#homepage-banner span#button span.left {
 	float: left;
-	font-size: 46px;
+	font-size: 40px;
 	height: 170px;
 	line-height: 170px;
 	text-align: center;
@@ -2450,7 +2452,7 @@ div#results-share div.share-area div.description {
 	line-height: 16px;
 	text-align: center;
 }
-div#results-share div.share-area div.description span { color: #fff22d; }
+div#results-share div.share-area div.description span { color: #FFFFFF; /*#fff22d;*/ }
 
 div#results-share a.skip {
 	float: right;
@@ -2946,7 +2948,7 @@ div#public-holder div.box div.description {
 	line-height: 27px;
 	margin-bottom: 20px;
 }
-div#public-holder div.box div.description span { color: #fff22d; }
+div#public-holder div.box div.description span { color: #FFFFFF; /*#fff22d;*/ }
 div#public-holder div.box a.button {
 	background: #000;
 	color: #fff;
@@ -3026,7 +3028,7 @@ div#public-holder div.box-home div.description {
 	margin-bottom: 15px;
 }
 div#public-holder div.box-home a.button {
-	background: #fff22d;
+	background: #FFFFFF; /*#fff22d; */
 	color: #0e0f0e;
 	display: block;
 	font-family: 'QuickSandBold';
@@ -3037,7 +3039,7 @@ div#public-holder div.box-home a.button {
 }
 div#public-holder div.box-home a.button:hover {
 	background: #0e0f0e;
-	color: #fff22d;
+	color: #FFFFFF; /*#fff22d; */
 }
 
 body.responsive-layout div#page {

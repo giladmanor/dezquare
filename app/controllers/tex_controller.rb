@@ -43,6 +43,7 @@ class TexController < AdminController
     tdt = Tag.all.map{|t| {:n=>t.name,:c=>d_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)
     u_tagged = User.all.select{|u| u.shopper}.map{|u| u.game_image_rates.select{|gir| gir.value>0 && !gir.image.nil?}.map{|ir| ir.image.tags}}.flatten
     tut = Tag.all.map{|t| {:n=>t.name,:c=>u_tagged.count(t)}}.sort{|a,b| b[:c]<=>a[:c]}.take(10)
+    dez = GameImageRate.last.id
     
     res=["Images = #{Image.all.size}",
         "Shoppers = #{User.where(:shopper=>true).size}",
@@ -52,8 +53,9 @@ class TexController < AdminController
         "Top10 Designer tags= <p>#{tdt.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
         "Top10 User tags=<p>#{tut.map{|t| "#{t[:n]} ==> #{t[:c]}"}.join("<br/>")}</p>", 
         "<hr/>",
-        "the Game was played = #{Game.all.size} times",
-        "the Game was played = #{Game.all.select{|g| (Time.now - g.created_at)<2.days }.size} times the last 2 days"]
+        "The Game was played = #{Game.all.size} times",
+        "The Game was played = #{Game.all.select{|g| (Time.now - g.created_at)<2.days }.size} times the last 2 days",
+        "Designs displayed so far = #{dez}"]
     
     render :text=>res.join("<br/>")
     

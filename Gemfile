@@ -41,4 +41,5 @@ gem 'jquery-rails'
 gem 'acts_as_tree'
 gem 'rmagick'
 gem 'prizm'
+gem 'devise'
 #gem "rmagick", "~> 2.13.1"

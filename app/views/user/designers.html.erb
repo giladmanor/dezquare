@@ -23,7 +23,7 @@
 			@users.each{|u|
 				%>	
 				<tr>
-					<td><%= "#{u.name}"%></td>
+					<td><a href="/designer/profile/<%=u.url_identifier%>" target="_blank"><%= "#{u.name}"%></a></td>
 					<td><%= "#{u.l_name}"%></td>
 					<td><%= u.email%></td>
 					<td><%= u.dob%></td>
@@ -32,7 +32,7 @@
 					
 					<td><a href="/user/designer/<%=u.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
 					<td>
-						<a href="/user/delete/<%=u.id%>?view=designers"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+						<a href="/user/delete/<%=u.id%>?view=designers" onclick="return confirm('Are you sure you want to delete <%=u.name%>?')"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
 					</td>
 				</tr>
 				<%

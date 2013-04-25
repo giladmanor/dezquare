@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130321171235) do
+ActiveRecord::Schema.define(:version => 20130425173144) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -138,12 +138,13 @@ ActiveRecord::Schema.define(:version => 20130321171235) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "file_path"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
     t.text     "description"
     t.integer  "ord"
     t.text     "dominant_colors"
     t.text     "color_histogram"
+    t.boolean  "visible",         :default => true
   end
 
   add_index "images", ["user_id"], :name => "index_images_on_user_id"
@@ -257,19 +258,19 @@ ActiveRecord::Schema.define(:version => 20130321171235) do
     t.string   "email"
     t.string   "nick"
     t.string   "password"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
     t.date     "dob"
     t.string   "location"
     t.string   "portfolio_link"
-    t.boolean  "shopper",         :default => false
-    t.boolean  "designer",        :default => false
-    t.boolean  "pender",          :default => false
-    t.boolean  "available",       :default => false
+    t.boolean  "shopper",                :default => false
+    t.boolean  "designer",               :default => false
+    t.boolean  "pender",                 :default => false
+    t.boolean  "available",              :default => false
     t.text     "about"
-    t.boolean  "public_profile",  :default => false
-    t.boolean  "dez_profile",     :default => false
-    t.boolean  "suspend",         :default => false
+    t.boolean  "public_profile",         :default => false
+    t.boolean  "dez_profile",            :default => false
+    t.boolean  "suspend",                :default => false
     t.string   "avatar"
     t.string   "cover"
     t.string   "direct_link"
@@ -278,10 +279,31 @@ ActiveRecord::Schema.define(:version => 20130321171235) do
     t.boolean  "email_confirm"
     t.text     "dominant_colors"
     t.string   "url_identifier"
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
+    t.string   "authentication_token"
   end
 
+  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
+  add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email"
   add_index "users", ["ext_id"], :name => "index_users_on_ext_id"
   add_index "users", ["nick"], :name => "index_users_on_nick"
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["unlock_token"], :name => "index_users_on_unlock_token", :unique => true
 
 end

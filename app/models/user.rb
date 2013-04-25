@@ -1,5 +1,17 @@
 require 'digest'
 class User < ActiveRecord::Base
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable, :token_authenticatable, 
+         :confirmable, :recoverable, :rememberable, :trackable, :validatable, 
+         :lockable, :timeoutable
+         #:omniauthable
+
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :name, :l_name, :email, :password, :password_confirmation, :remember_me, :portfolio_link, :pender, :shopper, :designer,
+                  :dob, :location, :available, :about, :public_profile, :dez_profile, :suspend, :avatar, :cover, :direct_link, :education,
+                  :skills, :dominant_colors, :url_identifier
   serialize :dominant_colors, Array
   
   has_many :images, :order=>"ord"
@@ -22,18 +34,31 @@ class User < ActiveRecord::Base
   validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message=>"%{value} is an invalid email"
   #validates :password, :length=>{:in => 6..20}  
   
-  
-  def create_password(limit=7)
-    o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
-    self.password=(0..50).map{ o[rand(o.length)]}.take(limit).join;
+  def active_for_authentication? 
+    super && !pender? 
   end
   
-  def password=(red)
+  def after_sign_in_path_for(resource)
+    
+    #if @user.present? && @user.shopper? #&& params[:controller]=="site" && params[:action]=="index"
+    #  return 'site#dashboard'
+    #end
+    ##root_path    
+    #current_user_path
+    dashboard_site_path
+  end
+  
+  def create_Xpassword(limit=7)
+    o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
+    self.xpassword=(0..50).map{ o[rand(o.length)]}.take(limit).join;
+  end
+  
+  def xpassword=(red)
     black = Digest::MD5.hexdigest red
     write_attribute(:password, black)
   end
   
-  def password?(red)
+  def xpassword?(red)
     black = Digest::MD5.hexdigest red
     self.password == black
   end

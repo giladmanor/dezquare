@@ -110,9 +110,10 @@ class SiteController < ApplicationController
     
     
     if params[:old_password].present? && params[:new_password].present? && params[:repeat_new_password].present?
-      if params[:new_password]==params[:repeat_new_password]
+      if params[:new_password]==params[:repeat_new_password] && @user.valid_password?(params[:old_password])
         @user.password=params[:new_password]
-        logger.bebug "shopper_change_passwords"
+        pass_changed=1
+        logger.debug "shopper_change_passwords"
         UserMailer.shopper_change_password(@user).deliver
       else
         @error="PASSWORD"
@@ -126,6 +127,10 @@ class SiteController < ApplicationController
     
     
     if @error.nil?
+      if pass_changed
+        sign_in(current_user, :bypass => true)
+        flash[:notice] = 'Password updated.'
+      end
       UserMailer.shopper_change_email(@user).deliver if @send_email_change
       redirect_to :action=>:dashboard
       return
@@ -233,11 +238,12 @@ class SiteController < ApplicationController
   end
   
   def load_user
-    begin
-      @user=User.find(session[:user_id]) unless session[:user_id].nil?
-    rescue
-      session[:user_id] = nil
-    end
+    # begin
+      # @user=User.find(session[:user_id]) unless session[:user_id].nil?
+    # rescue
+      # session[:user_id] = nil
+    # end
+    @user = user_signed_in? ? current_user : nil   # ADJUSTED FOR DEVISE #
     logger.debug "loaded user: #{@user.full_name}" unless @user.nil?
     
     if !@user.nil? && @user.designer && params[:controller]=="site" && params[:action]=="index"

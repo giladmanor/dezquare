@@ -73,10 +73,10 @@ class UserController < AdminController
     user.update_attributes(attr.except(:id))
     
     unless generate_password.nil?
-      user.create_password(6) 
+    #  user.create_password(6) 
       user.pender=false
       user.designer=true 
-      user.email_confirm=true
+    #  user.email_confirm=true
       user.set_identifier
     else
       user.available=true
@@ -86,7 +86,7 @@ class UserController < AdminController
     msg_t, msg = say("","")
     if user.save
       msg_t, msg = say("info","#{user.name}'s Details Saved")
-      UserMailer.designer_welcome(user).deliver unless generate_password.nil?
+      UserMailer.designer_welcome(user).deliver #unless generate_password.nil?
     else
       msg_t, msg = say("error",user.errors.messages.values.join(', '))
     end
@@ -120,4 +120,7 @@ class UserController < AdminController
     render :text=>"Sent!"
   end
   
+  # def sign_out
+    # Devise::destroy_user_session
+  # end
 end

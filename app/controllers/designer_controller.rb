@@ -1,6 +1,7 @@
 class DesignerController < SiteController
   
-  before_filter :load_user, :except=>[:login, :register, :reset_password]
+  before_filter :authenticate_user!, :except=>[:profile, :enlarged_view]
+  #before_filter :load_user, :except=>[:login, :register, :reset_password]
   skip_before_filter :shopper_zone, :only => [:dashboard, :settings]
   
   DIR_PATH_REPOSITORY = "#{Rails.root}/public/repository/"
@@ -156,8 +157,13 @@ class DesignerController < SiteController
       @user.designer_categories << ucp
     }
     
-    if params[:old_password].present? && @user.password?(params[:old_password]) && params[:new_password].present? && params[:new_password]==params[:repeat_password]
-      @user.password=params[:new_password]
+    # if params[:old_password].present? && @user.password?(params[:old_password]) && params[:new_password].present? && params[:new_password]==params[:repeat_password]
+      # @user.password=params[:new_password]
+    # end
+    
+    if params[:old_password].present? && @user.valid_password?(params[:old_password]) && params[:new_password].present? && params[:new_password]==params[:repeat_password]
+       @user.password=params[:new_password]
+       pass_changed = 1
     end
         
     m=params[:month]
@@ -174,6 +180,10 @@ class DesignerController < SiteController
     
     @user.save
     UserMailer.shopper_change_email(@user).deliver if @send_email_change
+    if pass_changed
+      sign_in(current_user, :bypass => true)
+      flash[:notice] = 'Password updated.'
+    end
     redirect_to  :action => "profile"
   end
   

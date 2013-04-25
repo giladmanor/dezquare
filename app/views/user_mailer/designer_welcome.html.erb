@@ -1,5 +1,5 @@
 <%
-password = @user.create_password
+password = Devise.friendly_token.first(8)
 @user.password = password
 @user.save
 %>

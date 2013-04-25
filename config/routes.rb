@@ -1,4 +1,19 @@
 Dezquare::Application.routes.draw do
+  devise_for :users, :controllers => {:registrations => "registrations"}
+  # devise_for :users, :path => '', :path_names => {:sign_in => 'login', :sign_out => 'logout', :registrations => 'register'}
+  devise_scope :user do
+    get "/login" => "devise/sessions#new"
+    match "/signup" , {:controller =>"registrations", :action=>"new"}
+    #get "/designer_signup", {:controller =>"registrations", :action=>"register_designer"}
+    #put "/designer_signup", {:controller =>"registrations", :action=>"register_designer_success"}
+    match "/designer_signup" => 'registrations#register_designer', :via => :get
+    match "/registrations/register_designer_success" => 'registrations#register_designer_success', :as=>"/designer_signup", :via => :post
+  end
+
+  devise_scope :user do
+    match '/logout(.:format)', {:action=>"destroy", :controller=>"devise/sessions"}
+  end
+
   #get '*foo', to: 'd#maintain'   ##########:: MAINTENANCE MODE
   get "confirm/email"
   match 'site/contact' => 'site#contact', :as => 'contact', :via => :get
@@ -7,7 +22,7 @@ Dezquare::Application.routes.draw do
   # first created -> highest priority.
 
   # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
+  #   match 'products/:id' => 'catalog#view'ßß
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
@@ -58,6 +73,8 @@ Dezquare::Application.routes.draw do
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
+  
+  match 'd(/:id)', :to => "d#index" 
   
   match 'designer/profile(/:id(/:lalala))', :to=> "designer#profile"
   match ':controller(/:action(/:id))(.:format)'

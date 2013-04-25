@@ -1,4 +1,4 @@
-class PenderController < SiteController
+class PenderController < Devise::RegistrationsController
   
   def register_designer
     @state=params[:state]
@@ -14,12 +14,12 @@ class PenderController < SiteController
       render "register_designer"
       return
     end
-    
-    user = User.new  
+     
     attr = params.delete_if{|k,v| !user.respond_to?(k.to_sym)}
-    user.update_attributes(attr.except(:id))
+    user = User.new(params[:user])
+    #user.update_attributes(attr.except(:id))
     user.pender=true
-    user.password = "gsregsvergsegsr"
+    user.password = Devise.friendly_token.first(8)
     logger.debug " pender to save: #{user.inspect} "
     if user.save
       logger.debug " pender saved with id:#{user.id} "

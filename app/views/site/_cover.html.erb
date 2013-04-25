@@ -5,7 +5,7 @@
 			<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
 			  <div class="fileinputs">
 	            <div style="position: absolute;z-index: 0;">
-	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.nil? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" alt="My Cover Image" />
+	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.blank? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" alt="My Cover Image" />
 	            </div>
 	            <% 
 	            if @editable

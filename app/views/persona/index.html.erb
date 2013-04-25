@@ -16,7 +16,7 @@
 	<div class="author">
 		<%=raw(@persona.persona_image_backgrounds.first.description)%>//
 		<span>
-			<a href="/designer/profile/<%=raw(@persona.persona_image_backgrounds.first.user.id)%>"><%=raw(@persona.persona_image_backgrounds.first.user.full_name.upcase)%></a>
+			<a href="/designer/profile/<%=raw(@persona.persona_image_backgrounds.first.user.url_identifier)%>"><%=raw(@persona.persona_image_backgrounds.first.user.full_name.upcase)%></a>
 		</span>
 	</div>
 </div>
