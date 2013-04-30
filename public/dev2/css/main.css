@@ -2642,9 +2642,16 @@ article.image-item span { display: block; }
 #how-to .title {
 	font-family: 'code_pro_lcregular';
 	font-size: 54px;
-	text-align: center;
+	text-align: justify;
+	/*
 	white-space: nowrap;
+	*/
 	margin-bottom: 120px;
+}
+#how-to .title:after {
+	content: "";
+	display: inline-block;
+	width: 100%;
 }
 #how-to .steps { margin-bottom: 120px; }
 #how-to .steps .step-1 { float: left; }
@@ -2669,6 +2676,7 @@ article.image-item span { display: block; }
 	font-family: 'code_pro_demoregular';
 	font-size: 30px;
 }
+#how-to .steps .details .explanation { font-weight: bold; }
 #how-to .steps .inside-step { display: inline-block; }
 #how-to .button2 {
 	margin: 0px auto;

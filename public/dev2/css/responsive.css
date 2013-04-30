@@ -294,8 +294,8 @@
 		-o-transform: scale(0.8);
 		-ms-transform: scale(0.8);
 		transform: scale(0.8);
-		left: -100px;
-		right: -100px;
+		left: -110px;
+		right: -110px;
 	}
 	#how-to .title,
 	#how-to .steps { margin-bottom: 100px; }
@@ -467,8 +467,8 @@
 		-o-transform: scale(0.7);
 		-ms-transform: scale(0.7);
 		transform: scale(0.7);
-		left: -120px;
-		right: -120px;
+		left: -185px;
+		right: -185px;
 	}
 	#how-to .title,
 	#how-to .steps { margin-bottom: 80px; }
@@ -483,7 +483,7 @@
 
 /* End IPAD Portrait only */
 /* IPAD Landscape only */
-@media (min-width: 800px) and (max-width: 1000px) and (max-height: 1000px), (max-height: 750px) {
+@media (min-width: 800px) and (max-width: 1000px) and (max-height: 1000px), (max-height: 750px) and (max-width: 1100px) {
 	#taste-selector div.title-2r { margin-bottom: 40px; }
 	div.title-2r { 
 		font-size: 32px;
@@ -805,6 +805,11 @@
 	
 	#profile-config .row { margin-bottom: 7px; }
 	#profile-config .row .label { font-size: 11px; }
+	
+	#how-to .how-to-inside {
+		left: -140px;
+		right: -140px;
+	}
 }
 /* End IPAD Landscape only */
 
