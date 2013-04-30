@@ -1,6 +1,7 @@
 var profileContent, profilePhotoBar, profileConfig, restoreArrow, userChatFeed;
 var isScrolling = false;
 var $page, profileWidgets;
+window.profileWasScrolledOnIpad = false;
 
 $(document).ready(function(){
 	$page = $("#page");
@@ -10,7 +11,6 @@ $(document).ready(function(){
 	profilePhotoBar = profileContent.find("#profile-photo-bar");
 	profileConfig = profileContent.find("#profile-config");
 	restoreArrow = $("#restore-arrow");
-	var ml = 79;
 	var mpml = 95;
 	var scrollBarWidth = GetScrollBarWidth();
 	
@@ -24,12 +24,15 @@ $(document).ready(function(){
 	if (userAgent.indexOf("ipad") != -1 || userAgent.indexOf("iphone") != -1)
 	{
 		$page.removeClass("profile-scroll");
+		window.profileStartPosition = profileContent.position().left;
 		
 		$page
 				.on('swipeleft', function(e) { ScrollProfile(-80, true); })
-				.on('swiperight', function(e) { ScrollProfile(80, true); })
+				.on('swiperight', function(e) { ScrollProfile(80, true); });
+				/*
 				.on('swipedown', function(e) { ScrollProfile(-80, true); })
 				.on('swipeup', function(e) { ScrollProfile(80, true); });
+				*/
 	}
 	else
 	{
@@ -101,41 +104,50 @@ $(document).ready(function(){
     var ScrollProfile = window.ScrollProfilePage = function(delta, animate)
     {
     	var profileContentPosition = profileContent.position();
-    	var full = profileContent.parent().width(); 
+    	var full = $(window).width(); 
     	var currentLeft = profileContentPosition.left;
     	
-    	var maxLeft = full / 100 * ml;
-    	if (profileContent.hasClass("my-profile"))
+    	if (delta < 0)
     	{
-    		maxLeft = full / 100 * mpml;
-    	}
-    	var distance = full / 100;
-    	var newLeft = currentLeft + delta * distance;
-    	newLeft = newLeft > maxLeft ? maxLeft : newLeft;
-    	if (newLeft < 0)
-    	{
-    		profileContent.addClass("hide-masonry");
-    		if (profileContent.hasClass("public-profile"))
+    		if (window.profileWasScrolledOnIpad)
     		{
-    			window.ImageMasonryLoadNewItems(Math.floor(newLeft / 700));
+    			newLeft = currentLeft - Math.round($(window).width() * 0.75);
     		}
     		else
     		{
-		    	newLeft = 0;
+	    		profilePhotoBar.width(profilePhotoBar.width());
+	    		newLeft = profilePhotoBar.width();
+	    		window.profileWasScrolledOnIpad = true;
     		}
-    		restoreArrow.show();
     	}
     	else
     	{
-    		profileContent.removeClass("hide-masonry");
-    		restoreArrow.hide();
+    		if (currentLeft > 0)
+    		{
+    			newLeft = window.profileStartPosition;
+    			profileContent.removeClass("hide-masonry");
+    			restoreArrow.hide();
+    			window.profileWasScrolledOnIpad = false;
+    		}
+    		else
+    		{
+    			newLeft = currentLeft + Math.round($(window).width() * 0.75);
+    		}
     	}
     	
     	if (animate === true)
     	{
     		var currentPosition = profileContent.position(); 
     		profileContent.css("left", currentPosition.left);
-    		profileContent.animate( { "left": newLeft }, 400);
+    		profileContent.animate( { "left": newLeft }, 400, function(){
+    			if (window.profileWasScrolledOnIpad)
+    			{
+    				restoreArrow.show();
+    				profileConfig.css("bottom", 20 + scrollBarWidth);
+    				profileContent.addClass("hide-masonry");
+    				window.ImageMasonryLoadNewItems(Math.floor(newLeft / 3000));
+    			}
+    		});
     	}
     	else
     	{
@@ -146,8 +158,10 @@ $(document).ready(function(){
     restoreArrow.click(function(){
     	if (userAgent.indexOf("ipad") != -1 || userAgent.indexOf("iphone") != -1)
     	{
-    		var full = profileContent.parent().width(); 
-    		profileContent.animate( { "left": full * mpml / 100 }, 500);
+    		$(this).hide();
+    		profileContent.removeClass("hide-masonry");
+    		window.profileWasScrolledOnIpad = false;
+    		profileContent.animate( { "left": window.profileStartPosition }, 500);
     	}
     	else
     	{

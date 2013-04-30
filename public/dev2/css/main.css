@@ -29,6 +29,10 @@ h2 {
 	min-width: 1012px;
 }
 #page.profile { min-height: 630px; }
+#page.small-adapted {
+	min-height: 600px;
+	min-width: 990px;
+}
 
 #page.profile-scroll {
 	overflow-y: hidden;
@@ -50,6 +54,14 @@ h2 {
 	top: 0px;
 	z-index: 10;
 }
+#header.lighter { 
+	background: #231e20;
+	padding: 10px 54px 0px; 
+}
+#header.lighter .links { 
+	right: 54px;
+	top: 14px; 
+}
 #header .links {
 	position: absolute;
 	right: 150px;
@@ -60,6 +72,26 @@ h2 {
 	color: #fff22d;
 	font-family: 'Roboto';
 	font-weight: 100;
+}
+#header .links a.small-link { 
+	font-size: 14px;
+	font-family: 'code_pro_lcregular'; 
+}
+#header .links a.btn {
+	background: #363333;
+	border-radius: 4px;
+	font-size: 14px;
+	display: inline-block;
+	font-family: 'code_pro_light_lcregular';
+	padding: 0px 10px;
+	line-height: 32px;
+	margin-left: 5px;
+	text-align: center;
+	min-width: 58px; 
+}
+#header .links a.btn.btn-1 {
+	color: #fff; 
+	margin-left: 12px;
 }
 #header .links .separator {
 	color: #fff;
@@ -1365,6 +1397,14 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 
 #profile-table .top-row { margin-bottom: 70px; }
 #profile-table .top-row .huge-title { width: 685px; }
+#profile-table .top-row .section-subtitle {
+	clear: both;
+	font-family: "Novacento";
+	font-weight: 200;
+	padding-top: 10px;
+	padding-left: 5px;
+	font-size: 30px;
+}
 #profile-table .select-area {
 	float: left;
 	width: 305px;
@@ -1470,7 +1510,8 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	margin: 0px 5px 7px;
 	line-height: 18px;
 }
-#designer-list .quote .value {
+#designer-list .quote .value,
+#designer-list .quote-value {
 	font-size: 25px;
 	font-family: "Novacento";
 	font-weight: 300;
@@ -1482,7 +1523,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	clear: both;
 	padding: 6px;
 }
-#designer-list .quote .terms .button-row a {
+#designer-list .button-row a {
 	display: block;
 	padding: 0px;
 	height: 24px;
@@ -1498,6 +1539,102 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	font-weight: 300;
 	font-size: 16px;
 	line-height: 34px;
+}
+
+#designer-list.project-list .col1 { padding-top: 0px; }
+#designer-list .project-title {
+	font-family: "Novacento";
+	font-weight: 200;
+	font-size: 28px;
+	line-height: 26px;
+	margin-bottom: 10px;
+}
+#designer-list .project-terms { border-left: 1px solid #bfbfbf; }
+#designer-list .project-terms .col {
+	float: left;
+	border: 1px solid #bfbfbf;
+	height: 50px;
+	padding: 10px 20px;
+	border-left: 0px none;
+	text-align: center;
+	width: 125px;
+}
+#designer-list .project-terms .col:first-child { text-align: left; }
+#designer-list .project-terms .quote-value { 
+	margin: 0px;
+	white-space: nowrap; 
+}
+#designer-list .project-terms .quote-value.status { font-size: 20px; }
+#designer-list .project-terms .status.completed { color: #5eaf0e; }
+#designer-list .project-terms .status.in-design { color: #0b7ef4; }
+#designer-list .project-terms .button-row { padding-top: 12px; }
+#designer-list .project-terms .button-row a { 
+	line-height: 28px;
+	font-size: 16px;
+	height: 28px; 
+}
+
+#designer-list .project-expanded .col1 {
+	margin-right: 60px;
+	width: 290px;
+}
+#designer-list .project-expanded .col1 .image { margin-bottom: 30px; }
+#designer-list .project-current-status {
+	clear: both;
+	border: 1px solid #bfbfbf;
+	box-shadow: 0px 0px 2px #bfbfbf;
+	font-size: 26px;
+	height: 54px;
+	line-height: 54px;
+	margin-bottom: 25px;
+	font-family: "Novacento";
+	font-weight: 200;
+	text-align: center;
+} 
+#designer-list .brief-content {
+	font-family: "Roboto";
+	font-size: 13px;
+	line-height: 18px;
+	margin-bottom: 15px;
+}
+#designer-list .project-expanded .image { margin-bottom: 5px; }
+#designer-list .image-big {
+	clear: both;
+	width: 338px;
+}
+#designer-list .project-expanded .col1 .title {
+	font-size: 20px;
+	font-family: "Novacento";
+	font-weight: 200;
+	margin-bottom: 10px;
+}
+#designer-list .colors { margin-bottom: 20px; }
+#designer-list .colors .color {
+	float: left;
+	height: 10px;
+	width: 10%;
+}
+#designer-list .loaders .row { margin-bottom: 4px; }
+#designer-list .loaders .label {
+	float: left;
+	font-size: 15px;
+	font-family: 'Roboto';
+	font-weight: 100;
+}
+#designer-list .loaders .loader {
+	border: 1px solid #cfcfcf;
+	height: 8px;
+	position: relative;
+	margin-left: 100px;
+	margin-top: 5px;
+}
+#designer-list .loaders .loader .value {
+	background: #222020;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	height: 100%;
+	width: 50%;
 }
 
 #user-chat-holder {
@@ -2360,6 +2497,78 @@ article.image-item span { display: block; }
 	height: 100%;
 	width: 100%;
 }
+#landing .find-designer {
+	color: #363333;
+	position: absolute;
+	left: 54px;
+	top: 15%;
+	z-index: 5;
+	width: 565px;
+}
+#landing .dbl-lines {
+	font-size: 50px;
+	text-align: center;
+	overflow: hidden;
+}
+#landing .dbl-lines .middle-text {
+	display: inline-block;
+	position: relative;
+	font-family: 'kaushan_scriptregular';
+}
+#landing .dbl-lines .left {
+	position: absolute;
+	right: 100%;
+	top: 39px;
+	height: 10px;
+	margin-right: 5px;
+	width: 500px;
+}
+#landing .dbl-lines .right {
+	position: absolute;
+	top: 39px;
+	left: 100%;
+	height: 10px;
+	margin-left: 15px;
+	width: 500px;
+}
+#landing .dbl-lines .line-1,
+#landing .dbl-lines .line-2 {
+	background: #363333;
+	display: block;
+	height: 1px;
+}
+#landing .dbl-lines .line-1 { margin-bottom: 2px; }
+#landing .position {
+	font-size: 61px;
+	font-family: 'code_pro_demoregular';
+	white-space: nowrap;
+}
+#landing .taste {
+	font-size: 98px;
+	line-height: 95px;
+	font-family: 'code_pro_demoregular';
+	margin-bottom: 20px;
+	white-space: nowrap;
+}
+#landing .button2 {
+	background: #ff0249;
+	border-radius: 4px;
+	color: #fff;
+	font-family: 'code_pro_lcregular';
+	font-size: 38px;
+	line-height: 70px;
+	display: block;
+	margin-bottom: 15px;
+	text-align: center;
+}
+#landing .button2:hover { background: #241f20; }
+#landing .go-how-to {
+	color: #231e20;
+	font-family: 'code_pro_lcregular';
+	font-size: 22px;
+	border-bottom: 2px solid #231e20; 
+}
+
 #landing .default {
 	position: absolute;
 	left: 0px;
@@ -2412,6 +2621,58 @@ article.image-item span { display: block; }
 #landing .buttons a.yellow:hover {
 	background: #241f20;
 	color: #fff22d;
+}
+
+#how-to {
+	background: url(../img/transparency-5.png) left top repeat;
+	height: 100%;
+	left: 0px;
+	position: absolute;
+	top: 0px;
+	width: 100%;
+	z-index: 5;
+}
+#how-to .how-to-inside {
+	position: absolute;
+	bottom: 15%;
+	left: 54px;
+	right: 54px;
+	top: 20%;
+}
+#how-to .title {
+	font-family: 'code_pro_lcregular';
+	font-size: 54px;
+	text-align: center;
+	white-space: nowrap;
+	margin-bottom: 120px;
+}
+#how-to .steps { margin-bottom: 120px; }
+#how-to .steps .step-1 { float: left; }
+#how-to .steps .step-2 { 
+	margin: 0px 33%;
+	text-align: center; 
+}
+#how-to .steps .step-3 { float: right; }
+#how-to .steps .number {
+	float: left;
+	font-size: 268px;
+	font-family: 'code_pro_demoregular';
+	line-height: 228px;
+}
+#how-to .steps .details { 
+	float: left;
+	text-align: left;
+	font-family: 'code_pro_light_lcregular'; 
+}
+#how-to .steps .red {
+	color: #ff0249;
+	font-family: 'code_pro_demoregular';
+	font-size: 30px;
+}
+#how-to .steps .inside-step { display: inline-block; }
+#how-to .button2 {
+	margin: 0px auto;
+	width: 546px;
 }
 /* End Landing Page */
 

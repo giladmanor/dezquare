@@ -226,6 +226,9 @@
 		line-height: 16px;
 	}
 	#designer-list .image { width: 90px; }
+	#designer-list .image.image-big {
+		width: 284px;
+	}
 	#designer-list.in-sidebar .col2 .title { 
 		font-size: 18px;
 		line-height: 16px;
@@ -251,6 +254,51 @@
 		line-height: 22px; 
 	}
 	#designer-list .quote .terms .button-row { padding: 4px; }
+	#designer-list .project-title {
+		font-size: 26px;
+		margin-bottom: 8px;
+	}
+	#designer-list .project-terms .col { padding: 5px 10px; }
+	#designer-list .brief-content {
+		font-size: 12px;
+		line-height: 15px;
+		margin-bottom: 11px;
+	}
+	#designer-list .project-current-status {
+		height: 44px;
+		line-height: 44px;
+		margin-bottom: 20px;
+	}
+	#designer-list .project-expanded .col1 .image { margin-bottom: 20px; }
+	#designer-list .project-expanded .col1 .title { 
+		margin-bottom: 5px;
+		font-size: 18px; 
+	}
+	
+	#landing .find-designer {
+		-moz-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform: scale(0.8);
+		left: 0px;
+		top: 70px;
+	}
+	#landing .dbl-lines.first-line .left,
+	#landing .dbl-lines.first-line .right { top: 37px; }
+	#landing .dbl-lines .left,
+	#landing .dbl-lines .right { top: 40px; }
+	#how-to .how-to-inside {
+		-moz-transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		-o-transform: scale(0.8);
+		-ms-transform: scale(0.8);
+		transform: scale(0.8);
+		left: -100px;
+		right: -100px;
+	}
+	#how-to .title,
+	#how-to .steps { margin-bottom: 100px; }
 }
 
 @media (max-height: 879px), (max-width: 1279px) {
@@ -400,6 +448,31 @@
 	#profile-photo-bar .options .icon { width: 20px; }
 	#profile-photo-bar .options .icon img { height: 20px; }
 	#profile-photo-bar .foot-link { margin-bottom: 24px; }
+	
+	#landing .dbl-lines.first-line .left,
+	#landing .dbl-lines.first-line .right { top: 38px; }
+	#how-to .how-to-inside { top: 16%; }
+	#landing .find-designer {
+		-moz-transform: scale(0.7);
+		-webkit-transform: scale(0.7);
+		-o-transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		transform: scale(0.7);
+		left: -40px;
+		top: 45px;
+	}
+	#how-to .how-to-inside {
+		-moz-transform: scale(0.7);
+		-webkit-transform: scale(0.7);
+		-o-transform: scale(0.7);
+		-ms-transform: scale(0.7);
+		transform: scale(0.7);
+		left: -120px;
+		right: -120px;
+	}
+	#how-to .title,
+	#how-to .steps { margin-bottom: 80px; }
+	#how-to .title { font-size: 44px; }
 }
 
 /* IPAD Portrait only */
@@ -443,6 +516,7 @@
 		left: -20%; 
 		width: 20%;
 	}
+	#profile-content.hide-masonry #profile-config { left: 20%; }
 	#user-chat { width: 75%; }
 	
 	#persona-steps.for-step-1.for-project-1 { top: 190px; }
@@ -685,8 +759,18 @@
 		font-size: 16px;
 		line-height: 14px;
 	}
+	#designer-list .project-expanded .col1 {
+		margin-right: 30px; 
+		width: 230px; 
+	}
+	#designer-list .project-current-status {
+		font-size: 18px;
+		height: 34px;
+		line-height: 34px;
+	}
 	#designer-list .quote { width: 200px; }
 	#designer-list .image { width: 80px; }
+	#designer-list .image.image-big { width: 254px; }
 	#designer-list.in-sidebar .col1 { margin-bottom: 20px; }
 	#designer-list.in-sidebar .quote { margin-bottom: 10px; }
 	#designer-list .quote .terms .col { padding: 5px 0px 3px; }
@@ -698,6 +782,26 @@
 		font-size: 14px;
 		margin-bottom: 3px;
 	}
+	#designer-list .col1 { width: 260px; }
+	#designer-list .project-title { 
+		font-size: 23px;
+		margin-bottom: 5px; 
+	}
+	#designer-list .project-terms .quote-value.status { font-size: 14px; }
+	#designer-list .project-terms .quote-value { font-size: 18px; }
+	#designer-list .project-terms .col { 
+		height: 42px;
+		padding: 5px;
+		width: 105px; 
+	}
+	#designer-list .project-terms .button-row a { font-size: 13px; }
+	#designer-list .brief-content {
+		font-size: 10px;
+		line-height: 13px;
+		margin-bottom: 6px;
+	}
+	#designer-list .project-expanded .col1 .title { font-size: 14px; }
+	#designer-list .loaders .label { font-size: 13px; }
 	
 	#profile-config .row { margin-bottom: 7px; }
 	#profile-config .row .label { font-size: 11px; }
