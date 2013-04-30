@@ -21,9 +21,17 @@ $(document).ready(function(){
 	
 	var userAgent = navigator.userAgent.toLowerCase();
 	
+	userChatFeed = document.getElementById("user-chat-feed");
+	if (userChatFeed != null)
+	{
+		var $userChatFeed = $(userChatFeed);
+		$(userChatFeed).scrollTop($userChatFeed.children("#user-chat-feed-inside").height() - $userChatFeed.height());
+	}
+	
 	if (userAgent.indexOf("ipad") != -1 || userAgent.indexOf("iphone") != -1)
 	{
 		$page.removeClass("profile-scroll");
+		profileConfig.css("bottom", 35);
 		window.profileStartPosition = profileContent.position().left;
 		
 		$page
@@ -61,7 +69,6 @@ $(document).ready(function(){
 		});
 		
 		var myimage = document.getElementById("page");
-		userChatFeed = document.getElementById("user-chat-feed");
 		var selectProjectCombo = document.getElementById("select-project-combo");
 		if (myimage.addEventListener) 
 		{
@@ -69,9 +76,12 @@ $(document).ready(function(){
 			{
 				userChatFeed.addEventListener("mousewheel", DenyMouseWheelHandler, false);
 				userChatFeed.addEventListener("wheel", DenyMouseWheelHandler, false);
-				
-				var $userChatFeed = $(userChatFeed);
-				$(userChatFeed).scrollTop($userChatFeed.children("#user-chat-feed-inside").height() - $userChatFeed.height());
+
+				var chatWidth = $userChatFeed.parent().position().left + 710;
+				if ($(window).width() > chatWidth)
+				{
+					profileContent.css({ "left": chatWidth + profilePhotoBar.width() });
+				}
 			}
 			
 			if (selectProjectCombo != null)
@@ -143,7 +153,7 @@ $(document).ready(function(){
     			if (window.profileWasScrolledOnIpad)
     			{
     				restoreArrow.show();
-    				profileConfig.css("bottom", 20 + scrollBarWidth);
+    				profileConfig.css("bottom", 35 + scrollBarWidth);
     				profileContent.addClass("hide-masonry");
     				window.ImageMasonryLoadNewItems(Math.floor(newLeft / 3000));
     			}
