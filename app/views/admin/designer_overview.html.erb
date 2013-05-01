@@ -1,0 +1,73 @@
+<article class="module width_full">
+	<header><h3>Designers (<%=User.all.select{|t| t.designer==true}.length%>)</h3></header>
+	<form class="quick_search" action="/user/list?view=designers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Name</th> 
+				<th>Portfolio Items</th> 
+				<th>Total Projects</th> 
+				<th>Finished Projects</th> 
+				<th>Location</th> 
+				<th>Last Login</th> 
+				<th>Images Shown</th>
+				<th>% Liked</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			  <%
+			User.all.select{|t| t.designer==true}.map{|u|
+	
+		# score = 0
+		# u.images.each do |img|
+			# gir = GameImageRate.where('image_id = ?', img.id)
+			# gir.each do |ggg|
+				# score += 1
+			# end
+		# end	
+		likes = 0
+		imp = 0
+		u.images.each do |img|
+			gir = GameImageRate.where('image_id = ?', img.id)
+			gir.each do |ggg|
+				likes += ggg.value==1 ? 1 : 0
+				imp+=1
+			end
+		end	
+		
+		if imp==0
+			pcn=0
+		else
+			pcn = number_to_percentage(100*(likes.to_f / imp),:precision => 1) 
+		end
+				# imp = u.images.map{|img| GameImageRate.where('image_id = ?',img.id).{|gir|}}.sum
+				#imp = u.images.map{|img| GameImageRate.where('image_id = ?',img.id).count{|gir|}}.sum
+				%>	
+				<tr>
+					<td><a href="/designer/profile/<%=u.url_identifier%>" target="_blank"><%= u.full_name%></a></td>
+					<td><%= u.images.size%></td>
+					<td><%= u.projects_in.size%></td>
+					<td><%= u.projects_in.all.select{|p| p.status=="completed" || p.status=="delivered"}.size%></td>
+					<td><%= u.location%></td>
+					<td>N/A</td>
+					<td><%= imp %></td>
+					<td><%= pcn %></td>
+
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/user/create?view=designer" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+

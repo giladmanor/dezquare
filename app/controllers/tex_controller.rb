@@ -75,13 +75,15 @@ class TexController < AdminController
   end
   
   def skfniegk438v5489bltixe58ntuylo5gh8
-    render :text=> Project.all.select{|p| ["started", "grabbed"].include?(p.status)}.map{|p|
+      render :text=> Project.all.select{|p| ["started", "grabbed", "delivered", "completed","canceled"].include?(p.status)}.map{|p|
       [
-        "<p>Product: #{p.category.name}<br/>[#{p.id}] '#{p.title}' |#{p.display_status}|",
-        "Shopper: #{p.shopper.nil? ? "--" : p.shopper.full_name} #{p.shopper.nil? ? "--" : p.shopper.email}",
-        "Designer: #{p.designer.nil? ? "--" : p.designer.full_name} #{p.designer.nil? ? "--" : p.designer.email}",
-        "Candidates: #{p.game.designers.map{|d| d.email}.join(', ')}",
-        "Tags: #{p.game.images.map{|i| i.tags.map{|t| t.name}}.flatten.uniq.join(", ")}",
+        "<p><u>Date:</u> #{p.created_at}",
+        "<u>Product:</u> #{p.category.name}<br/>[#{p.id}] '#{p.title}' <b>|#{p.display_status}|</b>",
+        "<u>Shopper:</u> #{p.shopper.nil? ? "--" : p.shopper.full_name} #{p.shopper.nil? ? "--" : p.shopper.email}",
+        "<u>Designer:</u> #{p.designer.nil? ? "--" : p.designer.full_name} #{p.designer.nil? ? "--" : p.designer.email}",
+        "<u>Candidates:</u> #{p.game.nil? ? "--" : p.game.designers.map{|d| d.email}.join(', ')}",
+        "<u>Tags:</u> #{p.game.nil? ? "--" : p.game.images.map{|i| i.tags.map{|t| t.name}}.flatten.uniq.join(", ")}",
+        "<u>Details:</u> #{p.info.nil? ? "--" : p.info}",
         "</p>"
       ].join("<br/>")
     }.join("<hr/>")

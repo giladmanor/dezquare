@@ -40,7 +40,7 @@ class Project < ActiveRecord::Base
        :grabbed=>"Open",
        :delivered=>"Delivered",
        :completed=>"Completed",
-       :canceled=>"Canceled"}
+       :canceled=>"Cancelled"}
     r[self.status.to_sym]
   end
   

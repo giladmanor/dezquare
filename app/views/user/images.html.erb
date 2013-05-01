@@ -1,0 +1,43 @@
+<article class="module width_full">
+	<header><h3>Images (<%=@images.count.nil? ? '' : @images.count%>)</h3></header>
+	<form class="quick_search" action="/user/list?view=shoppers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Id</th> 
+				<th>Name</th> 
+				<th></th> 
+				<th>Details</th>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@images.each{|m|
+				%>	
+				<tr>
+					<td><%= "#{m.id}"%></td>
+					<td><%= "#{m.name}"%></td>
+					<td></td>
+					<td>&nbsp;</td>
+					<td><a href="/user/image/<%=m.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
+					<td>
+					</td>
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/user/create?view=shopper" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>

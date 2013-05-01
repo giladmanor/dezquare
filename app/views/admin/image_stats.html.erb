@@ -1,0 +1,86 @@
+<article class="module width_full">
+	<header><h3>Images (<%= Image.all.size%>), Visible (<%=Image.all.select{|t| t.visible==true}.length%>)</h3></header>
+	<form class="quick_search" action="/user/list?view=designers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Id No.</th> 
+				<th>Designer</th>
+				<th>Category</th>
+				<th># Shown</th> 
+				<th># Liked</th> 
+				<th>#passed</th> 
+				<th>% Liked</th>
+				<th>Uploaded</th> 
+				<th>Last Shown</th> 
+				<th>Visibility</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			  <%
+			Image.all.map{|img|
+	
+		# score = 0
+		# u.images.each do |img|
+			# gir = GameImageRate.where('image_id = ?', img.id)
+			# gir.each do |ggg|
+				# score += 1
+			# end
+		# end	
+		
+		############################################################################
+		likes = 0
+		passed = 0
+		imp = 0
+		lst = ""
+		GameImageRate.where('image_id = ?', img.id).map{ |ir|
+			#likes += ir.value==1 ? 1 : 0
+			#passed+=ir.v
+			
+			imp+=1
+			lst = ir.created_at
+		}
+		
+				
+			# end
+		# end	
+# 		
+		# if imp==0
+			# pcn=0
+		# else
+			 pcn = imp==0 ? 0 : number_to_percentage(100*(likes.to_f / imp),:precision => 1) 
+		# end
+				# imp = u.images.map{|img| GameImageRate.where('image_id = ?',img.id).{|gir|}}.sum
+				#imp = u.images.map{|img| GameImageRate.where('image_id = ?',img.id).count{|gir|}}.sum
+				%>	
+				<tr>
+					<td><a href="/repository/<%=img.file_path%>" target="_blank"><%= img.id%></a></td>
+					<td><a href="/designer/profile/<%=img.user.nil? ? "" :img.user.url_identifier%>" target="_blank">
+						<%= img.user.nil? ? "" : img.user.full_name%></a></td>
+					<td><%= img.image_category.nil? ? "" : img.image_category.category.name%></td>
+					<td><%= imp %></td>
+					<td><%= likes %></td>
+					<td><%= imp-likes%></td>
+					<td><%= pcn %></td>
+					<td><%= img.created_at.to_date %></td>
+					<td><%= lst.to_date%></td>
+					<td><%= img.visible ? 1 : 0 %></td>
+
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/user/create?view=designer" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+

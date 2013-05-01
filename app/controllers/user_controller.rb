@@ -1,4 +1,4 @@
-class UserController < AdminController
+ class UserController < AdminController
   
   
    
@@ -7,15 +7,23 @@ class UserController < AdminController
     filter = "%#{params[:quick_search]}%"
     
     #type_filtering
+      if view == "images"
+        @images = Image.all #.find(:all, :conditions=>["name like ?", filter])
+        
+      end    
+      
+      @users= case view.singularize
+        when "shopper" then 
+          User.where(:shopper=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
+        when "designer" then 
+          User.where(:designer=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
+        when "pending" then 
+          User.where(:pender=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
+        when "image" then
+          nil
+      end
     
-    @users= case view.singularize
-      when "shopper" then 
-        User.where(:shopper=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
-      when "designer" then 
-        User.where(:designer=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
-      when "pending" then 
-        User.where(:pender=>true).find(:all, :conditions=>["name like ? or l_name like ? or email like ?", filter, filter, filter])
-    end
+      
     
     
     #@users = .take(50)
@@ -120,6 +128,60 @@ class UserController < AdminController
     render :text=>"Sent!"
   end
   
+  def image
+    @image = params[:id].nil? ? Image.new : Image.where("id = ?",params[:id]).first
+    @user = @image.user
+    @categories = Category.all
+    @tags = Tag.all
+    # @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
+    @crop = params[:crop]
+  end
+  
+  def set_image
+    view = params[:view] 
+    @image = params[:id].nil? ? Image.new : Image.where("id = ?", params[:id]).first 
+    @user = @image.user
+ 
+    unless params[:upload].nil?
+      #upload image
+      begin
+        @image = @user.set_image(params[:upload],DIR_PATH_REPOSITORY,@image.id)
+        flash[:notice] = "File has been uploaded successfully"
+        #redirect_to :action => "profile"
+        logger.debug "file upload success"
+        @crop = true
+      rescue Exception => e
+        flash[:error] = "Error with upload! Please retry."
+        logger.debug "file upload failed"
+        logger.debug "Error: #{e.inspect}"
+      end  
+    end
+    
+    #set details
+    @image.name=params[:name]
+    @image.description=params[:description]
+    @image.category= Category.find_by_name(params[:category])
+    @image.tag_ids=params[:tags]
+    @image.dominant_colors= @image.get_dominant_colors
+    @image.color_histogram= @image.get_color_histogram
+    @image.user=@user
+    #@image.save
+    
+    @user.set_designer_colors
+    
+    logger.debug "Image id: #{@image.id}"
+    
+    @categories = Category.all
+    @tags = Tag.all
+     msg_t, msg = say("","")
+     if @image.save
+       msg_t, msg = say("info","#{@image.id}'s Details Saved")
+     else
+       msg_t, msg = say("error",@image.errors.messages.values.join(', '))
+     end
+     redirect_to :action=>:list, :view=>view,  :server_sais=>msg, :server_sais_type=>msg_t      
+ 
+  end
   # def sign_out
     # Devise::destroy_user_session
   # end

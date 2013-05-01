@@ -1,4 +1,26 @@
 @font-face {
+    font-family: 'Roboto';
+    src: url('roboto-light-webfont.eot');
+    src: url('roboto-light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('roboto-light-webfont.woff') format('woff'),
+         url('roboto-light-webfont.ttf') format('truetype'),
+         url('roboto-light-webfont.svg#Roboto') format('svg');
+    font-weight: 300;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto';
+    src: url('roboto-thin-webfont.eot');
+    src: url('roboto-thin-webfont.eot?#iefix') format('embedded-opentype'),
+         url('roboto-thin-webfont.woff') format('woff'),
+         url('roboto-thin-webfont.ttf') format('truetype'),
+         url('roboto-thin-webfont.svg#Roboto') format('svg');
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
     font-family: 'OpenSansRegular';
     src: url('opensans-regular-webfont.eot');
     src: url('opensans-regular-webfont.eot?#iefix') format('embedded-opentype'),

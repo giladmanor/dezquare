@@ -3,7 +3,7 @@ html { height: 100%; }
 body {
 	/*background: url(/img/pattern.jpg) left top repeat;
 	color: #272425; */
-	background-color: #F2F2F2 /*#E8E1E4*/;
+	background-color: #FFFFFF; /*#F2F2F2;*/ /*#E8E1E4;*/
 	font-family: 'PTSansRegular';
 	font-size: 12px;
 	line-height: 1.6;
@@ -39,17 +39,18 @@ a img { border: 0px none; }
 div#page { min-height: 100%; }
 div#header {
 	/*background: #fff22d;*/
-	background: #FFFFFF;
+	background: #000000; /*#FFFFFF;*/
 	border-bottom: 1px solid #bdbdbd;
 	margin-bottom: 25px;
 }
 div#header div.page-content { height: 60px; }
 div#header a.header-button {
-	background: #272425;
-	color: #FFFFFF; /*#fff22d;*/
+	background: #000000;
+	color: #fff22d;
 	float: right;
-	font-family: Verdana;
-	font-size: 14px;
+	font-family: 'Roboto';
+	font-size: 18px;
+	font-weight: 100;
 	line-height: 18px;
 	padding: 20px 8px 10px;
 	text-decoration: none;
@@ -57,7 +58,7 @@ div#header a.header-button {
 div#header div#profile-menu {
 	cursor: pointer;
 	position: relative;
-	background: #272425;
+	background: #000000; /*#272425;*/
 	color: #FFFFFF; /*#fff22d; */
 	float: right;
 	font-family: Verdana;
@@ -69,11 +70,15 @@ div#header div#profile-menu {
 	z-index: 5;
 }
 div#header div#profile-menu a.base {
-	color: #FFFFFF; /*#fff22d;*/
+	/*color: #FFFFFF; *//*#fff22d;*/
 	display: block;
 	padding: 20px 0px 10px;
 	background: url(/img/bkg-profile-menu.png) center center no-repeat;
 	text-align: center;
+	color: #fff22d;
+	font-family: 'Roboto';
+	font-weight: 100;
+	font-size: 18px;
 }
 div#header div#profile-menu.shopper { width: 90px; }
 div#header div#profile-menu.shopper a.base {
@@ -92,7 +97,7 @@ div#header div#profile-menu div.expanded {
 }
 div#header div#profile-menu:hover div.expanded { display: block; }
 div#header div#profile-menu div.expanded a {
-	background: #272425;
+	background: #000000; /*#272425;*/
 	border-bottom: 2px solid #FFFFFF; /*#ede12c;*/
 	box-shadow: 0px 1px 3px #333;
 	color: #FFFFFF; /*#fff22d;*/
@@ -154,6 +159,7 @@ h1#logo {
 	float: left;
 	height: 42px;
 	margin: 0px;
+	/*margin-left: -12%;*/
 	padding-top: 10px;
 }
 h1#logo a { display: block; }
@@ -162,6 +168,7 @@ h1#logo a img { display: block; }
 div.page-content {
 	margin: 0px auto;
 	width: 990px;
+	/*width: 97%;*/
 }
 
 div#footer {

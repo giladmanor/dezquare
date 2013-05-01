@@ -28,13 +28,17 @@
 	  fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<%=render "qualaroo"%>
+	
+	
 	<div id="page">
-		<div id="header">
+		<!-- <div id="header">
+			
 			<div class="page-content clearfix">
 				<%=render "logo"%>
 				<%=render "user_options"%>
 			</div>
-		</div>
+		</div> -->
+		<%=render "layouts/header"%>
 		
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>

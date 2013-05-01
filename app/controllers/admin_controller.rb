@@ -44,6 +44,10 @@ class AdminController < ApplicationController
     @section_name = params[:controller].camelize 
   end
   
+  def designer_overview
+    
+  end
+  
   def request_filter
     logger.debug "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n Request Filter #{params[:action]} From[#{request.remote_ip}]"
     
@@ -66,6 +70,12 @@ class AdminController < ApplicationController
         {:name=>'Languages',:class=>"icn_audio",:action=>'/languages/list'},
         {:name=>'LSD: Languages',:class=>"icn_audio",:action=>'/lsd/list?entity=language'},
         {:name=>'Game Types',:class=>"icn_video",:action=>'/game_type/list'}]},
+      {:name=>'Designer Reports',:children=>[
+        {:name=>'Designer Overview Report',:class=>'icn_categories',:action=>'/admin/designer_overview'}  ]},
+      {:name=>'Image Reports',:children=>[
+        {:name=>'Image Overview Report',:class=>'icn_categories',:action=>'/admin/image_overview'}, 
+        {:name=>'Image Stats Report',:class=>'icn_categories',:action=>'/admin/image_stats'}       
+      ]},
       {:name=>'Game Reports',:children=> 
           game_types.map{|gt| {:name=>"#{gt.name}",:class=>"icn_categories",:action=>"/game_report/list?game_type_id=#{gt.id}"}}
       }

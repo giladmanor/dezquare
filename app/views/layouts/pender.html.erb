@@ -10,7 +10,7 @@
 	
 	<%=render "qualaroo"%>
 	<div id="page">
-		<div id="header">
+		<!-- <div id="header">
 			<div class="page-content clearfix">
 				<h1 id="logo">
 					<a href="/site/index">
@@ -19,7 +19,9 @@
 				</h1>
 				<a class="header-button" href="/site/register">Login / Signup</a>
 			</div>
-		</div>
+		</div> -->
+		
+		<%=render "layouts/header"%>
 	</div>
 	<%= @error.nil? ? "" : @error%>
 	
