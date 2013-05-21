@@ -32,28 +32,35 @@
 	<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
 	<script type="text/javascript" src="/js/clip.js"></script>
 	
+	<link href="/newver/css/newheader.css" media="screen" rel="stylesheet" type="text/css" > 
+	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	
 	
 	</head>
 <body>
 	<%=render "site/qualaroo"%>
-	<div id="page">
+	<%=render "layouts/header"%>
+	<div id="page" class="clearfix">
 		<!-- <div id="header">
 			<div class="page-content clearfix">
 				<%=render "site/logo"%>
 				<%=render "site/user_options"%>
 			</div> 
 		</div>-->
-		<%=render "layouts/header"%>
 		
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+	<section id="inside" style="margin-top:90px;">	
+		<p class="notice"><%= notice %></p>
+    	<p class="alert"><%= alert %></p>
     
 		<%= yield %>
+		
+		<%=render "layouts/footer"%>
+	</section>
 	</div>
 	
 	
 	
-	<%=render "layouts/footer"%>
+	
 	
 </body>
 </html>

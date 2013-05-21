@@ -1,12 +1,34 @@
-<h2>Forgot your password?</h2>
+<section id="content-inside" >
+	<!-- <h2 class="centered">So, you forgot your password..</h2> -->
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-fp">
+			<section class="register-screen-content">
+				<h2 style="font-size:39px;">So, you forgot your password..</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
-  <%= devise_error_messages! %>
+				<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  					<%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+					<div class="formfield">
+						<label>Enter your Email address and we’ll send you a link to reset your password</label>
+						<div class="field" style="margin-top:25px; margin-bottom:30px;">
+  							<%= f.label :email, :class=>"abs" %>
+  							<%= f.email_field :email, :class=>"text validation-email" %>
+  						</div>
+					</div>
+				
+  					<div class="submit clearfix" >
+  						<%= f.submit "Done!", :class=>"button-orange" %>
+  					</div>
+				<% end %>
+				<div class="sidebar-bottom-note centered">
+					Don't have an account? <a href="/signup">Sign Up!</a>
+				</div>
 
-  <div><%= f.submit "Send me reset password instructions" %></div>
-<% end %>
+<!-- <%= render "devise/shared/links" %> -->
 
-<%= render "devise/shared/links" %>
+
+</section>
+</section>
+</section>
+</section>

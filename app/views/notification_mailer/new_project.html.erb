@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <style type="text/css">
+  body p {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  </style>
+  <title>Dezquare - New Project opened!</title>
+  </head>
+<body>
+<% if @project.present? %>>	
+    <h2>The following project has been created:</h2>
+    <p>Id: <%= "[#{@project.id}]"%></p>
+    <p>Category: <%= @project.category.nil? ? "" : "#{@project.category.name}" %></p>
+    <p>Title: <%= @project.title.nil? ? "" : @project.title %> </p>
+	<p>Client: <%= @project.shopper.nil? ? "" : "#{@project.shopper.full_name} | #{@project.shopper.email}" %> </p>
+	<p>Candidates: <%= @project.game.designers.nil? ? "" : @project.game.designers.map{|dez| dez.email}.join(', ') %></p>
+	<p>Description: <%= @project.info.nil? ? "" : @project.info %></p>
+	<p>Budget: <%= @project.game.max_price.nil? ? "" : @project.game.max_price %></p>>
+<% end%>
+</body>
+</html>
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130425173144) do
+ActiveRecord::Schema.define(:version => 20130514212127) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -257,7 +257,7 @@ ActiveRecord::Schema.define(:version => 20130425173144) do
     t.string   "l_name"
     t.string   "email"
     t.string   "nick"
-    t.string   "password"
+    t.string   "legacy_password_hash"
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.date     "dob"
@@ -296,6 +296,7 @@ ActiveRecord::Schema.define(:version => 20130425173144) do
     t.string   "unlock_token"
     t.datetime "locked_at"
     t.string   "authentication_token"
+    t.text     "heard_about_us"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true

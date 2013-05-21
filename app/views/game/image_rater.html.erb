@@ -1,21 +1,37 @@
-﻿				<div class="wide-page-holder game-step" id="game-step-3">
-					<div class="wide-page-wrap">
-						<h2 class="no-margin">Let’s get to know your taste!</h2>
-						<h2 class="no-border font-size-24">Select the designs you like</h2>
-						<%
-						s=5
+<!-- <!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<link href="css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+	<script type="text/javascript" src="js/game-persona.js"></script>
+</head>
+<body>
+	<section id="page">
+		<header id="header" class="clearfix">
+			<h1 id="logo">
+				<a href="index.html">
+					<img src="img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			<div class="square"></div>
+			<div class="links">
+				<a href="login.html">Log in</a>
+				<span class="separator">|</span>
+				<a href="#">Designer?</a>
+			</div>
+		</header>
+		<section id="content"> -->
+			<%
+						s=15
 						@game.images.size.times{|a| s=s+((100-s)/10)}
 						%>
-						<div id="game-progress">
-							<div id="game-progress-holder">
-								<div id="game-progress-line1"></div>
-								<div id="game-progress-line2" style="width:<%=s%>%"></div>
-							</div>
-						</div>
-						<form action="/game/next">
-							<div id="image-select">
-								
-								<%
+			<%
 								
 								logger.debug "#### #{@game.stage.args}"
 								
@@ -26,7 +42,7 @@
 								logger.debug "--------------------------------------------------------------"
 								logger.debug " found #{images.length} images for category #{category.name}"
 								
-								rand_index = ((Time.now.to_f*1000)%images.length).ceil-1
+								rand_index = images.length==0 ? 0 : ((Time.now.to_f*1000)%images.length).ceil-1
 								
 								logger.debug " Random Index #{rand_index}"
 								
@@ -37,22 +53,52 @@
 								
 								logger.debug "--------------------------------------------------------------"
 								
-								%>
-								
-								<ul class="image">
-									<li class="active">
-										<!-- <img src="/repository/thumbnail/<%= image.file_path%>" /> -->
-										<img src="/repository/<%= image.file_path%>" />
-									</li>
-								</ul>
-								
-								
-								<div class="buttons-select clearfix">
-									<a href="/game/next?image_id=<%=image.id%>&selected=pass" class="black-button huge-font" >Pass</a>
-									<a href="/game/next?image_id=<%=image.id%>&selected=like" class="orange-button huge-font" >Like</a>
-								</div>
-							</div>
-						</form>
+			%>
+			<section id="content-inside">
+				
+				<section id="loading-designers" class="for-step-2">
+					<div class="gray">
+						<img src="/newver/img/loading-designers.png" alt="Loading..." />
 					</div>
-				</div>
-			
+					<div class="orange" style="width: <%=s%>%;">
+						<img src="/newver/img/loading-designers-orange.png" alt="Loading..." />
+					</div>
+				</section>
+				
+				<section id="persona-steps" class="for-step-2">
+					<div class="step">
+						<div class="icon">1</div>
+						<div class="text">Select product</div>
+					</div>
+					<div class="step step2 active">
+						<div class="icon">2</div>
+						<div class="text">select designs</div>
+					</div>
+					<div class="step step3">
+						<div class="icon">3</div>
+						<div class="text">Get matched</div>
+					</div>
+				</section>
+				
+				<section id="design-selector">
+					<div class="title-2r centered">
+						<div class="r1">Select the designs you like</div>
+						<div class="r2 color">As we map your taste</div>
+					</div>
+					<div class="content clearfix">
+						<div class="image">
+							<!-- <img src="img/temp/image.jpg" alt="Image" /> -->
+							<img src="/repository/<%= image.file_path%>" />
+						</div>
+						<div class="buttons">
+							<a href="/game/next?image_id=<%=image.id%>&selected=pass" class="button black">PASS</a>
+							<a href="/game/next?image_id=<%=image.id%>&selected=like" class="button orange">LIKE</a>
+						</div>
+					</div>
+				</section>
+						
+			</section>
+		<!-- </section>
+	</section>
+</body>
+</html> -->

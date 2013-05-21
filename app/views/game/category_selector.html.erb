@@ -1,74 +1,167 @@
-<div class="wide-page-holder game-step" id="game-step-1">
-	<div class="wide-page-wrap">
-		<h2>Select a Product</h2>
-		<form action="/game/next" method="post" id="sel-prod">
-			<input type="hidden" name="category_id"  />
-			<input type="hidden" name="max_price"  />
-			<ul class="icons" id="game-icons">
-				<%
-				Category.all.each{|c|
-					%>
-					<li>
-						<a href="#" class="<%=c.code%>" onclick="$('input[name=category_id]').val(<%=c.id%>);get_range(<%=c.id%>)">
-							<img src="/img/icons/<%=c.icon%>.png" alt="<%=c.name%>" class="normal" />
-							<img src="/img/icons/<%=c.icon%>-hover.png" alt="<%=c.name%>" class="hover" />
-							<span class="text"><%=raw(c.name)%></span>
-						</a>
-					</li>
-					<%
-				}
-				%>
-			</ul>
-			
-			<div id="price-ranges">
-				<h3 class="border">What’s the price you're willing to pay for this?</h3>
-				<form action="game2.html">
-					<div class="price-slider-holder">
-						<a href="#" class="white-button small-font">&lt; $249</a>
-						<a href="#" class="white-button small-font">$250-$499</a>
-						<a href="#" class="white-button small-font">$500-$749</a>
-						<a href="#" class="white-button small-font">$750-$999</a>
-						<a href="#" class="white-button small-font orange-font">&gt; $1000</a>
-					</div>
-					<div class="price-slider-info loader">
-						<div class="col" value="0" max="250"></div>
-						<div class="col" value="249"  max="500"></div>
-						<div class="col" value="500" max="750"></div>
-						<div class="col" value="750" max="1000"></div>
-						<div class="col" value="1000" max="99999999"></div>
-					</div>
-					<div class="buttons clearfix">
-						<a href="#" class="black-button big-font" id="submit">
-							Next
-							<img src="/img/arrow-right.png" class="normal" />
-							<img src="/img/arrow-right-orange.png" class="hover" />
-						</a>
-						<a href="/" class="cancel">Cancel</a>
-					</div>
-				</form>
+<!-- <!DOCTYPE html>
+<html dir="ltr" lang="en-US">
+<head>
+	<title>Dezquare</title> -->
+	<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="description" content="" />
+	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<script type="text/javascript" src="/newver/js/jquery-1.9.0.min.js"></script> 
+	<script type="text/javascript" src="/newver/js/global.js"></script> -->
+<!-- </head>
+<body>
+	<section id="page"> -->
+		<!-- <header id="header" class="clearfix">
+			<h1 id="logo">
+				<a href="index.html">
+					<img src="/newver/img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			<div class="square"></div>
+			<div class="links">
+				<a href="login.html">Log in</a>
+				<span class="separator">|</span>
+				<a href="#">Designer?</a>
 			</div>
-		</form>
-	</div>
-</div>
+		</header> -->
+		<!-- <section id="content"> -->
+			<section id="content-inside">
 				
+				<section id="loading-designers">
+					<div class="gray">
+						<img src="/newver/img/loading-designers.png" alt="Loading..." />
+					</div>
+					<div class="orange" style="width: 5%;">
+						<img src="/newver/img/loading-designers-orange.png" alt="Loading..." />
+					</div>
+				</section>
+				
+				<section id="persona-steps" class="for-step-1">
+					<div class="step active">
+						<div class="icon">1</div>
+						<div class="text">Select product</div>
+					</div>
+					<div class="step step2">
+						<div class="icon">2</div>
+						<div class="text">select designs</div>
+					</div>
+					<div class="step step3">
+						<div class="icon">3</div>
+						<div class="text">Get matched</div>
+					</div>
+				</section>
+				
+				<section id="taste-selector" class="clearfix" style="margin-top:-40px;">
+					<div class="title-2r centered">
+						<div class="r1">Select the type of product</div>
+						<div class="r2 color">your designer will need to design for you</div>
+					</div>
+				<form action="/game/next" method="post" id="sel-prod">
+				<input type="hidden" name="category_id"  />
+					<article>
+						<!-- <a href=" /newver/persona2.html"> -->
+							<span class="image">
+								<img src="/newver/img/cat/ux.jpg" alt="UI/UX design" />
+								<!-- <span class="hover">
+									<span class="including">Including:</span>
+									<span class="included">* UI / UX design</span>
+								</span> -->
+							</span>
+							<span class="title r2 soon">UI/UX<br/>design</span>
+							<span class="ribbon"></span>
+						<!-- </a> -->
+					</article>
 					
-<script type="text/javascript">
-	function get_range(elm){
-		$('input[name=max_price]').val(elm.attr("max"));
-		elm.parent().children().text("");
-		var category_id = $('input[name=category_id]').val();
-		$.ajax({
-		  	type: "POST",
-		  	url: "/game/category_price_range",
-		  	data: { id:category_id, min:elm.attr("value")},
-		  	success: function(data){
-			  	elm.text(1+data.max_designers*2 + ' designers available');
-		  		elm.removeClass("load");
-		  		
-		}
-		});
-		return false;
-	}
-</script>
+					<article>
+						<!-- <a href="/newver/persona2.html"> -->
+						<a href="javascript:void(0)"  
+							onclick="$('input[name=category_id]').val(17);$('form#sel-prod').submit();">
+							<span class="image">
+								<img src="/newver/img/cat/web.jpg" alt="Web design" />
+								<span class="hover">
+									 <span class="including">WEB<BR>DESIGN</span>
+									<!--<span class="included">* Icon Design</span>
+									<span class="included">* Illustration</span>
+									<span class="included">* Typography</span> -->
+								</span>
+							</span>
+							<span class="title r2">Web<br/>design</span>
+						</a>
+					</article>
 					
-			
+					<article class="last">
+						<!-- <a href="/newver/persona2.html"> -->
+						<a href="javascript:void(0)"  
+							onclick="$('input[name=category_id]').val(13);$('form#sel-prod').submit();">
+							<span class="image">
+								<img src="/newver/img/cat/mobile.jpg" alt="mobile design" />
+								 <span class="hover">
+									<span class="including">Mobile<br/>app design</span>
+									<!--<span class="included">* Logo Design</span>
+									<span class="included">* Business Cards</span>
+									<span class="included">* Flyers</span>
+									<span class="included">* Stationary</span> -->
+								</span> 
+							</span>
+							<span class="title r2">Mobile<br/>app design</span>
+						</a>
+					</article>
+<!-- <div >&nbsp;</div>
+<div >&nbsp;</div> -->
+					<article>
+						<!-- <a href=" /newver/persona2.html"> -->
+						<a href="javascript:void(0)"  
+							onclick="$('input[name=category_id]').val(11);$('form#sel-prod').submit();">
+							<span class="image">
+								<img src="/newver/img/cat/logo.jpg" alt="Logo Design" />
+								 <span class="hover">								 	
+									<span class="including">Logo<br/>design</span>
+									<!--<span class="included">* UI / UX design</span> -->								
+								</span>
+							</span>
+							<span class="title r2">Logo<br/>design</span>
+						</a>
+					</article>
+					
+					<article>
+						<!-- <a href="/newver/persona2.html"> -->
+						<a href="javascript:void(0)"  
+							onclick="$('input[name=category_id]').val(7);$('form#sel-prod').submit();">
+							<span class="image">
+								<img src="/newver/img/cat/business.jpg" alt="Business card design" />
+								<span class="hover">
+									<span class="including">Business<br/>Card Design</span>
+									<!-- <span class="included">* Icon Design</span>
+									<span class="included">* Illustration</span>
+									<span class="included">* Typography</span> -->
+								</span>
+							</span>
+							<span class="title r2">Business<br/>Card Design</span>
+						</a>
+					</article>
+					
+					<article class="last ">
+						<!-- <a href="/newver/persona2.html"> -->
+							<span class="image">
+								<img src="/newver/img/cat/packaging.jpg" alt="Packaging design" />
+								<!-- <span class="hover">
+									<span class="including">Including:</span>
+									<span class="included">* Logo Design</span>
+									<span class="included">* Business Cards</span>
+									<span class="included">* Flyers</span>
+									<span class="included">* Stationary</span>
+								</span> -->
+							</span>
+							<span class="title r2 soon">Packaging<br/>design</span>
+							<span class="ribbon"></span>
+						<!-- </a> -->
+					</article>
+				</form>	
+				</section>
+						
+			</section>
+		<!-- </section>
+	</section>
+</body>
+</html> -->

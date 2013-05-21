@@ -544,8 +544,8 @@ $(document).ready(function(){
 				e.preventDefault();
 				gameIcons.find(".nosoon").removeClass("active");
 				$(this).addClass("active");
-				$("#game-step-2").show();
-				window.scrollTo(0, $(document).height());
+				//$("#game-step-2").show();
+				//window.scrollTo(0, $(document).height());
 			});
 			
 			$('.soon').removeAttr('href');
@@ -618,7 +618,7 @@ $(document).ready(function(){
 					errors = true;
 				}
 				
-				if ((descriptionField.val().length) <= 250)
+				if ((descriptionField.val().length) <= 50)
 				{
 					descriptionField.siblings("label.form-error").show();;
 					errors = true;
@@ -1225,35 +1225,36 @@ $(document).ready(function(){
 				});
 			});
 			
-			$("#sel-prod").each(function() {
-				var sl = $(this);
-				var icons = sl.find("ul#game-icons a");
-				var pr = sl.find("#price-ranges");
-				icons.click(function(e) {
-					e.preventDefault();
-					icons.removeClass("active");
-					$(this).addClass("active");
-					pr.show();
-					window.scroll(0, $(document).height());
-				});
-				sl.find("div.price-slider-holder a").click(function(e) {
-					e.preventDefault();
-					$(this).addClass("active");
-					$(this).siblings("a").removeClass("active");
-					var cols = sl.find("div.price-slider-info div.col");
-					cols.removeClass("load"); 
-					cols.eq($(this).index()).addClass("load");
-					get_range(cols.eq($(this).index()));
-				});
-				sl.find("div.buttons a.cancel").click(function(e){
-					e.preventDefault();
-					history.back(1);
-				});
-				sl.find("div.buttons a.black-button").click(function(e){
-					e.preventDefault();
-					sl.submit();
-				});
-			});
+			// $("#sel-prod").each(function() {
+				// var sl = $(this);
+				// var icons = sl.find("ul#game-icons a");
+				// //var pr = sl.find("#price-ranges");
+				// icons.click(function(e) {
+					// e.preventDefault();
+					// icons.removeClass("active");
+					// $(this).addClass("active");
+				// //	pr.show();
+				// //	window.scroll(0, $(document).height());
+					// //sl.submit(); //RG added	
+				// });
+				// // sl.find("div.price-slider-holder a").click(function(e) {
+					// // e.preventDefault();
+					// // $(this).addClass("active");
+					// // $(this).siblings("a").removeClass("active");
+					// // var cols = sl.find("div.price-slider-info div.col");
+					// // cols.removeClass("load"); 
+					// // cols.eq($(this).index()).addClass("load");
+					// // get_range(cols.eq($(this).index()));
+				// // });
+				// // sl.find("div.buttons a.cancel").click(function(e){
+					// // e.preventDefault();
+					// // history.back(1);
+				// // });
+				// // sl.find("div.buttons a.black-button").click(function(e){
+					// // e.preventDefault();
+					// // sl.submit();
+				// // });
+			// });
 			
 			$("#game-connect").each(function() {
 				var p = $(this);

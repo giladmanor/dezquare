@@ -4,6 +4,7 @@ $(document).ready(function(){
 	var imageHeight = 0;
 	images = $("#landing > img");
 	
+	/*
 	var image = document.getElementById("animated-image");
 	if (image.complete)
 	{
@@ -13,6 +14,7 @@ $(document).ready(function(){
 	{
 		ShowGif(image);
 	}
+	*/
 		
 	ResetImageSize();
 });

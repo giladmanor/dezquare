@@ -35,6 +35,7 @@
     @user = User.new
     @game_data = {}
     @tags = []
+    #@user.set_identifier
     render params[:view] 
   end
   
@@ -76,25 +77,56 @@
   def set
     view = params[:view] 
     user = params[:id].nil? ? User.new : User.find(params[:id]) 
+    
     generate_password=params[:generate_password]
     attr = params.delete_if{|k,v| !user.respond_to?(k.to_sym)}
-    user.update_attributes(attr.except(:id))
+    #email_changed=0
+     
     
-    unless generate_password.nil?
+    
+    logger.debug "USER::::: #{user.email.inspect}" 
+    if user.email.blank?
+        logger.debug "######### BLANK !!! ##########"
+        user.skip_confirmation!
+        user.confirm!  
+    elsif params[:email]!=user.email 
+        # user.email = params[:email]
+        user.skip_reconfirmation!
+        logger.debug "######################## EMAIL CHANGED! #####################################" 
+        logger.debug "USER::::: #{User.find(params[:id]).inspect}" 
+    end
+    
+    user.assign_attributes(attr.except(:id, :url_identifier, :legacy_password_hash, :encrypted_password))
+    
+    
+    if params[:legacy_password_hash].present? && params[:legacy_password_hash]!=user.legacy_password_hash
+      user.xpassword= params[:legacy_password_hash]
+    else
+      if params[:encrypted_password].present?  && params[:encrypted_password]!=user.encrypted_password
+        user.password=params[:encrypted_password] 
+      end
+    end
+    
+    if user.url_identifier.nil?
+      user.set_identifier
+    end
+    
+    unless generate_password.nil? # NEED TO ADAPT TO DEVISE (If user is Pender)
     #  user.create_password(6) 
       user.pender=false
       user.designer=true 
     #  user.email_confirm=true
-      user.set_identifier
+ #     user.set_identifier
     else
       user.available=true
     end
     
+
     
     msg_t, msg = say("","")
     if user.save
       msg_t, msg = say("info","#{user.name}'s Details Saved")
-      UserMailer.designer_welcome(user).deliver #unless generate_password.nil?
+      UserMailer.designer_welcome(user).deliver unless generate_password.nil?
     else
       msg_t, msg = say("error",user.errors.messages.values.join(', '))
     end

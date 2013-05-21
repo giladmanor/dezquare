@@ -1,25 +1,52 @@
-<h2>Sign up</h2>
+<section id="content-inside" style="margin-top: 25px;">
+	<h2 class="centered">Sign-up to dèzquare</h2>
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+			<section class="register-screen-content" style="margin-top: 40px;">	
+							
+<!-- <h2>Sign up</h2> -->
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+ <!-- <%= devise_error_messages! %> -->
   
-  <div><%= f.label :name %><br />
-  <%= f.text_field :name, :autofocus => true %></div>
+  <div class="formfield">
+  	<%= f.label :name, :class=>"abs" %>
+  	<%= f.text_field :name, :class=>"text validation-normal" %>
+  	<span class="vchecked"></span>
+	<label class="form-error">Invalid First Name</label>
+  </div>
 
-  <div><%= f.label "Last name" %><br />
-  <%= f.text_field :l_name %></div>
+  <div class="formfield">
+  	<%= f.label "Last name", :class=>"abs" %>
+  	<%= f.text_field :l_name, :class=>"text validation-normal" %>
+  	<span class="vchecked"></span>
+	<label class="form-error">Invalid Last Name</label>
+  </div>
 
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <div class="formfield">
+  	<%= f.label :email, :class=>"abs" %>
+  	<%= f.email_field :email, :class=>"text validation-email" %>
+  	<span class="vchecked"></span>
+	<label class="form-error">Invalid Email</label>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div class="formfield">
+  	<%= f.label :password, :class=>"abs" %>
+  	<%= f.password_field :password, :class=>"text validation-password" %>
+  	<span class="vchecked"></span>
+	<label class="form-error">Invalid Password</label>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="formfield">
+  	<%= f.label :password_confirmation, :class=>"abs" %>
+  	<%= f.password_field :password_confirmation, :class=>"text validation-password" %>
+  	<span class="vchecked"></span>
+	<label class="form-error">Password does not match</label>
+  </div>
   
-  <div>
+  <div class="formfield clearfix agree" style="margin-top: 25px; margin-bottom:25px;">
   	<span class="checkbox">
 		<input type="checkbox" name="agree_tos" />
 	</span>
@@ -28,7 +55,16 @@
 	</span>
   </div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <div class="submit clearfix">
+  	<%= f.submit "Sign up", :class=>"button-orange" %>
+  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %> -->
+
+</section>
+</section>
+</section>
+</section>
+
+

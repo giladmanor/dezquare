@@ -7,11 +7,15 @@ class DesignerController < SiteController
   DIR_PATH_REPOSITORY = "#{Rails.root}/public/repository/"
   
   def dashboard
-    logger.debug @user.inspect
-    @categories = Category.all
-    @author=@user
-    @editable=true
-    render "dashboard"
+    if @user.designer
+      logger.debug @user.inspect
+      @categories = Category.all
+      @author=@user
+      @editable=true
+      render "dashboard"
+    else 
+      redirect_to :controller => :d, :action => :ohno
+    end 
   end
   
   ###############################################################################
@@ -28,6 +32,7 @@ class DesignerController < SiteController
         :message=>"Take your time to learn your customer`s taste \nand contact your customer with any questions and updates.",
         :desc=>"We can`t wait to see your work!"
       }
+      NotificationMailer.accepted_project(project).deliver
     else
       #TODO
       @res={
@@ -79,9 +84,12 @@ class DesignerController < SiteController
       if @author.blank?
         redirect_to :controller => :d, :action => :ohno
       end
-    else 
-      @author = @user
+    elsif @user.present? && @user.designer
+        @author = @user
+    else
+      redirect_to :controller => :d, :action => :ohno
     end
+    
       
     logger.debug "###### AUTHOR::::: #{@author.inspect}" 
     logger.debug "###### USER::::: #{@user.inspect}"     
@@ -150,9 +158,11 @@ class DesignerController < SiteController
     @user.designer_categories.clear
     Category.all.each{ |c|
       ucp = DesignerCategory.new
-      if params["price_#{c.id}"].present?
-        ucp.min_price=params["price_#{c.id}"].gsub("$","").to_f
-      end
+#      if params["price_#{c.id}"].present?
+#        ucp.min_price=params["price_#{c.id}"].gsub("$","").to_f
+#      end
+      ucp.min_price=1 #TEMPORARY SETTINGS UNTIL BETA IS OUT
+      
       ucp.category_id=c.id
       @user.designer_categories << ucp
     }

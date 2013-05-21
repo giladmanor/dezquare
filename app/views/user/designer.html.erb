@@ -27,8 +27,15 @@
 							<input name="email" type="text" style="width:90%" value="<%=@user.email%>">
 						</fieldset>
 						<fieldset style="width:48%; float:left;">
-							<label>Access Key (Password)</label>
-							<input name="password" type="text" style="width:90%" value="<%=@user.password%>">
+							<!-- <label>Access Key (Password)</label>
+							<input name="password" type="text" style="width:90%" value="<%=@user.password%>"> -->
+							<% if @user.legacy_password_hash.blank? || @user.encrypted_password.present? %>
+								<label>Password (New Encryption)</label>
+								<input name="encrypted_password" type="text" value="<%=@user.encrypted_password.blank? ? "" : @user.encrypted_password %>">	
+							<% else %>
+								<label>Password (Old Encryption)</label>
+								<input name="legacy_password_hash" type="text" value="<%=@user.legacy_password_hash%>">
+							<% end %>
 						</fieldset><div class="clear"></div>
 						<fieldset style="width:48%; float:left; margin-right: 3%;">
 							<label>Age</label>
@@ -42,7 +49,12 @@
 							<div class="idenfifier">
 							<label>URL Identifier: </label>/<%=@user.url_identifier%>
 							</div>
-						</fieldset>						
+						</fieldset>		
+						<fieldset>
+							<div>
+								<label>How they heard about us </label><%= @user.heard_about_us %>
+							</div>
+						</fieldset>				
 						<div class="clear"></div>
 				</div>
 			<footer>

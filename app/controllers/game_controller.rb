@@ -39,7 +39,8 @@ class GameController < SiteController
     else
       unless @game.user.nil?
         logger.debug "logging in user #{@game.user.full_name}"
-        session[:user_id] = @game.user.id
+        #session[:user_id] = @game.user.id
+        sign_in(@game.user, :bypass => true)
       else
         logger.debug "     !!!     User is empty      !!!"
       end

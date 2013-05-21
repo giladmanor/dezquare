@@ -4,8 +4,10 @@
 	<title>dèzquare | Get matched to a graphic designer</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<META NAME="Description" CONTENT='Find the graphic designer you will love! The fastest way to get matched to a graphic designer to design your flyer, business card, or any other visual.'>
-    
+    <link href="/newver/css/newheader.css" media="screen" rel="stylesheet" type="text/css" > 
+	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
 	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+
 	<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
 	
 	<script type="text/javascript" src="/js/jquery-ui-1.9.0.custom.min.js"></script>
@@ -15,8 +17,8 @@
 	<script type="text/javascript" src="/js/main.js"></script>
 		
 	
+	jg
 	
-	<%=render "google_a"%>
 	</head>
 <body>
 	<div id="fb-root"></div>
@@ -29,8 +31,9 @@
 	}(document, 'script', 'facebook-jssdk'));</script>
 	<%=render "qualaroo"%>
 	
-	
-	<div id="page">
+	<%=render "layouts/header"%>
+	<%=render "google_a"%>
+	<div id="page" class="clearfix">
 		<!-- <div id="header">
 			
 			<div class="page-content clearfix">
@@ -38,16 +41,16 @@
 				<%=render "user_options"%>
 			</div>
 		</div> -->
-		<%=render "layouts/header"%>
+		
 		
 	<p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-		
-<%= yield %>
-
-<%=render "layouts/footer"%>
-
-<div id="window-overlay" <%= ["login","confirm"].include?(params[:state]) ? "style='display:block'" : ""%>></div>
+	<section id="inside" style="margin-top:90px;">
+		<%= yield %>
+		<%=render "layouts/footer"%>
+	</section>
+	</div>
+<!-- <div id="window-overlay" <%= ["login","confirm"].include?(params[:state]) ? "style='display:block'" : ""%>></div>
 	<div id="login-popup" class="popup " <%= params[:state]=="login" ? "style='display:block'" : ""%>>
 		<span class="close"></span>
 		<div class="popup-content">
@@ -126,7 +129,7 @@
 				</div>		
 			</form>
 		</div>
-	</div>
+	</div> -->
 	
 </body>
 </html>

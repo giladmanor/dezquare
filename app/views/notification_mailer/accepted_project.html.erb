@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  <style type="text/css">
+  body p {
+	font-family: Verdana, Geneva, sans-serif;
+}
+  </style>
+  <title>Dezquare - A Project was accepted!</title>
+  </head>
+<body>
+<% if @project.present? %>>	
+    <h2>The following project has been accepted:</h2>
+    <p>Id: <%= "[#{@project.id}]"%></p>
+    <p>Category: <%= @project.category.nil? ? "" : "#{@project.category.name}" %></p>
+    <p>Title: <%= @project.title.nil? ? "" : @project.title %> </p>
+	<p>Client: <%= @project.shopper.nil? ? "" : "#{@project.shopper.full_name} | #{@project.shopper.email}" %> </p>
+	<p>Accepted By (Designer): <%= @project.designer.nil? ? "" : "#{@project.designer.full_name} | #{@project.designer.email}" %></p>
+	<p>Description: <%= @project.info.nil? ? "" : @project.info %></p>
+	<p>Budget: <%= @project.game.max_price.nil? ? "" : @project.game.max_price %></p>>
+<% end%>
+</body>
+</html>
+

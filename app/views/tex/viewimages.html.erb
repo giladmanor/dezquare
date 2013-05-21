@@ -1,0 +1,14 @@
+<%
+@images = Image.all
+i=0
+@images.each do |m|
+i+=1	
+%>
+
+ <img src="/repository/thumbnail/<%=m.file_path%>">
+	<% if i%4 == 0 %>
+		<BR>
+	<%end%>
+		
+
+<%end%>

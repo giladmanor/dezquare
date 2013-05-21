@@ -74,7 +74,7 @@
 														</div>
 														<div class="details">
 															<div class="big">
-																<a target="_blank" href="/designer/profile/<%=dez.id%>"><%=dez.full_name%></a>
+																<a target="_blank" href="/designer/profile/<%=dez.url_identifier%>"><%=dez.full_name%></a>
 																
 															</div>
 															<div class="small"><%=(dez.location.nil? || dez.location=="") ? '' : "From #{dez.location}"%></div>
@@ -97,7 +97,7 @@
 								</div>
 								<div class="last-row">
 									<div class="col1">
-										<div class="payment">Cost: <%=project.game.nil? ? 'Unspecified' : "$#{project.game.max_price}"%></div>
+										<div class="payment"><!-- Cost: <%=project.game.nil? ? 'Unspecified' : "$#{project.game.max_price}"%> --></div>
 									</div>
 									<div class="col2">
 										<div class="date"><%=project.created_at.strftime("%I:%M%p, %e %b %Y")%></div>

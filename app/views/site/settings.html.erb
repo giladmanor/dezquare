@@ -37,6 +37,7 @@
 	<% end %>
 										
 								</div>
+								
 								<div class="col2">
 									<h4>Change my password:</h4>
 									<div class="formfield">
@@ -52,10 +53,11 @@
 									<div class="formfield">
 										<input type="password" class="text" name="repeat_new_password" />
 										<label class="abs">Re-enter new password</label>
-										<label class="form-error" <%=params[:error]=="PASSWORD" ? "style='display:block'" : ""%>>Password don't match</label>
+										<label class="form-error" <%=params[:error]=="PASSWORD" ? "style='display:block'" : ""%>>Passwords don't match</label>
 									</div>
 								</div>
 							</fieldset>
+							<label style="color:red;" class="clearfix">Please note: If you change your email, you will be asked to confirm your new email address.</label>
 							<div class="submit clearfix">
 								<input type="submit" class="button-orange" value="Submit" />
 								<a href="/site/dashboard" class="cancel">Cancel</a>

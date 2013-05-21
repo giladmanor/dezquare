@@ -67,4 +67,6 @@ class RegistrationsController < Devise::RegistrationsController
     end
     #redirect_to :action=>:list, :view=>view,  :server_sais=>msg, :server_sais_type=>msg_t 
   end
+  
+  
 end

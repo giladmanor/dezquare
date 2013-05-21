@@ -13,6 +13,9 @@ class Rocker < StageImplementor
     game.designers.each{|d|
       UserMailer.designer_new_match(d).deliver
     }
+    if game.project.present?
+      NotificationMailer.new_project(game.project).deliver
+    end
   end
   
   def self.complete?(game,arguments)

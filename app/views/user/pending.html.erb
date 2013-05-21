@@ -26,7 +26,11 @@
 						<fieldset>
 							<label><a target="_blank" href='<%=@user.portfolio_link%>'>Link to online portfolio</a></label>
 							<input name="portfolio_link" type="text" value="<%=@user.portfolio_link%>">
-							
+						</fieldset>
+						<fieldset>
+							<div>
+								<label>How they heard about us </label><%= @user.heard_about_us %>
+							</div>
 						</fieldset>
 						<fieldset>
 							<label>Aprove this Desinger</label>

@@ -23,6 +23,10 @@ class TexController < AdminController
   
   end
   
+  def viewimages
+    
+  end
+  
   def updatecolorsforimages
     Image.find_each do |img|   ##### (CHANGED) USING FIND_EACH INSTEAD OF ALL
       if img.user_id.present? && img.file_path.present?

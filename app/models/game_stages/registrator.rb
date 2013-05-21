@@ -13,7 +13,10 @@ class Registrator < StageImplementor
     user.shopper=true
     if user.save
       game.user = user
-      
+    
+    #sign_in(user, :bypass => true)
+  @user = user
+        
       unless game.project.nil?
         game.project.shopper = user
         game.project.save

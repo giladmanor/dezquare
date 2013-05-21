@@ -155,22 +155,21 @@ div.white-box {
 	padding: 10px 20px;
 }
 
-h1#logo {
+/*h1#logo {
 	float: left;
 	height: 42px;
 	margin: 0px;
-	/*margin-left: -12%;*/
+	        margin-left: -12%;
 	padding-top: 10px;
 }
 h1#logo a { display: block; }
-h1#logo a img { display: block; }
+h1#logo a img { display: block; }*/
 
 div.page-content {
 	margin: 0px auto;
 	width: 990px;
-	/*width: 97%;*/
+	     /*width: 97%;*/
 }
-
 div#footer {
 	background: #d9d9d9;
 	color: #666;

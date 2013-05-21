@@ -69,7 +69,8 @@ class AdminController < ApplicationController
         {:name=>'Tags',:class=>"icn_tags",:action=>'/tag/list'},
         {:name=>'Languages',:class=>"icn_audio",:action=>'/languages/list'},
         {:name=>'LSD: Languages',:class=>"icn_audio",:action=>'/lsd/list?entity=language'},
-        {:name=>'Game Types',:class=>"icn_video",:action=>'/game_type/list'}]},
+        {:name=>'Game Types',:class=>"icn_video",:action=>'/game_type/list'},
+        {:name=>'NEW PROJECT',:class=>"icn_categories",:action=>'/admin/new_project'}]},
       {:name=>'Designer Reports',:children=>[
         {:name=>'Designer Overview Report',:class=>'icn_categories',:action=>'/admin/designer_overview'}  ]},
       {:name=>'Image Reports',:children=>[
@@ -81,6 +82,56 @@ class AdminController < ApplicationController
       }
         
       ]
+  end
+  
+  def new_project
+    
+  end
+  
+  def set_project
+    @shopper = User.find_by_email(params[:shopper_email])
+    @game = Game.new
+    @project = Project.new
+
+    
+    @game.game_type_id = 1
+    @game.user_id = @shopper.id
+    @game.is_complete = 1
+    @game.category_id = Category.find_by_name(params[:category]).id
+    @game.max_price = 9999999
+    
+    @project.title = params[:project_title]
+    @project.shopper_id = @shopper.id
+    @project.category_id = @game.category_id
+    @project.status = "started"
+    @project.info = params[:project_details]
+    @project.file_types = "jpg, png, psd, gif"
+    @project.save    
+    
+    @game.project_id = @project.id
+    @game.save
+    
+
+    @designers = params[:designers].split(",")
+    @designers.each do |demail|
+      @game_designer = GameDesigner.new
+      @game_designer.game_id = @game.id
+      
+      @game_designer.user_id = User.find_by_email(demail).id
+      @game_designer.save
+    end   
+    
+    @images = params[:liked_images].split(",")
+    @images.each do |img|
+      @gir = GameImageRate.new
+      @gir.game_id = @game.id
+      @gir.image_id = img
+      @gir.value = "1"
+      @gir.save
+    end
+    
+    
+    redirect_to "/admin/dashboard"  
   end
   
 end

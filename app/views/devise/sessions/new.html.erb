@@ -1,17 +1,68 @@
-<h2>Sign in</h2>
+<!-- <h2>Sign in</h2> -->
+<section id="content-inside">
+	<h2 class="centered" style="margin-top: 60px;">Sign-in to dèzquare</h2>
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-login" style="margin-top:60px;">
+			<section class="register-screen-content">
+				
+				<div class="social-connect">
+					<a href="#" class="linkedin">
+						<span class="icon"></span>
+						<span class="text" style="margin-left: 15px;">Sign in with <strong>LinkedIn</strong></span>
+					</a>
+					<a href="#" class="twitter">
+						<span class="icon"></span>
+						<span class="text" style="margin-left: 15px;">Sign in with <strong>Twitter</strong></span>
+					</a>
+				</div>
+				<div class="sidebar-or">- OR -</div>
+				<%= form_for(resource, :as => resource_name, :url => session_path(resource_name),:html => { :class => 'mcentered' }) do |f| %>
+  					<div class="formfield">
+  						<%= f.label :email, :class=>"abs"%>
+  						<%= f.email_field :email, :class=> "text validation-email" %> <!-- , :name=>"email" %> -->
+  						<!-- <%= f.label "Invalid Email", :class=>"form-error"%> -->
+  						<!-- <input type="text" name="email" class="text validation-email" />
+  						<label class="abs">Email</label> -->
+						<label class="form-error">Invalid Email</label>
+  						
+  					</div>
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  					<div class="formfield">
+  						<%= f.label :password, :class=>"abs"%>
+  						<%= f.password_field :password, :class=>"text validation-password" %> <!-- , :name=>"password" %> -->
+  						<label class="form-error">Invalid Password</label>
+  						
+  					</div>
+					<div class="formfield clearfix agree">
+						
+  							<% if devise_mapping.rememberable? -%>
+  								<span class="checkbox checked">
+    								<%= f.check_box :remember_me, :name=>name="remember_me" %>
+    							<!-- <%= f.label :remember_me %> -->
+    							</span>
+    							<span class="text">Remember me</span>
+  							<% end -%>				
+  					</div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in" %></div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+  					<div class="submit clearfix">
+  						<%= f.submit "Sign in", :class=>"button-orange" %>
+  					</div>
+  					<div class="forgot-password">
+						<!-- <a href="forgot.html">Forgot Password?</a> -->
+						<%= link_to "Forgot Password?", new_password_path(resource_name) %>
+					</div>
+				<% end %>
+				<div class="sidebar-bottom-note centered">
+					Don't have an account? <a href="/signup">Sign Up!</a>
+				</div>
+				<div class="alerts" style="color:red;">
+					<p class="notice"><%= notice %></p>
+					<p class="alert"><%= alert %></p>
+				</div>
+<!-- <%= render "devise/shared/links" %> -->
+		</section>
+			
+</section>
+</section>
+</section>

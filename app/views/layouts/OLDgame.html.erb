@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>Dezquare</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
+	<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
+	<script type="text/javascript" src="/js/jquery-ui-1.8.24.custom.min.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	<link href="/newver/css/newheader.css" media="screen" rel="stylesheet" type="text/css" > 
+	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
+	<%=render "google_a"%>
+</head>
+<body>
+	<div id="page">
+		<!-- <div id="header">
+			<div class="page-content clearfix">
+				<%=render "logo"%>
+				<%=render "user_options"%>
+			</div>
+		</div> -->
+		<%=render "layouts/header"%>
+		
+	<p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+		<div id="content" style="margin-top:-12px;">		
+			<div class="page-content" style="margin-top:90px;">
+			
+				<%
+				unless @game.stage.progress_label.nil? || @game.stage.progress_label.length==0 
+				
+				%>
+				
+				<div id="game-bar" class="active-<%=@game.type.labels.index(@game.stage.progress_label)+1%>">
+					<%
+					i=0
+					@game.type.labels.each{|l|
+						i+=1
+						active= @game.stage.progress_label==l ? "active" : ""
+						  
+						%>
+						<div class="step step<%=i%> <%=active%>">
+							<span class="number"><%=i%></span>
+							<span class="name"><%=l%></span>
+						</div>
+						<%
+					}
+					
+					%>
+					
+					
+				</div>
+				<%
+				end
+				%>
+				
+				<%= yield %>
+				
+				
+			</div>			
+		</div>
+	</div>
+	
+	<%=render "layouts/footer"%>
+	<div id="window-overlay"></div>
+	<!-- 
+	<div id="login-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Login to dezquare!</div>
+			<form action="/site/login" method="post">
+				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+				</div>
+				<div class="formfield">
+					<input type="password" class="text" name="password" />
+					<label class="abs">Password</label>
+				</div>
+				<div class="submit clearfix">
+					<span class="remember-me">
+						<span class="checkbox">
+							<input type="checkbox" name="remember-me" />
+						</span>
+						<span class="text">Remember Me</span>
+					</span>
+					<input type="submit" class="button-orange" value="Submit" />
+				</div>		
+				<div class="forgot">
+					<a href="#" id="forgot-password">I forgot my password</a>
+				</div>
+			</form>
+			<div class="foot">
+				Don't have an account? <a href="/site/register">Sign-up!</a>
+			</div>
+		</div>		
+	</div>
+	
+	<div id="forgot-popup" class="popup">
+		<span class="close"></span>
+		<div class="popup-content">
+			<div class="title">Get a new Password</div>
+			<form action="" method="post">
+				<div class="formfield">
+					<input type="text" class="text" name="email" />
+					<label class="abs">E-mail address</label>
+					<label class="form-error">Invalid email address</label>
+				</div>
+				<div class="submit clearfix">
+					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
+				</div>		
+			</form>
+		</div>
+	</div> -->
+	
+</body>
+</html>

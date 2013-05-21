@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :name, :l_name, :email, :password, :password_confirmation, :remember_me, :portfolio_link, :pender, :shopper, :designer,
                   :dob, :location, :available, :about, :public_profile, :dez_profile, :suspend, :avatar, :cover, :direct_link, :education,
-                  :skills, :dominant_colors, :url_identifier
+                  :skills, :dominant_colors, :url_identifier, :heard_about_us
   serialize :dominant_colors, Array
   
   has_many :images, :order=>"ord"
@@ -31,36 +31,51 @@ class User < ActiveRecord::Base
   has_many :matches, :through=>:game_designers, :class_name=>"Game", :foreign_key=>"game_id", :source=>:game
   
   validates_uniqueness_of :email, :message=>"Email already taken"
-  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message=>"%{value} is an invalid email"
+  validates_format_of :email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :message=>"%{email} is an invalid email"
   #validates :password, :length=>{:in => 6..20}  
+  
+  def valid_password?(password)
+      if self.legacy_password_hash.present?
+        # if ::Digest::MD5.hexdigest(password).upcase == self.legacy_password_hash
+        if self.xpassword?(password)
+          self.password = password
+          self.legacy_password_hash = nil
+          if self.email_confirm
+            self.confirm!
+          end
+          self.save!
+          true
+        else
+          false
+        end
+      else
+        super
+     end
+  end
+
+    def reset_password!(*args)
+      self.legacy_password_hash = nil
+      super
+    end
   
   def active_for_authentication? 
     super && !pender? 
   end
   
-  def after_sign_in_path_for(resource)
-    
-    #if @user.present? && @user.shopper? #&& params[:controller]=="site" && params[:action]=="index"
-    #  return 'site#dashboard'
-    #end
-    ##root_path    
-    #current_user_path
-    dashboard_site_path
-  end
   
-  def create_Xpassword(limit=7)
+  def create_xpassword(limit=7)
     o =  [('A'..'Z')].map{|i| i.to_a}.flatten;  
     self.xpassword=(0..50).map{ o[rand(o.length)]}.take(limit).join;
   end
   
   def xpassword=(red)
     black = Digest::MD5.hexdigest red
-    write_attribute(:password, black)
+    write_attribute(:legacy_password_hash, black)
   end
   
   def xpassword?(red)
     black = Digest::MD5.hexdigest red
-    self.password == black
+    self.legacy_password_hash == black
   end
   
   def full_name

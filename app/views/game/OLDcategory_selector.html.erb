@@ -1,0 +1,76 @@
+<div class="wide-page-holder game-step" id="game-step-1">
+	<div class="wide-page-wrap">
+		<h2>Select a Product</h2>
+		<form action="/game/next" method="post" id="sel-prod">
+			<input type="hidden" name="category_id"  />
+			<ul class="icons" id="game-icons">
+				<%
+				Category.all.each{|c|
+					#if c.code.include? "nosoon"
+					%>
+						<li>
+							<a href="javascript:void(0)" class="<%=c.code%>" onclick="$('input[name=category_id]').val(<%=c.id%>);$('form#sel-prod').submit();">
+								<img src="/img/icons/<%=c.icon%>.png" alt="<%=c.name%>" class="normal" />
+								<img src="/img/icons/<%=c.icon%>-hover.png" alt="<%=c.name%>" class="hover" />
+								<span class="text"><%=raw(c.name)%></span>
+							</a>
+						</li>
+					<% 
+			
+					# end
+				}
+				%>
+			</ul>
+			
+			<!-- <div id="price-ranges">
+				<h3 class="border">What’s the price you're willing to pay for this?</h3>
+				<form action="game2.html">
+					<div class="price-slider-holder">
+						<a href="#" class="white-button small-font">&lt; $249</a>
+						<a href="#" class="white-button small-font">$250-$499</a>
+						<a href="#" class="white-button small-font">$500-$749</a>
+						<a href="#" class="white-button small-font">$750-$999</a>
+						<a href="#" class="white-button small-font orange-font">&gt; $1000</a>
+					</div>
+					<div class="price-slider-info loader">
+						<div class="col" value="0" max="250"></div>
+						<div class="col" value="249"  max="500"></div>
+						<div class="col" value="500" max="750"></div>
+						<div class="col" value="750" max="1000"></div>
+						<div class="col" value="1000" max="99999999"></div>
+					</div>
+					<div class="buttons clearfix">
+						<a href="#" class="black-button big-font" id="submit">
+							Next
+							<img src="/img/arrow-right.png" class="normal" />
+							<img src="/img/arrow-right-orange.png" class="hover" />
+						</a>
+						<a href="/" class="cancel">Cancel</a>
+					</div>
+				</form>
+			</div>	 -->
+		</form>
+	</div>
+</div>
+				
+					
+<!-- <script type="text/javascript">
+	function get_range(elm){
+		$('input[name=max_price]').val(elm.attr("max"));
+		elm.parent().children().text("");
+		var category_id = $('input[name=category_id]').val();
+		$.ajax({
+		  	type: "POST",
+		  	url: "/game/category_price_range",
+		  	data: { id:category_id, min:elm.attr("value")},
+		  	success: function(data){
+			  	elm.text(1+data.max_designers*2 + ' designers available');
+		  		elm.removeClass("load");
+		  		
+		}
+		});
+		return false;
+	}
+</script> -->
+					
+			

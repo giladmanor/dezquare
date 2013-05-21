@@ -1,30 +1,38 @@
-﻿
-	
-	<div id="register-designer-popup" class="popup" <%= @state.nil? ? "" : "style='display:none'"%>>
-		<div class="popup-content">
-			<div class="title">Request an invite to dezquare!</div>
+﻿<section id="content-inside">
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic" style="margin-top:-30px;">
+			<section class="register-screen-content">
+			<h2>Request an invite</h2>
+			<div class="form-sub-head">Your Account</div>
 			<form action="/registrations/register_designer_success" method="post" id="register-designer-form">
 				<div class="formfield">
-					<input type="text" class="text" name="name" />
+					<input type="text" class="text validation-normal" name="name" />
 					<label class="abs">First Name</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid First Name</label>
 				</div>
 				<div class="formfield">
-					<input type="text" class="text" name="l_name" />
+					<input type="text" class="text validation-normal" name="l_name" />
 					<label class="abs">Last Name</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Last Name</label>
 				</div>
 				<div class="formfield">
-					<input type="text" class="text" name="email" />
-					<label class="abs">E-mail address</label>
+					<input type="text" class="text validation-email" name="email" />
+					<label class="abs">E-mail</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Email Address</label>
 				</div>
 				<div class="formfield">
-					<input type="text" class="text" name="portfolio_link" />
-					<label class="abs">Link to Portfolio</label>
+					<input type="text" class="text validation-normal" name="heard_about_us" />
+					<label class="abs">How did you hear about dezquare?</label>
+					<span class="vchecked"></span>
+				</div>
+				<div class="form-sub-head">Your Work</div>
+				<div class="formfield">
+					<input type="text" class="text validation-email" name="portfolio_link" />
+					<label class="abs">Link to your portfolio</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Link</label>
 				</div>
@@ -38,16 +46,19 @@
 					<label class="form-error">Please agree to our terms and conditions</label>
 				</div>
 				<div class="submit clearfix">
-					<input type="submit" class="button-orange" value="Send" />
+					<input type="submit" class="button-orange" value="Apply to join dezquare" />
 				</div>		
 			</form>
-			<div class="foot">
-				Already a member? <a href="/login" id="bottom-logink">Log in!</a>
+			
+			<div class="sidebar-bottom-note centered">
+				Already have an account? <a href="/login" id="bottom-logink">Sign in!</a>
 			</div>
-			<label class="form-error" <%= !@error.nil? ? "style='display:block'" : ""%>><%=@error%></label>
-		</div>		
-		
-	</div>
+			<% if @error.present? %>
+				<label class="text" style="text-align: center; color: red;"><%=@error%></label>
+			<%end%>		
+		</section>
 	
-	
+</section>
+</section>
+</section>
 	

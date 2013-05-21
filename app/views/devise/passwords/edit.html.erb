@@ -1,16 +1,36 @@
-<h2>Change your password</h2>
+<section id="content-inside" >
+	<h2 style="text-align:center; margin-top:70px;">Change your password</h2>
+	<!-- <h2 class="centered">So, you forgot your password..</h2> -->
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-fp">
+			<section class="register-screen-content" style="margin-top:80px;">
+				
+
+<!-- <h2>Change your password</h2> -->
 
 <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
-  <%= devise_error_messages! %>
+  <h3 style="color:red;><%= devise_error_messages! %></h3>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+  <div class="formfield">
+  	<%= f.label :password, "New password", :class=>"abs" %>
+  	<%= f.password_field :password, :class=>"text validation-password" %>
+  </div>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="formfield">
+  	<%= f.label :password_confirmation, "Confirm new password", :class=>"abs" %>
+  	<%= f.password_field :password_confirmation, :class=>"text validation-password" %>
+  </div>
 
-  <div><%= f.submit "Change my password" %></div>
+  <div class="submit clearfix" >
+  	<%= f.submit "Change my password", :class=>"button-orange" %>	
+  </div>
 <% end %>
 
-<%= render "devise/shared/links" %>
+<!-- <%= render "devise/shared/links" %> -->
+
+</section>
+</section>
+</section>
+</section>

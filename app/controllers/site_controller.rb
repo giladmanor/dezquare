@@ -7,7 +7,7 @@ class SiteController < ApplicationController
   DIR_PATH_COVERS = "#{Rails.root}/public/user_covers/"
   
   def index
-    
+    redirect_to :controller => :home, :action => :index
   end
   
   def login
@@ -131,7 +131,7 @@ class SiteController < ApplicationController
         sign_in(current_user, :bypass => true)
         flash[:notice] = 'Password updated.'
       end
-      UserMailer.shopper_change_email(@user).deliver if @send_email_change
+      #UserMailer.shopper_change_email(@user).deliver if @send_email_change
       redirect_to :action=>:dashboard
       return
     end

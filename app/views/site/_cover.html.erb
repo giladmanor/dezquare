@@ -1,11 +1,11 @@
 <div id="cover">
 	<div id="cover">
 		<div id="cover-image">
-			
+	<%if @author.present? %>
 			<form action="/designer/upload_cover"  enctype="multipart/form-data" method="post">
 			  <div class="fileinputs">
 	            <div style="position: absolute;z-index: 0;">
-	            	<img  id="cover-preview" src="/user_covers/<%= @author.cover.blank? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" alt="My Cover Image" />
+	            	<img  id="cover-preview" src="/user_covers/<%= @author.blank? || @author.cover.blank? ? "designer_cover_default.jpg" : @author.cover%>?t=<%=Time.now.to_f%>" alt="My Cover Image" />
 	            </div>
 	            <% 
 	            if @editable
@@ -28,7 +28,7 @@
 				  <div class="fileinputs">
 		            
 		            <div style="overflow: hidden; width: 117px; height: 117px;">
-			         <img src="/user_avatars/<%= @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>?t=<%=Time.now.to_f%>" alt="My Profile Photo" id="preview" />
+			         <img src="/user_avatars/<%= @author.blank? || @author.avatar.nil? ? "designer_profile_default.jpg" : @author.avatar%>?t=<%=Time.now.to_f%>" alt="My Profile Photo" id="preview" />
 			         
 			        </div>
 		            <% 
@@ -74,7 +74,7 @@
 			<%
             end
             %>
-			
+	<% end %>		
 		</div>
 	</div>
 </div>
