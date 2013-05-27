@@ -151,8 +151,10 @@ class User < ActiveRecord::Base
     if self.designer
       images_group = []
       self.images.map {|c| images_group << c}
-      self.dominant_colors = Image.multicolors(images_group)
-      self.save
+      images_group.any? do
+        self.dominant_colors = Image.multicolors(images_group)
+        self.save
+      end
     end  
   end
   

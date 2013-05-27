@@ -422,7 +422,7 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 	top:-3px;
 	
 }
-#taste-selector article .hover {
+/*#taste-selector article .hover {
 	background: #231e20;
 	color: #fff;
 	display: none;
@@ -438,13 +438,23 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 	top: 130px;
 	width: 100%;
 	
-}
+}*/
+
 #taste-selector article .including {
 	 margin: 5px 5px 3px; 
 
 }
 #taste-selector article .included { margin: 0px 10px; }
-#taste-selector article a:hover .hover { display: block; }
+
+#taste-selector article a:hover{
+	background: #231e20;
+	color: #fff;
+	
+}
+
+/*#taste-selector article a:hover .hover { 	
+	display: block;
+}*/
 /* End Taste Selector */
 
 /* Design Selector */
@@ -543,10 +553,11 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 #matches-found .matches {
 	overflow: hidden;
 	margin: 0px auto 65px;
-	width: 701px;
+	width: 705px;
 }
 #matches-found .matches .match {
 	float: left;
+	margin-top: 1em;
 	margin-right: 25px;
 	width: 217px;
 }
@@ -557,7 +568,11 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 }
 #matches-found .matches .match img { 
 	display: block;
-	max-width: 100%; 
+	/*max-width: 100%; */
+	width: 217px;
+	height: 217px;
+	border: 1px solid #d2d2d2;
+	padding: 0px;
 }
 #matches-found .matches .match.last { margin-right: 0px; }
 #matches-found .matches .name {
@@ -573,6 +588,9 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 	font-weight: 300;
 	right: 0px;
 	text-align: center;
+	width: 217px;
+	/*opacity:0.5;*/
+	
 }
 #matches-found .buttons {
 	text-align: center;
@@ -935,6 +953,11 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	z-index: 19;
 }
 #full-brief {
+	-moz-transform: scale(0.9);
+		-webkit-transform: scale(0.9);
+		-o-transform: scale(0.9);
+		-ms-transform: scale(0.9);
+		transform: scale(0.9);
 	background: #fff;
 	box-shadow: 0px 0px 5px #333;
 	position: absolute;
@@ -943,8 +966,10 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	width: 1200px;
 	display: none;
 	margin-left: -600px;
-	margin-top: -365px;
+	margin-top: -315px;
 	z-index: 20;
+	word-wrap: break-word;
+	
 }
 #full-brief .close {
 	background: url(../img/bkg-close.png) left top no-repeat;
@@ -961,12 +986,24 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 #full-brief .basic-info {
 	float: left;
 	padding-right: 46px;
+	word-wrap: break-word;
+	max-width: 250px;
 }
 #full-brief .basic-info .avatar {
 	border: 1px solid #cfcfcf;
 	border-radius: 1px;
+	/*height: 200px;*/
+	/*width: 100px;*/	
+	/*max-width: 220px;*/
+	width:217px;
 }
-#full-brief .basic-info .avatar img { display: block; }
+#full-brief .basic-info .avatar img { 
+	display: block; 
+	height: 217px;
+	width: 100%;
+	min-width:217px;
+	
+}
 #full-brief .basic-info .name {
 	color: #222020;
 	font-size: 38px;
@@ -976,18 +1013,20 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 }
 #full-brief .profile-config {
 	padding: 0px;
-	margin: 0px 0px 60px;
+	/*margin: 0px 0px 60px;*/
 	list-style-type: none;
 	font-family: 'Roboto';
 	font-size: 16px;
 	font-weight: 100;
+	word-wrap: break-word;
+	max-width: 250px;
 }
-#full-brief .profile-config.v2-space { margin-bottom: 170px; }
+#full-brief .profile-config.v2-space { margin-bottom: 17px; }
 #full-brief .profile-config li { 
 	margin-bottom: 10px;
-	white-space: nowrap; 
+	white-space: normal; 
 }
-#full-brief .profile-config li.gap { margin-bottom: 50px; }
+#full-brief .profile-config li.gap { margin-bottom: 0px; }
 #full-brief .profile-config img {
 	vertical-align: -4px;
 	margin-right: 4px;
@@ -1014,7 +1053,7 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	font-weight: 500;
 	font-size: 52px;
 	line-height: 48px;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 #full-brief .taste-and-style .taste-top {
 	margin-bottom: 25px; 
@@ -2676,6 +2715,7 @@ article.image-item span { display: block; }
 	left: 0px;
 	top: 0px;
 	width: 100%;
+	/*height: 100%;*/
 	z-index: 2;
 }
 #landing .animated {
@@ -2906,11 +2946,11 @@ span.checkbox input { display: none; }
 span.checkbox.checked { background-position: -130px -20px; }
 
 span.checkbox.big {
-	background-position: -200px top;
+	background-position: -199px top;
 	height: 47px;
 	width: 47px;
 }
-span.checkbox.big.checked { background-position: -200px top; }
+span.checkbox.big.checked { background-position: -199px top; }
 span.checkbox.big .c-v {
 	background: url("../img/icons.png") -250px top no-repeat;
 	height: 37px;

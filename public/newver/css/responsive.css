@@ -409,6 +409,13 @@
 		top: 130px;
 		width: 100%;
 	}*/	
+	#matches-found{
+		-moz-transform: scale(0.9);
+		-webkit-transform: scale(0.9);
+		-o-transform: scale(0.9);
+		-ms-transform: scale(0.9);
+		transform: scale(0.9);
+	}
 	div.r1 { margin-top: -40px;}
 	#title {
 		-moz-transform: scale(0.9);

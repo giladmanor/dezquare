@@ -22,6 +22,7 @@ class GameController < SiteController
   
   
   def next
+    
     begin
       @game=Game.find(session[:game_id])
     rescue
@@ -31,21 +32,31 @@ class GameController < SiteController
     
     @game.user = @user unless @user.nil?
     
-    @game.set(params) unless @game.is_complete 
-    view = @game.view    
+    # if params[:trylogin].present?
+#       
+      # sign_in(@game.user, :bypass => true)
+    # end
     
-    unless @game.is_complete
-      render view
-    else
-      unless @game.user.nil?
-        logger.debug "logging in user #{@game.user.full_name}"
-        #session[:user_id] = @game.user.id
-        sign_in(@game.user, :bypass => true)
+    if params[:login].present? && params[:login] == "1"
+       render "/game/login"
+    else   
+      @game.set(params) unless @game.is_complete 
+      view = @game.view    
+    
+      unless @game.is_complete
+        render view
       else
-        logger.debug "     !!!     User is empty      !!!"
+        unless @game.user.nil?
+          logger.debug "logging in user #{@game.user.full_name}"
+          #session[:user_id] = @game.user.id
+          sign_in(@game.user, :bypass => true)
+        else
+          logger.debug "     !!!     User is empty      !!!"
+        end
+        redirect_to :controller=>:site,:action=>:dashboard
       end
-      redirect_to :controller=>:site,:action=>:dashboard
     end
+
     
   end
   
@@ -62,7 +73,13 @@ class GameController < SiteController
     render :json=>res
   end
   
-  
-  
+  def ajax_profile
+    @designer = User.find(params[:dez]) 
+    respond_to do |format|
+      format.js { render :layout=>false }
+      # format.html
+    end   
+    
+  end
   
 end

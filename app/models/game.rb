@@ -80,4 +80,5 @@ class Game < ActiveRecord::Base
     return 1
   end
   
+  
 end

@@ -1,14 +1,41 @@
 
-				<div class="wide-page-holder game-step" id="game-step-3">
-					<div class="wide-page-wrap">
-						<h2>Let’s get to know your taste!</h2>
-						<h3 class="congrats-title">
-							<span>Congrats!</span>
-							We found your matches!
-						</h3>
-						<form action="/game/next" method="post">
-							<div id="found-matches">
-								<%
+			<section id="content-inside" style="top: 5em;">
+				
+				
+				<section id="loading-designers" class="for-step-3" style="margin-top: -60px;">
+					<div class="gray">
+						<img src="/newver/img/loading-designers.png" alt="Loading..." />
+					</div>
+					<div class="orange" style="width: 100%;">
+						<img src="/newver/img/loading-designers-orange.png" alt="Loading..." />
+					</div>
+				</section>
+				
+				<section id="persona-steps" class="for-step-3" style="margin-top: -80px;">
+					<div class="step">
+						<div class="icon">1</div>
+						<div class="text">Select product</div>
+					</div>
+					<div class="step step2">
+						<div class="icon">2</div>
+						<div class="text">select designs</div>
+					</div>
+					<div class="step step3 active">
+						<div class="icon">3</div>
+						<div class="text">Get matched</div>
+					</div>
+				</section>
+				
+				<section id="matches-found">
+					<div class="title-2r centered">
+						<div class="r1">Congrats! We found your matches!</div>
+						<div class="r2 color">Meet the top three designers who match your taste</div>
+					</div>
+					
+					<form action="/game/next" method="post">
+						
+						<div class="matches">
+							<%
 								
 								image_rates=@game.game_image_rates.select{|i| i.value==1}
 								
@@ -24,130 +51,54 @@
 								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
 								
 								designers = (designers+others).uniq.compact.take(3)
-								
+								i=0
 								
 								designers.each{|d|
-									%>
-									<div class="found-match">
-										<div class="col1">
-											<span class="checkbox checked">
-												<input type="checkbox" name="designers[]" value="<%=d.id%>" checked="checked" />
+									i+=1
+							%>
+									<article class="match <%= i%3==0 ? "last" : ""%>">
+										<!-- <a href="/designer/profile/<%=d.url_identifier%>" target="_blank"> -->
+											<% img = d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar %>
+											
+											<div class="image">
+												<%= link_to image_tag("/user_avatars/" + img), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
+												<!-- <img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /> -->
+												<div class="name"><%=d.name%></div>
+											</div>
+										<!-- </a> -->
+										<div class="check-button">
+											<span class="checkbox big checked">
+												<input type="checkbox" name="designers[]" value="<%=d.id%>"  checked="checked" />
+												<span class="c-v"></span>
 											</span>
 										</div>
-										<div class="col2">
-											<div class="top-matches">
-												<div class="match">
-													<div class="profile-image">
-														<img src="/user_avatars/<%= d.avatar.nil? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" 
-															style="max-width: 56px;max-height: 56px"/>
-													</div>
-													<div class="details">
-														<div class="big">
-															<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><%=d.full_name%></a>
-														</div>
-														<%=(d.location.nil? || d.location=="") ? '' : raw("<div class='small'>Location: <span>#{d.location}</span></div>")%>
-														<%
-														unless d.languages.empty?
-															%><div class="small">Languages: <span><%=raw(d.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></span></div><%
-														end
-														
-														%>
-														
-														
-													</div>												
-												</div>											
-											</div>
-											<div class="description">
-												<%=d.about%> 
-											</div>
-										</div>
-										<div class="col3">
-											<div class="title"><%=d.full_name%>’s Taste:</div>
-											<div class="images">
-												<%
-												images =d.images.take(3) 
-												images.each{|di|
-													%>
-													<img src="/repository/thumbnail/<%=di.file_path%>" style="max-width: 58px;max-height: 58px"/>
-													<%
-												}
-												%>
-												
-											</div>
-											<ul>
-												<%
-												tags = images.map{|i| i.tags}.flatten.uniq
-												
-												tags.take(3).each{|t|
-													%>
-													<li><%=t.name%></li>
-													<%
-												}
-												%>
-											</ul>
-										</div>
-									</div>	
-									<%
-								}
-								%>
-								
-								
-								
-							</div>
-							<div class="buttons2 clearfix">
-								
-								
-								<a href="/game/index" class="black-button big-font">
-									<img src="/img/arrow-left.png" class="normal" />
-									<img src="/img/arrow-left-orange.png" class="hover" />
-									Replay
-								</a>
-								<a href="#" class="black-button big-font next" id="submit-game4">
-									Next
-									<img src="/img/arrow-right.png" class="normal" />
-									<img src="/img/arrow-right-orange.png" class="hover" />
-								</a>
-							</div>
-						</form>
-					</div>
-				</div>
-			
+									</article>
+							<% 
+							}
+							%>
 
-
-<div id="nothing-selected-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Please select a match</div>			
-			<div class="message">
-				To Kickoff the design you must select at least one designer match or<br/>
-				replay the game to get different matches.
-			</div>
+						</div>
+						
+						<div class="buttons">
+							<button class="button black">Connect</button>
+							<!-- <div class="or">
+								<a href="#">or, show me more matches</a>
+							</div> -->
+						</div>
+						
+					</form>
+					
+				</section>
+				
+			</section>
 			
-			<div class="buttons clearfix">
-				<a href="/game/index" class="replay">Replay</a>
-				<a href="#" class="orange-button big-font">OK</a>
-			</div>
-		</div>
-	</div>
-	
-	<div id="submit-selected-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Are you sure you want to<br/>remove this match?</div>			
-			<div class="message">
-				The designers we matched for you will need to accept your invitation.<br/>
-				we highly recommand to send the invitation to all of your matches.<br/>
-				You’ll be surprised with how quickly they get your taste.<br/>
-			</div>
-			<div class="never-show">
-				<!-- <span class="checkbox checked">
-					<input type="submit" name="never-show" />
-				</span>
-				<span class="text">Never show me that again</span> -->
-			</div>
-			<div class="buttons clearfix">
-				<a href="#" class="replay">Cancel</a>
-				<a href="game4.html" class="orange-button big-font">Yes</a>
-			</div>
-		</div>
-	</div>
+			<div id="overlay"></div>
+			<section id="full-brief">
+				<span class="close"></span>
+				<section class="content clearfix">
+					<div id="boxer"></div>
+				</section>
+			</section>
+			
+			
+		

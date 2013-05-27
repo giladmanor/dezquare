@@ -1,124 +1,88 @@
-				<div class="wide-page-holder game-step" id="game-step-3">
-					<div class="wide-page-wrap">
-						<h2>You Rock!</h2>
-						<h4>Simply add your name. Email and Password<br/>to kickoff the design</h4>
+<section id="content-inside" style="margin-top: 25px;">
+	<h2 class="centered">Sign-up to contact your matches today!</h2>
+	<section class="sidebar-alt-screens">
+					
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+			<section class="register-screen-content" style="margin-top: 40px;">	
+
+				<!-- <div class="wide-page-holder game-step" id="game-step-3">
+					<div class="wide-page-wrap"> -->
+						<!-- <h2>Sign-up to contact your matches today!</h2> -->
+						<!-- <h4>Simply add your name. Email and Password<br/>to kickoff the design</h4> -->
 						<form action="/game/next" method="post" id="game5-form">
-							<fieldset id="game-register">
-								<div class="form-row">
-									<label class="big-label">First Name:</label>
+							
+								
+									
 									<div class="formfield">
 										<input type="text" class="text" name="name" />
-										<label class="abs">Enter your First name here</label>
+										<label class="abs">Enter your First name</label>
 										<label class="form-error">Invalid First Name</label>
 									</div>
-								</div>
-								<div class="form-row">
-									<label class="big-label">Last Name:</label>
+								
+								
 									<div class="formfield">
 										<input type="text" class="text" name="l_name" />
-										<label class="abs">Enter your Last name here</label>
+										<label class="abs">Enter your Last name</label>
 										<label class="form-error">Invalid Last Name</label>
 									</div>
-								</div>
-								<div class="form-row">
-									<label class="big-label">Your Email:</label>
+							
+								
+									
 									<div class="formfield">
 										<input type="text" class="text" name="email" />
-										<label class="abs">Enter a valid Email address here</label>
+										<label class="abs">Add your Email</label>
 										<label class="form-error">Invalid Email address</label>
 									</div>
-								</div>
-								<div class="form-row">
-									<label class="big-label">Password:</label>
+						
+							
 									<div class="formfield">
 										<input type="password" class="text" name="password" />
-										<label class="abs">Enter Password</label>
+										<label class="abs">Choose a Password</label>
 										<label class="form-error">The minimum password length is 6 characters</label>
 									</div>
-								</div>
-								<div class="form-row">
-									<label class="big-label">Re-Password:</label>
+							
+								
 									<div class="formfield">
 										<input type="password" class="text" name="re_password" />
 										<label class="abs">Re-Enter Password</label>
 										<label class="form-error">Password does not match</label>
 									</div>
-								</div>
-								<div class="form-row no-label">									
+								
+													
 									<div class="formfield clearfix agree">
-										<span class="checkbox checked">
+										<span class="checkbox">
 											<input type="checkbox" name="agree_tos" />
 										</span>
 										<span class="text">
 											I agree to the <a href="privacy.html">Privacy Policy</a> &amp; <a href="terms.html">Terms of Service</a>.
 										</span>
 									</div>
-								</div>
-								<div class="already">Already have an account? <a href="#" id="bottom-login">Sign-in!</a></div>
-							</fieldset>
-							
-							<div class="buttons2 clearfix">
+	
+									<div class="submit clearfix">
+  										<input type="submit" value="Sign up" class="button-orange" id="submit-step-6">
+ 							 		</div>
+ 							 
+ 							 		<div class="sidebar-bottom-note centered">
+
+ 							 			Already have an account? <!-- <a href="" id="bottom-login">Sign-in!</a> -->
+											<%= link_to "Sign-in!", :controller=>:game, :action=>:next, :login=>1 %>				
+									</div>
+							<!-- <div class="buttons2 clearfix"> ->
 								<!-- <a href="game4.html" class="black-button big-font">
 									<img src="/img/arrow-left.png" />
 									Back
 								</a> -->
-								<a href="#" class="next red-button" id="submit-step-6">
+								<!--<a href="#" class="next red-button" id="submit-step-6">
 									Kickoff
 								</a>
-							</div>
+							</div> -->
 						</form>
-					</div>
-				</div>
+					<!-- </div>
+				</div> -->
 			
-	<div id="window-overlay"></div>
-	 <div id="login-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Login to dezquare!</div>
-			<form action="/site/login" method="post">
-				<div id="login-alert" class="form-error">Unknown Email Address or Password</div>
-				<div class="formfield">
-					<input type="hidden" class="text" name="callback" value="1" />
-					<input type="text" class="text" name="email" />
-					<label class="abs">E-mail address</label>
-				</div>
-				<div class="formfield">
-					<input type="password" class="text" name="password" />
-					<label class="abs">Password</label>
-				</div>
-				<div class="submit clearfix">
-					<span class="remember-me">
-						<span class="checkbox">
-							<input type="checkbox" name="remember-me" />
-						</span>
-						<span class="text">Remember Me</span>
-					</span>
-					<input type="submit" class="button-orange" value="Submit" />
-				</div>		
-				<div class="forgot">
-					<a href="#" id="forgot-password">I forgot my password</a>
-				</div>
-			</form>
-			<div class="foot">
-				Don't have an account? <a href="/signup">Sign-up!</a>
-			</div>
-		</div>		
-	</div>
-	
-	<div id="forgot-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Get a new Password</div>
-			<form action="" method="post">
-				<div class="formfield">
-					<input type="text" class="text" name="email" />
-					<label class="abs">E-mail address</label>
-					<label class="form-error">Invalid email address</label>
-				</div>
-				<div class="submit clearfix">
-					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
-				</div>		
-			</form>
-		</div>
-	</div>
-	
+
+
+</section>
+</section>
+</section>
+</section>

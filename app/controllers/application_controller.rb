@@ -10,7 +10,11 @@ def after_sign_in_path_for(resource)
     #current_user_path
    if @user.present? 
       if @user.shopper?
-        "/site/dashboard" 
+        if params[:controller]=="game"
+          request.referer
+        else
+          "/site/dashboard"
+        end 
       elsif @user.designer?
         "/designer/dashboard"
       else

@@ -57,6 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
     user.pender=true
     user.password = Devise.friendly_token.first(8)
     logger.debug " pender to save: #{user.inspect} "
+    user.skip_confirmation!
     if user.save
       logger.debug " pender saved with id:#{user.id} "
       UserMailer.pender_complete_request(user).deliver

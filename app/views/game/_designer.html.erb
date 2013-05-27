@@ -1,0 +1,142 @@
+				
+				
+					<div class="basic-info">
+						<div class="avatar">
+							<img alt="<%=@designer.name%>" src="/user_avatars/<%=@designer.avatar.blank? ? "designer_profile_default.jpg" : @designer.avatar%>">
+						</div>
+						<div class="name"><%=@designer.name%></div>
+						<ul class="profile-config v2-space">
+							<li>
+								<img alt="House" src="/newver/img/icon-house.png">
+								<%=@designer.location.present? ? @designer.location : ""%>
+							</li>
+							<li>
+								<img alt="Globe" src="/newver/img/icon-globe.png">
+								<%= raw @designer.languages.all.map{|ln| ln.name}.join(content_tag(:span," | ", :class=>"color"))%>
+								
+							</li>
+							<%if @designer.education.present? %>
+								<li>
+									<img alt="University" src="/newver/img/icon-university.png">
+									<%= @designer.education %>
+								</li>
+							<% end %>
+							<% if @designer.skills.present? %>
+								<li class="gap color">
+									<img src="/newver/img/icon-people.png" alt="People" />
+									<%= @designer.skills %>
+								</li>
+							<% end %>
+						</ul>
+						<!-- <a class="button" href="#">Get Contact Details</a> -->
+					</div>
+					<div class="taste-and-style">
+						<div class="taste-top">
+							<div class="big-title">
+								taste<br>
+								<span class="color">&amp;</span> style
+							</div>
+							<div class="most-colors">
+								<div class="text-title">Most used colors:</div>
+								<div class="colors">
+									<% @designer.dominant_colors.each do |col| %>
+										<div style="background: <%=col%>;" class="color"></div>
+									<% end %>
+								</div>
+							</div>
+						</div>
+						<div class="popular-designs" style="margin-top:70px;">
+							<% @designer.images.take(3).each{|img| %>
+								<img src="/repository/thumbnail/<%=img.file_path%>?t=<%=Time.now.to_f%>"  alt="<%=img.name%>" 
+									style="width:213px; height:252px; margin-right:20px; border: 1px solid #878787; margin-bottom: 30px;" />
+							<% } %>
+							<!-- <div class="text-title">Most popular designs:</div>
+							<div class="grid">
+								<section id="design-gallery">
+									<section class="clearfix" id="design-gallery-content">
+										<article class="image-item item-1 item-w2-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/5.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-2 item-w2-h2">
+											<a href="#">
+												<img src="/newver/img/temp/grid/6.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-3 item-w2-h2">
+											<a href="#">
+												<img src="/newver/img/temp/grid/9.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-4 item-w1-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/13.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-6 item-w2-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/11.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-7 item-w2-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/15.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-8 item-w2-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/7.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+										<article class="image-item item-9 item-w1-h1">
+											<a href="#">
+												<img src="/newver/img/temp/grid/13.jpg">
+												<span class="photo-info">
+													<span class="name">Designer Full Name</span>
+													<span class="title">Image or Content full title</span>
+													<span class="heart"></span>
+												</span>
+											</a>
+										</article>
+									</section>
+								</section>
+							</div>
+						</div> -->
+					</div>
+				
