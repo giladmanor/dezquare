@@ -61,11 +61,10 @@
 											<% img = d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar %>
 											
 											<div class="image">
-												<%= link_to image_tag("/user_avatars/" + img), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
-												<!-- <a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /></a>
-												<div class="name"><%=d.name%></div> -->
-												<%= link_to content_tag(:div,d.name, :class=>"name"), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
-												
+												<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /></a>
+												<div class="name"><%=d.name%></div>
+												<!-- <%= link_to content_tag(:div,d.name, :class=>"name"), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
+												<%= link_to image_tag("/user_avatars/" + img), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %> -->
 											</div>
 										<!-- </a> -->
 										<div class="check-button">
@@ -94,13 +93,13 @@
 				
 			</section>
 			
-			<div id="overlay"></div>
+			<!-- <div id="overlay"></div>
 			<section id="full-brief">
 				<span class="close"></span>
 				<section class="content clearfix">
 					<div id="boxer"></div>
 				</section>
-			</section>
+			</section> -->
 			
 			
 		
