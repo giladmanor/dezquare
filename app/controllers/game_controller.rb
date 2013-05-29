@@ -18,6 +18,7 @@ class GameController < SiteController
     session[:game_id]=@game.id
     logger.debug @game.view
     render @game.view
+    
   end
   
   
@@ -45,6 +46,7 @@ class GameController < SiteController
     
       unless @game.is_complete
         render view
+        
       else
         unless @game.user.nil?
           logger.debug "logging in user #{@game.user.full_name}"

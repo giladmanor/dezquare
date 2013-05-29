@@ -45,10 +45,10 @@
 								</div>
 							</div>
 						</div>
-						<div class="popular-designs" style="margin-top:70px;">
+						<div class="popular-designs">
 							<% @designer.images.take(3).each{|img| %>
 								<img src="/repository/thumbnail/<%=img.file_path%>?t=<%=Time.now.to_f%>"  alt="<%=img.name%>" 
-									style="width:213px; height:252px; margin-right:20px; border: 1px solid #878787; margin-bottom: 30px;" />
+									 />
 							<% } %>
 							<!-- <div class="text-title">Most popular designs:</div>
 							<div class="grid">

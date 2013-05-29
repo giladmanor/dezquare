@@ -330,8 +330,11 @@ div.social-connect a {
 	text-decoration: none;
 }
 div.social-connect a.facebook { background: #22589c; }
-div.social-connect a.linkedin { background: #007abc; }
-div.social-connect a.twitter { background: #008dcf; }
+/*div.social-connect a.linkedin { background: #007abc; }
+div.social-connect a.twitter { background: #008dcf; }*/
+div.social-connect a.linkedin { background: #cccccc; }
+div.social-connect a.twitter { background: #cccccc; }
+
 div.social-connect span.icon {
 	background: #fff;
 	float: left;
@@ -340,8 +343,10 @@ div.social-connect span.icon {
 	width: 46px;
 }
 div.social-connect a.facebook span.icon { background: #fff url(../img/icons.png) 15px 6px no-repeat; }
-div.social-connect a.linkedin span.icon { background: #fff url(../img/icons.png) -150px 6px no-repeat; }
-div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) -35px 6px no-repeat; }
+/*div.social-connect a.linkedin span.icon { background: #fff url(../img/icons.png) -150px 6px no-repeat; }
+div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) -35px 6px no-repeat; }*/
+div.social-connect a.linkedin span.icon { background: #fff url(../img/linkedin_soon.png) 2px 0px no-repeat; }
+div.social-connect a.twitter span.icon { background: #fff url(../img/twitter_soon.png) 3px no-repeat; }
 
 /* Sidebar State 1 */
 #sidebar-hello { display: block; }
@@ -503,6 +508,7 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 	width: 402px;*/
 	height: 402px;
 	width: 100%;
+	border: 1px solid #878787;
 }
 #design-selector div.buttons { overflow: hidden; }
 #design-selector div.buttons .button {
@@ -589,9 +595,18 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/icons.png) 
 	right: 0px;
 	text-align: center;
 	width: 217px;
+	color:black;
 	/*opacity:0.5;*/
 	
 }
+
+
+#matches-found .matches .name:hover {
+	background: #231f20;
+	color: #fff;
+	
+}
+
 #matches-found .buttons {
 	text-align: center;
 	text-transform: uppercase;
@@ -962,11 +977,12 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	box-shadow: 0px 0px 5px #333;
 	position: absolute;
 	left: 50%;
-	top: 50%;
-	width: 1200px;
+	top: 50%; 
+	width: 1130px;
+	height: 700px;
 	display: none;
-	margin-left: -600px;
-	margin-top: -315px;
+	margin-left: -565px;
+	margin-top: -350px;
 	z-index: 20;
 	word-wrap: break-word;
 	
@@ -974,9 +990,9 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 #full-brief .close {
 	background: url(../img/bkg-close.png) left top no-repeat;
 	cursor: pointer;
-	height: 64px;
+	height: 63px;
 	position: absolute;
-	right: -3px;
+	right: -4px;
 	top: -1px;
 	width: 66px;
 }
@@ -1021,7 +1037,10 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	word-wrap: break-word;
 	max-width: 250px;
 }
-#full-brief .profile-config.v2-space { margin-bottom: 17px; }
+#full-brief .profile-config.v2-space { 
+	margin-bottom: 17px; 
+		
+}
 #full-brief .profile-config li { 
 	margin-bottom: 10px;
 	white-space: normal; 
@@ -1169,6 +1188,15 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	top: 270px;
 	height: 130px;
 	width: 130px;
+}
+
+.popular-designs { margin-top:70px; }
+.popular-designs img {
+	width:213px; 
+	height:252px;
+	margin-right:20px; 
+	border: 1px solid #878787; 
+	margin-bottom: 125px;
 }
 
 #interview-payment { margin-top: 40px; }

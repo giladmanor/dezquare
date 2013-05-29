@@ -193,7 +193,7 @@
 	
 	#matches-found { margin-top: 100px; }
 	
-	#full-brief {
+	/*#full-brief {
 		margin-left: -550px;
 		margin-top: -320px;
 		width: 1100px;
@@ -225,7 +225,7 @@
 	#full-brief .text-title { font-size: 18px; }
 	#full-brief .taste-and-style .taste-top { margin-bottom: 10px; }
 	#full-brief .basic-info .button { font-size: 16px; }
-	#full-brief .user-stats { padding: 0px 10px 0px 0px; }
+	#full-brief .user-stats { padding: 0px 10px 0px 0px; }*/
 	
 	#interview-payment { margin-top: 25px; }
 	#interview-payment div.title-2r { margin-bottom: 10px; }
@@ -530,8 +530,6 @@
 
 @media (max-height: 799px) {
 	
-
-	
 	#content-inside {
 		-moz-transform: scale(0.9);
 		-webkit-transform: scale(0.9);
@@ -581,6 +579,16 @@
 		margin-top: 35px;  
 	}
 	#matches-found.with-form textarea { height: 80px; }
+	
+	#full-brief .profile-config {
+		padding: 0px;
+		list-style-type: none;
+		font-family: 'Roboto';
+		font-size: 16px;
+		font-weight: 100;
+		word-wrap: break-word;
+		max-width: 250px;
+	}
 }
 
 @media (max-width: 1300px) {

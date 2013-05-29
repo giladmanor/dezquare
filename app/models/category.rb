@@ -10,7 +10,7 @@ class Category < ActiveRecord::Base
   
   
   def image_grab(pool_size, price = 0)
-    grabbed=self.images.reject{|i| i.user.nil? || !i.user.available || !i.visible}
+    grabbed=self.images.reject{|i| i.user.nil? || !i.user.available || !i.visible?}
     logger.debug "======== #{grabbed.length} for #{self.name} out of #{self.images.length}"
     if grabbed.length<pool_size && !self.parent.nil?
       grabbed += self.parent.image_grab(pool_size-grabbed.length) unless parent.nil?

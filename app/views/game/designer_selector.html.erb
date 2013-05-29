@@ -62,8 +62,10 @@
 											
 											<div class="image">
 												<%= link_to image_tag("/user_avatars/" + img), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
-												<!-- <img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /> -->
-												<div class="name"><%=d.name%></div>
+												<!-- <a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /></a>
+												<div class="name"><%=d.name%></div> -->
+												<%= link_to content_tag(:div,d.name, :class=>"name"), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
+												
 											</div>
 										<!-- </a> -->
 										<div class="check-button">
@@ -80,7 +82,7 @@
 						</div>
 						
 						<div class="buttons">
-							<button class="button black">Connect</button>
+							<button class="button black" style="padding: 0px 100px 0px 100px;">Connect</button>
 							<!-- <div class="or">
 								<a href="#">or, show me more matches</a>
 							</div> -->

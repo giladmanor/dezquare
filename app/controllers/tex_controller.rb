@@ -61,7 +61,7 @@ class TexController < AdminController
         usr.set_designer_colors
       end
     end
-    render :text => "Images colors updated successfully!"
+    render :text => "Designers colors updated successfully!"
   end
   
   def fewriufnwoeruifhpwriufh

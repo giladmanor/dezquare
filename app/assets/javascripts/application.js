@@ -12,7 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+
 //= require jquery.equalHeight
 //= require jquery.tablesorter.min
 //= jquery-1.5.2.min

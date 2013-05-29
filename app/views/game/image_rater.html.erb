@@ -25,8 +25,8 @@
 				<span class="separator">|</span>
 				<a href="#">Designer?</a>
 			</div>
-		</header>
-		<section id="content"> -->
+		</header> -->
+		
 			<%
 						s=15
 						@game.images.size.times{|a| s=s+((100-s)/10)}
@@ -54,6 +54,7 @@
 								logger.debug "--------------------------------------------------------------"
 								
 			%>
+		<!-- <section id="content" style="background: url(/repository/<%= image.file_path%>); background-repeat:no-repeat; "> -->
 			<section id="content-inside">
 				
 				<section id="loading-designers" class="for-step-2">
@@ -98,7 +99,7 @@
 				</section>
 						
 			</section>
-		<!-- </section>
-	</section>
+		<!-- </section> -->
+	<!--</section>
 </body>
 </html> -->
