@@ -28,7 +28,13 @@ class ImageRater < StageImplementor
     images = category.image_grab(arguments["image_pool_size"].to_i).reject{|i| game.images.include?(i)}
     logger.debug " ----- images left in the pool: #{images.length}"
     return true if images.length==0
-    game.game_image_rates.select{|i| i.value>0}.length>=arguments["required_image_likes"].to_i
+    if game.game_image_rates.select{|i| i.value>0}.length>=arguments["required_image_likes"].to_i && game.game_image_rates.all.length > 4
+      return true
+    elsif game.game_image_rates.all.length > 25
+      return true
+    else
+      return false
+    end
   end
   
   def self.default_arguments

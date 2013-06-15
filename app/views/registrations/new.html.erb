@@ -10,7 +10,7 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
  <!-- <%= devise_error_messages! %> -->
   
-  <div class="formfield">
+  <div class="formfield" style="margin-top: 1px;">
   	<%= f.label :name, :class=>"abs" %>
   	<%= f.text_field :name, :class=>"text validation-normal" %>
   	<span class="vchecked"></span>

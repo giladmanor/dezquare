@@ -92,20 +92,12 @@
 					<div class="status">Status: <%=project.display_status%></div>
 				</div>
 				<div class="col2">
-					<%
-					unless ["completed","delivered"].include?(project.status)
-						%>
-						<a href="#" class="sidebar-mark-complete" onclick="$('#project_mark_complete').attr('href','/designer/complete_project/<%=project.id%>')">Mark<br/>Complete!</a>
-						<%	
-					else
-						%>
+					
 						<div class="completed">
 							<img src="/img/bkg-checked-2.png" /><br/>
 							<%=project.display_status%>
 						</div>
-						<%
-					end
-					%>
+						
 				</div>
 			</div>
 			<%

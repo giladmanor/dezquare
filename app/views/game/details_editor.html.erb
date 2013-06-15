@@ -1,85 +1,95 @@
-﻿				<div class="wide-page-holder game-step" id="game-step-3">
-					<div class="wide-page-wrap">
-						<h2>Add details</h2>
-						<h4>Tell us about your design</h4>
-						<form action="/game/next" method="post" id="game5-form">
-							<fieldset>
-								<div class="formfield">
-									<input type="text" class="text" name="title" />
-									<label class="abs">Give your design a title</label>
-									<label class="form-error">Please insert a title</label>
-								</div>
-								
-								<div class="formfield">
-									<textarea name="description"></textarea>
-									<label class="abs">
-										What should we know about your design? <br/>
-										What it it's purpose? <br/>
-										What should it include?<br/>
-									</label>
-									<label class="form-error">Please tell us what you need (minimum 50 characters)</label>
-								</div>
-								
-								<div class="file-type">
-									<div class="label">What type of files would you need?</div>
-									<div class="formats">
-										<div class="col1">
-											<div class="format">
-												<span class="checkbox checked">
-													<input type="checkbox" name="filetype[]" value="jpg" checked="checked" />
-												</span>
-												<span class="text">.JPG</span>
-											</div>
-											<div class="format">
-												<span class="checkbox">
-													<input type="checkbox" name="filetype[]" value="png" />
-												</span>
-												<span class="text">.PNG</span>
-											</div>
-											<div class="format">
-												<span class="checkbox checked">
-													<input type="checkbox" name="filetype[]" value="psd" checked />
-												</span>
-												<span class="text">.PSD</span>
-											</div>
-										</div>
-										<div class="col2">
-											<div class="format">
-												<span class="checkbox">
-													<input type="checkbox" name="filetype[]" value="gif"  />
-												</span>
-												<span class="text">.GIF</span>
-											</div>
-											<div class="format">
-												<span class="checkbox">
-													<input type="checkbox" name="filetype[]" value="fla" />
-												</span>
-												<span class="text">.FLA</span>
-											</div>
-											<div class="format">
-												<span class="checkbox">
-													<input type="checkbox" name="filetype[]" value="other" />
-												</span>
-												<span class="text">Other</span>
-												<input type="text" class="text" name="other" />
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-							
-							<div class="buttons2 clearfix">
-								<!-- <a href="game3.html" class="black-button big-font">
-									<img src="/img/arrow-left.png" />
-									Back
-								</a> -->
-								
-								<a href="#" class="black-button big-font next" id="submit-step-5" >
-									Next
-									<img src="/img/arrow-right.png" />
-								</a>
-							</div>
-						</form>
+<link href="/newver/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script src="/newver/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="/newver/js/jquery.customCalendar.min.js"></script>
+<link href="/newver/css/jquery.customCalendar.min.css" rel="stylesheet" />
+
+			<section id="content-inside">
+				
+				<section id="matches-found" class="with-form">
+					<div class="title-2r centered">
+						<div class="r1">You’ve selected these designers</div>
 					</div>
-				</div>
+					
+					<form action="/game/next" method="post" id="game5-form">
+						
+						<div class="matches">
+							<%
+							designer_ids = params[:chosen] || []
+   							i=0
+   							designer_ids.each{|id|
+      						d = User.find(id)		
+      						checked = params[:designers].include?(id)
+								# @game.designers.each{|d|
+									i+=1
+									img = d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar
+							%>
+							<article class="match <%= i==3 ? "last" : "small"%>">
+								<div class="image" >
+									<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img class="small" src="/user_avatars/<%= img %>" alt="Name" />
+									<div class="name small"><%= d.name%></div></a>
+								</div>
+								
+								<div class="check-button">
+									<span class="checkbox medium <%=checked ? "checked" : "" %>">
+										<input type="checkbox" name="designers[]" value="<%=d.id%>" <%= checked ? "checked='checked'" : ""%> />
+										<span class="c-v"></span>
+									</span>
+								</div>
+							</article>
+							<input type="hidden" name="chosen[]" value="<%=d.id%>">
+						<% } %>
+	
+						</div>
+						
+						<div class="middle-title color" style="margin-bottom:25px;">Add details about your project for the quote</div>
+						
+						<div class="form">
+							
+				
+							<div class="formfield clearfix">
+								<label>
+									<span class="req color">*</span>
+									Add a title to your project:
+								</label>
+								<input type="text" class="text" name="title" placeholder="E.g. New product version" />
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									Any direction you have in mind?
+								</label>
+								<textarea name="description" placeholder="E.g. not sure"></textarea>
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									Have a budget in mind (US$)?
+								</label>
+								<input type="text" class="text" name="budget" placeholder="E.g. 10000" />
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									<!-- <span class="req color">*</span> -->
+									What is the deadline for the project?
+								</label>
+								<input type="text" class="text" id="deadline" name="deadline" placeholder="mm/dd/yyyy" />
+							</div>
+								
+						</div>
+						
+						<div class="buttons">
+							<button class="button black" style="margin-top:20px;">send details</button>
+						</div>
+						
+					</form>
+					
+					
+				</section>
+				
+			</section>
 			
+
+
+  <script>
+  $(function() {
+    $( "#deadline" ).datepicker();
+  });
+  </script>

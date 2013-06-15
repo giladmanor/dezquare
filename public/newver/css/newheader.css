@@ -66,3 +66,39 @@ h1#logo {
 }
 h1#logo a { display: block; }
 h1#logo img { display: block; }
+
+#footer {
+	background: #dadada;
+	color: #666;
+	bottom: 0px;
+	font-family: 'OpenSansRegular';
+	font-size: 12px;
+	left: 0px;
+	line-height: 24px;
+	/*position: absolute;*/
+	width: 100%;
+	z-index: 10;
+}
+#footer a {
+	color: #666;
+
+}
+#footer.shadow {
+   -moz-box-shadow:    inset 0px 2px 2px #888;
+   -webkit-box-shadow: inset 0px 2px 2px #888;
+   box-shadow:         inset 0px 2px 2px #888;
+}
+#footer .copyright {
+	padding-left: 54px;
+	float: left;
+}
+#footer .links { 
+	text-align: center;
+	float:right;
+	padding-right: 54px; 
+}
+#footer .links a { color: #666; }
+h1#logo { 
+	margin: 0px 7px 0px 0px;
+	float: left; 
+}

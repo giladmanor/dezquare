@@ -1,9 +1,17 @@
 <!-- <div id="contact-popup" class="popup" style='display:block'>
 		<div class="popup-content"> -->
-<div id="contact-popup">
+	<section id="content">	
+		<section id="content-inside" style="margin-top:20px;"> 
+			<h2 class="centered">Get in touch with us!</h2>
+				<section class="sidebar-alt-screens">
+					
+				<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+				<section class="register-screen-content" style="margin-top: 20px;">	
+
+<!-- <div id="contact-popup">
 	<div class="page-content">
-		<div class="center-wrap">				
-			<div class="title"><h2>Get in touch with us!</h2></div>
+		<div class="center-wrap">	 -->			
+			<!-- <div class="title"><h2>Get in touch with us!</h2></div> -->
 			<!--<form action="/pender/register_designer_success" method="post" id="contact-form">-->
 			<div class="center-wrap-box static-page tall" style="display:<%= @confirm.present? ? 'none' : 'block' %>;">
 						<%= form_for @message, :url => contact_path do |form| %>
@@ -13,33 +21,33 @@
       								<%= !@error.nil? ? @error : ""%>
     							</div>
   							<% end %>
-  							<fieldset>
+  							<!-- <fieldset> -->
   						<% if @user.present? %>
-  							<p><h4>Name: <%=@user.full_name%></h4></p>
+  							<p><div class="sidebar-bottom-note">Name: <%=@user.full_name%></div></p>
 						<% else %>
 							<div class="formfield">
 								<!--<input type="text" class="text" name="name" />-->
-								<%= form.text_field :name, :class => "text" %>
-								<label class="abs">Name</label>
+								<%= form.text_field :name, :class => "text", :placeholder=>"Name" %>
+								<!-- <label class="abs">Name</label> -->
 								<span class="vchecked"></span>
 								<label class="form-error">Invalid Name</label>
 							</div>
 							<div class="formfield">
-								<%= form.text_field :email, :class => "text" %>
-								<label class="abs">E-mail address</label>
+								<%= form.text_field :email, :class => "text", :placeholder=>"E-mail address" %>
+								<!-- <label class="abs">E-mail address</label> -->
 								<span class="vchecked"></span>
 								<label class="form-error">Invalid Email Address</label>
 							</div>
 						<%end%>
 							<div class="formfield">
-								<%= form.text_field :subject, :class =>"text" %>
-								<label class="abs">Subject</label>
+								<%= form.text_field :subject, :class =>"text", :placeholder=>"Subject" %>
+								<!-- <label class="abs">Subject</label> -->
 								<span class="vchecked"></span>
 								<label class="form-error">Invalid Subject</label>
 							</div>
 							<div class="formfield">
-								<%= form.text_area :body, :class =>"text" %>
-								<label class="abs">Message</label>
+								<%= form.text_area :body, :class =>"text", :placeholder=>"Message", :style=>"width:377px; border: 1px solid #ECECEC;" %>
+								<!-- <label class="abs">Message</label> -->
 								<span class="vchecked"></span>
 								<label class="form-error">Invalid Message</label>
 							</div>
@@ -48,25 +56,25 @@
 							</div>		
 						<!--</form>-->
 						<label class="form-error" <%= !@error.nil? ? "style='display:block;'" : ""%>><%=@error%>RONEN</label>
-						</fieldset>
+						<!-- </fieldset> -->
 						<%end%>
 				
 				<div class="foot">
-					<center><p><h3>You can also shoot us an <a href="mailto:info@dezquare.com">email</a></h3></p></center>
+					<div class="sidebar-bottom-note centered">You can also shoot us an <a href="mailto:info@dezquare.com">email</a></div>
 				</div>
 				
-			</div>			
+			<!-- </div>			
 		</div>
-	</div>
+	</div> -->
 </div>
 
 <div id="contact-us-popup" class="popup" style="display:<%= @confirm.present? ? 'block' : 'none' %>;">
 	<br>
 <div class="popup-content">
 	<center>
-	<div class="title">Thank you!</div>
+	<div class="sidebar-bottom-note centered">Thank you!</div>
 	<BR>
-	<h4>You're message has been sent.</h4>
+	<div class="sidebar-bottom-note centered" style="margin-bottom:20px;">Your message has been sent.</div>
 	<BR>
 	<form action="/site/index" method="post" id="contact-confirm-form">
 		<div class="submit clearfix">
@@ -80,7 +88,7 @@
 
 <div id="contact-us-popup" class="popup" style='display:none'>
 <div class="popup-content">
-	<div class="title">Keep in touch with us!</div>
+	<div class="title">Get in touch with us!</div>
 <%= form_for @message, :url => contact_path do |form| %>
   <% if @message.errors.any? %>
     <div id="error_explanation">
@@ -131,3 +139,9 @@
 </div>
 </div>
 
+</section>
+</section>
+</section>
+</section>
+</section>
+<!-- </section> -->

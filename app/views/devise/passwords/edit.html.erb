@@ -13,6 +13,8 @@
   <h3 style="color:red;><%= devise_error_messages! %></h3>
   <%= f.hidden_field :reset_password_token %>
 
+<input type="hidden" value="<%= params[:reset_password_token] %>" name="user[reset_password_token]" id="user_reset_password_token" />
+
   <div class="formfield">
   	<%= f.label :password, "New password", :class=>"abs" %>
   	<%= f.password_field :password, :class=>"text validation-password" %>

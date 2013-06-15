@@ -1,177 +1,189 @@
-		<div id="content">
-			<div class="page-content">
-				
-				<%=render "cover"%>
-				<div id="sidebar">
-					<a href="/game/index" class="orange-button">Get a new design?</a>
-					<%
-					projects = @user.projects_out.reverse.reject{|p| ["started", "canceled",nil].include?(p.status)  }
-					
-					
-					if projects.length>0
-					%>
-					<div class="title">
-						<a href="/site/latest_designs">Latest Designs</a>
+	<section id="inside" style="margin-top:30px;">	
+		<section id="content">
+			<!-- <section id="top-bar" class="clearfix">
+				<div class="user-info">
+					<div class="content1">
+						<h2 style="<%= @author.location.blank? ? "padding-top: 17px;" : "" %>">
+							<a href="#"><%= @author.full_name[0..15] %></a>
+						</h2>
 					</div>
-					<%
-					end
-					%>
-					<div class="latest-designs">
-						<%
-						#active projects project.status!=:started
+					<div class="content2">
+						<address><%= @author.location.present? ? @author.location[0..30] : "" %></address>
+					</div>
+					<span class="decorator"></span>
+				</div>
+				<nav>
+					
+					<a href="/game/index/" class="active">
+						<span class="content">
+							<span class="text">New Match</span>
+						</span>
+					</a>
+				</nav>
+			</section> -->
+			<section id="profile-widgets">
+				
+				<section id="profile-table">
+					<div class="top-row clearfix">
 						
-						projects.each{|project|
-							%>	
-							<div class="design">
-								<div class="col1">
-									<div class="name">
-										<a href="/site/latest_designs"><%=project.title%></a>
-									</div>
-									<div class="by">By <span><%=project.designer.nil? ? "" : project.designer.full_name%></span></div>
-									<div class="started">Started: <%=project.created_at.strftime("%e %b")%></div>
-									<div class="status">Status: <%=project.display_status%></div>
-								</div>
-								<div class="col2">
-									<%
-									unless ["completed"].include?(project.status)
-										%>
-										<a href="/site/complete_project/<%=project.id%>" class="sidebar-mark-complete">Mark<br/>Complete!</a>
-										<%	
-									else
-										%>
-										<div class="completed">
-											<img src="/img/bkg-checked-2.png" /><br/>
-											Completed
-										</div>
-										<%
-									end
-									%>
+						<div class="huge-title">My Matches</div>
+						
+						<div class="select-area form">
+						<form name="select-project" id="select-project" action="/site/dashboard">
+							<div class="label color">select project:</div>
+							<div class="selector formfield clearfix">
+								
+								<div class="combobox country" id="select-project-combo">
+									<div class="value"><%=@proj.title%></div>
+									<input type="hidden" name="proj_id" value="<%= @proj.id %>" />
+									<ul class="options">
+										<% @author.projects_out.sort.reverse.map{ |pr| %>
+											<% if pr.status.present? %>
+												<li value_str="<%=pr.id%>"><%=pr.title%></li>
+											<% end %>
+										<% } %>
+									</ul>
 									
 								</div>
-							</div>	
-							
-							
-							<%
-						}
+								
+							</div>
+							<div class="status">Status: <span class="inside"><%= @proj.status.present? ? @proj.display_status : "N/A" %></span></div>
+						</form>
+						</div>
 						
-						if projects.length==0
-							%>
-							<span>No designs in progress</span>
-							<%
-						end
-						
-						%>
-					</div>
-				</div>
-				<div id="main">
-					<div class="white-band-title">
-						<h3>You've Got Matched!</h3>
 					</div>
 					
-					<div id="match-projects" class="white-box">
-						<%
-						#initiated projects project.status==:started
-						
-						@user.projects_out.select{|p| p.status=="started"}.reverse.each{|project|
-							%>
+					
+					<section id="designer-list">
+						<div class="col0 <%=@proj.status=="canceled" ? "disabled" : ""%>">
+							<div class="textblock">
+								<span>Project Title:</span>
+								<%= @proj.title.present? ? @proj.title : "" %> 
+								<span>Design Category:</span> 
+								<%= @proj.category.present? ? @proj.category.name : "" %>
+								<span>Deadline:</span> 
+								<%= @proj.deadline.present? ? @proj.deadline.to_formatted_s(:long) : "" %>
+								<span>Budget:</span>
+								US$<%= @proj.budget.present? ? @proj.budget.to_s : ""%>
+								<span>Brief:</span> 
+								<%= @proj.info.present? ? @proj.info : "" %>								
+							</div>
+							<div id="edit_project">
+								<% unless ["canceled","delivered","completed"].include?(@proj.status) %>
+									<a href="/site/edit_project/<%= @proj.id %>"><div class="button black">Edit Project</div></a>
+									<div class="cancel-design"><a href="/site/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to cancel this project?')">Cancel project</a></div>
+								<% end %>
+							</div>
 							
-							<div class="project">
-								<div class="basic">
-									<div class="icon">
-										<img src="/img/icons/<%=project.category.icon%>.png" />
+																		
+						</div>
+				<div class="allrows">	
+					<% 
+						designers = Array.new
+						if @proj.designer.present?
+							designers << @proj.designer 
+							@proj.game.designers.reject{|dz| dz.id==@proj.designer.id}.map{ |dz|
+								designers << dz
+							}
+						else	
+							designers = @proj.game.designers
+						end
+					logger.debug "===========================#{designers.inspect}"
+					
+					%>
+					<% #@proj.game.designers.map{|dez| 
+						designers.map{|dez| 
+							chosen = (["grabbed","delivered","completed"].include?(@proj.status) && @proj.designer.id==dez.id)
+					%>
+						<div class="row clearfix <%= (@proj.status!="started" && !chosen) ? "disabled" : "" %>">
+						
+							<div class="col1">
+								<div class="image">
+									<a href="/designer/profile/<%= dez.url_identifier %>" target="_blank">
+									<img src="/user_avatars/<%= dez.avatar.blank? ? "designer_profile_default.jpg" : dez.avatar %>" alt="Name" /></a>
+								</div>
+								<div class="data">
+									<div class="name" style="<%= dez.name.length>8 ? "font-size:20px; word-wrap:break-word; word-break:break-all;" : ""%>">
+										<%= dez.name[0..13] %>
+										<% if chosen %>
+											<span class="vchecked-designer"></span>
+										<% end %>
 									</div>
-									<div class="name-and-client">
-										<div class="name single"><%=project.title%></div>
-									</div>
-									<div class="action wider">
-										<a href="#" class="black-button esmall-font cancel-design" onclick="$('#cancel_id').val('<%=project.id%>')">Cancel Design</a>
-										<a href="#" class="pending">Pending Kickoff</a>
+									<div class="position">Designer</div>
+									<div class="button-zone">
+										<% if @proj.status.present? && (@proj.status=="started" || chosen) %>
+											<a href="mailto:<%= dez.email %>"><div class="letter"></div></a>
+											<% if @proj.status=="grabbed" && chosen %>
+												<%= link_to content_tag(:div,"Mark Completed", :class=>"button green black-hover",:id=>"long-button"), {:controller=>"site", :action=>"complete_project", :proj=>@proj.id}, :remote => true %>
+											<% end %>
+										<% end %>
+										<% if @proj.status.present? && @proj.status=="started" %>
+											<!-- <a href="#" class="button green black-hover">Hire me</a> -->
+											<%= link_to content_tag(:div,"Hire me", :class=>"button green black-hover"), {:controller=>"site", :action=>"grant_project", :proj=>@proj.id, :dez=>dez.id }, :remote => true %>
+										<% end %>
 									</div>
 								</div>
-								<div class="detailed">
-									<div class="col1">
-										<div class="title">About the desired <%=project.category.name%></div>
-										<div class="about-project">
-											<%=project.info%>
+							</div>
+							
+							<div class="col2">
+								<div class="designs">
+									<div class="title">latest designs:</div>
+									<% tmp = dez.images.last(3).map{|h| h.file_path}
+										more = 3 - tmp.length
+										#logger.debug "===========######====########=======#{tmp.inspect}"
+										#logger.debug "===========######====########=======#{more.inspect}"
+										
+										more.times do
+											tmp << ""
+										end
+									
+										tmp.map{ |t|
+									%>
+										
+											<div class="image" style="height: 90px;">
+											<% if t.present? %>
+												<!-- <a href="#"> -->
+													<img src="/repository/thumbnail/<%=t%>" alt="Name" />
+												<!-- </a> -->
+											<%end%>
+											</div>
+									
+									
+									<% } %>
+									<!-- <% dez.images.last(3).map{ |img| %>
+										<div class="image">
+											<a href="#">
+												<img src="/repository/thumbnail/<%=img.file_path%>" alt="Name" />
+											</a>
 										</div>
+									<% } %> -->
+									<!-- <div class="image">
+										<a href="#">
+											<img src="/newver/img/temp/designer4.jpg" alt="Name" />
+										</a>
 									</div>
-									<div class="col2">
-										<div class="title">Top Matches</div>
-										<div class="top-matches">
-											<%
-											unless project.game.nil?
-												project.game.designers.each{|dez|
-													
-													%>
-													<div class="match">
-														<div class="profile-image">
-															<img src="/user_avatars/<%= dez.avatar.nil? ? "designer_profile_default.jpg" : dez.avatar%>" alt="My Profile Photo" style="max-width: 56px"/>
-														</div>
-														<div class="details">
-															<div class="big">
-																<a target="_blank" href="/designer/profile/<%=dez.url_identifier%>"><%=dez.full_name%></a>
-															</div>
-															<div class="small"><%=(dez.location.nil? || dez.location=="") ? '' : "From #{dez.location}"%></div>
-															<div class="small">Languages: <%=raw(dez.languages.map{|l| l.name}.join(" <span>&amp;</span> "))%></div>
-															
-														</div>
-														<div class="status">Pending</div>
-													</div>		
-													<%
-													}
-											else
-												%>
-												No game 
-												<%	
-											end
-											%>
-										</div>
-										<div class="title">Colors</div>
-										<div class="fav-colors">
-	<% if project.game.present? && project.game.dominant_colors.present? %>					
-		<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
-		<tr style="border:1px solid; border-color: #000000; border-collapse: collapse;">
-			<% project.game.dominant_colors.each do |col| %>
-				<td height="30" style="background-color:<%= col %>; border:1px solid; border-color: #000000; border-collapse: collapse;">&nbsp;</td>
-			<% end %>
-		</tr>
-		</table></p>
-	<% end %>
-										</div>
-									</div>
+									<div class="image">
+										<a href="#">
+											<img src="/newver/img/temp/designer5.jpg" alt="Name" />
+										</a>
+									</div> -->
 								</div>
-								<div class="last-row">
-									<div class="col1">
-										<div class="payment"><!--Cost: <%=project.game.nil? ? 'Unspecified' : "$#{project.game.max_price}"%>--></div>
-									</div>
-									<div class="col2">
-										<div class="date"><%=project.created_at.strftime("%I:%M%p, %e %b %Y")%></div>
-									</div>
-								</div>
-							</div>		
-							<%
-						}
-						%>					
-					</div>
+								
+								
+							</div>
+						
+						</div>
+					<% } %>	
 				</div>
-			</div>			
-		</div>
+						
+					</section>
+					
+				</section>
+				
+				<!-- <span id="restore-arrow"></span> -->				
+			</section>
+			
+		</section>
 		
-	<div id="cancel-design-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Are you sure you want<br/>to cancel the design?</div>
-			<div class="subtitle">This action can’t be undone</div>
-			<div class="buttons">
-				<form id="cancel_design_form" action="/site/cancel_design" method="post">
-					<input type="hidden" id="cancel_id" name="id"/>
-				</form>
-				<a href="#" class="back">Back</a>
-				<a href="#" class="black-button small-font" onclick="$('#cancel_design_form').submit();return false;">Cancel Design</a>
-			</div>
-		</div>		
-	</div>		
-	
-	
-		
-	
+			
+		</section>

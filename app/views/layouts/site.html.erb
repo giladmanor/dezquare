@@ -1,135 +1,38 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<%= javascript_include_tag "application" %>
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
 <head>
-	<title>dèzquare | Get matched to a graphic designer</title>
+	<title>Dezquare</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<META NAME="Description" CONTENT='Find the graphic designer you will love! The fastest way to get matched to a graphic designer to design your flyer, business card, or any other visual.'>
-    <link href="/newver/css/newheader.css" media="screen" rel="stylesheet" type="text/css" > 
+	<meta name="description" content="" />
 	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
-	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
-
-	<script type="text/javascript" src="/js/jquery-1.8.2.min.js"></script>
-	
-	<script type="text/javascript" src="/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<link rel="stylesheet" href="/js/jcrop/css/jquery.Jcrop.min.css" type="text/css" />
- 	<script src="/js/jcrop/js/jquery.Jcrop.min.js" type="text/javascript"></script>
-	
-	<script type="text/javascript" src="/js/main.js"></script>
-		
-	
-	jg
-	
-	</head>
+	<link href="/newver/css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+	<script type="text/javascript" src="/newver/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="/newver/js/image-grid.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.move.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.swipe.js"></script>
+	<script src="/newver/js/jquery.mCustomScrollbar.min.js"></script>
+	<script type="text/javascript" src="/newver/js/global.js"></script>
+	<script type="text/javascript" src="/newver/js/profile.js"></script>
+</head>
 <body>
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1&appId=390493057700097";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
-	<%=render "qualaroo"%>
 	
+	<section id="page" class="profile-scroll profile">
+
 	<%=render "layouts/header"%>
 	<%=render "google_a"%>
-	<div id="page" class="clearfix">
-		<!-- <div id="header">
-			
-			<div class="page-content clearfix">
-				<%=render "logo"%>
-				<%=render "user_options"%>
-			</div>
-		</div> -->
-		
-		
-	<p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-	<section id="inside" style="margin-top:90px;">
+
+
+
+	<!-- <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p> -->
+	<!-- <section id="inside" style="margin-top:90px;"> -->
 		<%= yield %>
 		<%=render "layouts/footer"%>
+	<!-- </section> -->
+	</div>
 	</section>
-	</div>
-<!-- <div id="window-overlay" <%= ["login","confirm"].include?(params[:state]) ? "style='display:block'" : ""%>></div>
-	<div id="login-popup" class="popup " <%= params[:state]=="login" ? "style='display:block'" : ""%>>
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Login to dezquare!</div>
-			<form action="/site/login" method="post">
-				<div id="login-alert" class="form-error"<%= !params[:error].nil? ? "style='display:block'" : ""%>>Unknown Email Address or Password</div>
-				<div class="formfield">
-					<input type="text" class="text" name="email" />
-					<label class="abs">E-mail address</label>
-				</div>
-				<div class="formfield">
-					<input type="password" class="text" name="password" />
-					<label class="abs">Password</label>
-				</div>
-				<div class="submit clearfix">
-					<span class="remember-me">
-						<span class="checkbox">
-							<input type="checkbox" name="remember-me" />
-						</span>
-						<span class="text">Remember Me</span>
-					</span>
-					<input type="submit" class="button-orange" value="Submit" />
-				</div>		
-				<div class="forgot">
-					<a href="#" id="forgot-password" <%= !params[:error].nil? ? "style='display:block'" : ""%>>I forgot my password</a>
-				</div>
-			</form>
-			<div class="foot">
-				Don't have an account? <a href="/site/register">Sign-up!</a>
-			</div>
-		</div>		
-	</div>
-	
-	<div id="comfirm-popup" class="popup " <%= params[:state]=="confirm" ? "style='display:block'" : ""%>>
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Are you real?!</div>
-			
-			<form action="/site/resend_confirmation" method="post">
-				<div class="subtitle">Show us you're human</div>
-
-
-				<div class="desc" style="text-align: center;">
-					by clicking on the link in the email we sent you.
-				</div>
-				<br>
-
-				<div class="formfield">
-					<label class="abs">Enter your email to re-send the confirmation email</label>
-					<input type="text" class="text" name="email" />
-					
-				</div>
-				<div class="submit clearfix">
-
-					<input style="position: relative; right: 91px;" type="submit" class="button-orange" value="Re-Send" />
-				</div>	
-
-				
-			</form>
-			
-		</div>		
-	</div>
-	
-	<div id="forgot-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Get a new Password</div>
-			<form action="/site/password_reminder" method="post">
-				<div class="formfield">
-					<input type="text" class="text" name="email" />
-					<label class="abs">E-mail address</label>
-					<label class="form-error">Invalid email address</label>
-				</div>
-				<div class="submit clearfix">
-					<input type="submit" class="button-orange" value="Submit" id="submit-fp" />
-				</div>		
-			</form>
-		</div>
-	</div> -->
-	
 </body>
 </html>

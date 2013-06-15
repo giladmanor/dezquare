@@ -43,6 +43,13 @@
 }
 
 @font-face {
+    font-family: 'code_pro_bold_lcregular';
+    src: url('fontfabric_-_code-pro-bold-lc.otf') format('otf');
+    font-weight: bold;
+    font-style: bold;
+}
+
+@font-face {
     font-family: 'Roboto';
     src: url('roboto-light-webfont.eot');
     src: url('roboto-light-webfont.eot?#iefix') format('embedded-opentype'),

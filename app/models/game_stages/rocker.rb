@@ -8,7 +8,8 @@ class Rocker < StageImplementor
     end
     
     game.project.started
-    game.project.save
+    logger.debug "Rocker:::::::::::::::::::::::: #{game.project.inspect}"
+    game.project.save!
     
     game.designers.each{|d|
       UserMailer.designer_new_match(d).deliver
@@ -19,7 +20,7 @@ class Rocker < StageImplementor
   end
   
   def self.complete?(game,arguments)
-    logger.debug "Rocker::::: #{game.project.status==:started}"
+    logger.debug "Rocker::::::::::::::::::::::::::::: #{game.project.status==:started}"
     game.project.status==:started
   end
   

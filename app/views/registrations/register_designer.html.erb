@@ -1,11 +1,13 @@
 ﻿<section id="content-inside">
 	<section class="sidebar-alt-screens">
 					
-		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic" style="margin-top:-30px;">
+		<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic" style="margin-top:-60px;">
 			<section class="register-screen-content">
 			<h2>Request an invite</h2>
+			<div class="fixff">
 			<div class="form-sub-head">Your Account</div>
 			<form action="/registrations/register_designer_success" method="post" id="register-designer-form">
+			
 				<div class="formfield">
 					<input type="text" class="text validation-normal" name="name" />
 					<label class="abs">First Name</label>
@@ -18,13 +20,13 @@
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Last Name</label>
 				</div>
-				<div class="formfield">
+				<div class="formfield" >
 					<input type="text" class="text validation-email" name="email" />
 					<label class="abs">E-mail</label>
 					<span class="vchecked"></span>
 					<label class="form-error">Invalid Email Address</label>
 				</div>
-				<div class="formfield">
+				<div class="formfield" style="margin-top: 1px;">
 					<input type="text" class="text validation-normal" name="heard_about_us" />
 					<label class="abs">How did you hear about dezquare?</label>
 					<span class="vchecked"></span>
@@ -48,8 +50,9 @@
 				<div class="submit clearfix">
 					<input type="submit" class="button-orange" value="Apply to join dezquare" />
 				</div>		
-			</form>
 			
+			</form>
+			</div>
 			<div class="sidebar-bottom-note centered">
 				Already have an account? <a href="/login" id="bottom-logink">Sign in!</a>
 			</div>

@@ -28,8 +28,8 @@
 						<div class="white-band-title">
 							<h3>You've Got Matched!</h3>
 						</div>
-						<script type="text/javascript">
-							function accept_project(project_id)
+					<!--	<script type="text/javascript">
+							 function accept_project(project_id)
 								{
 									$.ajax({
 									  type: "POST",
@@ -48,7 +48,7 @@
 									});
 									return false;
 								}
-						</script>
+						</script> -->
 						
 						<div id="match-projects" class="white-box">	
 							<%
@@ -69,7 +69,7 @@
 												
 												if game.project.status=="started"
 												%>
-												<a href="#" class="black-button esmall-font accept-design" onclick="accept_project(<%=game.project.id%>)">Accept</a>
+												<!-- <a href="#" class="black-button esmall-font accept-design" onclick="accept_project(<%=game.project.id%>)">Accept</a> -->
 												<a href="#" class="decline" onclick="$('#cusomer_mail').attr('href','mailto:<%=game.user.email%>');$('#reject_project').attr('href','/designer/reject_project/<%=game.project.id%>');">Decline</a>
 												<%
 												elsif @user.id==game.project.designer_id
@@ -91,7 +91,7 @@
 												<div class="about-project">
 													<%=game.project.info%>
 												</div><br />
-												<div class="about-project">File Types: <%=game.project.file_types%></div>
+												<!-- <div class="about-project">File Types: <%=game.project.file_types%></div> -->
 												<%
 												unless disable_contact
 													%>

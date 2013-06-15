@@ -83,6 +83,7 @@ $(document).ready(function(){
 			
 			i.val(key);
 			v.text(value);
+			$("form#select-project").submit();
 		});
 		
 		l.show();
@@ -108,7 +109,7 @@ $(document).ready(function(){
 
 $(window).load(function(){
 	SetFullScreenImages();
-	$("#loading-confirmation-orange").animate({ "width": "100%" }, 3000);
+	$("#loading-confirmation-orange").animate({ "width": "100%" }, 10000);
 }).resize(function(){
 	SetFullScreenImages();
 });

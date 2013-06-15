@@ -1,5 +1,5 @@
 <%= javascript_include_tag "application" %>
-<% if @game.game_type_stage_id.to_f < 4 || @game.game_type_stage_id.to_f == 5
+<% if @game.game_type_stage_id.to_f < 6 # || @game.game_type_stage_id.to_f == 5
 
 		# logger.debug "################## GAME :::  #{@game.game_type_id.inspect}"
 %>
@@ -90,7 +90,7 @@
 			<div class="links">
 				<a href="/home/how-it-works" class="small-link">How does it work?</a>
 				<a href="/designer_signup" class="btn btn-1">Are you a designer?</a>
-				<a href="/login" class="btn btn-2">Login</a>
+				<a href="/login" class="btn btn-2">Sign in</a>
 			</div>
 		</header>
 		

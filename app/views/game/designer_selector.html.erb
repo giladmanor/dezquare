@@ -1,8 +1,39 @@
 
-			<section id="content-inside" style="top: 5em;">
+			
+			<section class="analyzing-taste" style="text-align: center; margin-top:20%;">
+				<div class="title-2r centered">
+						<div class="r1">We are analyzing your taste!</div>
+						<div class="r2 color">Stay tuned to see your matched designers</div>
+					</div>
+				<!-- <h2>We are analyzing your taste!</h2>
+				<div class="sidebar-note"><h3 style="font-size: 30px; margin-top:-20px;">Stay tuned to see your matched designers</h3></div> -->
+				<div id="loading-confirmation" style="display: block; margin-left: auto; margin-right: auto;">
+					<div id="loading-confirmation-orange"></div>
+				</div>
+			</section>
+			
+			<%
+								
+								image_rates=@game.game_image_rates.select{|i| i.value==1}
+								
+								designers = image_rates.map{|r| r.image.user}
+								rated =designers.map{|d| {:d=>d, :r=>designers.count(d)}}.uniq.sort{|a,b| b[:r]<=>a[:r]}
+								designers = rated.map{|r| r[:d]}
+								selected_tags = @game.images.map{|si| si.tags}.flatten.uniq
+								
+								others = User.all.select{|u| u.designer}.map{|dez|
+									dez_tags = dez.images.map{|dezi| dezi.tags}.flatten.uniq
+									rate = (dez_tags+selected_tags).length - (dez_tags+selected_tags).uniq.length 
+									{:d=>dez, :r=>rate}
+								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
+								
+								designers = (designers+others).uniq.compact.take(3)
+								
+			%>
+			<section id="content-inside" style="top: 5em; display: none;">
 				
 				
-				<section id="loading-designers" class="for-step-3" style="margin-top: -60px;">
+				<!-- <section id="loading-designers" class="for-step-3" style="margin-top: -60px;">
 					<div class="gray">
 						<img src="/newver/img/loading-designers.png" alt="Loading..." />
 					</div>
@@ -24,7 +55,7 @@
 						<div class="icon">3</div>
 						<div class="text">Get matched</div>
 					</div>
-				</section>
+				</section> -->
 				
 				<section id="matches-found">
 					<div class="title-2r centered">
@@ -36,23 +67,7 @@
 						
 						<div class="matches">
 							<%
-								
-								image_rates=@game.game_image_rates.select{|i| i.value==1}
-								
-								designers = image_rates.map{|r| r.image.user}
-								rated =designers.map{|d| {:d=>d, :r=>designers.count(d)}}.uniq.sort{|a,b| b[:r]<=>a[:r]}
-								designers = rated.map{|r| r[:d]}
-								selected_tags = @game.images.map{|si| si.tags}.flatten.uniq
-								
-								others = User.all.select{|u| u.designer}.map{|dez|
-									dez_tags = dez.images.map{|dezi| dezi.tags}.flatten.uniq
-									rate = (dez_tags+selected_tags).length - (dez_tags+selected_tags).uniq.length 
-									{:d=>dez, :r=>rate}
-								}.sort{|a,b| b[:r]<=>a[:r]}.map{|o| o[:d]}
-								
-								designers = (designers+others).uniq.compact.take(3)
 								i=0
-								
 								designers.each{|d|
 									i+=1
 							%>
@@ -61,8 +76,8 @@
 											<% img = d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar %>
 											
 											<div class="image">
-												<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" /></a>
-												<div class="name"><%=d.name%></div>
+												<a href="/designer/profile/<%=d.url_identifier%>" target="_blank"><img src="/user_avatars/<%= d.avatar.blank? ? "designer_profile_default.jpg" : d.avatar%>" alt="Profile Image" />
+												<div class="name"><%=d.name%></div></a>
 												<!-- <%= link_to content_tag(:div,d.name, :class=>"name"), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %>
 												<%= link_to image_tag("/user_avatars/" + img), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true %> -->
 											</div>
@@ -74,6 +89,7 @@
 											</span>
 										</div>
 									</article>
+									<input type="hidden" name="chosen[]" value="<%=d.id%>">
 							<% 
 							}
 							%>

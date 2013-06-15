@@ -65,24 +65,80 @@ class SiteController < ApplicationController
   def dashboard
     @author = @user
     @editable=true
+    @proj = params[:proj_id].blank? ? @author.projects_out.reject{|pr| pr.status.nil?}.last : @author.projects_out.find(params[:proj_id])
     
-    redirect_to :controller=>:game, :action=>:index if @user.projects_out.length==0
+    redirect_to :controller=>:game, :action=>:index if (@user.projects_out.length==0 || @proj.status.blank?)
     
   end
   
   
   def cancel_design
-    project = Project.find(params[:id])
+    project = @user.projects_out.find(params[:id])
     project.canceled
     project.save
-    redirect_to :action=>:dashboard
+    redirect_to :controller=>:site, :action=>:dashboard, :proj_id=>params[:id]
+  end
+  
+  def grant_project
+    @designer =  User.find(params[:dez])
+    @project = @user.projects_out.find(params[:proj]) 
+    
+    if @project.game.designers.include?(@designer)  
+       @project.designer_id = @designer.id
+       @project.grabbed
+       @project.save!
+       
+      respond_to do |format|
+        format.js { render :layout=>false }
+      end
+    else
+      render :text => "ERROR - PROJECT NOT FOUND"
+    end
+  end
+  
+  def edit_project
+    if params[:id].blank?
+      redirect_to "/site/dashboard/"
+    else
+      @project = @user.projects_out.find(params[:id])
+      if !["started","grabbed"].include?(@project.status)
+        redirect_to "/site/dashboard/"
+      # else
+        # @project.title = params[:title].present? ? params[:title] : @project.title
+        
+      end 
+    end
+  end
+  
+  def save_edit_project
+    if params[:id].present? 
+      @project=@user.projects_out.find(params[:id]) 
+      if ["started","grabbed"].include?(@project.status)
+        # attr = params.delete_if{|k,v| !@project.respond_to?(k.to_sym)}
+        # @project.assign_attributes(attr.except(:id,:deadline,:budget))
+        @project.title = params[:title].present? ? params[:title] : ""
+        @project.deadline = params[:deadline].present? ? Date.strptime(params[:deadline], '%m/%d/%Y') : ""
+        budg = params[:budget]
+        @project.budget = budg.present? ? budg.to_i : ""
+        @project.info = params[:description].present? ? params[:description] : ""
+        @project.save!
+      end
+    end
+    redirect_to "/site/dashboard?proj_id=#{params[:id]}"  
   end
   
   def complete_project
-    project = Project.find(params[:id])
-    project.completed
-    project.save
-    redirect_to :action=>:dashboard
+    @project = @user.projects_out.find(params[:proj])
+    if @project.present? && @project.status=="grabbed"
+      @project.completed
+      @project.save
+      respond_to do |format|
+        format.js { render :layout=>false }
+      end
+    else
+      render :text => "ERROR - PROJECT NOT FOUND"
+    end
+    #redirect_to :controller=>:site, :action=>:dashboard
   end
   
   def latest_designs

@@ -1,0 +1,24 @@
+var seldez = $page.find(".clicked");
+
+$(".row").attr('class', 'row clearfix disabled');
+seldez.closest(".row").attr('class', 'row clearfix');
+//$(".button.green").hide();
+$(".button-zone").hide();
+seldez.closest(".button-zone").show();
+seldez.hide();
+$(".inside").html("Open");
+
+//seldez.closest(".row").fadeout();
+
+seldez.parent().append("<%= escape_javascript(render "comp_button") %>");
+
+seldez.closest(".data").children(".name").append("<span class='vchecked-designer'></span>");
+seldez.closest(".row").prependTo(".allrows");
+
+
+
+//$(this).closest(".row").html("RONENRONENRONEN");
+//$(".row").closest().attr('class', 'row clearfix ronen');
+//$(".row").siblings().hide();
+//$(this).siblings().hide();
+//$(".textblock").html("<%= escape_javascript(render(:text=>"SUCCESS")) %>");

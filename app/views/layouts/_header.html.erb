@@ -6,6 +6,7 @@
 </div> -->
 <%
 home_link = root_path
+display_how = 1
 unless current_user.nil? 
 	if current_user.shopper
 		home_link = "/site/dashboard"
@@ -13,6 +14,7 @@ unless current_user.nil?
 	elsif current_user.designer
 		home_link = "/designer/dashboard"
 		sett = "/designer/settings"
+		display_how = 0
 	else
 
 	end
@@ -30,7 +32,9 @@ end
 			<div class="square"></div>
 			
 			<div class="links">
-				<a href="/home/how-it-works" class="small-link">How does it work?</a>
+				<% if display_how == 1 %>
+					<a href="/home/how-it-works" class="small-link">How does it work?</a>
+				<% end %>
 				<% if user_signed_in? %>
 					<a href="<%= sett %>" class="btn btn-1">Settings</a>
 					<a href="/logout" class="btn btn-2">Sign out</a>

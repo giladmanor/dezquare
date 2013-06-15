@@ -1,12 +1,15 @@
-		<div id="content">
-			<div class="page-content shopper-settings">
+	<section id="content">	
+		<section id="content-inside"> 
+			<h2 class="centered">Account Settings</h2>
+				<section class="sidebar-alt-screens">
+					
+				<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+				<section class="register-screen-content" style="margin-top: 20px;">	
 
-				<div class="center-wrap">
-					<div class="center-wrap-box">
-						<form action="/site/set_details" class="settings-form" method="post">
-							<fieldset>
+						<form action="/site/set_details" class="settings-formxxx" method="post">
+							<!-- <fieldset> -->
 								<div class="col1">
-									<h4>Account Details:</h4>
+									<div class="form-sub-head">Account Details:</div>
 									<div class="formfield">
 										<input type="text" class="text" name="name" value="<%=@user.name%>"/>
 										<label class="abs"><%=@user.name%></label>
@@ -23,7 +26,7 @@
 										<label class="form-error">Invalid Email</label>
 									</div>
 	
-	<% if @user.dominant_colors.present? %>	
+	<!-- <% if @user.dominant_colors.present? %>	
 		<div><h4>Your Colors</h4></div>
 		<div class="fav-colors">			
 			<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
@@ -34,12 +37,12 @@
 			</tr>
 			</table></p>
 		</div>
-	<% end %>
+	<% end %> -->
 										
 								</div>
 								
 								<div class="col2">
-									<h4>Change my password:</h4>
+									<div class="form-sub-head">Change my password:</div>
 									<div class="formfield">
 										<input type="password" class="text" name="old_password" />
 										<label class="abs">Enter old password</label>
@@ -56,16 +59,16 @@
 										<label class="form-error" <%=params[:error]=="PASSWORD" ? "style='display:block'" : ""%>>Passwords don't match</label>
 									</div>
 								</div>
-							</fieldset>
-							<label style="color:red;" class="clearfix">Please note: If you change your email, you will be asked to confirm your new email address.</label>
+							<!-- </fieldset> -->
+							<!-- <label style="color:red;" class="clearfix">Please note: If you change your email, you will be asked to confirm your new email address.</label> -->
 							<div class="submit clearfix">
-								<input type="submit" class="button-orange" value="Submit" />
-								<a href="/site/dashboard" class="cancel">Cancel</a>
+								<input type="submit" class="button-orange" value="Submit" style="margin-bottom:5px;" />
+								<a href="/site/dashboard" class="cancel" style="text-decoration: underline;">Cancel</a>
 							</div>
 						</form>
-					</div>
-				</div>
-				
-			</div>			
-		</div>
-	<p style="height: 400px;">&nbsp;</p>
+					</section>
+					</section>
+					</section>
+	<!-- <p style="height: 400px;">&nbsp;</p> -->
+</section>
+</section>

@@ -81,4 +81,10 @@ $(document).ready(function(){
 			ib.find(".alt").show();
 		});
 	});
+	
+	
+	$(".analyzing-taste").delay(11000).show(function(){ 
+		$(this).hide();
+		$("#content-inside").show();
+	});
 });

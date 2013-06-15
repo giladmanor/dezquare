@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130514212127) do
+ActiveRecord::Schema.define(:version => 20130603192947) do
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"
@@ -223,12 +223,13 @@ ActiveRecord::Schema.define(:version => 20130514212127) do
     t.integer  "shopper_id"
     t.integer  "designer_id"
     t.integer  "category_id"
-    t.decimal  "cost",        :precision => 10, :scale => 0
+    t.decimal  "budget",      :precision => 10, :scale => 0
     t.string   "status"
     t.datetime "created_at",                                 :null => false
     t.datetime "updated_at",                                 :null => false
     t.text     "info"
     t.string   "file_types"
+    t.date     "deadline"
   end
 
   add_index "projects", ["category_id"], :name => "index_projects_on_category_id"

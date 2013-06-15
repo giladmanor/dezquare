@@ -1,0 +1,67 @@
+<link href="/newver/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+<script src="/newver/js/jquery.mCustomScrollbar.min.js"></script>
+<script src="/newver/js/jquery.customCalendar.min.js"></script>
+<link href="/newver/css/jquery.customCalendar.min.css" rel="stylesheet" />
+
+			<section id="content-inside">
+				
+				<section id="matches-found" class="with-form">
+					<div class="title-2r centered">
+						<div class="r1">Edit project brief</div>
+					</div>
+						<div class="middle-title color" style="margin-bottom:75px; margin-top:-5px;">Add and change your project details</div>
+					
+					<form action="/site/save_edit_project/<%=@project.id%>" method="post">
+						
+					
+						
+						<div class="form">
+							
+				
+							<div class="formfield clearfix">
+								<label>
+									<span class="req color">*</span>
+									Add a title to your project
+								</label>
+								<input type="text" class="text" name="title" placeholder="E.g. New product version" value="<%= @project.title.present? ? @project.title : ""%>" />
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									Any direction you have in mind?
+								</label>
+								<textarea name="description" placeholder="E.g. not sure" style="height:120px;"><%= @project.info.present? ? @project.info : ""%></textarea>
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									Have a budget in mind (US$)?
+								</label>
+								<input type="text" class="text" name="budget" placeholder="E.g. 10000" value="<%= @project.budget.present? ? @project.budget : ""%>" />
+							</div>
+							<div class="formfield clearfix">
+								<label>
+									<!-- <span class="req color">*</span> -->
+									What is the deadline for the project?
+								</label>
+								<input type="text" class="text" id="deadline" name="deadline" placeholder="mm/dd/yyyy" value="<%= @project.deadline.present? ? @project.deadline.strftime("%m/%d/%Y") : ""%>"/>
+							</div>
+								
+						</div>
+						
+						<div class="buttons">
+							<button class="button black" style="margin-top:60px;">Save details</button>
+						</div>
+						
+					</form>
+					
+					
+				</section>
+				
+			</section>
+			
+
+
+  <script>
+  $(function() {
+    $( "#deadline" ).datepicker();
+  });
+  </script>

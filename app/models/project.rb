@@ -8,6 +8,9 @@ class Project < ActiveRecord::Base
   
   has_one :game
   
+  validates :budget, :numericality => { :allow_nil => true, :greater_than_or_equal_to => 0 }
+  #validates :start_date, :date => {:after => Date.today }
+  
   
   def set_by(game)
     

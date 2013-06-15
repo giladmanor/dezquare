@@ -14,6 +14,14 @@ $(document).ready(function(){
 	var mpml = 95;
 	var scrollBarWidth = GetScrollBarWidth();
 	
+	$(".button.green").click(function(event){
+		$(".button.green").attr("class","button green black-hover");
+		$(this).attr("class","button green black-hover clicked");
+		if ($(this).attr("id") != "long-button") {	
+			return confirm("Ready to start your project?");
+		}
+	});
+	
 	if (typeof ImageMasonry != "undefined")
 	{
 		var imageGrid = ImageMasonry.Instance();
@@ -88,6 +96,7 @@ $(document).ready(function(){
 			{
 				selectProjectCombo.addEventListener("mousewheel", DenyMouseWheelHandler, false);
 				selectProjectCombo.addEventListener("wheel", DenyMouseWheelHandler, false);
+				
 			}
 			
 			// IE9, Chrome, Safari, Opera
@@ -216,6 +225,8 @@ $(window).load(function(){
 		$(userChatFeed).scrollTop($userChatFeed.children("#user-chat-feed-inside").height() - $userChatFeed.height());
 	}
 });
+
+
 
 function MouseWheelHandlerFF(e) 
 {
