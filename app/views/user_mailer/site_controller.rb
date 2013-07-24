@@ -63,19 +63,14 @@ class SiteController < ApplicationController
   
   
   def dashboard
-    if @user.shopper
-      @author = @user
-      @editable=true
-      if @author.projects_out.length > 0
-        @proj = params[:proj_id].blank? ? @author.projects_out.reject{|pr| pr.status.nil?}.last : @author.projects_out.find(params[:proj_id])
-      end
+    @author = @user
+    @editable=true
+    if @author.projects_out.length > 0
+	    @proj = params[:proj_id].blank? ? @author.projects_out.reject{|pr| pr.status.nil?}.last : @author.projects_out.find(params[:proj_id])
+	end
     
-      redirect_to :controller=>:game, :action=>:index if (@user.projects_out.length==0 || @proj.status.blank?)
-    elsif @user.designer
-      redirect_to :controller=>:designer, :action=>:dashboard
-    else
-      redirect_to :controller=>:home, :action=>:index
-    end
+    redirect_to :controller=>:game, :action=>:index if (@user.projects_out.length==0 || @proj.status.blank?)
+    
   end
   
   

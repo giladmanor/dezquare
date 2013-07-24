@@ -41,8 +41,8 @@ Dezquare::Application.configure do
     config.action_mailer.smtp_settings = {
       :address              => "smtp.gmail.com",
       :port                 => 587,
-      :domain               => 'dezquare.com',
-      :user_name            => 'hello@dezquare.com',
+      :domain               => 'dscovered.com',
+      :user_name            => 'hello@dscovered.com',
       :password             => 'NoFrontier1',
       :authentication       => 'plain',
       :enable_starttls_auto => true  }

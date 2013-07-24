@@ -1,218 +1,265 @@
-
-		<div id="content">
-			<div class="page-content">
-				<%=render "cover"%>
-				<%=render "dashboard_sidebar"%>
-				<div id="main">
-					<%	
-					matches = @user.matches
-					
-					if matches.reject{|g| g.project.nil? || g.user.nil? }.empty?
-						%>
-						<div class="white-band-title">
-							<h3>Matches</h3>
-						</div>
-						<div id="matches-intro" class="white-box">
-							<div class="col1">
-								<p>Matches are exclusive invitations  to design projects for customers that we matched for you, based on their taste.</p>
-								<p>Get your first match by boosting your portfolio with your designs.</p>
-								<a href="/designer/edit_photo" class="black-button small-font">Boost My Portfolio!</a>
-							</div>
-							<div class="col2">
-								<img src="/img/temp/bkg-match.jpg" />
-							</div>
-						</div>
-						<%
-					else
-						%>
-						<div class="white-band-title">
-							<h3>You've Got Matched!</h3>
-						</div>
-					<!--	<script type="text/javascript">
-							 function accept_project(project_id)
-								{
-									$.ajax({
-									  type: "POST",
-									  url: "/designer/accept_project",
-									  data: { id:project_id},
-									  success: function(data){
-									  	if(data.mail_to!=""){
-									  		$('#grabber_mailto').attr("href",data.mail_to);
-									  		$('#grabber_mailto').show();
-									  	}
-									  	$('#grabber_title').text(data.title);
-									  	$('#grabber_message').text(data.message);
-									  	$('#grabber_desc').text(data.desc);
-									  	
-									  }
-									});
-									return false;
-								}
-						</script> -->
+<% public_mode = !(@editable && @proj.present?) %>
+		<section id="content">
+			
+			<section id="profile-widgets">
+<% @proj = Project.find(11)
+if @editable && @proj.present?
+		
+%>				
+				<section id="profile-table">
+					<div class="top-row clearfix">
 						
-						<div id="match-projects" class="white-box">	
-							<%
-							matches.reverse.reject{|g| g.project.nil? || g.user.nil? }.each{|game|
-								%>
-									<div class="project">
-										<div class="basic">
-											<div class="icon">
-												<img src="/img/icons/<%=game.category.icon%>.png" />
-											</div>
-											<div class="name-and-client">
-												<div class="name"><%=game.project.title%></div>
-												<div class="client"><%=game.user.full_name%></div>
-											</div>
-											<div class="action">
-												<%
-												disable_contact = false
-												
-												if game.project.status=="started"
-												%>
-												<!-- <a href="#" class="black-button esmall-font accept-design" onclick="accept_project(<%=game.project.id%>)">Accept</a> -->
-												<a href="#" class="decline" onclick="$('#cusomer_mail').attr('href','mailto:<%=game.user.email%>');$('#reject_project').attr('href','/designer/reject_project/<%=game.project.id%>');">Decline</a>
-												<%
-												elsif @user.id==game.project.designer_id
-												%>
-												<span>Taken by you</span>
-												<%	
-												else
-													disable_contact = true
-												%>
-												<span>Taken by someone else</span>
-												<%
-												end
-												%>
-											</div>
-										</div>
-										<div class="detailed">
-											<div class="col1">
-												<div class="title">About the desired <%=game.category.name%></div>
-												<div class="about-project">
-													<%=game.project.info%>
-												</div><br />
-												<!-- <div class="about-project">File Types: <%=game.project.file_types%></div> -->
-												<%
-												unless disable_contact
-													%>
-													<a href="mailto:<%=game.user.email%>" class="contact">
-														<span class="icon"></span>
-														<span class="text">Contact client</span>
-													</a>
-													<%
-												end
-												%>
-												
-											</div>
-											<div class="col2">
-												<div class="title">Designs Liked by <%=game.user.name%></div>
-												<div class="designs">
-													<%
-													images=game.game_image_rates.select{|r| r.value==1}.map{|r| r.image}.compact
-													
-													images.take(3).each{|image|
-														%>
-														<div class="design">
-															<img src="/repository/thumbnail/<%=image.file_path%>" style="max-width: 119px;max-height: 128px;"/>
-														</div>
-														<%
-													}
-													%>
-													
-												</div><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
-												
-												<div class="title"><%=game.user.name%>'s Favorite Colors
-													
-	<% if game.present? && game.dominant_colors.present? %>					
-		<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
-		<tr style="border:1px solid; border-color: #000000; border-collapse: collapse;">
-			<% game.dominant_colors.each do |col| %>
-				<td height="30" style="background-color:<%= col %>; border:1px solid; border-color: #000000; border-collapse: collapse;">&nbsp;</td>
-			<% end %>
-		</tr>
-		</table></p>
-	<% end %>
-												</div>
-												
-												<div class="taste-indicators">
-													<div class="title"><%=game.user.name%>'s Taste Indicators</div>
-													<ul>
-														<%
-														tags = images.map{|si| si.tags}.flatten.uniq
-														
-														tags.each{|tag|
-															%>
-															<li><%=tag.name%></li>	
-															<%	
-														}
-														
-														%>
-													</ul>
-												</div>
-											</div>
-										</div>
-										
-										<div class="last-row">
-											
-											<div class="col1">
-												<div class="payment"><!-- Payment: $<%=game.max_price%> -->&nbsp;</div>
-											</div>
-											<div class="col2">
-												<div class="date"><%=game.created_at.strftime("%I:%M%p, %e %b %Y")%></div>
-											</div>
+						<div class="huge-title">My Matches</div>
+
+						
+						<div class="select-area form">
+							<div class="label color">select project:</div>
+							<div class="selector formfield clearfix">
+								
+								<div class="combobox country" id="select-project-combo">
+									<div class="value">Web design for Wikibrains</div>
+									<input type="hidden" name="project" value="1" />
+									<ul class="options">
+										<li value_str="1">Web design for Wikibrains</li>
+										<li value_str="2">Mobile design</li>
+										<li value_str="3">Logo</li>
+										<li value_str="4">Business card</li>
+										<li value_str="5">Flyer</li>
+										<li value_str="6">Branding</li>
+										<li value_str="7">Packaging</li>
+										<li value_str="8">Illustration</li>
+										<li value_str="9">Song</li>
+										<li value_str="10">Movie</li>
+										<li value_str="11">Word</li>
+									</ul>
+								</div>
+								
+							</div>
+							
+						</div>
+					</div>
+					
+					
+					<section id="designer-list" style="margin-left: -140px; width: 1100px;">
+						
+						<div class="row clearfix project-expanded">
+							<div class="col1">
+								<div class="image">
+									<img src="/user_avatars/<%= @proj.shopper.avatar.blank? ? "shopper_default_profile.jpg" : @proj.shopper.avatar %>" alt="Name" />
+								</div>
+								<div class="data">
+									<div class="name"><%= @proj.shopper.present? ? @proj.shopper.name : "" %></div>
+									<div class="position"><%= @proj.shopper.location.present? ? @proj.shopper.location : raw("&nbsp") %></div>
+									<div class="button-zone">
+										<a href="mailto:<%= @proj.shopper.email %>" class="button black orange-hover">Contact</a>
+									</div>
+								</div>
+								<div class="project-current-status color"><%= @proj.status.present? ? @proj.display_status : "" %></div>
+								
+								<div class="colors">
+									<div class="title">favorite colors:</div>
+									<div class="subject clearfix">
+										<% if @proj.game.present? && @proj.game.dominant_colors.present? %>																
+											<% @proj.game.dominant_colors.each do |col| %>
+												<div class="color" style="background: <%= col %>;"></div>
+											<% end %>
+										<% end %>
+									</div>
+								</div>
+				
+								<div class="title">Your taste can be:</div>
+								<div class="loaders clearfix">
+									<div class="row clearfix">
+										<div class="label color">Urban</div>
+										<div class="loader">
+											<div class="value" style="width: 50%;"></div>
 										</div>
 									</div>
-								<%
-							}
+									<div class="row clearfix">
+										<div class="label color">Colorful</div>
+										<div class="loader">
+											<div class="value" style="width: 60%;"></div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="label color">Big Fonts</div>
+										<div class="loader">
+											<div class="value" style="width: 30%;"></div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="label color">Typogrphic</div>
+										<div class="loader">
+											<div class="value" style="width: 20%;"></div>
+										</div>
+									</div>
+									<div class="row clearfix">
+										<div class="label color">Realistic</div>
+										<div class="loader">
+											<div class="value" style="width: 80%;"></div>
+										</div>
+									</div>
+								</div>
+													
+							</div>
+							
+							<%  images = Array.new 
+								images = @proj.game.game_image_rates.select{ |img| img.value==1 }.take(3) 
 							%>
+							
+							<div class="col2">
+								<div class="designs">
+									<div class="title">TASTE SAMPLES:</div>
+									<div class="image-designer">
+										<a href="#">
+											<img src="/repository/thumbnail/<%=images[0].image.file_path%>" alt="Name" />
+										</a>
+									</div>
+									<div class="image-designer right">
+										<a href="#">
+											<img src="/repository/thumbnail/<%=images[1].image.file_path%>" alt="Name" />
+										</a>
+									</div>
+									
+									<div class="image-big">
+										<a href="#">
+											<div style="width:275px; height:225px; background: url('/repository/thumbnail/<%=images[2].image.file_path%>') no-repeat top left; background-size: cover; border-radius:5px; border: 1px solid #cfcfcf;"></div>
+										</a>
+									</div>
+								</div>
+								
+								
+								
+								<div style="margin-left:15px; padding-bottom:2px;" class="col0 <%=@proj.status=="canceled" ? "disabled" : ""%>">
+							<div class="textblock">
+								<span>Project Title:</span>
+								<%= @proj.title.present? ? @proj.title : "" %> 
+								<span>Design Category:</span> 
+								<%= @proj.category.present? ? @proj.category.name : "" %>
+								<span>Deadline:</span> 
+								<%= @proj.deadline.present? ? @proj.deadline.to_formatted_s(:long) : "" %>
+								<span>Budget:</span>
+								US$<%= @proj.budget.present? ? @proj.budget.to_s : ""%>
+								<span>Brief:</span> 
+								<%= @proj.info.present? ? @proj.info : "" %>								
+							</div>
+							<div id="edit_project">
+								<% if @proj.status=="started" %>	
+									<a href="/site/edit_project/<%= @proj.id %>"><div class="button black">Edit Project</div></a>
+									<div class="cancel-design"><a href="/site/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to cancel this project?')">Cancel project</a></div>
+								<% elsif @proj.status=="grabbed" %>
+									<% if @proj.designer==@author %>
+										<!-- You are the chosen designer -->
+									<% else %>
+									 <!-- Someone else was chosen -->
+									
+									<% end %>	
+								
+								<% end %>
+							</div>
+							
+																		
 						</div>
-						<%
-					end
+								
+							</div>
+						</div>
+						
+					</section>
 					
-					%>
-					
+				</section>
+	<% elsif @editable && @proj.blank? %> 
+		<h2 style="margin-top:200px; margin-left:-60px;">YOU DON'T HAVE ANY MATCHES</h2>
+		<p style="font-family:Roboto; font-size:22px; margin-left:-60px;">Want to get matched? <BR>Upload more designs to increase your chances!</p>
+	<% else 
+		cover_file = @author.cover.present? ? @author.cover : "designer_cover_default.jpg"
+	%>
+		<div id="cover" style="background: url(/user_covers/<%=cover_file%>) left no-repeat; background-size: cover;">&nbsp;</div>
+	
+	<% end %>
+				
+				
+			</section>
+			
+		</section>
+		
+		<span id="restore-arrow"></span>
+		
+		<section id="profile-content">
+			<section id="profile-photo-bar">
+				<div id="profile-photo-bar-content">
+					<div id="profile-photo">
+						<img src="/user_avatars/<%= @author.avatar.blank? ? "designer_profile_default.png" : @author.avatar %>" alt="Designer" />
+					</div>
+					<div class="name" <%= @author.full_name.length > 17 ? raw("style='font-size:18px;'") : "" %>><%=  @author.full_name[0..22]  %></div>
+					<!-- <address><%= @author.location.present? ? @author.location : "" %></address> -->
+					<div id="designer-taste-dash">
+						<ul class="profile-config v2-space">
+							<%=@author.location.present? ? raw("<li><img alt='House' src='/newver/img/icon-house.png'> #{@author.location}</li>") : "" %>
+							<!-- <li>
+								<img alt="House" src="/newver/img/icon-house.png">
+								<%=@author.location.present? ? @author.location : ""%>
+							</li> -->
+							<% if @author.languages.any? %>
+								<li>
+									<img alt="Globe" src="/newver/img/icon-globe.png">
+									<%= raw @author.languages.all.map{|ln| ln.name}.join(content_tag(:span," | ", :class=>"color"))%>
+								
+								</li>
+							<% end %>
+							<%if @author.education.present? %>
+								<li>
+									<img alt="University" src="/newver/img/icon-university.png">
+									<%= @author.education %>
+								</li>
+							<% end %>
+							<% if @author.skills.present? %>
+								<li class="gap">
+									<img src="/newver/img/icon-people.png" alt="People" />
+									<%= @author.skills %>
+								</li>
+							<% end %>
+						</ul>
+					</div>
 				</div>
-			</div>			
-		</div>
-	</div>
-	
-	<div id="window-overlay" <%= (params[:show_invite_success]=="true") ? raw('style="display: block"') : ''%>></div>
-	<div id="mark-complete-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Have you completed the design?</div>
-			<div class="subtitle">
-				Before you mark the job as - "complete", <br/>
-				make sure that your client think so too.
-			</div>
-			<a href="#" class="black-button small-font" id="project_mark_complete">Mark Complete</a>
-		</div>		
-	</div>
-	
-	<%=render "dashboard_popups"%>
-	
-	<div id="accept-project-popup" class="popup" >
-		<span class="close" onclick="location='/designer/dashboard'"></span>
-		<div class="popup-content">
-			<div class="title" id="grabber_title">Checking...</div>
-			<div class="subtitle" id="grabber_message">
-				We are now checking the projects availability. 
-			</div>
-			<div class="desc" id="grabber_desc">Please wait</div>
-			<a href="" id="grabber_mailto" class="black-button small-font" style="display: none">Contact Customer</a>
-		</div>		
-	</div>
-	
-	<div id="reject-project-popup" class="popup">
-		<span class="close"></span>
-		<div class="popup-content">
-			<div class="title">Are you sure?</div>
-			<div class="desc">
-				Declining an invitation is an irreversable action.<br/>
-				This project might be easier than you think!<br/>
-				<span>Give your client a chance</span>
-			</div>
-			<a href="" id="cusomer_mail" class="black-button small-font">Contact Client</a>
-			<a href="#" id="reject_project" class="decline-anyway">decline anyway</a>
-		</div>		
-	</div>
+			</section>
+			<section id="profile-overlay-white">
+				<section id="design-gallery">
+					<section id="design-gallery-content-holder">
+						<section id="design-gallery-content" class="clearfix">
+						<% if @editable %>	
+							<article class="image-item item-w1-h1" onclick="location.href='/designer/edit_photo'">  <!-- UPLOADER -->
+								<div><a href="/designer/edit_photo" class="HHH">
+									<img src="/newver/img/bkg-plus.png" style="height:88px; width:88px; margin-left:55px; margin-top:55px;" />
+									<!-- <span class="photo-info"> -->
+										<!-- <span class="name">Designer Full Name</span>
+										<span class="title">Image or Content full title</span>
+										<span class="heart"></span> -->
+									<!-- </span> -->
+								</a></div>
+							</article>
+						<% end %>
+							<% @author.images.map{ |img| %>
+							<article class="image-item item-w1-h1">
+								<a href="#">
+									<img src="/repository/thumbnail/<%= img.file_path %>" />
+									<span class="photo-info">
+										<span class="name"><Designer Full Name><%= img.name.present? ? img.name : "Untitled" %></span>
+										<span class="title"><Image or Content full title><%= img.image_category.present? ? img.image_category.category.name : raw("&nbsp;") %></span>
+										<!-- <span class="heart"></span> -->
+									</span>
+								</a>
+							</article>
+							
+							<% } %>
+							
+							
+						</section>
+					</section>
+				</section>
+					
+						</section>
+					</section>
+<!--				</section>
+</section> -->
+			
+			

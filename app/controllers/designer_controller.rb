@@ -12,10 +12,13 @@ class DesignerController < SiteController
       @categories = Category.all
       @author=@user
       @editable=true
+      @proj = params[:proj_id].blank? ? @author.projects_in.reject{|pr| pr.status.nil?}.last : @author.projects_in.find(params[:proj_id])
+
       render "dashboard"
     else 
       redirect_to :controller => :d, :action => :ohno
     end 
+    
   end
   
   ###############################################################################
@@ -82,19 +85,19 @@ class DesignerController < SiteController
     if params[:id].present?
       @author = User.find_by_url_identifier(params[:id])
       if @author.blank?
-        redirect_to :controller => :d, :action => :ohno
+        redirect_to :controller => :d, :action => :ohno and return
       end
     elsif @user.present? && @user.designer
         @author = @user
     else
-      redirect_to :controller => :d, :action => :ohno
+      redirect_to :controller => :d, :action => :ohno and return
     end
     
       
     logger.debug "###### AUTHOR::::: #{@author.inspect}" 
     logger.debug "###### USER::::: #{@user.inspect}"     
     @editable= (@author==@user)
-    
+    render "dashboard"
   end
   
   def set_image_order

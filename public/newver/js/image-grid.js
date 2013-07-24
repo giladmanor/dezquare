@@ -6,8 +6,8 @@
         var self;
         var isAjax = false;
         
-        var s = 130;
-		var m = 5;
+        var s = 200;
+		var m = 20;
 		var imageGridHolder, overlay;
 		var childrenSelector = ".image-item";
 		var minX = 0;

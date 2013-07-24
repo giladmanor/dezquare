@@ -7,7 +7,7 @@
 	font-family: Verdana, Geneva, sans-serif;
 }
   </style>
-  <title>Dezquare - New Project opened!</title>
+  <title>dscovered - New Project opened!</title>
   </head>
 <body>
 <% if @project.present? %>>	
@@ -18,7 +18,8 @@
 	<p>Client: <%= @project.shopper.nil? ? "" : "#{@project.shopper.full_name} | #{@project.shopper.email}" %> </p>
 	<p>Candidates: <%= @project.game.designers.nil? ? "" : @project.game.designers.map{|dez| dez.email}.join(', ') %></p>
 	<p>Description: <%= @project.info.nil? ? "" : @project.info %></p>
-	<p>Budget: <%= @project.game.max_price.nil? ? "" : @project.game.max_price %></p>>
+	<p>Budget: <%= @project.budget.nil? ? "" : @project.budget %></p>
+	<p>Deadline: <%= @project.deadline.present? ? @project.deadline : "" %></p>
 <% end%>
 </body>
 </html>

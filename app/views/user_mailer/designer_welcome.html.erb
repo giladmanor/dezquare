@@ -11,10 +11,10 @@ password = Devise.friendly_token.first(8)
   </head>
   <body>
     <h1>Hey  <%= @user.name %>,</h1>
-    <p>You’ve completed the registration and you’re now a true member of the dèzquare creative gang. </p>
+    <p>You’ve completed the registration and you’re now a true member of the dscovered creative gang. </p>
     <p>We’re working on matching you to your first customer so stay tuned!</p>
     <p>
-      At anytime you can change the details and designs you uploaded at your personal account page – <%= url_for(:host => "dezquare.com",:controller => "site",:action => "index") %>.<br />
+      At anytime you can change the details and designs you uploaded at your personal account page – <%= url_for(:host => "dscovered.com",:controller => "site",:action => "index") %>.<br />
       your username is: <%= @user.email %><br/>
       your Password is: <%= password%><br/>
     </p>
@@ -22,9 +22,9 @@ password = Devise.friendly_token.first(8)
       To access the account at anytime you’ll need to use your access key.
     </p>
     <p>We love your questions, requests and feedback!<br />
-Don’t be shy with it and tell us everything at – <a href="mailto:feedback@dezquare.com">feedback@dezquare.com</a>
+Don’t be shy with it and tell us everything at – <a href="mailto:info@dscovered.com">info@dscovered.com</a>
 </p>
 <p>Keep Rockin’!<br />
-The dèzquare gang.</p>
+The dscovered gang.</p>
   </body>
 </html>

@@ -453,8 +453,8 @@
 		-o-transform: scale(0.8);
 		-ms-transform: scale(0.8);
 		transform: scale(0.8);
-		left: 0px;
-		top: 70px;
+		/*left: 0px;*/
+		/*top: 70px;*/
 	}
 	#landing .dbl-lines.first-line .left,
 	#landing .dbl-lines.first-line .right { top: 37px; }
@@ -684,7 +684,7 @@
 	div.image {
 
 		/*margin: 1px -2px;*/
-		width: 92px;
+		/*width: 92px;*/
 		
 	}
 	
@@ -764,15 +764,15 @@
 	
 	#landing .dbl-lines.first-line .left,
 	#landing .dbl-lines.first-line .right { top: 38px; }
-	#how-to .how-to-inside { top: 16%; }
+	/*#how-to .how-to-inside { top: 16%; }*/
 	#landing .find-designer {
 		-moz-transform: scale(0.7);
 		-webkit-transform: scale(0.7);
 		-o-transform: scale(0.7);
 		-ms-transform: scale(0.7);
 		transform: scale(0.7);
-		left: -40px;
-		top: 45px;
+		/*left: -40px;*/
+		/*top: 45px;*/
 	}
 	#how-to .how-to-inside {
 		-moz-transform: scale(0.7);

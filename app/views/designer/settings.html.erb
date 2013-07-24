@@ -1,120 +1,127 @@
-	<script type="text/javascript" src="/js/jquery-ui-1.8.24.custom.min.js"></script>
-		<div id="content">
-			<div class="page-content">
-
-				<div class="center-wrap">
-					<h2>Settings</h2>
+	<!-- <script type="text/javascript" src="/js/jquery-ui-1.8.24.custom.min.js"></script> -->
+		<section id="content" style="overflow-y: scroll;">		
+			<section id="profile-widgets">				
+				<section id="profile-table">
+					
+					<h2>Profile Settings</h2>
 					<div class="center-wrap-box">
-						<form action="/designer/set_details" class="settings-form" method="post">
-							<h3>Profile Settings:</h3>
-							<fieldset>
-								<div class="col1">
-									<h4>Summary:</h4>
+						<form action="/designer/set_details" class="settings-formxxxx" method="post">
+							
+						<section id="designer-list">
+							<!-- <div class="row clearfix project-expanded"> -->
+								
+								<div class="col1" style="margin-right:150px; width: 350px;">
+									<!-- <h3>Profile Settings:</h3> -->
+									
 									<div class="formfield clearfix birthday">
-										<label>Birthday:</label>
+										<label>Your Birthday</label>
 										<%
 										day = @user.dob.nil? ? "day" : @user.dob.day
 										month =  @user.dob.nil? ? "Month" : @user.dob.strftime("%B")
 										year = @user.dob.nil? ? "Year" : @user.dob.year
 										%>
 										
-										<div class="combobox day">
+										
+										
+										<div class="combobox date">
+											<input type="hidden" name="month" value="<%=month%>" />
+											<div class="value"><%=month%></div>
+											<ul class="options" style="background: #fff112; z-index:99;">
+												<li value_str="">January</li>
+												<li value_str="">February</li>
+												<li value_str="">March</li>
+												<li value_str="">April</li>
+												<li value_str="">May</li>
+												<li value_str="">June</li>
+												<li value_str="">July</li>
+												<li value_str="">August</li>
+												<li value_str="">September</li>
+												<li value_str="">October</li>
+												<li value_str="">November</li>
+												<li value_str="">December</li>
+											</ul>
+										</div>
+										
+										<div class="combobox date">
 											<input type="hidden" name="day" value="<%=day%>" />
 											<div class="value"><%=day%></div>
-											<div class="list">
+											<ul class="options">
 												<%
 												31.times{|i|
-													%><div class="option"><%=i+1%></div><%
+													%><li value_str="<%=i+1%>"><%=i+1%></li><%
 													}
 												%>
 												
 												
-											</div>
+											</ul>
 										</div>
-										<div class="combobox month">
-											<input type="hidden" name="month" value="<%=month%>" />
-											<div class="value"><%=month%></div>
-											<div class="list">
-												<div class="option">January</div>
-												<div class="option">February</div>
-												<div class="option">March</div>
-												<div class="option">April</div>
-												<div class="option">May</div>
-												<div class="option">June</div>
-												<div class="option">July</div>
-												<div class="option">August</div>
-												<div class="option">September</div>
-												<div class="option">October</div>
-												<div class="option">November</div>
-												<div class="option">December</div>
-											</div>
-										</div>
-										<div class="combobox year">
+										
+										<div class="combobox date">
 											<input type="hidden" name="year" value="<%=year%>" />
 											<div class="value"><%=year%></div>
-											<div class="list">
-													<div class="option">2012</div>
-													<div class="option">2011</div>
-													<div class="option">2010</div>
-													<div class="option">2009</div>
-													<div class="option">2008</div>
-													<div class="option">2007</div>
-													<div class="option">2006</div>
-													<div class="option">2005</div>
-													<div class="option">2004</div>
-													<div class="option">2003</div>
-													<div class="option">2002</div>
-													<div class="option">2001</div>
-													<div class="option">2000</div>
-													<div class="option">1999</div>
-													<div class="option">1998</div>
-													<div class="option">1997</div>
-													<div class="option">1996</div>
-													<div class="option">1995</div>
-													<div class="option">1994</div>
-													<div class="option">1993</div>
-													<div class="option">1992</div>
-													<div class="option">1991</div>
-													<div class="option">1990</div>
-													<div class="option">1989</div>
-													<div class="option">1988</div>
-													<div class="option">1987</div>
-													<div class="option">1986</div>
-													<div class="option">1985</div>
-													<div class="option">1984</div>
-													<div class="option">1983</div>
-													<div class="option">1982</div>
-													<div class="option">1981</div>
-													<div class="option">1980</div>
-													<div class="option">1979</div>
-													<div class="option">1978</div>
-													<div class="option">1977</div>
-													<div class="option">1976</div>
-													<div class="option">1975</div>
-													<div class="option">1974</div>
-													<div class="option">1973</div>
-													<div class="option">1972</div>
-													<div class="option">1971</div>
-													<div class="option">1970</div>
-													<div class="option">1969</div>
-													<div class="option">1968</div>
-													<div class="option">1967</div>
-													<div class="option">1966</div>
-													<div class="option">1965</div>
-													<div class="option">1964</div>
-													<div class="option">1963</div>
-													<div class="option">1962</div>
-													<div class="option">1961</div>
-													<div class="option">1960</div>
-													<div class="option">1959</div>
-													<div class="option">1958</div>
-													<div class="option">1957</div>
-													<div class="option">1956</div>
-													<div class="option">1955</div>
-													<div class="option">1954</div>
-													<div class="option">1953</div>
+											<ul class="options">
+													<li value_str="">2012</li>
+													<li value_str="">2011</li>
+													<li value_str="">2010</li>
+													<li value_str="">2009</li>
+													<li value_str="">2008</li>
+													<li value_str="">2007</li>
+													<li value_str="">2006</li>
+													<li value_str="">2005</li>
+													<li value_str="">2004</li>
+													<li value_str="">2003</li>
+													<li value_str="">2002</li>
+													<li value_str="">2001</li>
+													<li value_str="">2000</li>
+													<li value_str="">1999</li>
+													<li value_str="">1998</li>
+													<li value_str="">1997</li>
+													<li value_str="">1996</li>
+													<li value_str="">1995</li>
+													<li value_str="">1994</li>
+													<li value_str="">1993</li>
+													<li value_str="">1992</li>
+													<li value_str="">1991</li>
+													<li value_str="">1990</li>
+													<li value_str="">1989</li>
+													<li value_str="">1988</li>
+													<li value_str="">1987</li>
+													<li value_str="">1986</li>
+													<li value_str="">1985</li>
+													<li value_str="">1984</li>
+													<li value_str="">1983</li>
+													<li value_str="">1982</li>
+													<li value_str="">1981</li>
+													<li value_str="">1980</li>
+													<li value_str="">1979</li>
+													<li value_str="">1978</li>
+													<li value_str="">1977</li>
+													<li value_str="">1976</li>
+													<li value_str="">1975</li>
+													<li value_str="">1974</li>
+													<li value_str="">1973</li>
+													<li value_str="">1972</li>
+													<li value_str="">1971</li>
+													<li value_str="">1970</li>
+													<li value_str="">1969</li>
+													<li value_str="">1968</li>
+													<li value_str="">1967</li>
+													<li value_str="">1966</li>
+													<li value_str="">1965</li>
+													<li value_str="">1964</li>
+													<li value_str="">1963</li>
+													<li value_str="">1962</li>
+													<li value_str="">1961</li>
+													<li value_str="">1960</li>
+													<li value_str="">1959</li>
+													<li value_str="">1958</li>
+													<li value_str="">1957</li>
+													<li value_str="">1956</li>
+													<li value_str="">1955</li>
+													<li value_str="">1954</li>
+													<li value_str="">1953</li>
 												
-											</div>
+											</ul>
 										</div>
 									</div>
 									<div class="formfield">
@@ -134,13 +141,13 @@
 												<div class="combobox language">
 													<input type="hidden" name="language[]" value="<%=ul.name%>" />
 													<div class="value"><%=ul.name%></div>
-													<div class="list">
+													<ul class="options">
 														<%
 														Language.all.each{|l|
-															%><div class="option"><%=l.name%></div><%
+															%><li value_str="<%=l.name%>"><%=l.name%></li><%
 														}
 														%>
-													</div>
+													</ul>
 												</div>
 												<a href="#" class="button remove" style="display: block">
 													<img src="/img/bkg-close.png" alt="Remove" />
@@ -156,13 +163,13 @@
 											<div class="combobox language">
 												<input type="hidden" name="language[]" value="" />
 												<div class="value">Add language</div>
-												<div class="list">
+												<ul class="options">
 													<%
 													Language.all.each{|l|
-														%><div class="option"><%=l.name%></div><%
+														%><li value_str="<%=l.name%>"><%=l.name%></li><%
 													}
 													%>
-												</div>
+												</ul>
 											</div>
 											<a href="#" class="button remove">
 												<img src="/img/bkg-close.png" alt="Remove" />
@@ -172,29 +179,32 @@
 											</a>
 										</div>
 									</div>
-								</div>
-								<div class="col2" style="position: relative; top: 0; right: 0px; display: inline; z-index:100;">
+							</div>
+							<div class="col2">
+								<!-- </div>
+								<div class="col2" style="position: relative; top: 0; right: 0px; display: inline; z-index:100;"> -->
 									<h4>About You:</h4>
 									<div class="formfield">
 										<textarea name="about"><%=@user.about%></textarea>
 										<label class="abs wt">What would you like us to know about you?</label>
 									</div>
-								</div>
-								<div class="col3" style="position: relative; width: 280px; left: 334px; top: 28px;">
+								<!-- </div>
+								<div class="col3" style="position: relative; width: 280px; left: 334px; top: 28px;"> -->
 									<h4>Education:</h4>
 									<div class="formfield">
 										<textarea maxChars="140" name="education"><%=@user.education%></textarea>
 										<label class="abs wt">Where did you get those amazing skills?</label>
 									</div>
-								</div>
-								<div class="col4" style="position: relative; width: 280px; left: 0px; top: -173px;">
+								<!-- </div>
+								<div class="col4" style="position: relative; width: 280px; left: 0px; top: -173px;"> -->
 									<h4>Expertise:</h4>
 									<div class="formfield">
 										<textarea maxChars="140" name="skills"><%=@user.skills%></textarea>
 										<label class="abs wt">Tell us about your skills.</label>
 									</div>
 								</div>
-							</fieldset>
+							</div>
+
 							
 							<!-- <h3>Pricing levels Settings:</h3>
 							<fieldset>
@@ -230,10 +240,10 @@
 									
 							</fieldset> -->
 							
-							<h3>Account Settings:</h3>
-							<fieldset>
-								<div class="col1">
-									<h4>Account Details:</h4>
+							<!-- <h3>Account Settings:</h3> -->
+							<!-- <div class-"col2"> -->
+								<!-- <div class="col1"> -->
+									<!-- <h4>Account Details:</h4>
 									<div class="formfield">
 										<input type="text" class="text" name="name" value="<%=@user.name%>"/>
 										<label class="abs">First name</label>
@@ -245,7 +255,7 @@
 									<div class="formfield">
 										<input type="text" class="text" name="email"  value="<%=@user.email%>"/>
 										<label class="abs">E-mail</label>
-									</div>
+									</div> -->
 									<!-- <h5>Privacy:</h5>
 									<div class="agree clearfix">
 										<span class="checkbox <%=@user.public_profile ? "checked" : ""%>">
@@ -257,20 +267,24 @@
 										<span class="checkbox <%=@user.dez_profile ? "checked" : ""%>">
 											<input type="checkbox" name="dez_profile"  <%=@user.dez_profile ? "checked" : ""%>/>
 										</span>
-										<span class="text">Make my profile available only to dezquare users.</span>
+										<span class="text">Make my profile available only to dscovered users.</span>
 									</div> -->
-									<div class="direct_links">
+									
+				<!-- DIRECT LINK TO DESIGNER'S PROFILE -->
+									<!-- <div class="direct_links">
 										<h4>Direct link to public profile</h4>
 										<p>
-											http://dezquare.com/d/<input type="text" id="dynamic" onfocus="this.select()" onclick="this.value='';" onchange="this.value= !this.value ? '<%=@user.direct_link%>' : this.value "  
+											http://dscovered.com/d/<input type="text" id="dynamic" onfocus="this.select()" onclick="this.value='';" onchange="this.value= !this.value ? '<%=@user.direct_link%>' : this.value "  
 											 style='width: 106px;padding-left: 0px; display:inline' class="text" name="direct_link" value="<%=@user.direct_link%>" placeholder="Your Nickname">
 											<a style="margin-left: 5px;background-color:#000000; color:#ffffff; padding:5px" href="#" id="copy-dynamic">Copy</a>
 										</p>
 	
-									</div>
-								</div>
-								<div class="col2">
-									<h4>Change my password:</h4>
+									</div> -->
+									
+									
+								<!-- </div> -->
+								<!-- <div class="col2"> -->
+									<!-- <h4>Change my password:</h4>
 									<div class="formfield">
 										<input type="password" class="text" name="old_password" />
 										<label class="abs">Enter old password</label>
@@ -282,7 +296,7 @@
 									<div class="formfield">
 										<input type="password" class="text" name="repeat_password" />
 										<label class="abs">Re-enter new password</label>
-									</div>
+									</div> -->
 									<!-- <h5 class="has-circle">More Settings:</h5>
 									<div class="agree clearfix">
 										<span class="checkbox <%=@user.suspend ? "checked" : ""%>">
@@ -296,16 +310,15 @@
 										</span>
 										<span class="text">Completly delete my account</span>
 									</div> -->
-								</div>
-							</fieldset>
+								<!-- </div> -->
 							<div class="submit clearfix">
 								<input type="submit" class="button-orange" value="Submit" />
 								<a href="/designer/profile" class="cancel">Cancel</a>
 							</div>
 						</form>
 					</div>
-				</div>
-				
-			</div>			
-		</div>
-	
+				</section>
+
+		</section>
+		</section>
+		</section>

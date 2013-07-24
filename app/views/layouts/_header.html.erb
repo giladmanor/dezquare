@@ -11,9 +11,11 @@ unless current_user.nil?
 	if current_user.shopper
 		home_link = "/site/dashboard"
 		sett = "/site/settings"
+		new_game = "/game/index"
 	elsif current_user.designer
 		home_link = "/designer/dashboard"
 		sett = "/designer/settings"
+		
 		display_how = 0
 	else
 
@@ -22,20 +24,51 @@ end
 
 %>
 	
-
+	
 <header id="header" class="clearfix lighter">
 			<h1 id="logo">
 				<a href="<%= home_link %>">
 					<img src="/newver/img/logo.png" alt="Dezquare" width="172" height="42" />
 				</a>
 			</h1>
-			<div class="square"></div>
+			<!-- <div class="square"></div> -->
+			
+			<div class="links">
+				<% if user_signed_in? %>
+					<% if current_user.designer %>						
+						<a href="/designer/settings/" class="btn btn-1">Profile Settings</a>
+						<a href="/site/settings/" class="btn btn-1">Account Settings</a>
+					<% elsif current_user.shopper %>	
+						<a href="/home/how-it-works" class="small-link">How does it work?</a>	
+						<a href="/game/index/" class="btn btn-2">New Match</a>		
+						<a href="/site/settings/" class="btn btn-1">Settings</a>			
+					<% end %>
+				
+					<a href="/logout" class="btn btn-2">Sign out</a>
+				<% else %>
+					<a href="/home/how-it-works" class="small-link">How does it work?</a>
+					<a href="/designer_signup" class="btn btn-1">Are you a designer?</a>
+					<a href="/login" class="btn btn-2">Sign in</a>
+				<% end %>
+			</div>	
+</header>
+
+<!-- <header id="header" class="clearfix lighter">
+			<h1 id="logo">
+				<a href="<%= home_link %>">
+					<img src="/newver/img/logo.png" alt="Dezquare" width="172" height="42" />
+				</a>
+			</h1>
+			
 			
 			<div class="links">
 				<% if display_how == 1 %>
 					<a href="/home/how-it-works" class="small-link">How does it work?</a>
 				<% end %>
 				<% if user_signed_in? %>
+					<% if new_game.present? %>
+						<a href="<%=new_game%>" class="btn btn-2">New Match</a>
+					<% end %>
 					<a href="<%= sett %>" class="btn btn-1">Settings</a>
 					<a href="/logout" class="btn btn-2">Sign out</a>
 				<% else %>
@@ -43,4 +76,4 @@ end
 					<a href="/login" class="btn btn-2">Sign in</a>
 				<% end %>
 			</div>
-</header>
+</header> -->

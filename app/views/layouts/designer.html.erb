@@ -1,66 +1,26 @@
-﻿<!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html dir="ltr" lang="en-US">
 <head>
-	<title>dèzquare | Design Portfolio of <%=@author.nil? ? "" : @author.full_name%></title>
+	<title>dscovered</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<META NAME="Description" CONTENT='Complete Graphic Design Portfolio of <%=@author.nil? ? "" : @author.full_name%>. Including the best <%=@author.nil? ? "" : @author.categories.map{|c| c.name}.join(", ")%>'>
-    
-	
-	<%
-	unless @author.nil?
-	%>
-	<meta property="og:title" content="<%=@author.full_name%> | dèzquare" />
-	
-	<meta property="og:image" content="http://dezquare.com/user_avatars/<%=@author.avatar%>" />
-	<%end%>
-	
-	
-	<link href="/css/main.css" media="screen" rel="stylesheet" type="text/css" > 
-	<link href="/css/jScrollPane.css" media="screen" rel="stylesheet" type="text/css" > 
-	<script type="text/javascript" src="/js/jquery-1.4.2.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.uploadify-3.1.min.js"></script>
-	<script type="text/javascript" src="/js/jquery.mousewheel.js"></script>
-	<script type="text/javascript" src="/js/jquery.em.js"></script>
-	<script type="text/javascript" src="/js/jScrollPane.js"></script>
-	<script type="text/javascript" src="/js/jquery-ui-1.9.0.custom.min.js"></script>
-	<link rel="stylesheet" href="/js/jcrop/css/jquery.Jcrop.min.css" type="text/css" />
- 	<script src="/js/jcrop/js/jquery.Jcrop.min.js" type="text/javascript"></script>
-	
-	<script type="text/javascript" src="/js/main.js"></script>
-	<script type="text/javascript" src="/js/jquery.expander.js"></script>
-	<script type="text/javascript" src="/js/custom.js"></script>
-	<script type="text/javascript" src="/js/ZeroClipboard.js"></script>
-	<script type="text/javascript" src="/js/clip.js"></script>
-	
-	<link href="/newver/css/newheader.css" media="screen" rel="stylesheet" type="text/css" > 
+	<meta name="description" content="" />
 	<link href="/newver/css/fonts/fonts.css" rel="stylesheet" type="text/css" media="screen" />
-	
-	
-	</head>
+	<link href="/newver/css/main.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/responsive.css" rel="stylesheet" type="text/css" media="screen" />
+	<link href="/newver/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+	<script type="text/javascript" src="/newver/js/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript" src="/newver/js/image-grid.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.move.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.swipe.js"></script>
+	<script src="/newver/js/jquery.mCustomScrollbar.min.js"></script>
+	<script type="text/javascript" src="/newver/js/global.js"></script>
+	<script type="text/javascript" src="/newver/js/profile.js"></script>
+</head>
 <body>
-	<%=render "site/qualaroo"%>
-	<%=render "layouts/header"%>
-	<div id="page" class="clearfix">
-		<!-- <div id="header">
-			<div class="page-content clearfix">
-				<%=render "site/logo"%>
-				<%=render "site/user_options"%>
-			</div> 
-		</div>-->
-		
-	<section id="inside" style="margin-top:90px;">	
-		<!-- <p class="notice"><%= notice %></p>
-    	<p class="alert"><%= alert %></p> -->
-    
-		<%= yield %>
-		
-		<%=render "layouts/footer"%>
+	<section id="page" class="profile-scroll profile">
+		<%= render "/layouts/header" %>
+		<%= yield %>	
+		<%= render "/layouts/footer" %>
 	</section>
-	</div>
-	
-	
-	
-	
-	
 </body>
 </html>

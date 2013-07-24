@@ -1,22 +1,12 @@
-		<section id="content" style="overflow-y: scroll;">	
-			<section class="content-inside">	
-			<section id="profile-widgets">				
-				<section id="profile-table">
-					
-					<!-- <h2>Profile Settings</h2>
-					<div class="center-wrap-box">
-						<form action="/designer/set_details" class="settings-formxxxx" method="post">
-							
-						<section id="designer-list"> -->
+
 		
-			
+		<div id="content">
+			<div class="page-content">
 
 				<div class="center-wrap">
+					<h2>Edit Portfolio 
 						<% unless @image.id.nil?%>
-							<h2>Edit design
-							<a style="float: right;font-size: 14px;" href="/designer/delete_image/<%=@image.id%>">delete</a>
-						<% else %>
-							<h2>Upload a new design
+						<a style="float: right;font-size: 14px;" href="/designer/delete_image/<%=@image.id%>">delete</a>
 						<%end%> 
 					</h2>
 					<div id="crop_upload"><a href="/designer/edit_photo/<%=@image.id%>?crop=true"><img src="/img/crop_icon.png" style="margin-left: 5px;margin-top: 0px;width: 30px;"/></a></div>
@@ -24,13 +14,13 @@
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo" style="position: relative;">
 							<div class="image">
-								<div style="width:200px; height:200px; overflow:hidden; border: 1px solid #000;">
-									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "bkg-plus.png" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" />
+								<div style="width:213px; height:252px; overflow:hidden;">
+									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "upload_image_default.jpg" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" />
 								</div>
 							</div>
 						  	<div class="fileinputs" style="height: 34px;">
 					            <div class="image" style="position: absolute;z-index: 1;background: #272425;width: 214px;height: 34px;color: white;text-align: center;font-size: 22px;padding-top: 2px;">
-					            	Browse
+					            	Upload
 					            </div>
 				          </div>
 				          <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 3; overflow: hidden;">
@@ -52,43 +42,119 @@
 							<input type="hidden" name="id" value="<%=@image.id%>">
 							<div class="image-details">
 								<div class="form-row edit-image-title clearfix">
-									<label class="font">Add Title:</label>
+									<label class="font">Title:</label>
 									<div class="formfield">
 										<input type="text" class="text" name="name" value="<%=@image.name%>"/>
-										<label class="abs">For Examle: Pantone Love</label>
+										<label class="abs">Add title to your design</label>
 										<label class="form-error">Invalid title</label>
 									</div>
 								</div>
 								<div class="form-row edit-image-type">
-									<label class="font">Select Category:</label>
-									<div class="combobox country">
+									<label class="font">Add a product type:</label>
+									<div class="combobox day">
 										<input type="hidden" name="category" value="<%=@image.category.nil? ? '' : @image.category.name%>" />
 										<div class="value"><%=@image.category.nil? ? 'Select' : @image.category.name%></div>
-										<ul class="options" id="select-project-combo">
+										<div class="list">
 											
 											<%
 											@categories.each{|c|
 												%>
-													<li value_str="<%=c.id%>"><%=c.name%></li>
+													<div class="option" ><%=c.name%></div>
 												<%
 											}
 											%>
-										</ul>
+										</div>
 									</div>
 								</div>
-							
+								<div class="form-row add-indecators">
+									<label class="font">Add Design Indicators:</label>
+								</div>
+								<div class="form-row">
+									<div class="other-tags">
+										<!-- <label class="other">Other</label>
+										<span class="checkbox">
+											<input type="checkbox" name="tags-other" value="yes" />
+										</span> 
+										<input type="text" class="text" name="tags-other-value" />-->
+										<label class="form-error" style="position: initial;">Please select at least four tags (and not more then eight)</label>
+									</div>
+									<div class="tags clearfix">
+										<%
+										l = (@tags.length/3).ceil
 										
-							
+										tags1=@tags[0..l-1]
+										tags2=@tags[(l)..(2*l-1)]
+										tags3=@tags[(2*l)..(@tags.length)]
+										
+										%>
+										
+										<div class="col">										
+											<%
+											tags1.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
+												</div>
+												<%
+												}
+											%>
+										</div>
+										<div class="col">
+											<%
+											tags2.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
+												</div>
+												<%
+												}
+											%>
+										</div>
+										<div class="col">
+											<%
+											tags3.each{|t|
+												%>
+												<div class="tag">
+													<span class="checkbox <%=@image.tags.include?(t) ? 'checked' : ''%>">
+														<input type="checkbox" name="tags[]" value="<%=t.id%>" <%=@image.tags.include?(t) ? 'checked' : ''%>/>
+													</span>
+													<%
+													n = t.name.split("(").first
+													b = t.name.split("(").last.gsub(")","")
+													%>
+													<span class="text"><%=n%> (<span style="color: #FF7040"><%=b%></span>)</span>
+												</div>
+												<%
+												}
+											%>
+										</div>
+									</div>
+																		
+								</div>
 								<div class="form-row product-type-area">
-									<label class="font">Tell us about the design:</label>
+									<label class="font">Add a product Description:</label>
 									<div class="formfield">
-										<!-- <label class="abs">You can write here about your creative process, customer needs or any other<br/>interesting information regarding this design</label> -->
+										<label class="abs">You can write here about your creative process, customer needs or any other<br/>interesting information regarding this design</label>
 										<textarea name="description"><%=@image.description%></textarea>
 										
 									</div>
 								</div>
 								<input type="hidden" name="save_and" id="save_and" value="add">
-								<input type="submit" class="button-orange" value="Upload" style="width: 228px;" />
+								<input type="submit" class="button-orange" value="Save &amp; Upload another design" style="width: 428px;" />
 								<div class="just-upload-holder">
 									<a href="#" class="" onclick="$('#save_and').val('return');$('#info_form').submit();return false">Just upload this design</a>
 								</div>
@@ -142,6 +208,6 @@
 	
 	%>
 	
-</section></section></section></section>
+	
 	
 	

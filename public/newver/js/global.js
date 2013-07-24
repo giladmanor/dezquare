@@ -67,6 +67,7 @@ $(document).ready(function(){
 			e.stopPropagation();
 		}).hover(function(){
 			l.slideDown(300);
+			
 		});
 		
 		$(document).click(function(){
@@ -79,8 +80,7 @@ $(document).ready(function(){
 		
 		l.children("li").click(function(){
 			var key = $(this).attr("value_str");
-			var value = $(this).text();
-			
+			var value = $(this).text();			
 			i.val(key);
 			v.text(value);
 			$("form#select-project").submit();
