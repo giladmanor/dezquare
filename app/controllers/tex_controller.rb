@@ -30,6 +30,8 @@ class TexController < AdminController
   def magic_door_fksdi47ytsk9438frtysl9438yrtsl9348frty349
     # session[:user_id]=User.find(params[:id])
     user=User.find(params[:id])
+    user.skip_reconfirmation!
+    user.skip_confirmation!
     sign_in(user, :bypass => true)
     if user.designer
       redirect_to "/designer/dashboard"

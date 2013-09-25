@@ -1,0 +1,44 @@
+<article class="module width_full">
+	<header><h3>Jobs (<%=@jobs.count.nil? ? '' : @jobs.count%>)</h3></header>
+	<form class="quick_search" action="/user/list?view=shoppers" method="post">
+		<input type="text" name="quick_search" value="Quick Search" onfocus="if(!this._haschanged){this.value=''};this._haschanged=true;">
+	</form>
+	
+	
+	<table class="tablesorter" cellspacing="0"> 
+		<thead> 
+			<tr> 
+				<th>Category</th> 
+				<th>Company Name</th> 
+				<th>Location</th> 
+				<th>Details</th>
+				<th>Actions</th>
+			</tr> 
+		</thead> 
+		<tbody> 
+			<%
+			@jobs.each{|j|
+				%>	
+				<tr>
+					<td><%= j.category%></td>
+					<td><%= j.company_name%></td>
+					<td><%= j.location%></td>
+					<td><a href="/admin/new_bulletin_job/<%=j.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
+					<td>
+						<a href="/admin/delete_job/<%=j.id%>" onclick="return confirm('Are you sure you want to delete <%=j.company_name%>?')"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+					</td>
+				</tr>
+				<%
+				}
+			%>  
+		</tbody> 
+	</table>
+	<footer>
+		<div class="submit_link">
+			<a href="/admin/new_bulletin_job" ><img src="/assets/admin/icn_new_article.png" /> New</a>
+		</div>
+	</footer>
+		
+	
+</article>
+

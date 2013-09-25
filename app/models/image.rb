@@ -18,7 +18,7 @@ class Image < ActiveRecord::Base
   serialize :color_histogram, Hash
   
   def populated?
-    !self.name.nil? && !self.category.nil? && self.tags.length>0 && !self.file_path.nil?
+    !self.name.nil? && !self.category.nil? && !self.file_path.nil?
   end
   
   def copy_to_thumbnail(dir)

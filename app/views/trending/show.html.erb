@@ -1,0 +1,69 @@
+	<section id="content">	
+		<section id="content-inside" style="margin-top:-40px;"> 
+				<section class="sidebar-alt-screens">
+					
+				<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+				<section class="register-screen-content" style="margin-top: 20px; margin-left: -455px;">	
+
+
+<table cellspacing="0" cellpadding="0" border="0" style="width:1000px; height:500px;">
+	<tr style="vertical-align: top;">
+		<td rowspan="2" style="width:20%; border: 1px solid #ccc; border-right: 0px; border-bottom: 0px; padding: 10px; background-color: #E6E6E6;">
+			<div class="trend-logo">
+				<% if @job.logo_path.present? %>
+					<img src="/logos/<%=@job.logo_path%>" style="max-width:200px; max-height:80px;">
+				<% end %>
+			</div>
+			<div class="trend-about">About <%=@job.company_name%></div>
+			<div class="trending-desc">
+					<%=	@job.about_company %>
+			</div>
+		</td>
+		<td style="border: 1px solid #ccc; border-bottom: 0px; padding: 10px; padding-right: 30px; width:80%; overflow: hidden;">
+			<div class="trend-cat" style="width:510px; <%= @job.category.length>20 ? "font-size:36px;" : ""%>">
+				<%=@job.category%>
+			</div>
+			<div class="trend-location">
+				<img src="/newver/img/location.png" style="position:absolute; margin-left:-45px;">
+				<%=@job.location[0..30]%>
+			</div>
+			<div class="trend-company">
+				<%=@job.company_name%>
+			</div>
+			<div class="trend-about" style="margin-top:17px;">
+				About the project
+			</div>
+			<div class="trending-desc">
+				<%=raw @job.about_project.gsub(/\n/, '<br>') %>
+				<!-- <BR/> -->
+				<p><%=raw @job.required_skills.gsub(/\n/, '<br>') %></p>
+				<!-- <BR/> -->
+				<p><%=raw @job.required_experience.gsub(/\n/, '<br>') %></p>
+			</div>
+			
+		</td>
+	</tr>
+	<tr style="height:17%;">
+		<!-- <td style="width:20%; border: 1px solid #ccc; border-top:0px; border-right:0px; padding: 10px; background-color: #E6E6E6;"></td> -->
+		<td style="border: 1px solid #ccc; border-top:0px; padding: 10px; overflow-y: scroll; text-align: left;">
+			<a href="/trending/interested/<%=@job.url_identifier%>" class="button-green small">Match me with this client</a>
+		</td>
+	</tr>
+</table>
+
+
+
+<div name="back" style="position:absolute; right:-165px; font-size:20px; font-family:'Roboto';">
+	<a href="/trending/">&lt; Back to Trending projects</a>
+</div>
+
+
+
+
+
+
+</section>
+</section>
+</section>
+</section>
+</section>

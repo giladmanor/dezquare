@@ -1,7 +1,8 @@
 		<section id="content" style="overflow-y: scroll;">	
+<!-- <section id="inside" style="margin-top:30px;">	 -->
 			<section class="content-inside">	
 			<section id="profile-widgets">				
-				<section id="profile-table">
+				<section id="profile-table" style="margin-left: 20%;  ">
 					
 					<!-- <h2>Profile Settings</h2>
 					<div class="center-wrap-box">
@@ -19,27 +20,29 @@
 							<h2>Upload a new design
 						<%end%> 
 					</h2>
-					<div id="crop_upload"><a href="/designer/edit_photo/<%=@image.id%>?crop=true"><img src="/img/crop_icon.png" style="margin-left: 5px;margin-top: 0px;width: 30px;"/></a></div>
+					<!-- <div id="crop_upload"><a href="/designer/edit_photo/<%=@image.id%>?crop=true"><img src="/img/crop_icon.png" style="margin-left: 5px;margin-top: 0px;width: 30px;"/></a></div> -->
 					<form id="info_form" action="/designer/set_photo"  enctype="multipart/form-data" method="post">
 					<div class="center-wrap-box edit-photo-form">
 						<div class="photo" style="position: relative;">
 							<div class="image">
 								<div style="width:200px; height:200px; overflow:hidden; border: 1px solid #000;">
-									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "bkg-plus.png" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" />
+									<img src="/repository/thumbnail/<%= @image.file_path.nil? ? "bkg-plus.png" : @image.file_path%>?t=<%=Time.now.to_f%>"  id="preview" class="jcrop-preview" height="200" width="200" />
 								</div>
 							</div>
 						  	<div class="fileinputs" style="height: 34px;">
-					            <div class="image" style="position: absolute;z-index: 1;background: #272425;width: 214px;height: 34px;color: white;text-align: center;font-size: 22px;padding-top: 2px;">
+					            <div class="image" style="position: absolute;z-index: 1;background: #272425;width: 202px;height: 34px;margin-top:10px;color: white;text-align: center;font-size: 22px;padding-top: 5px;">
 					            	Browse
 					            </div>
 				          </div>
-				          <div style="position: absolute; left: 0px; top: 0px; width: 100%; height: 100%; z-index: 3; overflow: hidden;">
+				          <div style="position: absolute; left: 0px; top: 0px; width: 220px; height: 100%; z-index: 3; overflow: hidden;">
 			          			<div style="position: absolute; right: -40px; top: 0px; position: absolute; width: 414px;">
-					            	<input type="file" name="upload" id="upload" onchange="$('#save_and').val('continue');this.form.submit();" style="opacity: 0; width: 380px; height: 350px; transform: scale(10);cursor:hand;" />
+					            	<input type="file" name="upload" id="upload" onchange="$('#save_and').val('continue');this.form.submit();" style="opacity: 0; margin-left: 150px; width: 220px; height: 350px; transform: scale(10);cursor:hand;" />
 		          				</div>	
+		          				
 				          </div>
+				          
 						
-	<% if @image.id.present? %>					
+	<% if @image.id.present? && 1==2 %>					
 		<p align="center"><table style="border:1px solid; border-color: #000000; border-collapse: collapse;" width="214" cellpadding="0" cellspacing="0">
 		<tr style="border:1px solid; border-color: #000000; border-collapse: collapse;">
 			<% @image.get_dominant_colors.each do |col| %>
@@ -51,47 +54,50 @@
 			</div>			
 							<input type="hidden" name="id" value="<%=@image.id%>">
 							<div class="image-details">
-								<div class="form-row edit-image-title clearfix">
-									<label class="font">Add Title:</label>
+								<div class="form-row edit-image-title clearfix" style="position: absolute; top:120px; left: 250px;">
+									<label class="font" style="font-size:18px; font-weight: bold;">* ADD TITLE</label>
 									<div class="formfield">
-										<input type="text" class="text" name="name" value="<%=@image.name%>"/>
+										<input type="text" class="text" name="name" value="<%=@image.name%>" style="width: 300px;"/>
 										<label class="abs">For Examle: Pantone Love</label>
 										<label class="form-error">Invalid title</label>
 									</div>
 								</div>
-								<div class="form-row edit-image-type">
-									<label class="font">Select Category:</label>
-									<div class="combobox country">
+								<div class="form-row edit-image-type" style="position: absolute; width:300px; top:220px; left: 250px;">
+									<label class="font" style="font-size: 18px;">* SELECT CATEGORY</label>
+									<div class="selector formfield clearfix">
+									<div class="combobox country" id="select-project-combo">
 										<input type="hidden" name="category" value="<%=@image.category.nil? ? '' : @image.category.name%>" />
 										<div class="value"><%=@image.category.nil? ? 'Select' : @image.category.name%></div>
-										<ul class="options" id="select-project-combo">
+										<ul class="options" >
 											
 											<%
 											@categories.each{|c|
 												%>
-													<li value_str="<%=c.id%>"><%=c.name%></li>
+													<li value_str="<%=c.name%>"><%=c.name%></li>
 												<%
 											}
 											%>
 										</ul>
 									</div>
 								</div>
+								</div>
 							
 										
 							
-								<div class="form-row product-type-area">
-									<label class="font">Tell us about the design:</label>
+								<div class="form-row product-type-area" style="margin-top:50px;">
+									<label class="font" style="font-size: 18px;">* TELL US ABOUT THE DESIGN</label>
 									<div class="formfield">
 										<!-- <label class="abs">You can write here about your creative process, customer needs or any other<br/>interesting information regarding this design</label> -->
-										<textarea name="description"><%=@image.description%></textarea>
+										<textarea name="description" style="width:550px;"><%=@image.description%></textarea>
 										
 									</div>
 								</div>
 								<input type="hidden" name="save_and" id="save_and" value="add">
-								<input type="submit" class="button-orange" value="Upload" style="width: 228px;" />
-								<div class="just-upload-holder">
+								<input type="submit" class="button-orange" value="Upload" style="margin-left:140px; width: 230px;" />
+								<!-- <div class="just-upload-holder">
 									<a href="#" class="" onclick="$('#save_and').val('return');$('#info_form').submit();return false">Just upload this design</a>
-								</div>
+								</div> -->
+								<div><a href="/designer/dashboard/" style="position: relative; left: 390px; top: -30px; font-size: 18px;">Cancel</a></div>
 							</div>
 						
 						</div>
@@ -105,11 +111,13 @@
 	
 	<%
 	
-	if @crop
+	#if @crop
 		%>
 	
-			<div id="window-overlay" style="display: block;"></div>
-			 <div id="crop-popup" class="popup" style="display: block;">
+			<!-- <div id="window-overlay" style="display: block;"></div>
+			 <div id="crop-popup" class="popup" style="display: block;"> -->
+			<div id="window-overlay" style="display: none;"></div>
+			 <div id="crop-popup" class="popup" style="display: none;">
 			  <span class="close"></span>
 			  <div class="popup-content">
 			   <div class="title">Move and Scale the frame to crop</div>
@@ -137,11 +145,12 @@
 	
 			
 		<%
-	end
+	#end
 	
 	
 	%>
 	
 </section></section></section></section>
+<!-- </section> -->
 	
 	

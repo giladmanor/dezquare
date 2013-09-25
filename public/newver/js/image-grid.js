@@ -21,7 +21,7 @@
 			{
 				loads[param] = true;
 				$.ajax({
-					"url": "image-grid-ajax.html?t=" + (new Date()).getTime(),
+					// "url": "image-grid-ajax.html?t=" + (new Date()).getTime(),
 					"success": function(html) {
 						var i = $(html).children(childrenSelector);
 						ArrangeItemsInParent(imageGridHolder, i);
@@ -135,8 +135,13 @@
 			{
 				var initialWidth = imageGridHolder.width(); 
 				imageGridHolder.width(lastItemPosition.left + lastItem.width());
-				overlay.width(overlay.width() + (imageGridHolder.width() - initialWidth));
+				overlay.width(overlay.width() + 120) //(imageGridHolder.width() - initialWidth));
 			}
+			
+			// if (overlay.width() > imageGridHolder.width() + 0* lastItem.width())
+			// {
+				// overlay.width(imageGridHolder.width() + 0* lastItem.width())
+			// }
 		}
         
         function SetElementWidthAndHeight(element)

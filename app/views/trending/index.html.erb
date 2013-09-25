@@ -1,0 +1,80 @@
+<script type="text/javascript" src="/newver/js/image-grid.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.move.js"></script>
+	<script type="text/javascript" src="/newver/js/jquery.event.swipe.js"></script>
+	<script src="/newver/js/jquery.mCustomScrollbar.min.js"></script>
+	<link href="/newver/css/jquery.mCustomScrollbar.css" rel="stylesheet" />
+	<script type="text/javascript" src="/newver/js/profile.js"></script>
+
+
+
+		<section id="content">
+			
+			<section id="profile-widgets">			
+				<section id="profile-table">
+	
+	<div class="top-row clearfix" style="height:10%;">
+						
+			<div class="huge-title" style="font-size:80px;">TRENDING PROJECTS</div>
+</div>	
+		
+	
+						
+				
+</section>
+</section>
+</section>
+
+	<section id="profile-content" style="z-index: 1; background:none; display: inline-block; left:0px;">
+						<!-- <section id="profile-overlay-white"> -->
+				<!-- <section id="design-gallery" style="border-left:0px;  background:#01E989;"> -->
+					<!-- <section id="design-gallery-content-holder" style="background: #ff7040;"> -->
+						<section id="design-gallery-content" class="clearfix" style="top:240px; height:50%; left:0px;">
+				<% 1.times do %>
+							<% @jobs.each do |j| %>
+							<article class="image-item item-w1-h1" style="margin-left:50px; border: 1px solid #cfcfcf; cursor:pointer; " onclick="location.href='/trending/show/<%=escape_javascript(j.url_identifier) %>';">
+								<a href="/trending/show/<%= j.url_identifier %>">
+									<img src="/logos/<%= j.logo_path %>" />
+									<span class="photo-info-trending">
+										<span class="name" style="<%= j.category.present? && j.category.length > 25 ? "font-size:9px;" : "" %>"><%= j.category.present? ? j.category[0..40] : "Untitled" %></span>
+										<span class="title"><%= j.company_name.present? ? j.company_name[0..12] : raw("&nbsp;") %></span>
+										<span class="readmore">Learn more</span>
+										<!-- <span class="heart"></span> -->
+									</span>
+								</a>
+							</article>
+							
+							<% end %>
+				<%end%>			
+							
+						</section>
+					<!-- </section> -->
+				<!-- </section> -->
+					
+						<!-- </section> -->
+		</section>
+
+
+
+	<!-- <section id="content">	
+		<section id="content-inside" style="margin-top:20px;"> 
+			<h2 class="centered">TRENDING PROJECTS</h2>
+				<section class="sidebar-alt-screens">
+					
+				<section class="sidebar-alt-screen sidebar-register-screen" id="sidebar-register-classic">
+				<section class="register-screen-content" style="margin-top: 20px;">	
+
+
+
+<ul>
+	<% @jobs.each do |j| %>
+		<li><a href="/trending/show/<%=j.url_identifier%>"><%= "#{j.id} | #{j.category} | #{j.company_name}" %></a></li>
+	<%end%>
+	
+</ul>
+
+</section>
+</section>
+</section>
+</section>
+
+</section> -->

@@ -63,7 +63,8 @@ class AdminController < ApplicationController
         {:name=>'Dashboard',:class=>"icn_folder",:action=>'/admin/dashboard'},
         {:name=>'Shopper Management',:class=>"icn_view_users",:action=>'/user/list?view=shoppers'},
         {:name=>'Designer Management',:class=>"icn_view_users",:action=>'/user/list?view=designers'},
-        {:name=>'Unregistered Designers',:class=>"icn_view_users",:action=>'/user/list?view=pendings'}  ]},
+        {:name=>'Unregistered Designers',:class=>"icn_view_users",:action=>'/user/list?view=pendings'},
+        {:name=>'Trending Projects', :class=>"icn_view_users",:action=>"/admin/bulletin_list/"}  ]},
       {:name=>'Configurations',:children=>[
         {:name=>'Categories',:class=>"icn_categories",:action=>'/category/list'},
         {:name=>'Tags',:class=>"icn_tags",:action=>'/tag/list'},
@@ -132,6 +133,53 @@ class AdminController < ApplicationController
     
     
     redirect_to "/admin/dashboard"  
+  end
+  
+  def bulletin_list
+    @jobs = BulletinJob.all
+  end
+  
+  def new_bulletin_job
+    
+     @job = params[:id].nil? ? BulletinJob.new : BulletinJob.find(params[:id])
+     #@job = BulletinJob.find(1)
+     logger.debug "***************** #{@job.inspect} *********************"
+     #@designers = User.find(BulletinDesigner.all.select{ |bd| bd.bulletin_job_id==@job.id  }.collect{|db| db.user_id})
+     #@desginers = User.joins(:bulletin_desinger)
+     @designers = Array.new
+     BulletinDesigner.all.map{ |bd|
+       if bd.bulletin_job_id == @job.id
+          @designers << User.find(bd.user_id)
+       end
+     }
+     logger.debug "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #{@designers.inspect}"
+  end
+  
+  def set_bulletin
+     job = params[:id].nil? ? BulletinJob.new : BulletinJob.find(params[:id])
+     
+     if params[:upload].present?
+       job.set_logo(params[:upload],"#{Rails.root}/public/logos/")
+     end
+     
+     attr = params.delete_if{|k,v| !job.respond_to?(k.to_sym)}
+     job.assign_attributes(attr.except(:id, :url_identifier, :upload))    
+     
+     if job.url_identifier.blank?
+       job.set_identifier      
+     end
+     logger.debug "###################### BULLETIN: #{job.inspect} #########################"
+     if job.save
+       logger.debug "@@@@@@@@@@@@@ SAVED @@@@@@@@@@@@@@@"
+     else
+       logger.debug "FFFFFFFFFFFFFFFFFFFFAAAAAAAAAAAAIIIIIIIIIILLLLLLLEEEEEEEDDDDDDD"
+     end
+     redirect_to :controller => :admin, :action=> :bulletin_list
+  end
+  
+  def delete_job
+    BulletinJob.find(params[:id]).destroy
+    redirect_to :controller => :admin, :action=> :bulletin_list
   end
   
 end

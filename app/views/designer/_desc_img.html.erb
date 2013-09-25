@@ -1,0 +1,18 @@
+<div style="margin-top:153px; z-index:99; font-size: 24px; font-weight: bold;">The title of the design</div>
+<div style="font-size:16px; color:#FC7040; margin-top:10px;"><%= @image.name.present? ? @image.name : "Untitled" %> </div>
+<div style="font-size:13px; margin-top:20px; height: 30%; width: 90%; overflow-y: scroll;"><%= @image.description.present? ? @image.description : "" %>
+	<!-- dklfmlfkmv fglfmkgr lgmrlgmrglk rmglrmgrlg kmrlgmrglr kmglrmgrlgk mrglkmrgrmgl rmrlgmrglrgm rlmgrmgrgrmgm rgmrmgrmg mrmgrmgmreer
+	rglkrmgrmgmrgmr gmrmgmgmrmgm rmgrmgmrgmrm gmgmrmgmrmgr mgmrmgrmgmrg mrgmrgmrmmrmgr gmgrgrmmrmgr mgmrgmrgmrgmgr mrmgmrgmgrrrgmm
+	krgmlrgrmgmr mgrmgmrmrg mrmgmrgmr ffgmgmmgrmrmg mgrmgmrmgr mgrmgrmrgmrgmr mrgmmrgmr gmrgmrgmmrmrmrg mrgmgmrgmgrmmgr mgrmgrmgrmmrgm
+	fdklmlfdmf RONEN -->
+</div> 
+<div style="height:15%; position: absolute; bottom:25%; font-size:16px; color:#FC7040;">
+	Like the design?<br/>Share it!<br/>
+	<a target="_blank" href="http://www.facebook.com/sharer/sharer.php?u=www.dscovered.com/designer/profile/<%=@image.user.url_identifier%>"><div style="background: url('/newver/img/icons.png') left -200px no-repeat; width:40px; height:40px;"></div></a>
+	<a target="_blank" href="http://www.twitter.com/share?url=http://www.dscovered.com/designer/profile/<%=@image.user.url_identifier%>"><div style="position: relative; left: 42px; top:-40px; background: url('/newver/img/icons.png') -48px -200px no-repeat; width:40px; height:40px;"></div></a>
+	<a target="_blank" href="https://plus.google.com/share?url=http://www.dscovered.com/designer/profile/<%=@image.user.url_identifier%>"><div style="position: relative; left: 84px; top:-80px; background: url('/newver/img/icons.png') -96px -200px no-repeat; width:40px; height:40px;"></div></a>
+	<a target="_blank" href="http://www.linkedin.com/cws/share?url=http%3A%2F%2Fwww.dscovered.com%2Fdesigner%2Fprofile%2F<%=@image.user.url_identifier%>"><div style="position: relative; left: 126px; top:-120px; background: url('/newver/img/icons.png') -144px -200px no-repeat; width:40px; height:40px;"></div></a>
+	<div style="cursor: pointer; background:#FC7040; color:#fff; text-align: center; line-height:30px; height:30px; width:166px; position:relative; top:-90px;" onclick="$('#gallery-overlay').css('display', 'none'); $('#profile-photo-bar').css('width','16%'); $('#profile-overlay-white').css('display', 'block'); $('#profile-photo-bar-content').css('width','100%');">
+		Back to portfolio
+	</div>
+</div>

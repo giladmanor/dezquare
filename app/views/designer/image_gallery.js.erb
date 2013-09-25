@@ -1,0 +1,16 @@
+//$('span.name').html("RONENGOL");
+
+$("#profile-overlay-white").css("display", "none");
+$("#profile-photo-bar").css("width","100%");
+
+//$("#profile-photo-bar").css("position","absolute");
+
+$("#profile-photo-bar-content").css("z-index","9");
+$("#profile-photo-bar-content").css("left","0px");
+$("#profile-photo-bar-content").css("width","16%");
+$("#designer-taste-dash").css("width","80%");
+
+$("#gallery-overlay").css("display", "block");
+$("#gallery-overlay .glimg").css("background", "url(/repository/<%= @image.file_path %>) center center no-repeat");
+$("#gallery-overlay .glimg").attr('id', '<%= @image.id %>');
+$("#gallery-overlay .decimg").html("<%= escape_javascript(render("desc_img"))  %>");

@@ -21,6 +21,15 @@ h2 {
 	font-size: 42px;
 	line-height: 54px;
 }
+p.alert{
+	font-family: 'Roboto';
+	text-align:center; 
+}
+p.notice {
+	font-family: 'Roboto';
+	text-align:center; 
+}
+
 #page {
 	height: 100%;
 	position: relative;
@@ -92,7 +101,15 @@ h2 {
 }
 #header .links a.btn.btn-1 {
 	color: #fff; 
-	margin-left: 12px;
+	margin-left: 5px;
+}
+#header .links a.btn.btn-gr {
+	/*color: #01E989; */
+	/*color: #FF0240;*/
+	margin-left: 5px;
+	color: #fff;
+	font-weight:300;
+	background: #FF0240;
 }
 #header .links .separator {
 	color: #fff;
@@ -698,6 +715,162 @@ div.social-connect a.twitter span.icon { background: #fff url(../img/twitter_soo
 #matches-found.with-form .button { width: 352px; }
 /* End Matched Found */
 
+/* Trending projects */
+
+.button-green {
+	background: #01e989;
+	border-radius: 4px;
+	color: #000;	
+	font-family: 'Roboto';
+	font-weight: 300;
+	font-size: 28px;
+	line-height: 60px;
+	display:inline-block;
+	margin-bottom: 15px;
+	text-align: center;
+	width: 450px;
+}
+
+.button-green:hover {
+	background: #000;
+	color: #FFF;
+	
+}
+
+.button-green.small {
+	font-size: 20px;
+	width: 350px;
+	line-height: 50px;
+}
+
+.title.thanks {
+	
+	
+	margin-bottom: -10px;
+	color: #01E989;
+	font-family: 'Roboto' !important; 
+}
+
+.descript {
+	font-size: 30px;
+	font-family: 'Roboto';
+	margin: 40px;
+	
+}
+
+.trend-about {
+	margin-top: 15px;
+	font-family: 'code_pro_lcregular';
+	font-size: 20px;
+	
+}
+
+.trending-desc {
+	margin-top: 10px;
+	font-family: 'code_pro_lcregular';
+	font-size: 14px;
+	height: 63%;
+	overflow-y: scroll;
+	line-height: 1.5;
+	/*background: #EDE12C;*/
+}
+
+.trend-logo {
+	height: 80px;
+	margin-top: 30px;
+}
+
+.trend-cat {
+	font-size: 45px;
+	color: #fb5600;
+	font-family: 'code_pro_lcregular';
+	margin-top: 20px;
+}
+
+.trend-location {
+	/*position: absolute;*/
+	display:block;
+	float: right;
+	/*right: -120px;*/
+	margin-top: -45px;
+	
+	max-width: 200px;
+	font-size: 20px;
+	font-family: 'Roboto';
+	font-weight: 300;
+	height: 20px;
+	
+}
+
+.trend-company {
+	font-family: 'Roboto';
+	font-size: 24px;
+	font-weight: 300;
+}
+
+.trend-body {
+	font-family: 'code_pro_lcregular';
+	font-size: 14px;
+}
+
+article .photo-info-trending{
+	background: #fff;
+	color: #000;
+	position: absolute;
+	font-size: 11px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	border-top: 1px solid #ccc;
+	height: 55px;
+}
+
+article .photo-info-trending .name {
+	margin-left: 5px;
+	margin-top:5px;
+	font-size: 13px;
+	font-family: "Novacento";
+	font-weight: 300;
+	color:#FF7040;
+	
+}
+
+.photo-info-trending .title {
+	
+	font-weight: bold;
+	font-size: 13px;
+	color: #9E9E9E;
+	font-family: 'Roboto';
+	position:absolute;
+	left: 0px;
+	bottom: 5px;
+}
+
+.photo-info-trending .readmore {
+	text-align: center; 
+	font-family: 'Roboto';
+	font-size: 11px;
+	/*margin-right:5px;
+	margin-bottom: 5px;*/
+	line-height: 2;
+	background:#000000;
+	border-radius: 3px;
+	color: #ccc;
+	width: 70px;
+	/*display:inline-block;
+	float: right;*/
+	position:absolute;
+	right: 5px;
+	bottom: 5px;
+}
+
+
+
+
+
+/* End Trending Projects */
+
+
 /* Game Persona Results */
 section#display {
 	background: #fff;
@@ -1231,6 +1404,27 @@ div.social-buttons a.mail:hover { background-position: -440px -200px; }
 	height: 130px;
 	width: 130px;
 }
+
+#gallery-overlay { /* Image gallery in designer profile */
+	z-index:8; 
+	position:absolute; 
+	background: #fff; 
+	top:-40px; 
+	height:130%; 
+	width:102%; 
+	color:#000; 
+	display: none;
+}
+
+.decimg{
+	border: 1px solid #878787; 
+	border-right: 0px;
+}
+
+.glimg{
+	border: 1px solid #878787; 
+}
+
 
 .popular-designs { margin-top:70px; }
 .popular-designs img {
@@ -2577,6 +2771,25 @@ line-height: 1.5;
 	width:107%; 
 	height:107%;
 }
+
+#photo-edit{
+	 
+	width: 171px; 
+	height:171px; 
+	position:relative; 
+	top:-171px; 
+	cursor: pointer; 
+	z-index: 9;
+	
+}
+
+#photo-edit:hover{
+	background: url(/newver/img/edit.png) top right no-repeat;
+	background-position-x: 143px;
+	background-position-y: 10px;
+}
+
+
 
 #profile-photo-bar #profile-photo {
 	border-radius: 1px;

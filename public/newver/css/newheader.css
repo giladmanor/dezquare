@@ -102,3 +102,11 @@ h1#logo {
 	margin: 0px 7px 0px 0px;
 	float: left; 
 }
+#header .links a.btn.btn-gr {
+	/*color: #01E989; */
+	/*color: #FF0240;*/
+	margin-left: 5px;
+	color: #fff;
+	font-weight:300;
+	background: #FF0240;
+}

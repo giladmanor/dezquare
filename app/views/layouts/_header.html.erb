@@ -35,7 +35,8 @@ end
 			
 			<div class="links">
 				<% if user_signed_in? %>
-					<% if current_user.designer %>						
+					<% if current_user.designer %>					
+						<a href="/trending/" class="btn btn-gr">Trending Projects</a>	
 						<a href="/designer/settings/" class="btn btn-1">Profile Settings</a>
 						<a href="/site/settings/" class="btn btn-1">Account Settings</a>
 					<% elsif current_user.shopper %>	

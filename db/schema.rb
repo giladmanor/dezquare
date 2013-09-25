@@ -11,7 +11,32 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130603192947) do
+ActiveRecord::Schema.define(:version => 20130729095203) do
+
+  create_table "bulletin_designers", :force => true do |t|
+    t.integer  "bulletin_job_id"
+    t.integer  "user_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  add_index "bulletin_designers", ["bulletin_job_id"], :name => "index_bulletin_designers_on_bulletin_job_id"
+  add_index "bulletin_designers", ["user_id"], :name => "index_bulletin_designers_on_user_id"
+
+  create_table "bulletin_jobs", :force => true do |t|
+    t.string   "category"
+    t.string   "company_name"
+    t.string   "location"
+    t.string   "date"
+    t.text     "about_company"
+    t.text     "about_project"
+    t.text     "required_skills"
+    t.text     "required_experience"
+    t.text     "logo_path"
+    t.string   "url_identifier"
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+  end
 
   create_table "categories", :force => true do |t|
     t.integer  "parent_id"

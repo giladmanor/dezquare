@@ -2,7 +2,7 @@
 		<section id="content">
 			
 			<section id="profile-widgets">
-<% @proj = Project.find(11)
+<% # @proj = Project.find(350)
 if @editable && @proj.present?
 		
 %>				
@@ -13,15 +13,21 @@ if @editable && @proj.present?
 
 						
 						<div class="select-area form">
+						<form name="select-project" id="select-project" action="/designer/dashboard">
 							<div class="label color">select project:</div>
 							<div class="selector formfield clearfix">
 								
 								<div class="combobox country" id="select-project-combo">
-									<div class="value">Web design for Wikibrains</div>
-									<input type="hidden" name="project" value="1" />
+									<div class="value"><%=@proj.title.present? ? @proj.title : "" %></div>
+									<input type="hidden" name="proj_id" value="<%=@proj.id%>" />
 									<ul class="options">
-										<li value_str="1">Web design for Wikibrains</li>
-										<li value_str="2">Mobile design</li>
+										<% @author_projects.sort.reverse.map{ |pr| %>
+											<% if pr.status.present? %>
+												<li value_str="<%= pr.id %>"><%= pr.title.present? ? pr.title : "Unknown" %></li>
+											<%end%>
+										<% } %>
+										
+										<!-- <li value_str="2">Mobile design</li>
 										<li value_str="3">Logo</li>
 										<li value_str="4">Business card</li>
 										<li value_str="5">Flyer</li>
@@ -30,12 +36,12 @@ if @editable && @proj.present?
 										<li value_str="8">Illustration</li>
 										<li value_str="9">Song</li>
 										<li value_str="10">Movie</li>
-										<li value_str="11">Word</li>
+										<li value_str="11">Word</li> -->
 									</ul>
 								</div>
 								
 							</div>
-							
+						</form>	
 						</div>
 					</div>
 					
@@ -66,16 +72,57 @@ if @editable && @proj.present?
 										<% end %>
 									</div>
 								</div>
+								
+			<%
+								
+					image_rates=@proj.game.game_image_rates.select{|i| i.value==1}
+					
+					# designers = image_rates.map{|r| r.image.user}
+					# rated =designers.map{|d| {:d=>d, :r=>designers.count(d)}}.uniq.sort{|a,b| b[:r]<=>a[:r]}
+					# designers = rated.map{|r| r[:d]}
+					name_array = Array.new
+					 hash = Hash.new(0)
+					 selected_tags = Array.new(0)
+					 total = image_rates.count
+					 #selected_tags = @proj.game.images.map{|si| si.tags}
+					 image_rates.each do |imr|
+					 	img=Image.where("id=?",imr.image_id)
+					 	if img.present?
+					 		img=Image.find(imr.image_id)
+					 		selected_tags<< img.tags.map{|x| x}
+					 	end
+					 	
+					 end
+					 selected_tags.each_with_index do |i, k|
+					 	selected_tags[k].each do |st|
+							hash[st.name] =hash[st.name].to_i + 1 
+							
+						end
+     					
+					 end
+					 hash = hash.sort_by {|a, b| b}.reverse.take(5)
+					
+					
+					
+								
+			%>
 				
-								<div class="title">Your taste can be:</div>
-								<div class="loaders clearfix">
+					
+					<div class="title">Your taste can be:</div>
+					<div class="loaders clearfix">
+					<% hash.each do |x,y| %>
+								
+								<%pcn=(100*y)/total%>
 									<div class="row clearfix">
-										<div class="label color">Urban</div>
+										<div class="label color"><%=x.split('(')[0]%></div>
 										<div class="loader">
-											<div class="value" style="width: 50%;"></div>
+											<div class="value" style="width: <%=pcn<=100 ? pcn : 100%>%;"></div>
 										</div>
 									</div>
-									<div class="row clearfix">
+									
+									
+					<%end%>
+									<!-- <div class="row clearfix">
 										<div class="label color">Colorful</div>
 										<div class="loader">
 											<div class="value" style="width: 60%;"></div>
@@ -98,7 +145,7 @@ if @editable && @proj.present?
 										<div class="loader">
 											<div class="value" style="width: 80%;"></div>
 										</div>
-									</div>
+									</div> -->
 								</div>
 													
 							</div>
@@ -111,20 +158,26 @@ if @editable && @proj.present?
 								<div class="designs">
 									<div class="title">TASTE SAMPLES:</div>
 									<div class="image-designer">
-										<a href="#">
+									<% if images[0].present? && images[0].image.present? %>
+										<a href=<%= images[0].image.user.present? ? "/designer/profile/#{images[0].image.user.url_identifier}/#{images[0].image.id}" : "" %>>
 											<img src="/repository/thumbnail/<%=images[0].image.file_path%>" alt="Name" />
 										</a>
+									<%end%>
 									</div>
 									<div class="image-designer right">
-										<a href="#">
+									<% if images[1].present? && images[1].image.present? %>
+										<a href=<%= images[1].image.user.present? ? "/designer/profile/#{images[1].image.user.url_identifier}/#{images[1].image.id}" : "" %>>
 											<img src="/repository/thumbnail/<%=images[1].image.file_path%>" alt="Name" />
 										</a>
+									<%end%>
 									</div>
 									
 									<div class="image-big">
-										<a href="#">
+									<% if images[2].present? && images[2].image.present? %>
+										<a href=<%= images[2].image.user.present? ? "/designer/profile/#{images[2].image.user.url_identifier}/#{images[2].image.id}" : "" %>>
 											<div style="width:275px; height:225px; background: url('/repository/thumbnail/<%=images[2].image.file_path%>') no-repeat top left; background-size: cover; border-radius:5px; border: 1px solid #cfcfcf;"></div>
 										</a>
+									<%end%>
 									</div>
 								</div>
 								
@@ -145,14 +198,19 @@ if @editable && @proj.present?
 							</div>
 							<div id="edit_project">
 								<% if @proj.status=="started" %>	
-									<a href="/site/edit_project/<%= @proj.id %>"><div class="button black">Edit Project</div></a>
-									<div class="cancel-design"><a href="/site/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to cancel this project?')">Cancel project</a></div>
+									<a href="/designer/reject_project/<%=@proj.id%>" onclick="return confirm('Are you sure you want to reject this project?')"><div class="button black">Reject Project</div></a>
+									<!-- <div class="cancel-design"><a href="/site/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to cancel this project?')">Cancel project</a></div> -->
 								<% elsif @proj.status=="grabbed" %>
 									<% if @proj.designer==@author %>
 										<!-- You are the chosen designer -->
+										<a href="/designer/complete_project/<%= @proj.id %>" onclick="return confirm('Confirm that the project was delivered?')"><div class="button black">Mark Delivered</div></a>								
+										<div class="cancel-design"><a href="/designercd .../dezquare/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to cancel this project?')">Cancel project</a></div>
+
+										<!-- <a href="/site/cancel_design/<%= @proj.id %>" onclick="return confirm('Are you sure you want to reject this project?')"><div class="button black">Cancel Project</div></a> -->
+										
 									<% else %>
 									 <!-- Someone else was chosen -->
-									
+									 <div style="font-family: 'Roboto'; color: red;"><b>Oops! Someone else was chosen for this project.<br/>Better luck next time!</b></div>
 									<% end %>	
 								
 								<% end %>
@@ -174,7 +232,7 @@ if @editable && @proj.present?
 		cover_file = @author.cover.present? ? @author.cover : "designer_cover_default.jpg"
 	%>
 		<div id="cover" style="background: url(/user_covers/<%=cover_file%>) left no-repeat; background-size: cover;">&nbsp;</div>
-	
+		
 	<% end %>
 				
 				
@@ -185,10 +243,21 @@ if @editable && @proj.present?
 		<span id="restore-arrow"></span>
 		
 		<section id="profile-content">
+			
 			<section id="profile-photo-bar">
 				<div id="profile-photo-bar-content">
-					<div id="profile-photo">
-						<img src="/user_avatars/<%= @author.avatar.blank? ? "designer_profile_default.png" : @author.avatar %>" alt="Designer" />
+					<div id="profile-photo" style="max-width:171px; max-height:171px;">
+						<img src="/user_avatars/<%= @author.avatar.blank? ? "designer_profile_default.png" : @author.avatar %>?t=<%=Time.now.to_f%>" id="designer-avatar" alt="Designer" />
+						<% if @user==@author %>
+						<div id="photo-edit">
+							<form data-remote="true" id="avtar_uploader" action="upload_avatar" enctype="multipart/form-data" method="post">
+								<input type="file" data-remote="true" name="upload" id="photo-edit-button" style="cursor:pointer; opacity:0; width:100%; height:100%;" onchange="this.form.submit();" />
+									<!-- <input type="text" name="testform" id="photo-edit-button" onchange="this.form.submit();"> -->
+							</form> 
+							<!-- <input type="file" name="upload" id="photo-edit-button" style="cursor:pointer; opacity:0; width:100%; height:100%;" onchange="this.form.submit();" /> -->
+
+						</div>
+						<% end %>
 					</div>
 					<div class="name" <%= @author.full_name.length > 17 ? raw("style='font-size:18px;'") : "" %>><%=  @author.full_name[0..22]  %></div>
 					<!-- <address><%= @author.location.present? ? @author.location : "" %></address> -->
@@ -200,14 +269,14 @@ if @editable && @proj.present?
 								<%=@author.location.present? ? @author.location : ""%>
 							</li> -->
 							<% if @author.languages.any? %>
-								<li>
+								<li class="gap">
 									<img alt="Globe" src="/newver/img/icon-globe.png">
 									<%= raw @author.languages.all.map{|ln| ln.name}.join(content_tag(:span," | ", :class=>"color"))%>
 								
 								</li>
 							<% end %>
 							<%if @author.education.present? %>
-								<li>
+								<li class="gap">
 									<img alt="University" src="/newver/img/icon-university.png">
 									<%= @author.education %>
 								</li>
@@ -218,9 +287,15 @@ if @editable && @proj.present?
 									<%= @author.skills %>
 								</li>
 							<% end %>
+
 						</ul>
 					</div>
 				</div>
+				
+				<div id="gallery-overlay">  <!-- IMAGE GALLERY -->
+					<div class="decimg" style="height:100%; width:16%; left:16%; position:absolute; padding-left: 10px;"></div>
+					<div class="glimg" style="height:100%; width:68%; position:absolute; left:32%; <%= @editable ? 'cursor: pointer;' : ''%>" onclick="<%= @editable ? "location.href='/designer/edit_photo/'+this.id" : "" %>"></div>
+				</div> 
 			</section>
 			<section id="profile-overlay-white">
 				<section id="design-gallery">
@@ -240,26 +315,45 @@ if @editable && @proj.present?
 						<% end %>
 							<% @author.images.map{ |img| %>
 							<article class="image-item item-w1-h1">
-								<a href="#">
+<!-- <%= 
+	# link_to content_tag(:div,d.name, :class=>"name"), {:controller=>"game", :action=>"ajax_profile", :dez=>d.id}, :remote => true
+	 %> -->
+								<a href="/designer/image_gallery/<%= img.id %>" data-remote="true" id="<%=img.id%>">
 									<img src="/repository/thumbnail/<%= img.file_path %>" />
 									<span class="photo-info">
-										<span class="name"><Designer Full Name><%= img.name.present? ? img.name : "Untitled" %></span>
-										<span class="title"><Image or Content full title><%= img.image_category.present? ? img.image_category.category.name : raw("&nbsp;") %></span>
+										<span class="name"><%= img.name.present? ? img.name : "Untitled" %></span>
+										<span class="title"><%= img.image_category.present? ? img.image_category.category.name : raw("&nbsp;") %></span>
 										<!-- <span class="heart"></span> -->
 									</span>
 								</a>
 							</article>
 							
 							<% } %>
-							
-							
+									
+
 						</section>
 					</section>
 				</section>
-					
+
 						</section>
 					</section>
+					
+		<section id="full-brief">
+			<span class="close"></span>
+			<section class="content clearfix">
+				<div id="boxer"></div>
+			</section>
+		</section>
+					
 <!--				</section>
 </section> -->
-			
+
+
+<% if @image.present? %>
+	<script type="text/javascript">
+		document.getElementById("<%=@image.id%>").click();
+		$("#profile-photo-bar-content").css("left","-1000px");
+	</script>
+	<div id="gallery-mode"></div>
+<% end %>
 			

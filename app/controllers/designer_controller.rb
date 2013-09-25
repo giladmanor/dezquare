@@ -1,6 +1,6 @@
 class DesignerController < SiteController
   
-  before_filter :authenticate_user!, :except=>[:profile, :enlarged_view]
+  before_filter :authenticate_user!, :except=>[:profile, :enlarged_view, :image_gallery]
   #before_filter :load_user, :except=>[:login, :register, :reset_password]
   skip_before_filter :shopper_zone, :only => [:dashboard, :settings]
   
@@ -11,10 +11,21 @@ class DesignerController < SiteController
       logger.debug @user.inspect
       @categories = Category.all
       @author=@user
+     ########## @author = User.find(3) ###################################
       @editable=true
-      @proj = params[:proj_id].blank? ? @author.projects_in.reject{|pr| pr.status.nil?}.last : @author.projects_in.find(params[:proj_id])
-
-      render "dashboard"
+      author_matches = @author.matches.reject{|g| g.project.nil? || g.user.nil? }
+      @author_projects = author_matches.map{ |m| m=m.project }
+      
+      logger.debug "###### MATCHES #{@author_matches.inspect}"
+      logger.debug "###### PROJECTS #{@author_projects.inspect}"
+          
+      @proj = params[:proj_id].blank? ? @author_projects.last : @author_projects.select{|hash| hash['id'] == params[:proj_id].to_i}[0]
+       
+      #logger.debug "###### WHATTTTTTT #{@author_projects[0].id.inspect}"
+      #render :text => author_projects.select{|hash| hash['id'] == 5}[0].id
+          #@author.projects_in.reject{|pr| pr.status.nil?}.last : @author.projects_in.find(params[:proj_id])
+ 
+      #render "dashboard"
     else 
       redirect_to :controller => :d, :action => :ohno
     end 
@@ -51,8 +62,18 @@ class DesignerController < SiteController
   
   def reject_project
     project = Project.find(params[:id])
-    gd = @user.game_designers.select{|gd| gd.game_id == project.game.id}.each{|gd| gd.destroy}
-    logger.debug gd
+    gd = @user.game_designers.select{|gmd| gmd.game_id == project.game.id}.each{|g| g.destroy}
+    logger.debug "GDGDGDGDGD:::::::::: #{gd}"
+
+    
+    loc = request.referer.split('?')[0].split('/').reverse
+    redirect_to :controller=>loc[1], :action=>loc[0]
+  end
+  
+  def cancel_design
+    project = @user.projects_in.find(params[:id])
+    project.canceled
+    project.save
     
     loc = request.referer.split('?')[0].split('/').reverse
     redirect_to :controller=>loc[1], :action=>loc[0]
@@ -97,7 +118,21 @@ class DesignerController < SiteController
     logger.debug "###### AUTHOR::::: #{@author.inspect}" 
     logger.debug "###### USER::::: #{@user.inspect}"     
     @editable= (@author==@user)
-    render "dashboard"
+    
+    
+    if params[:lalala].present?
+      @image = Image.find(params[:lalala])
+       # @user = current_user 
+      respond_to do |format|
+        format.html { render "dashboard" }
+        #format.js { render :layout=>false}
+        #format.js { render :js => "$('#cover').html('ddddddd');" }
+         
+      end 
+    else
+      render "dashboard"
+    end  
+    
   end
   
   def set_image_order
@@ -124,6 +159,17 @@ class DesignerController < SiteController
     @author = @image.user
     
     @editable= (@author==@user)
+  end
+  
+  
+  def image_gallery
+     @image = Image.find(params[:id])
+     @user = current_user 
+    respond_to do |format|
+      format.js { render :layout=>false }
+      # format.html
+    end   
+    
   end
   
   
@@ -232,7 +278,7 @@ class DesignerController < SiteController
   
   def edit_photo
     @categories = Category.all
-    @tags = Tag.all
+    #@tags = Tag.all
     @image = params[:id].present? ? @user.images.find(params[:id]) : Image.new 
     @crop = params[:crop]
   end
@@ -259,7 +305,7 @@ class DesignerController < SiteController
     @image.name=params[:name]
     @image.description=params[:description]
     @image.category= Category.find_by_name(params[:category])
-    @image.tag_ids=params[:tags]
+    #@image.tag_ids=params[:tags]
     @image.dominant_colors= @image.get_dominant_colors
     @image.color_histogram= @image.get_color_histogram
     @image.user=@user
@@ -270,18 +316,18 @@ class DesignerController < SiteController
     logger.debug "Image id: #{@image.id}"
     
     @categories = Category.all
-    @tags = Tag.all
+    #@tags = Tag.all
     
-    if !@image.populated? || params[:save_and]=="continue"
+    if !@image.populated? #|| params[:save_and]=="continue"
       render "edit_photo"
       return
     end
     
-    if params[:save_and]=="add"
-      redirect_to  :action => "edit_photo"
-    else
+    # if params[:save_and]=="add"
+      # redirect_to  :action => "edit_photo"
+    # else
       redirect_to  :action => "profile"
-    end
+    # end
   end
   
   def crop_image
@@ -304,6 +350,17 @@ class DesignerController < SiteController
   
   ###########################################################################################################
   
+  def upload_avatar
+    @user = current_user 
+    if params[:upload].present?
+       @user.set_avatar(params[:upload],"#{Rails.root}/public/user_avatars/")
+    end
+    # respond_to do |format|
+       # format.js { render :layout=>false }
+    # end
+    redirect_to :action=>:dashboard
+  
+  end
   
   
   

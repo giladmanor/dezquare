@@ -37,13 +37,13 @@
 		imp = 0
 		lst = ""
 		GameImageRate.where('image_id = ?', img.id).map{ |ir|
-			#likes += ir.value==1 ? 1 : 0
+			likes += ir.value==1 ? 1 : 0
 			#passed+=ir.v
 			
 			imp+=1
 			lst = ir.created_at
 		}
-		
+		passed = imp - likes
 				
 			# end
 		# end	

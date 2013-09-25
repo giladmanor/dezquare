@@ -1,0 +1,148 @@
+<%    logger.debug "V***************** #{@job.inspect} *********************" %>
+
+
+<article class="module width_full">
+	<header><h3 class="tabs_involved">Bulletin Job: <%= @job.present? ? @job.id : "NEW" %></h3>
+		<ul class="tabs">
+   			<li><a href="#tab1">Details</a></li>
+ 			<li><a href="#tab2">Interested</a></li>
+		</ul>
+	</header>
+	<div class="tab_container">
+		
+		<div id="tab1" class="tab_content">
+			<form id="new_entity" enctype="multipart/form-data" method="post" action="/admin/set_bulletin/<%=@job.present? ? @job.id : "" %>">
+				<!-- <input name="new_bulletin" type="hidden" value="true"> -->
+				<div class="module_content">
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>Category (Expertise)</label>
+							<input name="category" type="text" style="width:90%" value="<%=@job.category%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Company Name</label>
+							<input name="company_name" type="text" style="width:90%" value="<%=@job.company_name%>">			
+						</fieldset><div class="clear"></div>
+						<fieldset style="width:48%; float:left; margin-right: 3%;">
+							<label>Location</label>
+							<input name="location" type="text" style="width:90%" value="<%=@job.location%>">
+						</fieldset>
+						<fieldset style="width:48%; float:left;">
+							<label>Date</label>
+							<input name="date" type="text" style="width:90%" value="<%=@job.date%>">
+							
+						</fieldset>
+						<fieldset>		
+							<label>About the Copmany</label>
+							<textarea name="about_company" style="height: 70px;"><%=@job.about_company%></textarea>
+						</fieldset>
+						<fieldset>
+							<label>About the Project</label>
+							<textarea name="about_project" style="height: 70px;"><%=@job.about_project%></textarea>
+							<!-- <input name="about_project" type="text"> -->
+						</fieldset>
+						<fieldset>
+							<label>Required Skills</label>
+							<!-- <input name="required_skills" type="text"> -->
+							<textarea name="required_skills" style="height: 70px;"><%=@job.required_skills%></textarea>
+						</fieldset>
+						<fieldset>
+							<label>Required Experience</label>
+							<!-- <input name="required_experience" type="text"> -->
+							<textarea name="required_experience" style="height: 70px;"><%=@job.required_experience%></textarea>
+						</fieldset>
+						<!-- 
+							LOGO UPLOAD COMES HERE 
+						-->
+						<fieldset>
+							<label>Upload Comapny Logo:</label>
+							<input type="file" name="upload" id="upload" style="width:75%; float:left;">
+							<div name="logo_display" style="max-height:100px; max-width:100px; float:right; margin-top:-20px; margin-right:20px; border: 1px solid #ccc;">			
+								<% if @job.logo_path.present? %>
+									<img src="/logos/<%=@job.logo_path%>" style="max-width:70px; max-height:70px;">
+								<% end %>
+							</div>
+								
+						</fieldset>	
+						<fieldset>
+							<div class="idenfifier">
+							<label>URL Identifier: </label>/<%=@job.url_identifier%>
+							</div>
+						</fieldset>		
+						<div class="clear"></div>
+				</div>
+			<footer>
+			<div class="submit_link">
+				<input type="submit" value="Save" class="alt_btn">
+				<input type="submit" value="Reset" onclick="clear_form_elements('#new_entity');return false;">
+			</div>
+			</footer>
+		</form>
+			
+		</div>
+		<div id="tab2" class="tab_content">
+			<table class="tablesorter" cellspacing="0"> 
+				<thead> 
+					<tr> 
+						<th>First Name</th> 
+						<th>Last Name</th> 
+						<th>Email</th> 
+						<th>Age</th> 
+						<th>Location</th> 
+						<th># Portfolio Items</th> 
+						<th>Details</th>
+						<th>Actions</th>
+					</tr> 
+				</thead> 
+				<tbody> 
+				  <%
+					@designers.each{|u|
+				  %>	
+					<tr>
+						<td><a href="/designer/profile/<%=u.url_identifier%>" target="_blank"><%= "#{u.name}"%></a></td>
+						<td><%= "#{u.l_name}"%></td>
+						<td><%= u.email%></td>
+						<td><%= u.dob%></td>
+						<td><%= u.location%></td>
+						<td><%= u.images.length%></td>
+					
+						<td><a href="/user/designer/<%=u.id%>"><input type="image" src="/assets/admin/icn_categories.png" title="Details"></a></td>
+						<td>
+							<a href="/user/delete/<%=u.id%>?view=designers" onclick="return confirm('Are you sure you want to delete <%=u.name%>?')"><input type="image" src="/assets/admin/icn_trash.png" title="Trash"></a>
+						</td>
+					</tr>
+				 <%
+					}
+		   	     %>  
+				</tbody> 
+			</table>
+		</div>
+		
+		
+</div>
+	
+</article>
+
+<script type="text/javascript">
+	function clear_form_elements(ele) {
+	
+    $(ele).find(':input').each(function() {
+        switch(this.type) {
+            case 'password':
+            case 'select-multiple':
+            case 'select-one':
+            case 'text':
+            case 'textarea':
+                $(this).val('');
+                break;
+            case 'checkbox':
+            case 'radio':
+                this.checked = false;
+        }
+      
+    });
+    return false;
+
+}
+
+	
+</script>

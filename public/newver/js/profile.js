@@ -6,6 +6,7 @@ window.profileWasScrolledOnIpad = false;
 $(document).ready(function(){
 	$page = $("#page");
 	$page.scrollLeft(0);
+
 	profileWidgets = $page.find("#profile-widgets");
 	profileContent = $("#profile-content");
 	profilePhotoBar = profileContent.find("#profile-photo-bar");
@@ -13,6 +14,11 @@ $(document).ready(function(){
 	restoreArrow = $("#restore-arrow");
 	var mpml = 95;
 	var scrollBarWidth = GetScrollBarWidth();
+	if (document.getElementById("gallery-mode"))
+	{
+		$page.scrollLeft(profileContent.width()-270);
+	}
+	
 	
 	$(".button.green").click(function(event){
 		$(".button.green").attr("class","button green black-hover");
