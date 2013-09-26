@@ -262,6 +262,7 @@ class DesignerController < SiteController
   
   def settings
     @categories = Category.all
+    @settings=true
   end
   
   def set_availability

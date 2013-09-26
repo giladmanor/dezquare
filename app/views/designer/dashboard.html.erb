@@ -226,8 +226,8 @@ if @editable && @proj.present?
 					
 				</section>
 	<% elsif @editable && @proj.blank? %> 
-		<h2 style="margin-top:200px; margin-left:-60px;">YOU DON'T HAVE ANY MATCHES</h2>
-		<p style="font-family:Roboto; font-size:22px; margin-left:-60px;">Want to get matched? <BR>Upload more designs to increase your chances!</p>
+		<h2 style="margin-top:200px; margin-left:30px;">YOU DON'T HAVE ANY MATCHES</h2>
+		<p style="font-family:Roboto; font-size:22px; margin-left:30px;">Want to get matched? <BR>Upload more designs to increase your chances!</p>
 	<% else 
 		cover_file = @author.cover.present? ? @author.cover : "designer_cover_default.jpg"
 	%>
